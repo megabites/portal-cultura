@@ -1,0 +1,68 @@
+.feature-card {
+		height: 300px;
+
+	@include transition(all ease-in-out .2s);
+	background-color: #f1f1f1;
+	padding: 30px 15px 30px;
+	position: relative;
+	cursor: pointer;
+	border: 4px solid transparent;
+
+	.align {
+		@include transform(translateY(-50%) translateX(-50%));
+		width: calc(100% - 40px);
+		position: absolute;
+		top: 50%;
+		left: 50%;
+	}
+
+	&:hover {
+		background-color: #F8F8F8;
+		border-color: #06ACFF;
+		color: #06ACFF;
+
+		.card-title,
+		.card-desc,
+		.card-title a {
+			color: #06ACFF;
+		}
+	}
+
+	&.static-height {
+	}
+
+	.icon {
+		margin-bottom: 20px;
+
+		&:before {
+			font-size: 80px;
+		}
+	}
+
+	.card-title {
+		@include transition(all ease-in-out .2s);
+
+		font-size: 1.2rem;
+		font-weight: 700;
+		margin: 0;
+		position: relative;
+
+		a {
+			@include transition(all ease-in-out .2s);
+			color: #222;
+			text-decoration: none;
+		}
+	}
+
+	.card-desc {
+		@include transition(all ease-in-out .2s);
+
+		font-style: italic;
+		font-size: 0.85rem;
+	}
+
+	.card-btn {
+		font-size: 0.9rem; 
+		padding: 5px 23px;
+	}
+}
