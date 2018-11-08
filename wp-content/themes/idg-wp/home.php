@@ -162,7 +162,7 @@ get_header();
 								</div>
 						</div>
 				</section>
-				<section class="pb-5 pt-5" style="background-color: #EEE;">
+				<section id="noticias" class="pb-5 pt-5" style="background-color: #EEE;">
 						<div class="container">
 								<div class="row">
 									<div class="col-lg-12">
