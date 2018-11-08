@@ -180,7 +180,15 @@ get_header();
 										<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 											<h2></h2>
 											<div class="col-lg-4">
-												<div class="highlight-box" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/fake-img.jpg')">
+												<?php
+												if ( has_post_thumbnail() ) {
+													$post_thumb = get_the_post_thumbnail_url();
+												}
+												else {
+													$post_thumb = get_template_directory_uri() . '/assets/img/fake-img.jpg';
+												}
+												?>
+												<div class="highlight-box" style="background-image: url('<?php echo $post_thumb; ?>')">
 													<div class="box-body">
 														<span class="cat">Agosto</span>
 														<h3 class="box-title">
