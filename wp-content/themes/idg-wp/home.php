@@ -168,36 +168,34 @@ get_header();
 									<div class="col-lg-12">
 										<h2 class="section-title mb-5 text-center">Notícias</h2>
 									</div>
-									<div class="col-lg-4">
-										<div class="highlight-box" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/fake-img.jpg')">
-											<div class="box-body">
-												<span class="cat">Agosto</span>
-												<h3 class="box-title">
-													<a href="#">Pomerode (SC) recebe projeto de requalificação do patrimônio</a>
-												</h3>
+									<?php
+									$args = array(
+										'posts_per_page' => 3,
+										'category_name' => 'noticias'
+									);
+									$the_query = new WP_Query( $args ); ?>
+
+									<?php if ( $the_query->have_posts() ) : ?>
+
+										<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+											<h2></h2>
+											<div class="col-lg-4">
+												<div class="highlight-box" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/fake-img.jpg')">
+													<div class="box-body">
+														<span class="cat">Agosto</span>
+														<h3 class="box-title">
+															<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+														</h3>
+													</div>
+												</div>
 											</div>
-										</div>
-									</div>
-									<div class="col-lg-4">
-										<div class="highlight-box" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/fake-img.jpg')">
-											<div class="box-body">
-												<span class="cat">Agosto</span>
-												<h3 class="box-title">
-													<a href="#">Pomerode (SC) recebe projeto de requalificação do patrimônio</a>
-												</h3>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-4">
-										<div class="highlight-box" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/fake-img.jpg')">
-											<div class="box-body">
-												<span class="cat">Agosto</span>
-												<h3 class="box-title">
-													<a href="#">Pomerode (SC) recebe projeto de requalificação do patrimônio</a>
-												</h3>
-											</div>
-										</div>
-									</div>
+										<?php endwhile; ?>
+
+										<?php wp_reset_postdata(); ?>
+
+									<?php else : ?>
+										<p class="text-uppercase text-center">Sem notícias</p>
+									<?php endif; ?>
 								</div>
 							<div class="col-lg-12 text-center">
 								<a href="#" class="btn text-uppercase mt-5">Mais notícias</a>
