@@ -206,7 +206,7 @@ get_header();
 									<?php endif; ?>
 								</div>
 							<div class="col-lg-12 text-center">
-								<a href="#" class="btn text-uppercase mt-5">Mais notícias</a>
+								<a href="<?php echo home_url('/categoria/noticias/'); ?>" class="btn text-uppercase mt-5">Mais notícias</a>
 							</div>
 						</div>
 				</section>
