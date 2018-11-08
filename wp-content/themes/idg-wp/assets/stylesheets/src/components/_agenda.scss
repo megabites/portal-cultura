@@ -292,3 +292,91 @@
 		}
 	}
 }
+
+#events-archive {
+	.row {
+		margin: 0;
+	}
+
+	.event {
+		align-items: center;
+		background: #EEE;
+		padding: 30px 20px;
+		margin-bottom: 20px;
+
+		.time {
+			position: relative;
+			text-align: center;
+			width: 20%;
+			padding-right: 20px;
+
+			&:after {
+				@include transform(translateY(-50%));
+				position: absolute;
+				content: '';
+				width: 1px;
+				height: 60px;
+				background: rgba(0,0,0,.2);
+				top: 50%;
+				right: -1px;
+			}
+
+			span {
+				font-size: 1.8em;
+
+				&:before {
+					font-size: 18px;
+					margin-right: 10px;
+				}
+			}
+		}
+
+		.info {
+			width: 80%;
+			padding-left: 70px;
+
+			h2 {
+				margin-bottom: 10px;
+				font-size: 1.8em;
+			}
+
+			a {
+				color: #222;
+			}
+
+			.additional {
+				span {
+					position: relative;
+					display: inline-block;
+					padding-left: 20px;
+					margin-left: 20px;
+
+					&:first-child {
+						padding: 0;
+						margin: 0;
+
+						&:after {
+							display: none;
+						}
+					}
+
+					&:after {
+						@include transform(translateY(-50%));
+						position: absolute;
+						content: '';
+						width: 1px;
+						height: 100%;
+						background: rgba(0,0,0,.2);
+						top: 50%;
+						left: -1px;
+					}
+
+					&:before {
+						font-size: 15px;
+						margin-right: 10px;
+					}
+				}
+			}
+		}
+	}
+}
