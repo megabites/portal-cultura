@@ -177,7 +177,7 @@ gulp.task('prepare-dev', ['fonts', 'bootstrap'], function() {
  */
 gulp.task('browser-sync', function() {
     browserSync.init({
-        proxy: 'http://base-wp.cultura.localhost/'
+        proxy: 'http://hmg.cultura.localhost/'
     });
 });
 
