@@ -127,3 +127,7 @@
 #archive-datepicker .ui-datepicker-group.ui-datepicker-group-middle{
 	opacity: 1;
 }
+
+.ui-datepicker .ui-datepicker-calendar td.gs-has-event a {
+	font-weight: 900;
+}
