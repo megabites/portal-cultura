@@ -18,41 +18,37 @@ get_header();
 		<main id="main" class="site-main">
 
 				<section class="carousel-wrapper">
+					<?php
+					$args = array(
+						'posts_per_page' => 3,
+						'category_name' => 'destaque'
+					);
+					$feature_news_query = new WP_Query( $args ); ?>
+
+					<?php if ( $feature_news_query->have_posts() ) : $i = 0; ?>
 					<div id="jumbotron-carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000">
 						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<img class="d-block w-100" src="<?php echo get_template_directory_uri(); ?>/assets/img/teste-patrimonio.jpg" alt="First slide">
+						<?php while ( $feature_news_query->have_posts() ) : $feature_news_query->the_post(); ?>
+							<div class="carousel-item <?php echo $i == 0 ? 'active' : ''; ?>">
+								<?php
+								if ( has_post_thumbnail() ) {
+									$post_thumb = get_the_post_thumbnail_url();
+								}
+								else {
+									$post_thumb = get_template_directory_uri() . '/assets/img/teste-personagem.jpg';
+								}
+								?>
+								<img class="d-block w-100" src="<?php echo $post_thumb; ?>" alt="Second slide">
 								<div class="carousel-caption d-none d-md-block">
 									<div class="container">
 										<a href="#">
-											<h2>Título da notícia #1</h2>
-											<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+											<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+											<?php the_excerpt(); ?>
 										</a>
 									</div>
 								</div>
 							</div>
-							<div class="carousel-item">
-								<img class="d-block w-100" src="<?php echo get_template_directory_uri(); ?>/assets/img/teste-personagem.jpg" alt="Second slide">
-								<div class="carousel-caption d-none d-md-block">
-									<div class="container">
-										<a href="#">
-											<h2>Título da notícia #2</h2>
-											<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-										</a>
-									</div>
-								</div>
-							</div>
-							<div class="carousel-item">
-								<img class="d-block w-100" src="<?php echo get_template_directory_uri(); ?>/assets/img/teste-reuniao.jpg" alt="Third slide">
-								<div class="carousel-caption d-none d-md-block">
-									<div class="container">
-										<a href="#">
-											<h2>Título da notícia #3</h2>
-											<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-										</a>
-									</div>
-								</div>
-							</div>
+						<?php $i++; endwhile; wp_reset_postdata(); ?>
 						</div>
 						<a class="carousel-control-prev" href="#jumbotron-carousel" role="button" data-slide="prev">
 							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -63,11 +59,15 @@ get_header();
 							<span class="sr-only">Next</span>
 						</a>
 						<ol class="carousel-indicators">
-							<li data-target="#jumbotron-carousel" data-slide-to="0" class="active"></li>
-							<li data-target="#jumbotron-carousel" data-slide-to="1"></li>
-							<li data-target="#jumbotron-carousel" data-slide-to="2"></li>
+						<?php
+						for ($indicators = 0; $indicators < $i; $indicators++) {
+							$class = $indicators == 0 ? 'active' : '';
+							echo '<li data-target="#jumbotron-carousel" data-slide-to="'. $indicators .'" class="'. $class .'"></li>';
+						}
+						?>
 						</ol>
 					</div>
+					<?php endif; ?>
 				</section>
 
 				<section class="services mt-5 mb-5">
