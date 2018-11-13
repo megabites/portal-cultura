@@ -162,6 +162,11 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 require get_template_directory() . '/inc/breadcrumb.php';
 
 /**
+ * Includes a bootstrap like pagination
+ */
+require_once get_template_directory() . '/inc/bootstrap-pagination.php';
+
+/**
  * Custom callback for outputting comments
  *
  * @return void
