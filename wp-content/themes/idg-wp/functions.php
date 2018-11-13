@@ -161,35 +161,30 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  */
 require get_template_directory() . '/inc/breadcrumb.php';
 
-	/* ========================================================================================================================
-	
-	Comments
-	
-	======================================================================================================================== */
-	/**
-	 * Custom callback for outputting comments 
-	 *
-	 * @return void
-	 * @author Keir Whitaker
-	 */
-	function bootstrap_comment( $comment, $args, $depth ) {
-		$GLOBALS['comment'] = $comment; 
-		?>
-		<?php if ( $comment->comment_approved == '1' ): ?>
+/**
+ * Custom callback for outputting comments
+ *
+ * @return void
+ * @author Keir Whitaker
+ */
+function bootstrap_comment( $comment, $args, $depth ) {
+	$GLOBALS['comment'] = $comment;
+	?>
+	<?php if ( $comment->comment_approved == '1' ): ?>
 
-			<li class="comment" id="comment-<?php comment_ID() ?>">
-				<div class="thumbnail">
-					<?php echo get_avatar( $comment ); ?>
-				</div>
+		<li class="comment" id="comment-<?php comment_ID() ?>">
+			<div class="thumbnail">
+				<?php echo get_avatar( $comment ); ?>
+			</div>
 
-				<div class="text-wrapper">
-					<div class="panel-heading">
-						<strong class="media-heading"><?php comment_author_link() ?></strong> <time class="text-muted"><a href="#comment-<?php comment_ID() ?>" pubdate><?php comment_date() ?> at <?php comment_time() ?></a></time>
-					</div>
-					<div class="panel-body">
-						<?php comment_text() ?>
-					</div>
+			<div class="text-wrapper">
+				<div class="panel-heading">
+					<strong class="media-heading"><?php comment_author_link() ?></strong> <time class="text-muted"><a href="#comment-<?php comment_ID() ?>" pubdate><?php comment_date() ?> at <?php comment_time() ?></a></time>
 				</div>
-			</li>
-		<?php endif;
-	}
+				<div class="panel-body">
+					<?php comment_text() ?>
+				</div>
+			</div>
+		</li>
+	<?php endif;
+}
