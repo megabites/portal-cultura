@@ -193,3 +193,18 @@ function bootstrap_comment( $comment, $args, $depth ) {
 		</li>
 	<?php endif;
 }
+
+
+/**
+ * The "body_class" filter is used to filter the classes that are assigned to the body HTML element on the current page.
+ *
+ * @param $classes
+ * @return array
+ */
+function multisite_body_classes($classes) {
+	$high_contrast_cookie = $_COOKIE['high-contrast'] === 'on' ? 'high-contrast' : '';
+	$classes[] = $high_contrast_cookie;
+
+	return $classes;
+}
+add_filter('body_class', 'multisite_body_classes');

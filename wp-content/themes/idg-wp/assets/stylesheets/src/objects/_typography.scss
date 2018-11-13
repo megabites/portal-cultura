@@ -24,6 +24,8 @@
 	&:first-letter {
 		text-transform: uppercase;
 	}
+
+	@include high-contrast();
 }
 
 .subtitle-single {

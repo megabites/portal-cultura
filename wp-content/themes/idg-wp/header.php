@@ -45,10 +45,10 @@
 			<div class="col-md-6 col-lg-4 d-none d-md-block">
 				<ul id="accessibility-bar" class="text-right">
 					<li class="high-contrast">
-						<a href="#">Alto contraste</a>
+						<a href="#" id="high-contrast-btn">Alto contraste</a>
 					</li>
 					<li class="vlibras">
-						<a href="#">VLibras</a>
+						<a href="http://www.vlibras.gov.br/" target="_blank">VLibras</a>
 					</li>
 				</ul>
 			</div>

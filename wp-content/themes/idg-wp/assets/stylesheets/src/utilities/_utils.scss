@@ -1,0 +1,14 @@
+.bg-grey-1{
+	background: #f8f8f8;
+	@include high-contrast();
+}
+
+.bg-grey-2{
+	background: #eeeeee;
+	@include high-contrast();
+}
+
+.bg-grey-3{
+	background: #f1f1f1;
+	@include high-contrast();
+}

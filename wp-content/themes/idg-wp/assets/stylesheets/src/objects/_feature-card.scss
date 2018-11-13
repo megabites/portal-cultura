@@ -65,4 +65,12 @@
 		font-size: 0.9rem; 
 		padding: 5px 23px;
 	}
+
+	.high-contrast & {
+		background-color: #000;
+
+		a {
+			color: #fff;
+		}
+	}
 }

@@ -61,4 +61,10 @@
 			text-indent: -3000px;
 		}
 	}
+
+	.high-contrast & {
+		.carousel-item .carousel-caption {
+			background: #000;
+		}
+	}
 }

@@ -379,4 +379,8 @@
 			}
 		}
 	}
+
+	.high-contrast & {
+		background-color: #000 !important;
+	}
 }

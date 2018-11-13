@@ -15,4 +15,10 @@
 		background-color: #222;
 		color: #f8f8f8;
 	}
+
+	.high-contrast & {
+		background-color: #000;
+		color: #fff;
+		border-color: #fff;
+	}
 }

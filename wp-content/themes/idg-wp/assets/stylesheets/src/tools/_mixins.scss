@@ -45,3 +45,10 @@
 @mixin transform($values) {
     @include vendor-prefixes('transform', $values);
 }
+
+@mixin high-contrast() {
+	.high-contrast & {
+		background: #000;
+		color: #fff;
+	}
+}

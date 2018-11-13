@@ -30,6 +30,7 @@
 					width: 17px;
 					height: 12px;
 				}
+
 			}
 		}
 
@@ -37,6 +38,12 @@
 			margin: 0 15px;
 			color: #bababa;
 			font-size: 0.8rem;
+		}
+	}
+
+	.high-contrast & {
+		a {
+			color: #fff !important;
 		}
 	}
 }
