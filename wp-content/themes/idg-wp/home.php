@@ -174,7 +174,9 @@ get_header();
 								?>
 								<div class="highlight-box" style="background-image: url('<?php echo $post_thumb; ?>')">
 									<div class="box-body">
-										<span class="cat">Agosto</span>
+										<?php if( $post_subtitle = get_post_meta( $post->ID, '_post_subtitle', true ) ): ?>
+											<span class="cat"><?php echo $post_subtitle?></span>
+										<?php endif; ?>
 										<h3 class="box-title">
 											<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 										</h3>
