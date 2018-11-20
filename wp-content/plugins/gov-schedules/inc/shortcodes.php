@@ -41,7 +41,7 @@ class Gov_Schedules_Shortcodes
 						date_sub($date, date_interval_create_from_date_string( $i . ' days')); ?>
 
 						<li>
-							<a href="#" data-day="<?php echo date_format($date, 'Y-m-d'); ?>">
+							<a href="#" data-day="<?php echo date_format($date, 'Y-m-d'); ?>" title="<?php echo strftime('%d/%m/%Y', strtotime( date_format($date, 'Y-m-d') ) ); ?>">
 								<span><?php echo date_format($date, 'd'); ?></span>
 								<small><?php echo strftime('%a', strtotime( date_format($date, 'Y-m-d') ) ); ?></small>
 							</a>
@@ -55,7 +55,7 @@ class Gov_Schedules_Shortcodes
 						date_add($date, date_interval_create_from_date_string($i . ' days')); ?>
 
 						<li <?php echo $i === 0 ? 'class="selected"' : ''; ?>>
-							<a href="#" data-day="<?php echo date_format($date, 'Y-m-d'); ?>">
+							<a href="#" data-day="<?php echo date_format($date, 'Y-m-d'); ?>" title="<?php echo strftime('%d/%m/%Y', strtotime( date_format($date, 'Y-m-d') ) ); ?>">
 								<span><?php echo date_format($date, 'd'); ?></span>
 								<small><?php echo strftime('%a', strtotime( date_format($date, 'Y-m-d') ) ); ?></small>
 							</a>

@@ -34,6 +34,8 @@
 </a>
 
 <header id="main-header">
+	<div id="barra-brasil"></div>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-lg-8 title-wrapper">
@@ -43,10 +45,10 @@
 			<div class="col-md-6 col-lg-4 d-none d-md-block">
 				<ul id="accessibility-bar" class="text-right">
 					<li class="high-contrast">
-						<a href="#">Alto contraste</a>
+						<a href="#" id="high-contrast-btn">Alto contraste</a>
 					</li>
 					<li class="vlibras">
-						<a href="#">VLibras</a>
+						<a href="http://www.vlibras.gov.br/" target="_blank">VLibras</a>
 					</li>
 				</ul>
 			</div>
@@ -76,7 +78,6 @@
 		<div id="menu-wrapper" class="collapse clearfix">
 			<div class="menu-content container">
 				<div class="row">
-
 <!-- 					<div class="search-mobile visible-md">
 						<?php // get_search_form(); ?>
 					</div> -->
@@ -86,6 +87,7 @@
 						dynamic_sidebar( 'main-menu-area' );
 					endif;
 					?>
+
 				</div>
 			</div>
 		</div>

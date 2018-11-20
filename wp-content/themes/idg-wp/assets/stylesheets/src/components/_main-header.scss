@@ -1,7 +1,7 @@
 #main-header {
 	color: #fff;
 	background-color: $main__color;
-	padding: 21px 0 0;
+	padding: 0;
 	position: relative;
 	z-index: 100;
 
@@ -131,17 +131,26 @@
 		}
 	}
 
-	> .container > .row:after {
-		@include media-breakpoint-down(md) {
-			display: none;
+	> .container {
+		padding-top: 21px;
+
+		> .row:after {
+			@include media-breakpoint-down(md) {
+				display: none;
+			}
+			content: '';
+			display: block;
+			height: 1px;
+			width: 100%;
+			border-bottom: 1px solid hsla(0,0%,100%,.2);
+			margin-top: 15px;
 		}
-		content: '';
-		display: block;
-		height: 1px;
-		width: 100%;
-		border-bottom: 1px solid hsla(0,0%,100%,.2);
-		margin-top: 15px;
 	}
+
+	.high-contrast & {
+		background: #000;
+	}
+
 }
 
 @import "../components/featured-links";

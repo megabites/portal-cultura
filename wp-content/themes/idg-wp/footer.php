@@ -33,118 +33,9 @@
 				</div>
 			</div>
 			<div class="row menus">
-				<div class="col">
-					<h4 class="section-title">Acesso à informação</h4>
-					<ul>
-						<li>
-							<a href="http://base-wp.cultura.localhost/ola-mundo">Item #1</a>
-						</li>
-						<li>
-							<a href="#">Item #2</a>
-						</li>
-						<li>
-							<a href="#">Item #3</a>
-						</li>
-						<li>
-							<a href="#">Item #4</a>
-						</li>
-						<li>
-							<a href="#">Item #5</a>
-						</li>
-						<li>
-							<a href="#">Item #6</a>
-						</li>
-						<li>
-							<a href="#">Item #7</a>
-						</li>
-						<li>
-							<a href="#">Item #8</a>
-						</li>
-					</ul>
-				</div>
-				<div class="col">
-					<h4 class="section-title">O Ministério</h4>
-					<ul>
-						<li>
-							<a href="http://base-wp.cultura.localhost/ola-mundo">Item #1</a>
-						</li>
-						<li>
-							<a href="#">Item #2</a>
-						</li>
-						<li>
-							<a href="#">Item #3</a>
-						</li>
-						<li>
-							<a href="#">Item #4</a>
-						</li>
-						<li>
-							<a href="#">Item #5</a>
-						</li>
-					</ul>
-				</div>
-				<div class="col">
-					<h4 class="section-title">Editais e Apoios</h4>
-					<ul>
-						<li>
-							<a href="http://base-wp.cultura.localhost/ola-mundo">Item #1</a>
-						</li>
-						<li>
-							<a href="#">Item #2</a>
-						</li>
-						<li>
-							<a href="#">Item #3</a>
-						</li>
-						<li>
-							<a href="#">Item #4</a>
-						</li>
-						<li>
-							<a href="#">Item #5</a>
-						</li>
-						<li>
-							<a href="#">Item #6</a>
-						</li>
-						<li>
-							<a href="#">Item #7</a>
-						</li>
-					</ul>
-				</div>
-				<div class="col">
-					<h4 class="section-title">Notícias</h4>
-					<ul>
-						<li>
-							<a href="http://base-wp.cultura.localhost/ola-mundo">Item #1</a>
-						</li>
-						<li>
-							<a href="#">Item #2</a>
-						</li>
-						<li>
-							<a href="#">Item #3</a>
-						</li>
-						<li>
-							<a href="#">Item #4</a>
-						</li>
-					</ul>
-				</div>
-				<div class="col">
-					<h4 class="section-title">Imprensa</h4>
-					<ul>
-						<li>
-							<a href="http://base-wp.cultura.localhost/ola-mundo">Item #1</a>
-						</li>
-						<li>
-							<a href="#">Item #2</a>
-						</li>
-						<li>
-							<a href="#">Item #3</a>
-						</li>
-						<li>
-							<a href="#">Item #4</a>
-						</li>
-						<li>
-							<a href="#">Item #5</a>
-						</li>
-					</ul>
-				</div>
+				<?php if ( is_active_sidebar( 'footer-widgets-area' ) ) :
+					dynamic_sidebar( 'footer-widgets-area' );
+				endif; ?>
 			</div>
 			<div class="row footer-brasil">
 				<div class="col-lg-12">
@@ -155,9 +46,6 @@
 	</footer>
 
 <?php wp_footer(); ?>
-<!--<script id="__bs_script__">//<![CDATA[
-    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.24.7'><\/script>".replace("HOST", location.hostname));
-//]]></script>-->
 
 </body>
 </html>

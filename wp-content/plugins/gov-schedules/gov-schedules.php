@@ -65,7 +65,7 @@ if (!class_exists('Gov_Schedules')) :
 			add_action( 'init', array($this, 'gs_shortcodes' ) );
 			add_action( 'wp_ajax_gs_get_week_events', array( $this, 'gs_get_week_events' ) );
 			add_action( 'wp_ajax_nopriv_gs_get_week_events', array( $this, 'gs_get_week_events' ) );
-			add_action( 'archive_template', array( $this, 'yourplugin_get_custom_archive_template' ) );
+			add_action( 'archive_template', array( $this, 'gs_custom_archive_template' ) );
 		}
 
 		/**
@@ -450,7 +450,7 @@ if (!class_exists('Gov_Schedules')) :
 			wp_send_json_success( $data );
 		}
 
-		function yourplugin_get_custom_archive_template($template) {
+		function gs_custom_archive_template($template) {
 			global $wp_query;
 			if (is_post_type_archive('event')) {
 				$template = require_once plugin_dir_path( __FILE__ ) . 'inc/archive-event.php';

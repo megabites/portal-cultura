@@ -5,7 +5,7 @@
 
 	var app = {
 		init: function () {
-			// this.accessibility();
+			this.accessibility();
 			// this.utils();
 			// this.agenda();
 			this.menu();
@@ -18,7 +18,7 @@
 		 */
 		accessibility: function () {
 			// High contrast
-			$('#high-contrast').click(function (e) {
+			$('#high-contrast-btn').click(function (e) {
 				e.preventDefault();
 				var highContrast = cookie('high-contrast');
 

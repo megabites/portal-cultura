@@ -94,6 +94,7 @@ function idg_wp_scripts() {
 
 	// wp_enqueue_script( 'jquery-ui-datepicker' );
 	wp_enqueue_script( 'idg-wp-scripts', get_template_directory_uri() . '/assets/js/dist/bundle.min.js', array('jquery'), false, true );
+	wp_enqueue_script( 'barra-brasil-script', 'http://barra.brasil.gov.br/barra_2.0.js', false, false, true );
 
     // wp_enqueue_script( 'idg-wp-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
@@ -160,35 +161,50 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  */
 require get_template_directory() . '/inc/breadcrumb.php';
 
-	/* ========================================================================================================================
-	
-	Comments
-	
-	======================================================================================================================== */
-	/**
-	 * Custom callback for outputting comments 
-	 *
-	 * @return void
-	 * @author Keir Whitaker
-	 */
-	function bootstrap_comment( $comment, $args, $depth ) {
-		$GLOBALS['comment'] = $comment; 
-		?>
-		<?php if ( $comment->comment_approved == '1' ): ?>
+/**
+ * Includes a bootstrap like pagination
+ */
+require_once get_template_directory() . '/inc/bootstrap-pagination.php';
 
-			<li class="comment" id="comment-<?php comment_ID() ?>">
-				<div class="thumbnail">
-					<?php echo get_avatar( $comment ); ?>
-				</div>
+/**
+ * Custom callback for outputting comments
+ *
+ * @return void
+ * @author Keir Whitaker
+ */
+function bootstrap_comment( $comment, $args, $depth ) {
+	$GLOBALS['comment'] = $comment;
+	?>
+	<?php if ( $comment->comment_approved == '1' ): ?>
 
-				<div class="text-wrapper">
-					<div class="panel-heading">
-						<strong class="media-heading"><?php comment_author_link() ?></strong> <time class="text-muted"><a href="#comment-<?php comment_ID() ?>" pubdate><?php comment_date() ?> at <?php comment_time() ?></a></time>
-					</div>
-					<div class="panel-body">
-						<?php comment_text() ?>
-					</div>
+		<li class="comment" id="comment-<?php comment_ID() ?>">
+			<div class="thumbnail">
+				<?php echo get_avatar( $comment ); ?>
+			</div>
+
+			<div class="text-wrapper">
+				<div class="panel-heading">
+					<strong class="media-heading"><?php comment_author_link() ?></strong> <time class="text-muted"><a href="#comment-<?php comment_ID() ?>" pubdate><?php comment_date() ?> at <?php comment_time() ?></a></time>
 				</div>
-			</li>
-		<?php endif;
-	}
+				<div class="panel-body">
+					<?php comment_text() ?>
+				</div>
+			</div>
+		</li>
+	<?php endif;
+}
+
+
+/**
+ * The "body_class" filter is used to filter the classes that are assigned to the body HTML element on the current page.
+ *
+ * @param $classes
+ * @return array
+ */
+function multisite_body_classes($classes) {
+	$high_contrast_cookie = $_COOKIE['high-contrast'] === 'on' ? 'high-contrast' : '';
+	$classes[] = $high_contrast_cookie;
+
+	return $classes;
+}
+add_filter('body_class', 'multisite_body_classes');

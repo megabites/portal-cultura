@@ -33,6 +33,10 @@
 				var date = $(this).data('day'),
 					eventCat = $('.agenda-cats a.active').data('event-cat');
 
+				if( $('#archive-datepicker').length ){
+					eventCat = $('.event-cats-selector select').val();
+				}
+
 				gs.getEvents( date, eventCat );
 			})
 		},
@@ -83,18 +87,42 @@
 
 		agendaArchive: function () {
 			if( $('#archive-datepicker').length ){
-				var tempSelectedDate = '';
+				// var eventDates = ['20181108', '20180108', '20180109', '20180110', '20180115', '20180116', '20180117'];
+				var eventDates = $('#archive-datepicker').data('event-days');
+				console.log( eventDates );
+				// console.log( JSON.parse(eventDates) );
+
+				function arrayContains(needle, haystack) {
+					for (stick in haystack) {
+						if (haystack[stick] == needle) return true;
+					}
+					return false;
+				}
 
 				$( '#archive-datepicker' ).datepicker({
 					dateFormat : 'yy-mm-dd',
 					numberOfMonths: 3,
 					showCurrentAtPos: 1,
+					beforeShowDay: function(thisDate) {
+						var date = '0' + thisDate.getDate();
+						date = date.substring(date.length - 2);
+
+						var month = '0' + (thisDate.getMonth() + 1);
+						month = month.substring(month.length - 2);
+
+						var dateString = thisDate.getFullYear() + '' + month + '' + date;
+
+						if (arrayContains(dateString, eventDates)) {
+							return [true, 'gs-has-event'];
+						}
+						return [true];
+					},
 					onSelect: function(date, inst) {
 						$(this).datepicker( 'option', 'showCurrentAtPos', 1 );
 						inst.drawMonth +=1;
 
-						var eventCat = $('.agenda-cats a.active').data('event-cat');
-						gs.getEvents( date, 'agenda-cultural' );
+						var eventCat = $('.event-cats-selector select').val();
+						gs.getEvents( date, eventCat );
 					}
 				});
 
