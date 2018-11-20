@@ -1,6 +1,10 @@
 #featured-links {
 	margin-top: 25px;
 
+	@include media-breakpoint-down(md) {
+		margin: 0;
+	}
+
 	ul {
 		padding-left: 15px;
 
@@ -17,7 +21,7 @@
 		}
 	}
 
-	.menu-toggle {
+	#menu-toggle {
 		display: block;
 		float: left;
 		cursor: pointer;
@@ -30,6 +34,10 @@
 		width: 28px;
 		border: none;
 		background-color: transparent;
+
+		@include media-breakpoint-down(md) {
+			margin-top: 12px;
+		}
 	}
 
 }

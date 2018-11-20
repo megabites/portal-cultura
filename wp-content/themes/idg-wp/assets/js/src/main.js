@@ -8,6 +8,7 @@
 			// this.accessibility();
 			// this.utils();
 			// this.agenda();
+			this.menu();
 			console.log('App here!');
 		},
 
@@ -29,6 +30,29 @@
 					$('body').addClass('high-contrast');
 				}
 			})
+		},
+
+		/**
+		 * Menu Functions
+		 *
+		 */
+		menu: function () {
+			// High contrast
+			$('#menu-toggle').click(function () {
+				$('body').toggleClass('menu-active');
+			})
+
+			$('#menu-wrapper, #menu-toggle').click(function(event){
+				// event.stopPropagation();
+			});
+
+			$('#main-header').click(function(event){
+				$('body').removeClass('menu-active');
+			});
+
+			$('.widget_nav_menu').click(function() {
+				$(this).toggleClass('active');
+			});
 		},
 
 		/**

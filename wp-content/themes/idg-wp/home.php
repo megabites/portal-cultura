@@ -82,8 +82,6 @@ get_header();
 												<div class="icon icon-lei-rouanet"></div>
 												<h3 class="card-title">Lei Rouanet</h3>
 											</div>
-<!-- 											<p class="card-desc">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p>
-											<a class="card-btn btn" href="#">Acesse</a> -->
 										</div>
 									</div>
 									<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
@@ -92,8 +90,6 @@ get_header();
 												<div class="icon icon-editais"></div>
 												<h3 class="card-title">Editais</h3>
 											</div>
-<!-- 											<p class="card-desc">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p>
-											<a class="card-btn btn" href="#">Acesse</a> -->
 										</div>
 									</div>
 									<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
@@ -102,8 +98,6 @@ get_header();
 												<div class="icon icon-apoio"></div>
 												<h3 class="card-title">Apoio à Projetos</h3>
 											</div>
-<!-- 											<p class="card-desc">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p>
-											<a class="card-btn btn" href="#">Acesse</a> -->
 										</div>
 									</div>
 									<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
@@ -112,8 +106,6 @@ get_header();
 												<div class="icon icon-patrimonio"></div>
 												<h3 class="card-title">Patrimônio</h3>
 											</div>
-<!-- 											<p class="card-desc">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p>
-											<a class="card-btn btn" href="#">Acesse</a> -->
 										</div>
 									</div>
 									<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
@@ -122,8 +114,6 @@ get_header();
 												<div class="icon icon-centros-culturais"></div>
 												<h3 class="card-title">Centros Culturais</h3>
 											</div>
-<!-- 											<p class="card-desc">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p>
-											<a class="card-btn btn" href="#">Acesse</a> -->
 										</div>
 									</div>
 									<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
@@ -132,8 +122,6 @@ get_header();
 												<div class="icon icon-pontos-cultura"></div>
 												<h3 class="card-title">Pontos de Cultura</h3>
 											</div>
-<!-- 											<p class="card-desc">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p>
-											<a class="card-btn btn" href="#">Acesse</a> -->
 										</div>
 									</div>
 									<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
@@ -142,8 +130,6 @@ get_header();
 												<div class="icon icon-snc"></div>
 												<h3 class="card-title">SNC</h3>
 											</div>
-<!-- 											<p class="card-desc">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p>
-											<a class="card-btn btn" href="#">Acesse</a> -->
 										</div>
 									</div>
 									<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
@@ -152,8 +138,6 @@ get_header();
 												<div class="icon icon-economia-criativa"></div>
 												<h3 class="card-title">Economia Criativa</h3>
 											</div>
-<!-- 											<p class="card-desc">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</p>
-											<a class="card-btn btn" href="#">Acesse</a> -->
 										</div>
 									</div>
 									<div class="col-lg-12 text-center">

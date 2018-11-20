@@ -55,7 +55,7 @@
 		<div class="row">
 			<div class="col-sm-1 col-md-8 col-lg-8 menu-wrapper">
 				<nav id="featured-links">
-					<button class="menu-toggle" data-toggle="collapse" data-target="#menu-wrapper" aria-controls="primary-menu" aria-expanded="false">
+					<button id="menu-toggle" class="hidden-sm-down" data-toggle="collapse" data-target="#menu-wrapper" aria-controls="primary-menu" aria-expanded="false">
 						<span class="sr-only"><?php esc_html_e( 'Primary Menu', 'idg-wp' ); ?></span>
 					</button>
 					<?php
@@ -76,135 +76,16 @@
 		<div id="menu-wrapper" class="collapse clearfix">
 			<div class="menu-content container">
 				<div class="row">
+
+<!-- 					<div class="search-mobile visible-md">
+						<?php // get_search_form(); ?>
+					</div> -->
+
 					<?php
 					if ( is_active_sidebar( 'main-menu-area' ) ) :
 						dynamic_sidebar( 'main-menu-area' );
 					endif;
 					?>
-					<!--<div class="col">
-						<div class="menu-col">
-							<h3 class="menu-title">Ipsum Lorem</h3>
-							<ul>
-								<li>
-									<a href="<?php /*echo home_url('/ola-mundo'); */?>">Item #1</a>
-								</li>
-								<li>
-									<a href="#">Item #2</a>
-								</li>
-								<li>
-									<a href="#">Item #3</a>
-								</li>
-								<li>
-									<a href="#">Item #4</a>
-								</li>
-								<li>
-									<a href="#">Item #5</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="col">
-						<div class="menu-col">
-							<h3 class="menu-title">Ipsum Lorem</h3>
-							<ul>
-								<li>
-									<a href="#">Item #1</a>
-								</li>
-								<li>
-									<a href="#">Item #2</a>
-								</li>
-								<li>
-									<a href="#">Item #3</a>
-								</li>
-								<li>
-									<a href="#">Item #4</a>
-								</li>
-								<li>
-									<a href="#">Item #5</a>
-								</li>
-
-								<li>
-									<a href="#">Item #6</a>
-								</li>
-								<li>
-									<a href="#">Item #7</a>
-								</li>
-								<li>
-									<a href="#">Item #8</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="col">
-						<div class="menu-col">
-							<h3 class="menu-title">Ipsum Lorem</h3>
-							<ul>
-								<li>
-									<a href="#">Item #1</a>
-								</li>
-								<li>
-									<a href="#">Item #2</a>
-								</li>
-								<li>
-									<a href="#">Item #3</a>
-								</li>
-								<li>
-									<a href="#">Item #4</a>
-								</li>
-								<li>
-									<a href="#">Item #5</a>
-								</li>
-
-								<li>
-									<a href="#">Item #6</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="col">
-						<div class="menu-col">
-							<h3 class="menu-title">Ipsum Lorem</h3>
-							<ul>
-								<li>
-									<a href="#">Item #1</a>
-								</li>
-								<li>
-									<a href="#">Item #2</a>
-								</li>
-								<li>
-									<a href="#">Item #3</a>
-								</li>
-								<li>
-									<a href="#">Item #4</a>
-								</li>
-								<li>
-									<a href="#">Item #5</a>
-								</li>
-								<li>
-									<a href="#">Item #6</a>
-								</li>
-								<li>
-									<a href="#">Item #7</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="col">
-						<div class="menu-col">
-							<h3 class="menu-title">Ipsum Lorem</h3>
-							<ul>
-								<li>
-									<a href="#">Item #1</a>
-								</li>
-								<li>
-									<a href="#">Item #2</a>
-								</li>
-								<li>
-									<a href="#">Item #3</a>
-								</li>
-							</ul>
-						</div>
-					</div>-->
 				</div>
 			</div>
 		</div>
