@@ -6,7 +6,7 @@
 	var app = {
 		init: function () {
 			this.accessibility();
-			// this.utils();
+			this.utils();
 			// this.agenda();
 			this.menu();
 			console.log('App here!');
@@ -63,7 +63,9 @@
 			// Enable bootstrap tooltip
 			// $('[data-toggle="tooltip"]').tooltip();
 
-
+			$('.toggle-active').click( function() {
+				$(this).parent().toggleClass('active');
+			});
 		},
 
 		agenda: function () {
