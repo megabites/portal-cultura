@@ -17,6 +17,7 @@ Utilities – utilities and helper classes with ability to override anything whi
 @import "settings/typography";
 
 @import "vendor/bootstrap/bootstrap";
+@import "vendor/fancybox/jquery.fancybox";
 @import "vendor/google-fonts/google-fonts";
 
 @import "tools/mixins";
@@ -28,6 +29,7 @@ Utilities – utilities and helper classes with ability to override anything whi
 
 @import "objects/buttons";
 @import "objects/feature-card";
+@import "objects/gallery";
 @import "objects/highlight-box";
 @import "objects/social-medias";
 @import "objects/date-box";
@@ -45,6 +47,7 @@ Utilities – utilities and helper classes with ability to override anything whi
 @import "components/copyright";
 @import "components/main-single";
 @import "components/main-footer";
+@import "components/multimedia";
 @import "components/posts-list";
 @import "components/page-info";
 
