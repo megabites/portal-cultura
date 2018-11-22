@@ -106,4 +106,4 @@ add_filter( 'wp_terms_checklist_args', 'multimedia_terms_as_radio_checklist' );
 function prevent_create_new_taxonomy_multimedia_type( $term, $taxonomy ) {
 	return ( 'multimedia-type' === $taxonomy ) ? new WP_Error( 'term_addition_blocked', __( 'You cannot add terms to this taxonomy' ) ) : $term;
 }
-add_action( 'pre_insert_term', 'prevent_create_new_taxonomy_multimedia_type', 0, 2 );
+// add_action( 'pre_insert_term', 'prevent_create_new_taxonomy_multimedia_type', 0, 2 );
