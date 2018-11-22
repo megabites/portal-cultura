@@ -164,7 +164,12 @@ require get_template_directory() . '/inc/breadcrumb.php';
 /**
  * Includes a bootstrap like pagination
  */
-require_once get_template_directory() . '/inc/bootstrap-pagination.php';
+require get_template_directory() . '/inc/bootstrap-pagination.php';
+
+/**
+ * Custom post types
+ */
+require get_template_directory() . '/inc/cpt-multimedia.php';
 
 /**
  * Custom callback for outputting comments
@@ -193,7 +198,6 @@ function bootstrap_comment( $comment, $args, $depth ) {
 		</li>
 	<?php endif;
 }
-
 
 /**
  * The "body_class" filter is used to filter the classes that are assigned to the body HTML element on the current page.

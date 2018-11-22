@@ -6,7 +6,7 @@
 	var app = {
 		init: function () {
 			this.accessibility();
-			// this.utils();
+			this.utils();
 			// this.agenda();
 		},
 
@@ -36,8 +36,17 @@
 		 */
 		utils: function () {
 			// Enable bootstrap tooltip
-			// $('[data-toggle="tooltip"]').tooltip();
+			$('[data-toggle="tooltip"]').tooltip();
 
+			// Fancybox for gallery media
+			if( $('.gallery').length ){
+				$('.gallery-item').each( function () {
+					var caption = $(this).find('.gallery-caption').text();
+					$(this).find('a').attr( 'data-caption', caption );
+				});
+				$('.gallery-item a').attr( 'data-fancybox', 'group' );
+				$('.gallery-item a').fancybox({});
+			}
 
 		},
 
