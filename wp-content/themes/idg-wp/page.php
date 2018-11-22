@@ -17,9 +17,7 @@ get_header();
 
 	<main id="main" class="site-main">
 		<div class="container">
-			<div class="row">
-				<?php the_breadcrumb (); ?>
-			</div>
+			<?php the_breadcrumb (); ?>
 
 			<div class="row">
 				<div class="col-12">
@@ -27,7 +25,7 @@ get_header();
 					while ( have_posts() ) :
 						the_post();
 
-						get_template_part( 'template-parts/content', 'page' );
+						get_template_part( 'template-parts/content-page', 'page' );
 
 						// If comments are open or we have at least one comment, load up the comment template.
 						if ( comments_open() || get_comments_number() ) :
@@ -36,6 +34,10 @@ get_header();
 
 					endwhile; // End of the loop.
 					?>
+				</div>
+
+				<div class="entry-content">
+					<?php get_template_part('template-parts/copyright'); ?>
 				</div>
 			</div>
 		</div>
