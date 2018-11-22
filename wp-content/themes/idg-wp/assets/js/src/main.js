@@ -8,6 +8,8 @@
 			this.accessibility();
 			this.utils();
 			// this.agenda();
+			this.menu();
+			console.log('App here!');
 		},
 
 		/**
@@ -31,6 +33,29 @@
 		},
 
 		/**
+		 * Menu Functions
+		 *
+		 */
+		menu: function () {
+			// High contrast
+			$('#menu-toggle').click(function () {
+				$('body').toggleClass('menu-active');
+			})
+
+			$('#menu-wrapper, #menu-toggle').click(function(event){
+				// event.stopPropagation();
+			});
+
+			$('#main-header').click(function(event){
+				$('body').removeClass('menu-active');
+			});
+
+			$('.widget_nav_menu').click(function() {
+				$(this).toggleClass('active');
+			});
+		},
+
+		/**
 		 * Utility functions, used on all sites
 		 *
 		 */
@@ -47,6 +72,10 @@
 				$('.gallery-item a').attr( 'data-fancybox', 'group' );
 				$('.gallery-item a').fancybox({});
 			}
+
+			$('.toggle-active').click( function() {
+				$(this).parent().toggleClass('active');
+			});
 
 		},
 

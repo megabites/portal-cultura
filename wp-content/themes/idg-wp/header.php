@@ -57,7 +57,7 @@
 		<div class="row">
 			<div class="col-sm-1 col-md-8 col-lg-8 menu-wrapper">
 				<nav id="featured-links">
-					<button class="menu-toggle" data-toggle="collapse" data-target="#menu-wrapper" aria-controls="primary-menu" aria-expanded="false">
+					<button id="menu-toggle" class="hidden-sm-down" data-toggle="collapse" data-target="#menu-wrapper" aria-controls="primary-menu" aria-expanded="false">
 						<span class="sr-only"><?php esc_html_e( 'Primary Menu', 'idg-wp' ); ?></span>
 					</button>
 					<?php
@@ -78,9 +78,16 @@
 		<div id="menu-wrapper" class="collapse clearfix">
 			<div class="menu-content container">
 				<div class="row">
-					<?php if ( is_active_sidebar( 'main-menu-area' ) ) :
+<!-- 					<div class="search-mobile visible-md">
+						<?php // get_search_form(); ?>
+					</div> -->
+
+					<?php
+					if ( is_active_sidebar( 'main-menu-area' ) ) :
 						dynamic_sidebar( 'main-menu-area' );
-					endif; ?>
+					endif;
+					?>
+
 				</div>
 			</div>
 		</div>

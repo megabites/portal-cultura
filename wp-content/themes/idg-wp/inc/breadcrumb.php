@@ -26,7 +26,7 @@ function the_breadcrumb() {
 	if ( !is_front_page() ) {
 
 		// Build the breadcrums
-		echo '<nav aria-label="breadcrumb" role="navigation" class="col"><ol id="' . $breadcrums_id . '" class="' . $breadcrums_class . '">';
+		echo '<nav id="breadcrumb-wrapper" aria-label="breadcrumb" role="navigation" class="row m-0 align-items-center"><ol id="' . $breadcrums_id . '" class="' . $breadcrums_class . ' col col-md-auto">';
 
 		// Home page
 		echo '<li class="item-home"><span class="sr-only">Você está aqui:</span> <a class="bread-link bread-home" href="' . get_home_url() . '" title="' . $home_title . '">' . $home_title . '</a></li>';
@@ -141,6 +141,8 @@ function the_breadcrumb() {
 				// If child page, get parents
 				$anc = get_post_ancestors( $post->ID );
 
+				$parents = null;
+
 				// Get parents in the right order
 				$anc = array_reverse($anc);
 
@@ -249,7 +251,14 @@ function the_breadcrumb() {
 			echo '<li>' . 'Error 404' . '</li>';
 		}
 
-		echo '</ol></nav>';
+		echo '</ol>';
+
+	echo '<div class="col p-0">';
+
+		get_template_part( 'template-parts/subpages-menu', 'page' );
+	echo '</div>';
+
+	echo '</nav>';
 
 	} else {
 
