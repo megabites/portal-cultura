@@ -24,5 +24,15 @@ function pp_wp_widgets_init() {
 		'before_title'  => '<h4 class="section-title">',
 		'after_title'   => '</h4>',
 	) );
+
+	register_sidebar( array(
+		'name' => esc_html__( 'Services Section', 'idg-wp' ),
+		'id' => 'services-widgets-area',
+		'description'   => esc_html__( 'Add widgets here.', 'idg-wp' ),
+		'before_widget' => '<div id="%1$s" class="col %2$s"><div class="menu-col">',
+		'after_widget'  => '</div></div>',
+		'before_title'  => '<h4 class="section-title">',
+		'after_title'   => '</h4>',
+	) );
 }
 add_action( 'widgets_init', 'pp_wp_widgets_init' );

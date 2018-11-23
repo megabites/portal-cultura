@@ -53,6 +53,24 @@ var gulp = require('gulp'),
 });
 
 /**
+ * Configure the javascript bundle for the application
+ *
+ */
+ gulp.task('scripts-admin', function () {
+    return gulp.src([
+        basePaths.projectJSFiles + 'admin.js'
+    ])
+        // .pipe(plumber())
+        .pipe(concat('admin.min.js'))
+        .pipe(sourcemaps.init())
+        .pipe(uglify())
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('./assets/js/dist/'))
+        .pipe(notify('Arquivos JS recarregados!'))
+        .pipe(livereload());
+});
+
+/**
  * Configure the stylesheet bundle for the application
  *
  */
@@ -74,6 +92,25 @@ gulp.task('styles', function () {
         .pipe(gulp.dest('./assets/stylesheets/dist/'))
         .pipe(notify('Folha de estilo recarregada'))
         .pipe(livereload());
+});
+
+/**
+ * Configure the stylesheet bundle for the wordpress admin styles
+ *
+ */
+gulp.task('styles-admin', function () {
+	return gulp.src([
+		basePaths.projectStylesheetFiles + 'admin.scss'
+	])
+		.pipe(plumber())
+		.pipe(sourcemaps.init())
+		.pipe(sass())
+		.pipe(cleanCSS({compatibility: 'ie8'}))
+		.pipe(concat('admin.min.css'))
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest('./assets/stylesheets/dist/'))
+		.pipe(notify('Folha de estilo recarregada'))
+		.pipe(livereload());
 });
 
 /**
@@ -102,8 +139,8 @@ gulp.task('browser-sync', function() {
  */
 gulp.task('watch', function () {
     livereload.listen();
-    gulp.watch('./assets/stylesheets/src/**/*.scss', ['styles', 'browser-sync-watch']);
-    gulp.watch('./assets/js/src/*.js', ['scripts', 'browser-sync-watch']);
+    gulp.watch('./assets/stylesheets/src/**/*.scss', ['styles', 'styles-admin', 'browser-sync-watch']);
+    gulp.watch('./assets/js/src/*.js', ['scripts', 'scripts-admin', 'browser-sync-watch']);
     gulp.watch('**/*.php', ['php', 'browser-sync-watch']);
 
     // browserSync.reload();
@@ -185,4 +222,4 @@ gulp.task('browser-sync', function() {
  * Default task
  *
  */
-gulp.task('default', ['styles', 'scripts', 'watch', 'browser-sync']);
+gulp.task('default', ['styles', 'styles-admin', 'scripts', 'scripts-admin', 'watch', 'browser-sync']);

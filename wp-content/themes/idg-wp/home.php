@@ -77,70 +77,11 @@ get_header();
 					<div class="col-lg-12">
 						<h2 class="section-title mb-5 text-center">Serviços</h2>
 					</div>
-					<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
-						<div class="feature-card static-height">
-							<div class="align">
-								<div class="icon icon-lei-rouanet"></div>
-								<h3 class="card-title">Lei Rouanet</h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
-						<div class="feature-card static-height">
-							<div class="align">
-								<div class="icon icon-editais"></div>
-								<h3 class="card-title">Editais</h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
-						<div class="feature-card static-height">
-							<div class="align">
-								<div class="icon icon-apoio"></div>
-								<h3 class="card-title">Apoio à Projetos</h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
-						<div class="feature-card static-height">
-							<div class="align">
-								<div class="icon icon-patrimonio"></div>
-								<h3 class="card-title">Patrimônio</h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
-						<div class="feature-card static-height">
-							<div class="align">
-								<div class="icon icon-centros-culturais"></div>
-								<h3 class="card-title">Centros Culturais</h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
-						<div class="feature-card static-height">
-							<div class="align">
-								<div class="icon icon-pontos-cultura"></div>
-								<h3 class="card-title">Pontos de Cultura</h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
-						<div class="feature-card static-height">
-							<div class="align">
-								<div class="icon icon-snc"></div>
-								<h3 class="card-title">SNC</h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
-						<div class="feature-card static-height">
-							<div class="align">
-								<div class="icon icon-economia-criativa"></div>
-								<h3 class="card-title">Economia Criativa</h3>
-							</div>
-						</div>
-					</div>
+					<?php
+					if ( is_active_sidebar( 'services-widgets-area' ) ) :
+						dynamic_sidebar( 'services-widgets-area' );
+					endif;
+					?>
 					<div class="col-lg-12 text-center">
 						<a href="#" class="btn text-uppercase mt-4">Mais Serviços</a>
 					</div>

@@ -22,18 +22,16 @@
 					display: inline-block;
 					text-indent: -999px;
 					position: relative;
-
-				&:before {
-					background-image: url(../../img/sprite.png);
-					background-position: -266px -185px;
-					content: "";
-					position: absolute;
-					top: 1px;
-					left: 0;
-					width: 17px;
-					height: 12px;
-				}
-
+					&:before {
+						background-image: url(../../img/sprite.png);
+						background-position: -266px -185px;
+						content: "";
+						position: absolute;
+						top: 1px;
+						left: 0;
+						width: 17px;
+						height: 12px;
+					}
 				}
 			}
 
