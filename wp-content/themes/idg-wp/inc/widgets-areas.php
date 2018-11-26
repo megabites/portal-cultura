@@ -34,5 +34,35 @@ function pp_wp_widgets_init() {
 		'before_title'  => '<h4 class="section-title">',
 		'after_title'   => '</h4>',
 	) );
+
+	register_sidebar( array(
+		'name' => esc_html__( 'Meet the Ministry Section', 'idg-wp' ),
+		'id' => 'meet-the-ministry-widgets-area',
+		'description'   => esc_html__( 'Add widgets here.', 'idg-wp' ),
+		'before_widget' => '<div id="%1$s" class="col %2$s"><div class="menu-col">',
+		'after_widget'  => '</div></div>',
+		'before_title'  => '<h4 class="section-title">',
+		'after_title'   => '</h4>',
+	) );
+
+	register_sidebar( array(
+		'name' => esc_html__( 'Content Section', 'idg-wp' ),
+		'id' => 'content-widgets-area',
+		'description'   => esc_html__( 'Add widgets here.', 'idg-wp' ),
+		'before_widget' => '<div id="%1$s" class="col %2$s"><div class="menu-col">',
+		'after_widget'  => '</div></div>',
+		'before_title'  => '<h4 class="section-title">',
+		'after_title'   => '</h4>',
+	) );
+
+	register_sidebar( array(
+		'name' => esc_html__( 'Social Participation Section', 'idg-wp' ),
+		'id' => 'social-participation-widgets-area',
+		'description'   => esc_html__( 'Add widgets here.', 'idg-wp' ),
+		'before_widget' => '<div id="%1$s" class="col %2$s"><div class="menu-col">',
+		'after_widget'  => '</div></div>',
+		'before_title'  => '<h4 class="section-title">',
+		'after_title'   => '</h4>',
+	) );
 }
 add_action( 'widgets_init', 'pp_wp_widgets_init' );

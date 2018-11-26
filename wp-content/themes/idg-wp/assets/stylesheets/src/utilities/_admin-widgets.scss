@@ -47,5 +47,46 @@
 			margin: 0;
 			position: relative;
 		}
+
+		.card-desc {
+			transition: all ease-in-out .2s;
+			font-style: italic;
+			font-size: .85rem;
+
+			.no-desc & {
+				display: none;
+			}
+		}
+
+		.card-btn {
+			font-size: 0.9rem;
+			padding: 5px 23px;
+			color: #222;
+			display: block;
+			border-radius: 30px;
+			border: 2px solid #222;
+			margin: 5px;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			font-weight: 700;
+			white-space: nowrap;
+			transition: all ease-in-out .2s;
+			text-decoration: none;
+
+			&:hover {
+				background-color: #222;
+				color: #f8f8f8;
+			}
+		}
+
+		&.card-2 {
+			border: 4px solid #fff;
+			background-color: #1fc86a;
+			color: #fff;
+
+			.card-title {
+				color: #fff;
+			}
+		}
 	}
 }

@@ -155,70 +155,11 @@ get_header();
 					<div class="col-lg-12">
 						<h2 class="section-title mb-5 text-center">Conheça o Ministério</h2>
 					</div>
-					<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
-						<div class="feature-card static-height card-2">
-							<div class="align">
-								<div class="icon icon-ministro"></div>
-								<h3 class="card-title"><a href="#">O Ministro</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
-						<div class="feature-card static-height card-2">
-							<div class="align">
-								<div class="icon icon-ministerio"></div>
-								<h3 class="card-title"><a href="#">O Ministério</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
-						<div class="feature-card static-height card-2">
-							<div class="align">
-								<div class="icon icon-secretarias"></div>
-								<h3 class="card-title"><a href="#">Secretarias</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-6 col-lg-3 text-center">
-						<div class="feature-card static-height card-2">
-							<div class="align">
-								<div class="icon icon-vinculadas"></div>
-								<h3 class="card-title"><a href="#">Entidades Vinculadas</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-6 col-lg-3 text-center">
-						<div class="feature-card static-height card-2">
-							<div class="align">
-								<div class="icon icon-internacional"></div>
-								<h3 class="card-title"><a href="#">Internacional</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-6 col-lg-3 text-center">
-						<div class="feature-card static-height card-2">
-							<div class="align">
-								<div class="icon icon-acoes-programadas"></div>
-								<h3 class="card-title"><a href="#">Ações e Programas</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-6 col-lg-3 text-center">
-						<div class="feature-card static-height card-2">
-							<div class="align">
-								<div class="icon icon-legislacao"></div>
-								<h3 class="card-title"><a href="#">Legislação</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-6 col-lg-3 text-center">
-						<div class="feature-card static-height card-2">
-							<div class="align">
-								<div class="icon icon-escritorios-regionais"></div>
-								<h3 class="card-title"><a href="#">Escritórios Regionais</a></h3>
-							</div>
-						</div>
-					</div>
+					<?php
+					if ( is_active_sidebar( 'meet-the-ministry-widgets-area' ) ) :
+						dynamic_sidebar( 'meet-the-ministry-widgets-area' );
+					endif;
+					?>
 				</div>
 			</div>
 		</section>
@@ -229,38 +170,11 @@ get_header();
 					<div class="col-lg-12">
 						<h2 class="section-title mb-5 text-center">Conteúdos</h2>
 					</div>
-					<div class="col-md-6 col-lg-3 text-center">
-						<div class="feature-card static-height active card-2">
-							<div class="align">
-								<div class="icon icon-assessoria"></div>
-								<h3 class="card-title"><a href="#">Imprensa</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3 text-center">
-						<div class="feature-card static-height active card-2">
-							<div class="align">
-								<div class="icon icon-noticias"></div>
-								<h3 class="card-title"><a href="#">Notícias</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3 text-center">
-						<div class="feature-card static-height active card-2">
-							<div class="align">
-								<div class="icon icon-publicacoes"></div>
-								<h3 class="card-title"><a href="#">Publicações</a></h3>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3 text-center">
-						<div class="feature-card static-height active card-2">
-							<div class="align">
-								<div class="icon icon-multimidia"></div>
-								<h3 class="card-title"><a href="#">Multimídia</a></h3>
-							</div>
-						</div>
-					</div>
+					<?php
+					if ( is_active_sidebar( 'content-widgets-area' ) ) :
+						dynamic_sidebar( 'content-widgets-area' );
+					endif;
+					?>
 				</div>
 			</div>
 		</section>
@@ -271,47 +185,11 @@ get_header();
 					<div class="col-lg-12">
 						<h2 class="section-title mb-5 text-center">Participação Social</h2>
 					</div>
-					<div class="col-lg-3 mb-4 text-center">
-						<div class="feature-card">
-							<div class="align">
-								<div class="icon icon-fale-conosco"></div>
-								<h3 class="card-title">Fale Conosco</h3>
-								<p class="card-desc">Mande sua dúvida ou sugestão sobre o site do MinC</p>
-								<a class="card-btn btn" href="#">Acesse</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 mb-4 text-center">
-						<div class="feature-card">
-							<div class="align">
-								<div class="icon icon-consultas-publicas"></div>
-								<h3 class="card-title">Consultas Públicas</h3>
-								<p class="card-desc">Espaço de construção conjunta entre governo e sociedade</p>
-								<a class="card-btn btn" href="#">Acesse</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 mb-4 text-center">
-						<div class="feature-card">
-							<div class="align">
-								<div class="icon icon-ouvidoria"></div>
-								<h3 class="card-title">Ouvidoria</h3>
-								<p class="card-desc">Canal para envio de sugestões, elogios, solicitações e
-									denúncias</p>
-								<a class="card-btn btn" href="#">Acesse</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-3 mb-4 text-center">
-						<div class="feature-card">
-							<div class="align">
-								<div class="icon icon-dados-br"></div>
-								<h3 class="card-title">Dados.br</h3>
-								<p class="card-desc">Ferramenta para obtenção de dados e as informações públicas</p>
-								<a class="card-btn btn" href="#">Acesse</a>
-							</div>
-						</div>
-					</div>
+					<?php
+					if ( is_active_sidebar( 'social-participation-widgets-area' ) ) :
+						dynamic_sidebar( 'social-participation-widgets-area' );
+					endif;
+					?>
 				</div>
 			</div>
 		</section>

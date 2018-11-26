@@ -6,6 +6,7 @@
 function register_feature_card() {
 	register_widget( 'Feature_Card' );
 }
+
 add_action( 'widgets_init', 'register_feature_card' );
 
 class Feature_Card extends WP_Widget {
@@ -21,15 +22,31 @@ class Feature_Card extends WP_Widget {
 	public function widget( $args, $instance ) { ?>
 
 		<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
-			<div class="feature-card static-height">
-				<a href="<?php echo ! empty( $instance['link'] ) ? $instance['link'] : ''; ?>" <?php echo ! empty( $instance['target'] ) ? 'target="_blank"' : ''; ?>>
+			<div class="feature-card <?php echo ! empty( $instance['card-model'] ) ? $instance['card-model'] : ''; ?>">
+
+				<?php if ( $instance['card-model'] !== 'card-3' ){ ?>
+					<a href="<?php echo ! empty( $instance['link'] ) ? $instance['link'] : ''; ?>" <?php echo ! empty( $instance['target'] ) ? 'target="_blank"' : ''; ?>>
+				<?php } ?>
+
 					<div class="align">
 						<div class="icon <?php echo $instance['icon']; ?>"></div>
 						<h3 class="card-title">
 							<?php echo ! empty( $instance['title'] ) ? $instance['title'] : ''; ?>
 						</h3>
+
+						<?php if ( ! empty( $instance['desc'] ) && $instance['card-model'] === 'card-3' ): ?>
+							<p class="card-desc"><?php echo $instance['desc']; ?></p>
+						<?php endif; ?>
+
+						<?php if ( $instance['card-model'] === 'card-3' ): ?>
+							<a class="card-btn btn" href="<?php echo ! empty( $instance['link'] ) ? $instance['link'] : ''; ?>" <?php echo ! empty( $instance['target'] ) ? 'target="_blank"' : ''; ?>>Acesse</a>
+						<?php endif; ?>
 					</div>
-				</a>
+
+				<?php if ( $instance['card-model'] !== 'card-3' ){ ?>
+					</a>
+				<?php } ?>
+
 			</div>
 		</div>
 
@@ -37,10 +54,12 @@ class Feature_Card extends WP_Widget {
 	}
 
 	public function form( $instance ) {
-		$title  = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Feature Card', 'idg-wp' );
-		$link   = ! empty( $instance['link'] ) ? $instance['link'] : '';
-		$target = ! empty( $instance['target'] ) ? $instance['target'] : '';
-		$icon   = ! empty( $instance['icon'] ) ? $instance['icon'] : ''; ?>
+		$title      = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Feature Card', 'idg-wp' );
+		$link       = ! empty( $instance['link'] ) ? $instance['link'] : '';
+		$target     = ! empty( $instance['target'] ) ? $instance['target'] : '';
+		$icon       = ! empty( $instance['icon'] ) ? $instance['icon'] : '';
+		$card_model = ! empty( $instance['card-model'] ) ? $instance['card-model'] : '';
+		$desc       = ! empty( $instance['desc'] ) ? $instance['desc'] : esc_html__( 'Card description text', 'idg-wp' ); ?>
 		<div class="idg-feature-card-widget">
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'idg-wp' ); ?></label>
@@ -100,10 +119,26 @@ class Feature_Card extends WP_Widget {
 				</select>
 			</p>
 
-			<div class="feature-card static-height">
+			<p>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'card-model' ) ); ?>"><?php esc_attr_e( 'Card model:', 'idg-wp' ); ?></label>
+				<select class="widefat card-model" id="<?php echo esc_attr( $this->get_field_id( 'card-model' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'card-model' ) ); ?>">
+					<option <?php echo $card_model == 'card-1' ? 'selected' : ''; ?> value="card-1"><?php _e( 'Model 1', 'idg-wp' ); ?></option>
+					<option <?php echo $card_model == 'card-2' ? 'selected' : ''; ?> value="card-2"><?php _e( 'Model 2', 'idg-wp' ); ?></option>
+					<option <?php echo $card_model == 'card-3' ? 'selected' : ''; ?> value="card-3"><?php _e( 'Model 3', 'idg-wp' ); ?></option>
+				</select>
+			</p>
+
+			<p class="card-desc-wrapper <?php echo $card_model !== 'card-3' ? 'hidden' : ''; ?>">
+				<label for="<?php echo esc_attr( $this->get_field_id( 'desc' ) ); ?>"><?php esc_attr_e( 'Description text:', 'idg-wp' ); ?></label>
+				<input class="widefat card-desc" id="<?php echo esc_attr( $this->get_field_id( 'desc' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'desc' ) ); ?>" type="text" value="<?php echo esc_attr( $desc ); ?>">
+			</p>
+
+			<div class="feature-card static-height <?php echo $card_model; ?>">
 				<div class="align">
-					<div class="icon <?php echo $icon; ?>"></div>
+					<div class="icon <?php echo ! empty( $icon ) ? $icon : 'icon-plus'; ?>"></div>
 					<h3 class="card-title"><?php echo $title; ?></h3>
+					<p class="card-desc"><?php echo $card_model === 'card-3' ? $desc : ''; ?></p>
+					<a class="card-btn btn" href="#">Acesse</a>
 				</div>
 			</div>
 		</div>
@@ -111,11 +146,13 @@ class Feature_Card extends WP_Widget {
 	}
 
 	public function update( $new_instance, $old_instance ) {
-		$instance           = array();
-		$instance['title']  = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
-		$instance['link']   = ( ! empty( $new_instance['link'] ) ) ? sanitize_text_field( $new_instance['link'] ) : '';
-		$instance['target'] = ( ! empty( $new_instance['target'] ) ) ? sanitize_text_field( $new_instance['target'] ) : '';
-		$instance['icon']   = ( ! empty( $new_instance['icon'] ) ) ? sanitize_text_field( $new_instance['icon'] ) : '';
+		$instance               = array();
+		$instance['title']      = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
+		$instance['link']       = ( ! empty( $new_instance['link'] ) ) ? sanitize_text_field( $new_instance['link'] ) : '';
+		$instance['target']     = ( ! empty( $new_instance['target'] ) ) ? sanitize_text_field( $new_instance['target'] ) : '';
+		$instance['icon']       = ( ! empty( $new_instance['icon'] ) ) ? sanitize_text_field( $new_instance['icon'] ) : '';
+		$instance['card-model'] = ( ! empty( $new_instance['card-model'] ) ) ? sanitize_text_field( $new_instance['card-model'] ) : '';
+		$instance['desc']       = ( ! empty( $new_instance['desc'] ) ) ? sanitize_text_field( $new_instance['desc'] ) : '';
 
 		return $instance;
 	}
