@@ -9,6 +9,7 @@
 			this.createDaypickerHandle();
 			this.toggleActiveAgenda();
 			this.agendaArchive();
+			this.agendaCatsSelector();
 		},
 
 		createAgendaCalendar: function () {
@@ -34,7 +35,7 @@
 					eventCat = $('.agenda-cats a.active').data('event-cat');
 
 				if( $('#archive-datepicker').length ){
-					eventCat = $('.event-cats-selector select').val();
+					eventCat = $('.event-categories-selector').last().val();
 				}
 
 				gs.getEvents( date, eventCat );
@@ -87,10 +88,7 @@
 
 		agendaArchive: function () {
 			if( $('#archive-datepicker').length ){
-				// var eventDates = ['20181108', '20180108', '20180109', '20180110', '20180115', '20180116', '20180117'];
 				var eventDates = $('#archive-datepicker').data('event-days');
-				console.log( eventDates );
-				// console.log( JSON.parse(eventDates) );
 
 				function arrayContains(needle, haystack) {
 					for (stick in haystack) {
@@ -121,7 +119,8 @@
 						$(this).datepicker( 'option', 'showCurrentAtPos', 1 );
 						inst.drawMonth +=1;
 
-						var eventCat = $('.event-cats-selector select').val();
+						var eventCat = $('.event-categories-selector').last().val();
+						$('#agenda').attr('data-selected-date', date);
 						gs.getEvents( date, eventCat );
 					}
 				});
@@ -130,6 +129,48 @@
 					$( '#archive-datepicker' ).datepicker('setDate', $(this).data('day') );
 				});
 			}
+		},
+
+		agendaCatsSelector: function () {
+			var agenda = $('.gs-agenda-container');
+
+			var getCats = function () {
+				if( $(this).find(':selected').data('has-children') ){
+					var cat_id = $(this).find(':selected').data('term-id');
+
+					$.ajax( {
+						url: oscar_minc_vars.ajaxurl,
+						type: 'POST',
+						data: {
+							action: 'gs_get_sub_cats',
+							cat_id: cat_id,
+						},
+						beforeSend: function(){
+							agenda.addClass('loading');
+						},
+						success: function( res ) {
+							if( res.success ){
+								agenda.removeClass('loading');
+								agenda.find('.event-sub-category').remove();
+								$('.event-cats-selector > .row').append( res.data );
+								gs.getEvents( $('#agenda').data('selected-date'), $('.event-categories-selector').last().val() );
+							}
+						},
+						error: function( jqXHR, textStatus, errorThrown ) {
+							console.log( jqXHR, textStatus, errorThrown );
+						},
+					} );
+				} else {
+					if( $(this).parent().hasClass('event-sub-category') ){
+						$(this).parent().next('.event-sub-category').remove();
+					} else {
+						$('.event-sub-category').remove();
+					}
+					gs.getEvents( $('#agenda').data('selected-date'), $('.event-categories-selector').last().val() );
+				}
+			};
+
+			$(document).on('change', '.event-categories-selector', getCats );
 		}
 	};
 })(jQuery);

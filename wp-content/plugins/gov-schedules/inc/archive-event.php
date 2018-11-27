@@ -47,23 +47,33 @@ get_header();
 
 					<div class="agenda-archive">
 
-						<div class="event-cats-selector mb-5">
-							<?php
-							$event_cats = get_terms( 'event-category', array(
-								'hide_empty' => 0
-							) ); ?>
-							<div class="input-group" style="max-width: 50%;margin: auto;">
-								<select class="form-control" style="height: 50px; border-radius: 30px;">
-									<?php foreach ($event_cats as $cat): ?>
-										<option value="<?php echo $cat->slug; ?>"><?php echo $cat->name; ?></option>
-									<?php endforeach; ?>
-								</select>
+						<div class="event-cats-selector mb-5 entry-content">
+							<div class="row">
+								<?php
+								$event_cats = get_terms( 'event-category', array(
+									'hide_empty' => 0
+								) );
+								?>
+								<div class="input-group col-sm-12">
+									<label for="event-categories-selector" class="sr-only">Selecione a agenda</label>
+									<select id="event-categories-selector" class="form-control event-categories-selector">
+										<?php foreach ($event_cats as $cat): ?>
+
+											<?php if( $cat->parent === 0 ):
+												$has_child = get_term_children( $cat->term_id, 'event-category' );
+												?>
+												<option value="<?php echo $cat->slug; ?>" <?php echo !empty( $has_child ) ? 'data-has-children="true"' : ''; echo 'data-term-id="'. $cat->term_id .'"'; ?>><?php echo $cat->name; ?></option>
+											<?php endif; ?>
+
+										<?php endforeach; ?>
+									</select>
+								</div>
 							</div>
 						</div>
 
 						<div id="archive-datepicker" data-event-days='<?php echo json_encode($event_dates); ?>'></div>
 
-						<div id="agenda" class="gs-agenda-container mt-5">
+						<div id="agenda" class="gs-agenda-container mt-5" data-selected-date="<?php echo date( 'Y-m-d' ); ?>">
 							<div class="daypicker-wrapper">
 								<ul class="daypicker">
 									<?php
@@ -148,7 +158,7 @@ get_header();
 
 										while ($this_day_events_query->have_posts()) : $this_day_events_query->the_post();
 
-											$locaction = get_post_meta( get_the_ID(), 'dados_do_evento_location', true );
+											$location = get_post_meta( get_the_ID(), 'dados_do_evento_location', true );
 											$date = get_post_meta( get_the_ID(), 'dados_do_evento_data-de-incio', true );
 											$raw_date = explode(' ', $date ); ?>
 
@@ -161,7 +171,7 @@ get_header();
 													<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 
 													<div class="additional">
-														<span class="location icon icon-location"><?php echo $locaction; ?></span>
+														<span class="location icon icon-location"><?php echo $location; ?></span>
 														<a href="#">Adicionar ao meu calendário</a>
 													</div>
 												</div>
