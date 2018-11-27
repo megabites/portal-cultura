@@ -29,7 +29,7 @@ function the_breadcrumb() {
 		echo '<nav id="breadcrumb-wrapper" aria-label="breadcrumb" role="navigation" class="row m-0 align-items-center"><ol id="' . $breadcrums_id . '" class="' . $breadcrums_class . ' col col-md-auto">';
 
 		// Home page
-		echo '<li class="item-home"><span class="sr-only">Você está aqui:</span> <a class="bread-link bread-home" href="' . get_home_url() . '" title="' . $home_title . '">' . $home_title . '</a></li>';
+		echo '<li class="item-home"><span class="sr-only">Você está aqui:</span> <a class="bread-link icon-home" href="' . get_home_url() . '" title="' . $home_title . '"><span>' . $home_title . '</span></a></li>';
 		echo '<li class="separator separator-home"> ' . $separator . ' </li>';
 
 		if ( is_archive() && !is_tax() && !is_category() && !is_tag() ) {
@@ -265,7 +265,7 @@ function the_breadcrumb() {
 		// Build the breadcrums
 		echo '<nav aria-label="breadcrumb" role="navigation" class="col"><ol id="' . $breadcrums_id . '" class="' . $breadcrums_class . '">';
 		// Home page
-		echo '<li class="item-home"><span>Você está aqui:</span> <a class="bread-link bread-home" href="' . get_home_url() . '" title="' . $home_title . '">' . $home_title . '</a></li>';
+		echo '<li class="item-home"><span>Você está aqui:</span> <a class="bread-link icon-home" href="' . get_home_url() . '" title="' . $home_title . '">' . $home_title . '</a></li>';
 		echo '</ol></nav>';
 
 	}

@@ -12,128 +12,43 @@
 
         <div class="row title-wrapper">
           <div class="title text-center">
-            <h2>Informação ao Cidadão</h2>
-            <p>Acompanhe as informações sobre o funcionamento, atividades e gastos realizados pelo Ministério da Cultura.</p>
+            <?php the_content(); ?>
           </div>
         </div>
 
         <div class="row align-items-center wrapper-box">
-          <div class="col">
-            <div class="feature-card static-height">
-              <a href="<?php echo home_url('/institucional'); ?>">
-                <div class="align">
-                  <h3 class="card-title">Institucional</h3>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="col">
-            <div class="feature-card static-height">
-              <a href="<?php echo home_url('/acoes-e-programas'); ?>">
-                <div class="align">
-                  <h3 class="card-title">Ações e Programas</h3>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="col">
-            <div class="feature-card static-height">
-              <a href="<?php echo home_url('/participacao-social'); ?>">
-                <div class="align">
-                  <h3 class="card-title">Participação Social</h3>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="col">
-            <div class="feature-card static-height">
-              <a href="<?php echo home_url('/auditorias'); ?>">
-                <div class="align">
-                  <h3 class="card-title">Auditorias</h3>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
 
-        <div class="row align-items-center wrapper-box">
-          <div class="col">
-            <div class="feature-card static-height">
-              <a href="<?php echo home_url('/convenios-e-transferencias'); ?>">
-                <div class="align">
-                  <h3 class="card-title">Convênios e Transferências</h3>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="col">
-            <div class="feature-card static-height">
-              <a href="<?php echo home_url('/receitas-e-despesas/'); ?>">
-                <div class="align">
-                  <h3 class="card-title">Receitas e Despesas</h3>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="col">
-            <div class="feature-card static-height">
-              <a href="<?php echo home_url('/licitacoes-e-contratos/'); ?>">
-                <div class="align">
-                  <h3 class="card-title">Licitações e Contratos</h3>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="col">
-            <div class="feature-card static-height">
-              <a href="<?php echo home_url('/servidores/'); ?>">
-                <div class="align">
-                  <h3 class="card-title">Servidores</h3>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
+          <?php wp_reset_postdata(); ?>
 
-        <div class="row align-items-center wrapper-box">
-          <div class="col">
-            <div class="feature-card static-height">
-              <a href="<?php echo home_url('/informacoes-classificadas/'); ?>">
-                <div class="align">
-                  <h3 class="card-title">Informações Classificadas</h3>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="col">
-            <div class="feature-card static-height">
-              <a href="<?php echo home_url('/servico-de-informacoes-ao-cidadao/'); ?>">
-                <div class="align">
-                  <h3 class="card-title">Serviço de Informações ao Cidadão</h3>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="col">
-            <div class="feature-card static-height">
-              <a href="<?php echo home_url('/perguntas-frequentes/'); ?>">
-                <div class="align">
-                  <h3 class="card-title">Perguntas Frequentes</h3>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="col">
-            <div class="feature-card static-height">
-              <a href="<?php echo home_url('/dados-abertos/'); ?>">
-                <div class="align">
-                  <h3 class="card-title">Dados Abertos</h3>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
+          <?php
+            $args = array(
+              'post_parent' => $post->ID,
+              'post_type' => 'page',
+              'orderby' => 'menu_order'
+            );
 
+            $child_query = new WP_Query( $args );
+          ?>
+
+          <?php if ($child_query->have_posts()) : ?>
+            <?php $i=0; while ( $child_query->have_posts() ) : $i++; $child_query->the_post(); ?>
+              <div class="col">
+                <div class="feature-card static-height">
+                  <a href="<?php the_permalink(); ?>" class="text-center">
+                    <div class="align">
+                      <h3 class="card-title"><?php the_title(); ?></h3>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              <?php if ($i % 4 == 0) : ?>
+                </div>
+
+                <div class="row align-items-center wrapper-box">
+              <?php endif; ?>
+            <?php endwhile; ?>
+          <?php endif; ?>
       </div>
 
           <div class="entry-content">
