@@ -25,11 +25,11 @@ if (!class_exists('Gov_Schedules')) :
 		);
 
 		private $fields = array(
-			array(
+			/*array(
 				'id' => 'dia-todo',
 				'label' => 'Dia todo',
 				'type' => 'checkbox',
-			),
+			),*/
 			array(
 				'id' => 'data-de-incio',
 				'label' => 'Data de início',
@@ -52,7 +52,6 @@ if (!class_exists('Gov_Schedules')) :
 			setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 			date_default_timezone_set('America/Sao_Paulo');
 
-			// require_once dirname( __FILE__ ) . '/inc/options-page.php';
 			add_action( 'init', array($this, 'event_cpt' ) );
 			add_filter( 'manage_event_posts_columns', array($this, 'add_event_columns' ) );
 			add_action( 'manage_posts_custom_column', array($this, 'event_custom_columns' ), 10, 2 );
@@ -66,6 +65,8 @@ if (!class_exists('Gov_Schedules')) :
 			add_action( 'wp_ajax_gs_get_week_events', array( $this, 'gs_get_week_events' ) );
 			add_action( 'wp_ajax_nopriv_gs_get_week_events', array( $this, 'gs_get_week_events' ) );
 			add_action( 'archive_template', array( $this, 'gs_custom_archive_template' ) );
+			add_action( 'wp_ajax_gs_get_sub_cats', array( $this, 'gs_get_sub_cats' ) );
+			add_action( 'wp_ajax_nopriv_gs_get_sub_cats', array( $this, 'gs_get_sub_cats' ) );
 		}
 
 		/**
@@ -419,19 +420,21 @@ if (!class_exists('Gov_Schedules')) :
 
 				while ($query->have_posts()) : $query->the_post();
 
-					$locaction = get_post_meta( get_the_ID(), 'dados_do_evento_location', true );
+					$location = get_post_meta( get_the_ID(), 'dados_do_evento_location', true );
 					$date = get_post_meta( get_the_ID(), 'dados_do_evento_data-de-incio', true );
 					$raw_date = explode(' ', $date );
 
-					$events .= '<div class="col-md-4 ml">';
-					$events .= '<div class="event-item">';
-					$events .= '<h3><a href="'. get_the_permalink() .'">'. get_the_title() .'</a></h3>';
-					$events .= '<div class="info">';
-					$events .= '<span class="time icon icon-clock">'. $raw_date[1] .'</span>';
-					$events .= '<span class="location icon icon-location">'. $locaction .'</span>';
-					$events .= '<a href="#">Adicionar ao meu calendário</a>';
-					$events .= '</div>';
-					$events .= '</div>';
+					$events .= '<div class="event row">';
+					$events .=      '<div class="time">';
+					$events .=          '<span class="icon icon-clock">'. $raw_date[1] .'</span>';
+					$events .=      '</div>';
+					$events .=      '<div class="info">';
+					$events .=          '<h2><a href="'. get_the_permalink() .'">'. get_the_title() .'</a></h2>';
+					$events .=          '<div class="additional">';
+					$events .=              '<span class="location icon icon-location">'. $location .'</span>';
+					$events .=              '<a href="#">Adicionar ao meu calendário</a>';
+					$events .=          '</div>';
+					$events .=      '</div>';
 					$events .= '</div>';
 
 				endwhile; wp_reset_query();
@@ -456,6 +459,38 @@ if (!class_exists('Gov_Schedules')) :
 				$template = require_once plugin_dir_path( __FILE__ ) . 'inc/archive-event.php';
 			}
 			return $template;
+		}
+
+		public function gs_get_sub_cats () {
+			$catID = $_POST['cat_id'];
+
+			$event_cats = get_terms( 'event-category', array(
+				'hide_empty' => 0,
+				'child_of' => $catID
+			) );
+
+			ob_start();
+			?>
+
+			<div class="event-sub-category input-group mt-2 col">
+				<label for="event-categories-selector-<?php echo $catID; ?>" class="sr-only">Selecione a agenda</label>
+				<select id="event-categories-selector-<?php echo $catID; ?>" class="form-control event-categories-selector">
+					<?php foreach ($event_cats as $cat): ?>
+
+						<?php if( $cat->parent === intval( $catID ) ):
+							$has_child = get_term_children( $cat->term_id, 'event-category' );
+							?>
+							<option value="<?php echo $cat->slug; ?>" <?php echo !empty( $has_child ) ? 'data-has-children="true"' : ''; echo 'data-term-id="'. $cat->term_id .'"'; ?>><?php echo $cat->name; ?></option>
+						<?php endif; ?>
+
+					<?php endforeach; ?>
+				</select>
+			</div>
+
+
+			<?php
+			$data = ob_get_clean();
+			wp_send_json_success( $data );
 		}
 
 	}
