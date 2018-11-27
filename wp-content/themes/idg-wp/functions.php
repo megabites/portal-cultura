@@ -107,6 +107,15 @@ function idg_wp_scripts() {
 add_action( 'wp_enqueue_scripts', 'idg_wp_scripts' );
 
 /**
+ * Enqueue admin scripts and styles.
+ */
+function idg_wp_admin_scripts() {
+	wp_enqueue_style( 'idg-wp-admin-style', get_template_directory_uri() . '/assets/stylesheets/dist/admin.min.css' );
+	wp_enqueue_script( 'idg-wp-admin-scripts', get_template_directory_uri() . '/assets/js/dist/admin.min.js', array('jquery'), false, true );
+}
+add_action( 'admin_enqueue_scripts', 'idg_wp_admin_scripts' );
+
+/**
  * Custom excerpt
  */
 function idg_excerpt( $limit = 190 ) {
@@ -128,6 +137,11 @@ function idg_excerpt( $limit = 190 ) {
  * Load widgets areas
  */
 require get_template_directory() . '/inc/widgets-areas.php';
+
+/**
+ * Load custom widgets
+ */
+require get_template_directory() . '/inc/idg-widgets.php';
 
 /**
  * Implement the Custom Header feature.

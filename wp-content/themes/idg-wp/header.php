@@ -78,9 +78,6 @@
 		<div id="menu-wrapper" class="collapse clearfix">
 			<div class="menu-content container">
 				<div class="row">
-<!-- 					<div class="search-mobile visible-md">
-						<?php // get_search_form(); ?>
-					</div> -->
 
 					<?php
 					if ( is_active_sidebar( 'main-menu-area' ) ) :
