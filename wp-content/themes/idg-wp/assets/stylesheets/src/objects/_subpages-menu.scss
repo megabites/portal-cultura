@@ -2,6 +2,10 @@
   float: right;
   display: block;
 
+  #page-info & {
+    display: none;
+  }
+
   .menu-content {
     float: right;
     position: relative;

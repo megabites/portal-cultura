@@ -17,22 +17,18 @@
 
 			&.item-home {
 				a {
-					width: 20px;
-					height: 15px;
 					display: inline-block;
-					text-indent: -999px;
 					position: relative;
+					text-decoration: none;
 
-				&:before {
-					background-image: url(../../img/sprite.png);
-					background-position: -266px -185px;
-					content: "";
-					position: absolute;
-					top: 1px;
-					left: 0;
-					width: 17px;
-					height: 12px;
-				}
+					span {
+						font-size: 0;
+						text-indent: -999px;
+					}
+
+					&:before {
+						font-size: 16px;
+					}
 
 				}
 			}
