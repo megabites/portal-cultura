@@ -8,6 +8,8 @@
         <?php the_breadcrumb (); ?>
       </div>
 
+      <?php wp_reset_postdata(); ?>
+
       <div  id="content">
 
         <div class="row title-wrapper">
@@ -17,8 +19,6 @@
         </div>
 
         <div class="row align-items-center wrapper-box">
-
-          <?php wp_reset_postdata(); ?>
 
           <?php
             $args = array(
