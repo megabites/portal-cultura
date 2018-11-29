@@ -5,8 +5,8 @@
 
 	var gs = {
 		init: function() {
-			console.log('FOOBAR HERE MODAFUCKER!');
 
+			// Default configuration
 			$.timepicker.regional['pt-BR'] = {
 				timeOnlyTitle: 'Escolha o horário',
 				timeText: 'Horário',
@@ -60,12 +60,14 @@
 				}
 			};
 
-			//$('.datepicker').datepicker({ dateFormat : 'yy-mm-dd' });
-			//$('.datepicker').datetimepicker({ dateFormat : 'dd/mm/yy' });
 			$('.datepicker').datetimepicker({
 				controlType: myControl,
 				dateFormat : 'dd/mm/yy'
 			});
+
+			if( $('#role_permission').length ){
+				$('#role_permission').select2();
+			}
 		}
 	};
 })(jQuery);

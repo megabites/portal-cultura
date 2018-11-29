@@ -67,6 +67,11 @@ if (!class_exists('Gov_Schedules')) :
 			add_action( 'archive_template', array( $this, 'gs_custom_archive_template' ) );
 			add_action( 'wp_ajax_gs_get_sub_cats', array( $this, 'gs_get_sub_cats' ) );
 			add_action( 'wp_ajax_nopriv_gs_get_sub_cats', array( $this, 'gs_get_sub_cats' ) );
+			add_action( 'event-category_add_form_fields', array( $this, 'event_category_add_meta_field' ), 10, 2 );
+			add_action( 'event-category_edit_form_fields', array( $this, 'event_category_edit_meta_field' ), 10, 2 );
+			add_action( 'edited_event-category', array( $this, 'event_category_save_taxonomy_meta_field' ), 10, 2 );
+			add_action( 'create_event-category', array( $this, 'event_category_save_taxonomy_meta_field' ), 10, 2 );
+			add_filter( 'wp_terms_checklist_args', array($this, 'event_categories_filter_based_on_role'), 10, 2 );
 		}
 
 		/**
@@ -178,7 +183,11 @@ if (!class_exists('Gov_Schedules')) :
 		public function register_gs_admin_styles()
 		{
 			wp_register_style('jquery-ui-timepicker-addon-styles', plugin_dir_url(__FILE__) . 'assets/css/jquery-ui-timepicker-addon.css');
+			wp_register_style('select2', plugin_dir_url(__FILE__) . 'assets/css/select2.min.css');
+			wp_register_style('gs-admin-styles', plugin_dir_url(__FILE__) . 'assets/css/gs-admin-styles.css');
 			wp_enqueue_style('jquery-ui-timepicker-addon-styles');
+			wp_enqueue_style('select2');
+			wp_enqueue_style('gs-admin-styles');
 		}
 
 		/**
@@ -203,7 +212,8 @@ if (!class_exists('Gov_Schedules')) :
 		public function register_gs_admin_scripts()
 		{
 			wp_enqueue_script('jquery-ui-timepicker-addon', plugin_dir_url(__FILE__) . 'assets/js/jquery-ui-timepicker-addon.js', array('jquery', 'jquery-ui-datepicker', 'jquery-ui-spinner'), false, true);
-			wp_enqueue_script('gs-admin-scripts', plugin_dir_url(__FILE__) . 'assets/js/gs-admin-scripts.js', array('jquery-ui-timepicker-addon'), false, true);
+			wp_enqueue_script('select2', plugin_dir_url(__FILE__) . 'assets/js/select2.full.min.js', array('jquery'), false, true);
+			wp_enqueue_script('gs-admin-scripts', plugin_dir_url(__FILE__) . 'assets/js/gs-admin-scripts.js', array('jquery-ui-timepicker-addon', 'select2'), false, true);
 		}
 
 		/**
@@ -322,11 +332,8 @@ if (!class_exists('Gov_Schedules')) :
 				} else if ( $field['type'] === 'checkbox' ) {
 					update_post_meta( $post_id, 'dados_do_evento_' . $field['id'], '0' );
 				}
-			}
 
-			echo '<pre>';
-			// wp_die( var_dump($this->fields, $_POST) );
-			echo '</pre>';
+			}
 		}
 
 		/**
@@ -341,6 +348,10 @@ if (!class_exists('Gov_Schedules')) :
 			$gs_shortcodes = new Gov_Schedules_Shortcodes();
 		}
 
+		/**
+		 * Return data from events based on params sent
+		 *
+		 */
 		public function gs_get_week_events () {
 			$d = $_POST['date'];
 			$c = $_POST['event_category'];
@@ -453,6 +464,13 @@ if (!class_exists('Gov_Schedules')) :
 			wp_send_json_success( $data );
 		}
 
+		/**
+		 * Defines a custom archive page for events post type
+		 *
+		 * @param $template
+		 *
+		 * @return mixed
+		 */
 		function gs_custom_archive_template($template) {
 			global $wp_query;
 			if (is_post_type_archive('event')) {
@@ -461,6 +479,10 @@ if (!class_exists('Gov_Schedules')) :
 			return $template;
 		}
 
+		/**
+		 * Return the select form field for event categories with children
+		 *
+		 */
 		public function gs_get_sub_cats () {
 			$catID = $_POST['cat_id'];
 
@@ -493,9 +515,142 @@ if (!class_exists('Gov_Schedules')) :
 			wp_send_json_success( $data );
 		}
 
+		/**
+		 * Adds custom fields to add event category form
+		 *
+		 */
+		public function event_category_add_meta_field ()
+		{
+			global $wp_roles;
+			$all_roles = $wp_roles->roles;
+			$editable_roles = apply_filters('editable_roles', $all_roles);
+			?>
+			<!--<div class="form-field">
+				<label for="term_meta[custom_term_meta]"><?php _e( 'Example meta field', 'pippin' ); ?></label>
+				<input type="text" name="term_meta[custom_term_meta]" id="term_meta[custom_term_meta]" value="">
+				<p class="description"><?php _e( 'Enter a value for this field','pippin' ); ?></p>
+			</div>-->
+			<div class="form-field">
+				<label for="term_meta[custom_term_meta]">Permissão</label>
+				<select multiple="multiple" id="role_permission" name="term_meta[role_permission][]" style="width: 95%;">
+					<?php foreach ( $editable_roles as $role => $role_data ): ?>
+						<option value="<?php echo $role; ?>"><?php echo $role_data['name']; ?></option>
+					<?php endforeach; ?>
+				</select>
+				<p class="description">Os perfis selecionados terão permissão para editar, publicar e deletar essa categoria de agenda.</p>
+			</div>
+			<?php
+		}
+
+		/**
+		 *  Adds custom fields to edit event category form
+		 *
+		 * @param $term
+		 */
+		public function event_category_edit_meta_field ( $term )
+		{
+			// Roles
+			global $wp_roles;
+			$all_roles = $wp_roles->roles;
+			$editable_roles = apply_filters('editable_roles', $all_roles);
+
+			// put the term ID into a variable
+			$t_id = $term->term_id;
+			$term_meta = get_term_meta( $t_id ); ?>
+			<!--<tr class="form-field">
+				<th scope="row" valign="top"><label for="term_meta[custom_term_meta]"><?php _e( 'Example meta field', 'pippin' ); ?></label></th>
+				<td>
+					<input type="text" name="term_meta[custom_term_meta]" id="term_meta[custom_term_meta]" value="<?php echo esc_attr( $term_meta['custom_term_meta'][0] ) ? esc_attr( $term_meta['custom_term_meta'][0] ) : ''; ?>">
+					<p class="description"><?php _e( 'Enter a value for this field','pippin' ); ?></p>
+				</td>
+			</tr>-->
+			<tr class="form-field">
+				<th scope="row" valign="top"><label for="term_meta[role_permission]">Permissão</label></th>
+				<td>
+					<select multiple="multiple" id="role_permission" name="term_meta[role_permission][]" style="width: 100%;">
+						<?php foreach ( $editable_roles as $role => $role_data ): ?>
+							<option <?php echo in_array($role, unserialize($term_meta['role_permission'][0]) ) ? 'selected' : ''; ?> value="<?php echo $role; ?>"><?php echo $role_data['name']; ?></option>
+						<?php endforeach; ?>
+					</select>
+					<p class="description">Os perfis selecionados terão permissão para editar, publicar e deletar essa categoria de agenda.</p>
+				</td>
+			</tr>
+			<?php
+		}
+
+		/**
+		 * Save metadata from taxonomies
+		 *
+		 * @param $term_id
+		 */
+		public function event_category_save_taxonomy_meta_field ( $term_id )
+		{
+			if ( isset( $_POST['term_meta'] ) ) {
+				$t_id = $term_id;
+				$cat_keys = array_keys( $_POST['term_meta'] );
+				foreach ( $cat_keys as $key ) {
+					if ( isset ( $_POST['term_meta'][$key] ) ) {
+						// Save data
+						update_term_meta ($t_id, $key, $_POST['term_meta'][$key]);
+					}
+				}
+			}
+		}
+
+		/**
+		 * Filter event category checkboxes, showing only the ones allowed to a specific role
+		 *
+		 * @param $args
+		 * @param $post_id
+		 *
+		 * @return mixed
+		 */
+		public function event_categories_filter_based_on_role ( $args, $post_id )
+		{
+			$restricted_roles = array('agenda_manager');
+			$screen = get_current_screen();
+			$user = wp_get_current_user();
+
+			if ( $screen->id === 'event' && !in_array($user->roles[0], $restricted_roles) ) {
+				return $args;
+			}
+
+			if ( ! empty( $args['taxonomy'] ) && $args['taxonomy'] === 'event-category' ) {
+
+				if ( empty( $args['walker'] ) || is_a( $args['walker'], 'Walker' ) ) {
+					$args['walker'] = new Taxonomy_Filter_Based_On_Roles;
+				}
+			}
+			return $args;
+		}
+
 	}
 
 	// Initialize our plugin
 	$oscar_minc = new Gov_Schedules();
+endif;
+
+/**
+ * Extends the default walker from categories
+ *
+ */
+if ( ! class_exists( 'Taxonomy_Filter_Based_On_Roles' ) ) :
+	require_once( ABSPATH . 'wp-admin/includes/class-walker-category-checklist.php' );
+
+	class Taxonomy_Filter_Based_On_Roles extends Walker_Category_Checklist
+	{
+		function walk( $elements, $max_depth, $args = array() ) {
+			$user = wp_get_current_user();
+			foreach ( $elements as $i => $el ){
+				$term_meta = get_term_meta( $el->term_id );
+				if( !in_array($user->roles[0], unserialize($term_meta['role_permission'][0]) ) ) {
+					unset( $elements[$i] );
+				}
+			}
+
+			$output = parent::walk( $elements, $max_depth, $args );
+			return $output;
+		}
+	}
 
 endif;

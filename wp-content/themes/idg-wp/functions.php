@@ -226,3 +226,47 @@ function multisite_body_classes($classes) {
 	return $classes;
 }
 add_filter('body_class', 'multisite_body_classes');
+
+
+/**
+ * Add custom roles to the site
+ *
+ */
+function idg_add_custom_roles(){
+	$roles_set = get_option('idg_roles_set');
+	if(!$roles_set){
+		remove_role('agenda_manager');
+		add_role('agenda_manager', 'Agenda Manager',
+			array(
+				'read' => true,
+				'edit_posts' => true,
+				'edit_published_posts' => true,
+				'delete_posts' => true,
+				'delete_published_posts' => true,
+				'publish_posts' => true,
+				// 'upload_files' => true
+			)
+		);
+		update_option('idg_roles_set',true);
+	}
+}
+add_action('after_setup_theme','idg_add_custom_roles');
+
+/**
+ * Remove administrative menus for specific roles
+ *                                           *
+ */
+function remove_menus()
+{
+	$restricted_roles = array('agenda_manager');
+	$user = wp_get_current_user();
+
+	if ( in_array($user->roles[0], $restricted_roles) ) {
+		remove_menu_page('tools.php');
+		remove_menu_page('edit-comments.php');
+		remove_menu_page('edit.php');
+		remove_menu_page('edit.php?post_type=multimedia');
+		//remove_submenu_page('themes.php', 'widgets.php');
+	}
+}
+add_action('admin_init', 'remove_menus', 999);
