@@ -62,10 +62,10 @@ if ( ! function_exists( 'idg_wp_setup' ) ) :
 		) );
 
 		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'idg_wp_custom_background_args', array(
+		/*add_theme_support( 'custom-background', apply_filters( 'idg_wp_custom_background_args', array(
 			'default-color' => 'ffffff',
 			'default-image' => '',
-		) ) );
+		) ) );*/
 
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
@@ -75,12 +75,12 @@ if ( ! function_exists( 'idg_wp_setup' ) ) :
 		 *
 		 * @link https://codex.wordpress.org/Theme_Logo
 		 */
-		add_theme_support( 'custom-logo', array(
+		/*add_theme_support( 'custom-logo', array(
 			'height'      => 250,
 			'width'       => 250,
 			'flex-width'  => true,
 			'flex-height' => true,
-		) );
+		) );*/
 	}
 endif;
 add_action( 'after_setup_theme', 'idg_wp_setup' );

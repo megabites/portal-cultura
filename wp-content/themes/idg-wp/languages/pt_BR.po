@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Identidade Digital do Governo\n"
-"POT-Creation-Date: 2018-12-03 11:34-0200\n"
-"PO-Revision-Date: 2018-12-03 14:26-0200\n"
+"POT-Creation-Date: 2018-12-03 14:54-0200\n"
+"PO-Revision-Date: 2018-12-03 14:58-0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -105,59 +105,53 @@ msgstr "Página"
 msgid "You cannot add terms to this taxonomy"
 msgstr "Não é possível adicionar termos a esta taxonomia"
 
-#: inc/idg-widgets.php:17 inc/idg-widgets.php:57
+#: inc/idg-widgets.php:17 inc/idg-widgets.php:56
 msgid "Feature Card"
 msgstr "Cartão de destaque"
 
-#: inc/idg-widgets.php:18
-#, fuzzy
-msgid "A Foo Widget"
-msgstr "Um widget de Foo"
-
-#: inc/idg-widgets.php:62
+#: inc/idg-widgets.php:61
 #, fuzzy
 msgid "Card description text"
 msgstr "Texto da descrição do cartão"
 
-#: inc/idg-widgets.php:65
+#: inc/idg-widgets.php:64
 msgid "Title:"
 msgstr "Título:"
 
-#: inc/idg-widgets.php:69
+#: inc/idg-widgets.php:68
 msgid "Link:"
 msgstr "Link:"
 
-#: inc/idg-widgets.php:73
-#, fuzzy
+#: inc/idg-widgets.php:72
 msgid "Open in new window:"
 msgstr "Abrir em nova janela:"
 
-#: inc/idg-widgets.php:77
+#: inc/idg-widgets.php:76
 #, fuzzy
 msgid "Select the icon:"
 msgstr "Selecione o ícone:"
 
-#: inc/idg-widgets.php:123
+#: inc/idg-widgets.php:122
 #, fuzzy
 msgid "Card model:"
 msgstr "Modelo de cartão:"
 
-#: inc/idg-widgets.php:125
+#: inc/idg-widgets.php:124
 #, fuzzy
 msgid "Model 1"
 msgstr "Modelo 1"
 
-#: inc/idg-widgets.php:126
+#: inc/idg-widgets.php:125
 #, fuzzy
 msgid "Model 2"
 msgstr "Modelo 2"
 
-#: inc/idg-widgets.php:127
+#: inc/idg-widgets.php:126
 #, fuzzy
 msgid "Model 3"
 msgstr "Modelo 3"
 
-#: inc/idg-widgets.php:132
+#: inc/idg-widgets.php:131
 #, fuzzy
 msgid "Description text:"
 msgstr "Texto de descrição:"
@@ -212,7 +206,6 @@ msgid "Edit <span class=\"screen-reader-text\">%s</span>"
 msgstr "Editar <span class=\"screen-reader-text\"> %s</span>"
 
 #: inc/widgets-areas.php:9
-#, fuzzy
 msgid "Main menu area"
 msgstr "Área do menu principal"
 
@@ -235,14 +228,14 @@ msgstr "Seção Conheça o Ministério"
 
 #: inc/widgets-areas.php:49
 msgid "Content Section"
-msgstr "Seção de Conteúdo:"
+msgstr "Seção de Conteúdo"
 
 #: inc/widgets-areas.php:59
 msgid "Social Participation Section"
 msgstr "Seção Participação social"
 
 #: search.php:21
-#, fuzzy, php-format
+#, php-format
 msgid "Busca: %s"
 msgstr "Busca: %s"
 
@@ -305,4 +298,8 @@ msgstr "https://github.com/darciro"
 #. Template Name of the plugin/theme
 #, fuzzy
 msgid "Informação ao Cidadão */ ?>"
-msgstr "Informação ao cidadão */? >"
+msgstr "Informação ao Cidadão */ ?>"
+
+#, fuzzy
+#~ msgid "A Foo Widget"
+#~ msgstr "Um widget de Foo"

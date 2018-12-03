@@ -15,42 +15,45 @@ class Feature_Card extends WP_Widget {
 		parent::__construct(
 			'feature_card',
 			esc_html__( 'Feature Card', 'idg-wp' ),
-			array( 'description' => esc_html__( 'A Foo Widget', 'idg-wp' ) )
+			array(
+				'description' => esc_html__( 'A feature card with custom icon and link', 'idg-wp' ),
+				'customize_selective_refresh' => true
+			)
 		);
 	}
 
-	public function widget( $args, $instance ) { ?>
+	public function widget( $args, $instance ) {
+		echo $args['before_widget']; ?>
 
-		<div class="col-sm-12 col-md-6 col-lg-3 text-center mb-4">
-			<div class="feature-card <?php echo ! empty( $instance['card-model'] ) ? $instance['card-model'] : ''; ?>">
+		<div class="feature-card <?php echo ! empty( $instance['card-model'] ) ? $instance['card-model'] : ''; ?>">
 
-				<?php if ( $instance['card-model'] !== 'card-3' ){ ?>
-					<a href="<?php echo ! empty( $instance['link'] ) ? $instance['link'] : ''; ?>" <?php echo ! empty( $instance['target'] ) ? 'target="_blank"' : ''; ?>>
+			<?php if ( $instance['card-model'] !== 'card-3' ){ ?>
+			<a href="<?php echo ! empty( $instance['link'] ) ? $instance['link'] : ''; ?>" <?php echo ! empty( $instance['target'] ) ? 'target="_blank"' : ''; ?>>
 				<?php } ?>
 
-					<div class="align">
-						<div class="icon <?php echo $instance['icon']; ?>"></div>
-						<h3 class="card-title">
-							<?php echo ! empty( $instance['title'] ) ? $instance['title'] : ''; ?>
-						</h3>
+				<div class="align">
+					<div class="icon <?php echo $instance['icon']; ?>"></div>
+					<h3 class="card-title">
+						<?php echo ! empty( $instance['title'] ) ? $instance['title'] : ''; ?>
+					</h3>
 
-						<?php if ( ! empty( $instance['desc'] ) && $instance['card-model'] === 'card-3' ): ?>
-							<p class="card-desc"><?php echo $instance['desc']; ?></p>
-						<?php endif; ?>
+					<?php if ( ! empty( $instance['desc'] ) && $instance['card-model'] === 'card-3' ): ?>
+						<p class="card-desc"><?php echo $instance['desc']; ?></p>
+					<?php endif; ?>
 
-						<?php if ( $instance['card-model'] === 'card-3' ): ?>
-							<a class="card-btn btn" href="<?php echo ! empty( $instance['link'] ) ? $instance['link'] : ''; ?>" <?php echo ! empty( $instance['target'] ) ? 'target="_blank"' : ''; ?>>Acesse</a>
-						<?php endif; ?>
-					</div>
+					<?php if ( $instance['card-model'] === 'card-3' ): ?>
+						<a class="card-btn btn" href="<?php echo ! empty( $instance['link'] ) ? $instance['link'] : ''; ?>" <?php echo ! empty( $instance['target'] ) ? 'target="_blank"' : ''; ?>>Acesse</a>
+					<?php endif; ?>
+				</div>
 
 				<?php if ( $instance['card-model'] !== 'card-3' ){ ?>
-					</a>
-				<?php } ?>
+			</a>
+		<?php } ?>
 
-			</div>
 		</div>
 
 		<?php
+		echo $args['after_widget'];
 	}
 
 	public function form( $instance ) {
