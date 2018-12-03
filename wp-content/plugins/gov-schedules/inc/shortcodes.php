@@ -15,20 +15,24 @@ class Gov_Schedules_Shortcodes
 	public function gs_agenda_shortcode($atts)
 	{
 		$atts = shortcode_atts(array(
-			'form-group-id' => '',
-			'return' => home_url('/?sent=true#message')
+			'event-cats' => ''
 		), $atts);
+
+		$event_cats = array_map( 'trim', explode(',', $atts['event-cats'] ) );
+		$initial_cat_pick = $event_cats[0];
 
 		ob_start(); ?>
 
 		<div id="agenda" class="gs-agenda-container">
 			<div class="agenda-cats row">
-				<div class="col-md-6">
-					<h2 class="section-title mb-5 text-right"><a href="#" class="active" data-event-cat="agenda-cultural">Agenda Cultural</a></h2>
-				</div>
-				<div class="col-md-6">
-					<h2 class="section-title mb-5 text-left"><a href="#" data-event-cat="agendo-do-ministro">Agenda do Ministro</a></h2>
-				</div>
+				<?php for ($i = 0; $i < count($event_cats); $i++) :
+					$tax = get_term_by('slug', $event_cats[$i], 'event-category'); ?>
+
+					<div class="col">
+						<h2 class="section-title mb-5 text-center"><a href="#" <?php echo $i === 0 ? 'class="active"' : ''; ?> data-event-cat="<?php echo $tax->slug; ?>"><?php echo $tax->name; ?></a></h2>
+					</div>
+
+				<?php endfor; ?>
 			</div>
 			<div class="daypicker-wrapper">
 				<ul class="daypicker">
@@ -78,7 +82,7 @@ class Gov_Schedules_Shortcodes
 						array (
 							'taxonomy' => 'event-category',
 							'field' => 'slug',
-							'terms' => 'agenda-cultural',
+							'terms' => $initial_cat_pick,
 						)
 					),
 					'meta_query'     => array(
