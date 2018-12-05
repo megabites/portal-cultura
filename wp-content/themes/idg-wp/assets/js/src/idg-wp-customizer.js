@@ -64,34 +64,39 @@
 		} );
 	} );
 
-	/* api.selectiveRefresh.bind( 'partial-content-rendered', function( placement ) {
-		placement.partial.refresh();
+	api( 'idg-wp_theme_options_main_carousel', function( value ) {
+		value.bind( function( to ) {
+			console.log( 'TO: ', to );
 
-		if ( placement.container && placement.container.find( 'iframe.services' ).length ) {
-			placement.partial.refresh();
-		}
-	} ); */
+			/*$.ajax( {
+				url: idgCustomizer.ajaxurl,
+				type: 'POST',
+				data: {
+					action: 'get_jumbotron_carousel'
+				},
+				beforeSend: function(){
+					// agenda.addClass('loading');
+				},
+				success: function( res ) {
+					console.log( res.data );
+					$('.carousel-wrapper').html(res.data);
+					/!*if( res.success ){
+						agenda.removeClass('loading');
+						agenda.find('ul').html(res.data.weeks);
+						agenda.find('.monthpicker .month-name').text(res.data.month);
 
-
-	/**
-	 * TUTO
-	 */
-
-	/*
-	// Re-load Twitter widgets when a partial is rendered.
-	api.selectiveRefresh.bind( 'partial-content-rendered', function( placement ) {
-		if ( placement.container ) {
-			twttr.widgets.load( placement.container[0] );
-		}
+						if( res.data.events.length ){
+							agenda.find('.events').html(res.data.events);
+						} else {
+							agenda.find('.events').html('<div class="event-item empty"><span class="location">Sem compromissos oficiais nesta data.</span></div>');
+						}
+					}*!/
+				},
+				error: function( jqXHR, textStatus, errorThrown ) {
+					console.log( jqXHR, textStatus, errorThrown );
+				},
+			} );*/
+		} );
 	} );
-
-	// Refresh a moved partial containing a Twitter timeline iframe, since it has to be re-built.
-	api.selectiveRefresh.bind( 'partial-content-moved', function( placement ) {
-		if ( placement.container && placement.container.find( 'iframe.twitter-timeline:not([src]):first' ).length ) {
-			placement.partial.refresh();
-		}
-	} );
-	*/
-	// TUTO
 
 } )( jQuery, wp.customize );

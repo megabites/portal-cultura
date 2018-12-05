@@ -25,7 +25,7 @@ class Feature_Card extends WP_Widget {
 	public function widget( $args, $instance ) {
 		echo $args['before_widget']; ?>
 
-		<div class="feature-card <?php echo ! empty( $instance['card-model'] ) ? $instance['card-model'] : ''; ?>">
+		<div class="feature-card text-center <?php echo ! empty( $instance['card-model'] ) ? $instance['card-model'] : ''; ?>">
 
 			<?php if ( $instance['card-model'] !== 'card-3' ){ ?>
 			<a href="<?php echo ! empty( $instance['link'] ) ? $instance['link'] : ''; ?>" <?php echo ! empty( $instance['target'] ) ? 'target="_blank"' : ''; ?>>

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Identidade Digital do Governo\n"
-"POT-Creation-Date: 2018-12-03 14:54-0200\n"
-"PO-Revision-Date: 2018-12-03 14:58-0200\n"
+"POT-Creation-Date: 2018-12-05 11:10-0200\n"
+"PO-Revision-Date: 2018-12-05 11:13-0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -43,6 +43,13 @@ msgstr "Categorias mais utilizadas"
 msgid "Try looking in the monthly archives. %1$s"
 msgstr "Tente pesquisar nos arquivos mensais. %1$s"
 
+#: comments.php:19
+msgid ""
+"This post is password protected. Enter the password to view any comments"
+msgstr ""
+"Esta publicação está protegida por senha. Digite a senha para ver os "
+"comentários"
+
 #: comments.php:51
 msgid "Comments are closed"
 msgstr "Comentários estão fechados"
@@ -76,7 +83,6 @@ msgid "O comentário é obrigatório"
 msgstr "O comentário é obrigatório"
 
 #: functions.php:49
-#, fuzzy
 msgid "Featured links"
 msgstr "Links em destaque"
 
@@ -101,58 +107,79 @@ msgid "Page"
 msgstr "Página"
 
 #: inc/cpt-multimedia.php:107
-#, fuzzy
 msgid "You cannot add terms to this taxonomy"
 msgstr "Não é possível adicionar termos a esta taxonomia"
 
-#: inc/idg-widgets.php:17 inc/idg-widgets.php:56
+#: inc/customizer.php:111
+msgid "Front page settings"
+msgstr "Configurações da página inicial"
+
+#: inc/customizer.php:113
+msgid "Here you can find options to changes the look and feel for front page."
+msgstr ""
+"Aqui você pode encontrar opções para mudar a aparência da página inicial."
+
+#: inc/customizer.php:259
+msgid "Main carousel categories"
+msgstr "Categoria para o carrossel de destaque"
+
+#: inc/customizer.php:279
+msgid "Number of slides to show"
+msgstr "Número de slides para mostrar"
+
+#: inc/customizer.php:298
+msgid "News sections category"
+msgstr "Categoria para a seção de notícias"
+
+#: inc/customizer.php:317
+msgid "Number of items to show"
+msgstr "Número de itens a mostrar"
+
+#: inc/idg-widgets.php:17 inc/idg-widgets.php:60
 msgid "Feature Card"
 msgstr "Cartão de destaque"
 
-#: inc/idg-widgets.php:61
-#, fuzzy
-msgid "Card description text"
-msgstr "Texto da descrição do cartão"
+#: inc/idg-widgets.php:19
+msgid "A feature card with custom icon and link"
+msgstr "Um cartão de destaque com ícone e link personalizados"
 
-#: inc/idg-widgets.php:64
+#: inc/idg-widgets.php:65
+msgid "Card description text"
+msgstr "Texto descritivo do cartão"
+
+#: inc/idg-widgets.php:68
 msgid "Title:"
 msgstr "Título:"
 
-#: inc/idg-widgets.php:68
+#: inc/idg-widgets.php:72
 msgid "Link:"
 msgstr "Link:"
 
-#: inc/idg-widgets.php:72
+#: inc/idg-widgets.php:76
 msgid "Open in new window:"
 msgstr "Abrir em nova janela:"
 
-#: inc/idg-widgets.php:76
-#, fuzzy
+#: inc/idg-widgets.php:80
 msgid "Select the icon:"
 msgstr "Selecione o ícone:"
 
-#: inc/idg-widgets.php:122
-#, fuzzy
+#: inc/idg-widgets.php:126
 msgid "Card model:"
 msgstr "Modelo de cartão:"
 
-#: inc/idg-widgets.php:124
-#, fuzzy
+#: inc/idg-widgets.php:128
 msgid "Model 1"
 msgstr "Modelo 1"
 
-#: inc/idg-widgets.php:125
-#, fuzzy
+#: inc/idg-widgets.php:129
 msgid "Model 2"
 msgstr "Modelo 2"
 
-#: inc/idg-widgets.php:126
-#, fuzzy
+#: inc/idg-widgets.php:130
 msgid "Model 3"
 msgstr "Modelo 3"
 
-#: inc/idg-widgets.php:131
-#, fuzzy
+#: inc/idg-widgets.php:135
 msgid "Description text:"
 msgstr "Texto de descrição:"
 
@@ -296,7 +323,6 @@ msgid "https://github.com/darciro"
 msgstr "https://github.com/darciro"
 
 #. Template Name of the plugin/theme
-#, fuzzy
 msgid "Informação ao Cidadão */ ?>"
 msgstr "Informação ao Cidadão */ ?>"
 
