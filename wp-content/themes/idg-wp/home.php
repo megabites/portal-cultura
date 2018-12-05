@@ -18,57 +18,7 @@ get_header();
 	<main id="main" class="site-main">
 
 		<section class="carousel-wrapper">
-			<?php
-			$args               = array(
-				'posts_per_page' => 3,
-				'category_name'  => 'destaque'
-			);
-			$feature_news_query = new WP_Query( $args ); ?>
-
-			<?php if ( $feature_news_query->have_posts() ) : $i = 0; ?>
-				<div id="jumbotron-carousel" class="carousel slide carousel-fade" data-ride="carousel"
-				     data-interval="5000">
-					<div class="carousel-inner">
-						<?php while ( $feature_news_query->have_posts() ) : $feature_news_query->the_post(); ?>
-							<div class="carousel-item <?php echo $i == 0 ? 'active' : ''; ?>">
-								<?php
-								if ( has_post_thumbnail() ) {
-									$post_thumb = get_the_post_thumbnail_url();
-								} else {
-									$post_thumb = get_template_directory_uri() . '/assets/img/teste-personagem.jpg';
-								}
-								?>
-								<img class="d-block w-100" src="<?php echo $post_thumb; ?>" alt="Second slide">
-								<div class="carousel-caption d-none d-md-block">
-									<div class="container">
-										<a href="#">
-											<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-											<?php the_excerpt(); ?>
-										</a>
-									</div>
-								</div>
-							</div>
-							<?php $i ++; endwhile;
-						wp_reset_postdata(); ?>
-					</div>
-					<a class="carousel-control-prev" href="#jumbotron-carousel" role="button" data-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="carousel-control-next" href="#jumbotron-carousel" role="button" data-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="sr-only">Next</span>
-					</a>
-					<ol class="carousel-indicators">
-						<?php
-						for ( $indicators = 0; $indicators < $i; $indicators ++ ) {
-							$class = $indicators == 0 ? 'active' : '';
-							echo '<li data-target="#jumbotron-carousel" data-slide-to="' . $indicators . '" class="' . $class . '"></li>';
-						}
-						?>
-					</ol>
-				</div>
-			<?php endif; ?>
+			<?php get_template_part('template-parts/jumbotron-carousel'); ?>
 		</section>
 
 		<section class="services mt-5 mb-5">
@@ -88,24 +38,33 @@ get_header();
 				</div>
 			</div>
 		</section>
-		<section id="noticias" class="pb-5 pt-5 bg-grey-2">
+		<section id="news" class="pb-5 pt-5 bg-grey-2">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
 						<h2 class="section-title mb-5 text-center">Notícias</h2>
 					</div>
 					<?php
-					$args      = array(
+					/*$args      = array(
 						'posts_per_page' => 3,
 						'category_name'  => 'noticias'
-					);
+					);*/
+					$args = [];
+					if( get_option('idg-wp_theme_options_news_sections') ){
+						$args['category_name'] = get_option('idg-wp_theme_options_news_sections');
+					}
+					if( get_option('idg-wp_theme_options_news_sections_items') ){
+						$args['posts_per_page'] = get_option('idg-wp_theme_options_news_sections_items');
+					} else {
+						$args['posts_per_page'] = 3;
+					}
 					$news_query = new WP_Query( $args ); ?>
 
 					<?php if ( $news_query->have_posts() ) : ?>
 
 						<?php while ( $news_query->have_posts() ) : $news_query->the_post(); ?>
 							<h2></h2>
-							<div class="col-lg-4">
+							<div class="col-lg-4 mb-5">
 								<?php
 								if ( has_post_thumbnail() ) {
 									$post_thumb = get_the_post_thumbnail_url();
@@ -133,7 +92,7 @@ get_header();
 					<?php endif; ?>
 				</div>
 				<div class="col-lg-12 text-center">
-					<a href="<?php echo home_url( '/categoria/noticias/' ); ?>" class="btn text-uppercase mt-5">Mais
+					<a href="<?php echo home_url( '/categoria/noticias/' ); ?>" class="btn text-uppercase mt-1">Mais
 						notícias</a>
 				</div>
 			</div>
