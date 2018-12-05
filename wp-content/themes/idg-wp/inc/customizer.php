@@ -11,9 +11,12 @@
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
 function idg_wp_customize_register( $wp_customize ) {
+	// $wp_customize->add_setting('customize_services_widgets_area');
+
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+	// $wp_customize->get_setting( 'customize_services_widgets_area' )->transport = 'postMessage';
 
 	if ( isset( $wp_customize->selective_refresh ) ) {
 		$wp_customize->selective_refresh->add_partial( 'blogname', array(
@@ -24,6 +27,10 @@ function idg_wp_customize_register( $wp_customize ) {
 			'selector'        => '.site-description',
 			'render_callback' => 'idg_wp_customize_partial_blogdescription',
 		) );
+		/* $wp_customize->selective_refresh->add_partial( 'customize_services_widgets_area', array(
+			'selector'        => '.services',
+			// 'render_callback' => 'idg_wp_customize_partial_blogdescription',
+		) ); */
 	}
 }
 add_action( 'customize_register', 'idg_wp_customize_register' );
@@ -50,6 +57,6 @@ function idg_wp_customize_partial_blogdescription() {
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function idg_wp_customize_preview_js() {
-	wp_enqueue_script( 'idg-wp-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
+	wp_enqueue_script( 'idg-wp-customizer', get_template_directory_uri() . '/assets/js/dist/idg-wp-customizer.min.js', array( 'jquery','customize-preview'  ), '', true );
 }
 add_action( 'customize_preview_init', 'idg_wp_customize_preview_js' );

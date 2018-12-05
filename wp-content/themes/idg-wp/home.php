@@ -143,7 +143,7 @@ get_header();
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
-						<?php echo do_shortcode( '[gs-agenda]' ); ?>
+						<?php echo do_shortcode( '[gs-agenda event-cats="agenda-cultural, agendo-do-ministro, cursos-e-formacao"]' ); ?>
 					</div>
 				</div>
 			</div>

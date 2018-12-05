@@ -40,7 +40,9 @@ var gulp = require('gulp'),
         basePaths.node + 'popper.js/dist/umd/popper.js',
         basePaths.node + 'bootstrap/dist/js/bootstrap.js',
         basePaths.projectJSFiles + 'vendor/*.js',
-        basePaths.projectJSFiles + '*.js'
+        basePaths.projectJSFiles + '*.js',
+        '!assets/js/src/admin.js',
+        '!assets/js/src/idg-wp-customizer.js'
     ])
         // .pipe(plumber())
         .pipe(concat('bundle.min.js'))
@@ -68,6 +70,24 @@ var gulp = require('gulp'),
         .pipe(gulp.dest('./assets/js/dist/'))
         .pipe(notify('Arquivos JS recarregados!'))
         .pipe(livereload());
+});
+
+/**
+ * Configure the javascript bundle for the application
+ *
+ */
+gulp.task('scripts-customizer', function () {
+	return gulp.src([
+		basePaths.projectJSFiles + 'idg-wp-customizer.js'
+	])
+	// .pipe(plumber())
+		.pipe(concat('idg-wp-customizer.min.js'))
+		.pipe(sourcemaps.init())
+		.pipe(uglify())
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest('./assets/js/dist/'))
+		.pipe(notify('Arquivos JS recarregados!'))
+		.pipe(livereload());
 });
 
 /**
@@ -140,7 +160,7 @@ gulp.task('browser-sync', function() {
 gulp.task('watch', function () {
     livereload.listen();
     gulp.watch('./assets/stylesheets/src/**/*.scss', ['styles', 'styles-admin', 'browser-sync-watch']);
-    gulp.watch('./assets/js/src/*.js', ['scripts', 'scripts-admin', 'browser-sync-watch']);
+    gulp.watch('./assets/js/src/*.js', ['scripts', 'scripts-admin', 'scripts-customizer', 'browser-sync-watch']);
     gulp.watch('**/*.php', ['php', 'browser-sync-watch']);
 
     // browserSync.reload();
@@ -222,4 +242,4 @@ gulp.task('browser-sync', function() {
  * Default task
  *
  */
-gulp.task('default', ['styles', 'styles-admin', 'scripts', 'scripts-admin', 'watch', 'browser-sync']);
+gulp.task('default', ['styles', 'styles-admin', 'scripts', 'scripts-admin', 'scripts-customizer', 'watch', 'browser-sync']);
