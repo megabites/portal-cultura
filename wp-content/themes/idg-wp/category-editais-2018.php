@@ -26,8 +26,20 @@ get_header();
           <div id="search-content-wrapper">
             <!-- <h2>O que você esta procurando?</h2> -->
             <form id="search-content">
-              <input type="text" name="search" placeholder="Buscar" />
-              <button type="submit"><i class="icon-search"></i></button>
+              <div class="input-wrapper">
+                <input type="text" name="search" placeholder="Buscar" />
+                <button type="submit" class="search"><i class="icon-search"></i></button>
+                <button type="button" class="filter">Filtrar</button>
+              </div>
+
+              <div class="filter-wrapper">
+
+                <label><input type="checkbox" name="andamento" /> Em Andamento</label>
+                <label><input type="checkbox" name="inscricoes" /> Inscrições Abertas</label>
+                <label><input type="checkbox" name="finalizados" /> Finalizados</label>
+
+                <button type="button" class="apply">Aplicar</button>
+              </div>
             </form>
           </div>
 
