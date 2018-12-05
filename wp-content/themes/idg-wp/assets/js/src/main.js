@@ -9,7 +9,7 @@
 			this.utils();
 			// this.agenda();
 			this.menu();
-			console.log('App here!');
+			console.log('App here! ');
 		},
 
 		/**
