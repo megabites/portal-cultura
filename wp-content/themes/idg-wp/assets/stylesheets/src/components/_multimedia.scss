@@ -38,10 +38,6 @@
 			margin-bottom: 0;
 		}
 
-		a {
-			color: #222;
-			text-decoration: underline;
-		}
 
 		.highlight-box { 
 			padding-top: 75%;
@@ -97,4 +93,19 @@
 			}
 		}
 	}
+}
+
+
+.multimedia-archive {
+	#search-content-wrapper {
+		margin-bottom: 50px;
+	}
+
+	h2 {
+		a {
+			color: #222;
+			text-decoration: underline;
+		}
+	}
+
 }
