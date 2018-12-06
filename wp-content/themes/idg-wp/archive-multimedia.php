@@ -229,8 +229,28 @@ get_header();
 			</div>
 		</section>
 
-		<div class="container"><div class="col-12 pt-4 pb-4">
-			<div class="row">
+		<div class="container">
+			<div class="col-12 pt-4 pb-4">
+          <div id="search-content-wrapper">
+            <h2>O que você esta procurando?</h2>
+            <form id="search-content">
+              <div class="input-wrapper">
+                <input type="text" name="search" placeholder="Buscar" />
+                <button type="submit" class="search"><i class="icon-search"></i></button>
+                <button type="button" class="filter">Filtrar</button>
+              </div>
+
+              <div class="filter-wrapper">
+
+                <label><input type="checkbox" name="andamento" /> Imagens</label>
+                <label><input type="checkbox" name="inscricoes" /> Vídeos</label>
+                <label><input type="checkbox" name="finalizados" /> Áudios</label>
+
+                <button type="button" class="apply">Aplicar</button>
+              </div>
+            </form>
+          </div>
+				<div class="row">
 
 					<?php if ( have_posts() ) : ?>
 
