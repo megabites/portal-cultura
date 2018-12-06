@@ -22,39 +22,116 @@ get_header();
 				<?php the_archive_title( '<h1 class="page-title text-center mt-1">', '</h1>' ); ?>
 			</header>
 
-			<div id="multimidia" class="container mb-5">
+			<div id="multimidia" class="container">
 				<div class="row">
 
-						<?php
-						$args      = array(
-							'post_type'  => 'multimedia',
-							'posts_per_page' => 1,
-						);
-						$multimedia_query = new WP_Query( $args ); ?>
+					<?php
+					$args      = array(
+						'post_type'  => 'multimedia',
+						'posts_per_page' => 1,
+					);
+					$multimedia_query = new WP_Query( $args ); ?>
 
-						<?php if ( $multimedia_query->have_posts() ) : ?>
+					<?php if ( $multimedia_query->have_posts() ) : ?>
 
-							<?php while ( $multimedia_query->have_posts() ) : $multimedia_query->the_post(); ?>
-								<?php
-								if ( has_post_thumbnail() ) {
-									$post_thumb = get_the_post_thumbnail_url();
-								}
-								?>
-								<div class="highlight" style="background-image: url('<?php echo $post_thumb; ?>');">
-									<a href="<?php the_permalink(); ?>">
-										<h3><?php the_title(); ?></h3>
-										<?php echo idg_excerpt(30); ?>
-									</a>
-								</div>
-							<?php endwhile; ?>
+						<?php while ( $multimedia_query->have_posts() ) : $multimedia_query->the_post(); ?>
+							<?php
+							if ( has_post_thumbnail() ) {
+								$post_thumb = get_the_post_thumbnail_url();
+							}
+							?>
+							<div class="highlight" style="background-image: url('<?php echo $post_thumb; ?>');">
+								<a href="<?php the_permalink(); ?>">
+									<h3><?php the_title(); ?></h3>
+									<?php echo idg_excerpt(30); ?>
+								</a>
+							</div>
+						<?php endwhile; ?>
 
-							<?php wp_reset_postdata(); ?>
+						<?php wp_reset_postdata(); ?>
 
-						<?php endif; ?>
+					<?php endif; ?>
+
+					<div class="col-lg-4">
+						<div class="highlight-box"
+						     style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/default.png')"></div>
 					</div>
+					<div class="col-lg-4">
+						<div class="highlight-box"
+						     style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/default.png')"></div>
+					</div>
+					<div class="col-lg-4">
+						<div class="highlight-box"
+						     style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/default.png')"></div>
+					</div>
+				</div>
+			</div>
+		</section>
 
-					<div class="row media-row">
+		<div class="container mb-5">
+			<div class="col-12 pt-4 pb-4">
+          <div id="search-content-wrapper">
+            <h2>O que você esta procurando?</h2>
+            <form id="search-content">
+              <div class="input-wrapper">
+                <input type="text" name="search" placeholder="Buscar" />
+                <button type="submit" class="search"><i class="icon-search"></i></button>
+                <button type="button" class="filter">Filtrar</button>
+              </div>
 
+              <div class="filter-wrapper">
+
+                <label><input type="checkbox" name="andamento" /> Imagens</label>
+                <label><input type="checkbox" name="inscricoes" /> Vídeos</label>
+                <label><input type="checkbox" name="finalizados" /> Áudios</label>
+
+                <button type="button" class="apply">Aplicar</button>
+              </div>
+            </form>
+          </div>
+				<div class="row">
+
+					<?php if ( have_posts() ) : ?>
+
+						<?php
+						while ( have_posts() ) : the_post(); ?>
+
+							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+								<header class="entry-header">
+									<?php the_title( '<h2><a href="'. get_the_permalink() .'">', '</a></h2>' ); ?>
+								</header>
+
+								<div class="entry-content">
+									<?php the_excerpt(); ?>
+								</div>
+
+								<footer class="entry-footer">
+									<?php idg_wp_entry_footer(); ?>
+									<div class="date-box mb-4">
+										<span>publicado: <?php the_date('d/m/Y'); ?> <?php the_time('H'); ?>h<?php the_time('i'); ?>, última modificação: <?php the_modified_date('d/m/Y'); ?> <?php the_modified_time('H'); ?>h<?php the_modified_time('i'); ?></span>
+									</div>
+								</footer>
+							</article>
+
+						<?php
+						endwhile;
+
+						the_posts_navigation();
+
+					else :
+
+						get_template_part( 'template-parts/content', 'none' );
+
+					endif;
+					?>
+				</div>
+			</div>
+		</div>
+
+		<section id="social-media">
+			<div class="container">
+
+				<div class="row media-row">
 					<div class="col-lg-4">
 						<div class="highlight-box">
 							<a href="http://facebook.com/ministeriodacultura" target="_blank">
@@ -120,12 +197,9 @@ get_header();
 							</a>
 						</div>
 					</div>
+				</div>
 
-
-					</div>
-					<div class="row media-row">
-
-
+				<div class="row media-row">
 					<div class="col-lg-4">
 						<div class="highlight-box">
 							<a href="http://flickr.com/photos/ministeriodacultura/" target="_blank">
@@ -224,70 +298,10 @@ get_header();
 							</a>
 						</div>
 					</div>
-					</div>
 				</div>
+
 			</div>
 		</section>
-
-		<div class="container">
-			<div class="col-12 pt-4 pb-4">
-          <div id="search-content-wrapper">
-            <h2>O que você esta procurando?</h2>
-            <form id="search-content">
-              <div class="input-wrapper">
-                <input type="text" name="search" placeholder="Buscar" />
-                <button type="submit" class="search"><i class="icon-search"></i></button>
-                <button type="button" class="filter">Filtrar</button>
-              </div>
-
-              <div class="filter-wrapper">
-
-                <label><input type="checkbox" name="andamento" /> Imagens</label>
-                <label><input type="checkbox" name="inscricoes" /> Vídeos</label>
-                <label><input type="checkbox" name="finalizados" /> Áudios</label>
-
-                <button type="button" class="apply">Aplicar</button>
-              </div>
-            </form>
-          </div>
-				<div class="row">
-
-					<?php if ( have_posts() ) : ?>
-
-						<?php
-						while ( have_posts() ) : the_post(); ?>
-
-							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-								<header class="entry-header">
-									<?php the_title( '<h2><a href="'. get_the_permalink() .'">', '</a></h2>' ); ?>
-								</header>
-
-								<div class="entry-content">
-									<?php the_excerpt(); ?>
-								</div>
-
-								<footer class="entry-footer">
-									<?php idg_wp_entry_footer(); ?>
-									<div class="date-box mb-4">
-										<span>publicado: <?php the_date('d/m/Y'); ?> <?php the_time('H'); ?>h<?php the_time('i'); ?>, última modificação: <?php the_modified_date('d/m/Y'); ?> <?php the_modified_time('H'); ?>h<?php the_modified_time('i'); ?></span>
-									</div>
-								</footer>
-							</article>
-
-						<?php
-						endwhile;
-
-						the_posts_navigation();
-
-					else :
-
-						get_template_part( 'template-parts/content', 'none' );
-
-					endif;
-					?>
-				</div>
-			</div>
-		</div>
 	</main>
 
 <?php
