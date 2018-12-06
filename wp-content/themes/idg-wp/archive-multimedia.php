@@ -22,7 +22,7 @@ get_header();
 				<?php the_archive_title( '<h1 class="page-title text-center mt-1">', '</h1>' ); ?>
 			</header>
 
-			<div id="multimidia" class="container">
+			<div id="multimidia" class="container mb-3">
 				<div class="row">
 
 					<?php
