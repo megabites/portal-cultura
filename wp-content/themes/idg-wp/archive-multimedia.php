@@ -25,32 +25,33 @@ get_header();
 			<div id="multimidia" class="container mb-5">
 				<div class="row">
 
-					<?php
-					$args      = array(
-						'post_type'  => 'multimedia',
-						'posts_per_page' => 1,
-					);
-					$multimedia_query = new WP_Query( $args ); ?>
+						<?php
+						$args      = array(
+							'post_type'  => 'multimedia',
+							'posts_per_page' => 1,
+						);
+						$multimedia_query = new WP_Query( $args ); ?>
 
-					<?php if ( $multimedia_query->have_posts() ) : ?>
+						<?php if ( $multimedia_query->have_posts() ) : ?>
 
-						<?php while ( $multimedia_query->have_posts() ) : $multimedia_query->the_post(); ?>
-							<?php
-							if ( has_post_thumbnail() ) {
-								$post_thumb = get_the_post_thumbnail_url();
-							}
-							?>
-							<div class="highlight" style="background-image: url('<?php echo $post_thumb; ?>');">
-								<a href="<?php the_permalink(); ?>">
-									<h3><?php the_title(); ?></h3>
-									<?php echo idg_excerpt(30); ?>
-								</a>
-							</div>
-						<?php endwhile; ?>
+							<?php while ( $multimedia_query->have_posts() ) : $multimedia_query->the_post(); ?>
+								<?php
+								if ( has_post_thumbnail() ) {
+									$post_thumb = get_the_post_thumbnail_url();
+								}
+								?>
+								<div class="highlight" style="background-image: url('<?php echo $post_thumb; ?>');">
+									<a href="<?php the_permalink(); ?>">
+										<h3><?php the_title(); ?></h3>
+										<?php echo idg_excerpt(30); ?>
+									</a>
+								</div>
+							<?php endwhile; ?>
 
-						<?php wp_reset_postdata(); ?>
+							<?php wp_reset_postdata(); ?>
 
-					<?php endif; ?>
+						<?php endif; ?>
+					</div>
 
 					<div class="row media-row">
 
