@@ -33,12 +33,16 @@
 
 		&.instagram {
 			background-image: url('../../img/instagram.svg');
-			background-position: auto auto;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: 27px;
 		}
 
 		&.soundcloud {
 			background-image: url('../../img/soundcloud.svg');
-			background-position: auto auto;
+			background-position: center center;
+			background-repeat: no-repeat;
+			// background-size: 27px;
 		}
 	}
 }
