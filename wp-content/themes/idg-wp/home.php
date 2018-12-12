@@ -24,17 +24,11 @@ get_header();
 		<section class="services mt-5 mb-5">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-12">
-						<h2 class="section-title mb-5 text-center">Serviços</h2>
-					</div>
 					<?php
 					if ( is_active_sidebar( 'services-widgets-area' ) ) :
 						dynamic_sidebar( 'services-widgets-area' );
 					endif;
 					?>
-					<div class="col-lg-12 text-center">
-						<a href="#" class="btn text-uppercase mt-4">Mais Serviços</a>
-					</div>
 				</div>
 			</div>
 		</section>
@@ -126,9 +120,6 @@ get_header();
 		<section class="pt-5 pb-5" id="section-content">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-12">
-						<h2 class="section-title mb-5 text-center">Conteúdos</h2>
-					</div>
 					<?php
 					if ( is_active_sidebar( 'content-widgets-area' ) ) :
 						dynamic_sidebar( 'content-widgets-area' );
