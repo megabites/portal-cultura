@@ -25,7 +25,7 @@
               'post_parent' => $post->ID,
               'post_type' => 'page',
               'orderby' => 'date',
-              'order' => 'DESC'
+              'order' => 'ASC'
             );
 
             $child_query = new WP_Query( $args );
