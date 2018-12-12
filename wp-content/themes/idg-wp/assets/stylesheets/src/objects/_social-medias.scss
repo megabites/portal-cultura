@@ -30,5 +30,15 @@
 		&.flickr {
 			background-position: -105px -124px;
 		}
+
+		&.instagram {
+			background-image: url('../../img/instagram.svg');
+			background-position: auto auto;
+		}
+
+		&.soundcloud {
+			background-image: url('../../img/soundcloud.svg');
+			background-position: auto auto;
+		}
 	}
 }
