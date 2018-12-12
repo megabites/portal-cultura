@@ -24,7 +24,8 @@
             $args = array(
               'post_parent' => $post->ID,
               'post_type' => 'page',
-              'orderby' => 'menu_order'
+              'orderby' => 'date',
+              'order' => 'DESC'
             );
 
             $child_query = new WP_Query( $args );
