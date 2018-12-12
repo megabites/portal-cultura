@@ -95,7 +95,8 @@ if (!class_exists('Gov_Schedules')) :
 					'menu_icon' => 'dashicons-calendar-alt',
 					'rewrite' => array(
 						'slug' => 'agenda'
-					)
+					),
+					'show_in_rest' => true
 				)
 			);
 

@@ -1,14 +1,9 @@
 <?php
+
 /**
- * Register our Feature Card Widget
+ * Feature Card Widget
  *
  */
-function register_feature_card() {
-	register_widget( 'Feature_Card' );
-}
-
-add_action( 'widgets_init', 'register_feature_card' );
-
 class Feature_Card extends WP_Widget {
 
 	function __construct() {
@@ -16,10 +11,15 @@ class Feature_Card extends WP_Widget {
 			'feature_card',
 			esc_html__( 'Feature Card', 'idg-wp' ),
 			array(
-				'description' => esc_html__( 'A feature card with custom icon and link', 'idg-wp' ),
+				'description'                 => esc_html__( 'A feature card with custom icon and link', 'idg-wp' ),
 				'customize_selective_refresh' => true
 			)
 		);
+
+		// Register our Feature Card Widget
+		add_action( 'widgets_init', function () {
+			register_widget( 'Feature_Card' );
+		} );
 	}
 
 	public function widget( $args, $instance ) {
@@ -161,3 +161,147 @@ class Feature_Card extends WP_Widget {
 	}
 
 }
+
+$feature_card = new Feature_Card();
+
+/**
+ * Adds a Banners widget.
+ */
+class IDG_Banners extends WP_Widget {
+
+	function __construct() {
+		parent::__construct(
+			'idg_banner', // Base ID
+			esc_html__( 'Banners', 'idg-wp' ), // Name
+			array( 'description' => esc_html__( 'Banner management widget', 'idg-wp' ), ) // Args
+		);
+
+		// Register our Banners Widget
+		add_action( 'widgets_init', function () {
+			register_widget( 'IDG_Banners' );
+		} );
+
+		add_action( 'admin_enqueue_scripts', array( $this, 'idg_banner_scripts' ) );
+	}
+
+	public function idg_banner_scripts() {
+		// wp_enqueue_media();
+		wp_enqueue_style('thickbox');
+		wp_enqueue_script('thickbox');
+		wp_enqueue_script('media-upload');
+		// wp_enqueue_script('mfc-media-upload', plugin_dir_url(__FILE__) . 'mfc-media-upload.js', array( 'jquery' )) ;
+	}
+
+	public function widget( $args, $instance ) {
+		echo $args['before_widget'];
+		if ( ! empty( $instance['title'] ) ) {
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+		}
+		echo esc_html__( 'Hello, World!', 'idg-wp' );
+		echo $args['after_widget'];
+	}
+
+	public function form( $instance ) {
+
+		echo '<pre>';
+		var_dump($instance);
+		echo '</pre>';
+
+		$title = '';
+		if ( ! empty( $instance['title'] ) ) {
+			$title = $instance['title'];
+		}
+
+		$description = '';
+		if ( ! empty( $instance['description'] ) ) {
+			$description = $instance['description'];
+		}
+
+		$number_of_banners = '';
+		if ( ! empty( $instance['number_of_banners'] ) ) {
+			$number_of_banners = $instance['number_of_banners'];
+		}
+
+		$link_url = '';
+		if ( ! empty( $instance['link_url'] ) ) {
+			$link_url = $instance['link_url'];
+		}
+
+		$link_title = '';
+		if ( ! empty( $instance['link_title'] ) ) {
+			$link_title = $instance['link_title'];
+		}
+
+		$image = '';
+		if(isset($instance['image']))
+		{
+			$image = $instance['image'];
+		}
+
+		?>
+		<div class="idg-banners-widget">
+
+			<p>
+				<label for="<?php echo $this->get_field_name( 'title' ); ?>"><?php _e( 'Title:', 'idg-wp' ); ?></label>
+				<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>"/>
+			</p>
+
+			<p>
+				<label for="<?php echo $this->get_field_name( 'description' ); ?>"><?php _e( 'Description:' ); ?></label>
+				<textarea class="widefat" id="<?php echo $this->get_field_id( 'description' ); ?>" name="<?php echo $this->get_field_name( 'description' ); ?>" type="text"><?php echo esc_attr( $description ); ?></textarea>
+			</p>
+
+			<p>
+				<label for="<?php echo $this->get_field_name( 'number_of_banners' ); ?>"><?php _e( 'Quantidade de itens:', 'idg-wp' ); ?></label>
+				<input class="widefat" id="<?php echo $this->get_field_id( 'number_of_banners' ); ?>" name="<?php echo $this->get_field_name( 'number_of_banners' ); ?>" type="number" min="1" value="<?php echo $number_of_banners ? esc_attr( $number_of_banners ) : '1'; ?>"/>
+			</p>
+
+			<div class="banners-items">
+			<?php
+			$n = $number_of_banners ? intval($number_of_banners) : 1;
+			for ($i = 1; $i <= $n; $i++) : ?>
+				<div class="banner">
+					<p><b>Banner #<?php echo $i; ?></b></p>
+					<p>
+						<label for="<?php echo $this->get_field_name( 'link_url' ) . '['. $i .']'; ?>"><?php _e( 'Link URL:' ); ?></label>
+						<input class="widefat" id="<?php echo $this->get_field_id( 'link_url' ) . '['. $i .']'; ?>" name="<?php echo $this->get_field_name( 'link_url' ) . '['. $i .']'; ?>" type="text" value="<?php echo esc_attr( $link_url[$i] ); ?>"/>
+					</p>
+
+					<p>
+						<label for="<?php echo $this->get_field_name( 'link_title' ) . '['. $i .']'; ?>"><?php _e( 'Link Title:' ); ?></label>
+						<input class="widefat" id="<?php echo $this->get_field_id( 'link_title' ) . '['. $i .']'; ?>" name="<?php echo $this->get_field_name( 'link_title' ) . '['. $i .']'; ?>" type="text" value="<?php echo esc_attr( $link_title[$i] ); ?>"/>
+					</p>
+
+					<p>
+						<label for="<?php echo $this->get_field_name( 'image' ) . '['. $i .']'; ?>"><?php _e( 'Image:' ); ?></label>
+						<input name="<?php echo $this->get_field_name( 'image' ) . '['. $i .']'; ?>" id="<?php echo $this->get_field_id( 'image' ) . '['. $i .']'; ?>" class="widefat" type="text" value="<?php echo esc_url( $image[$i] ); ?>" />
+						<input class="upload_image_button" type="button" value="Upload Image" />
+					</p>
+				</div>
+			<?php endfor; ?>
+			</div>
+
+		</div>
+
+		<?php
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		/*echo '<pre>';
+		wp_die( var_dump($new_instance) );
+		echo '</pre>';*/
+
+		$instance               = array();
+		$instance['title']      = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
+		$instance['description']      = ( ! empty( $new_instance['description'] ) ) ? sanitize_text_field( $new_instance['description'] ) : '';
+		$instance['number_of_banners']      = ( ! empty( $new_instance['number_of_banners'] ) ) ? sanitize_text_field( $new_instance['number_of_banners'] ) : '';
+		$instance['link_url']   = ( ! empty( $new_instance['title'] ) ) ? $new_instance['link_url']  : '';
+		$instance['link_title'] = ( ! empty( $new_instance['title'] ) ) ? $new_instance['link_title']  : '';
+		$instance['image'] = ( ! empty( $new_instance['image'] ) ) ? $new_instance['image'] : '';
+
+		return $instance;
+	}
+
+}
+
+$idg_banners = new IDG_Banners();
