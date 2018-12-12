@@ -13,10 +13,10 @@
 			width: 10px;
 			height: 10px;
 			border-radius: 50%;
-			background-color: #FFF;
+			background-color: rgba(255, 255, 255, .6);
 
 			&.active {
-				background-color: $main__color;
+				background-color: rgba(255, 255, 255, 1);
 			}
 		}
 	}
