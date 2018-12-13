@@ -39,7 +39,8 @@ function multimedia_custom_type() {
 			'thumbnail',
 			'excerpt',
 			'post-formats'
-		)
+		),
+		'show_in_rest'      => true
 	);
 	register_post_type( 'multimedia', $args );
 	flush_rewrite_rules( true );
