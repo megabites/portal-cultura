@@ -18,24 +18,88 @@ get_header();
 ?>
 
   <main id="main" class="site-main">
+
     <div class="container">
       <?php the_breadcrumb (); ?>
 
+      <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_167a7bbb73d%20text%20%7B%20fill%3A%23555%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_167a7bbb73d%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22285.921875%22%20y%3D%22218.45%22%3EFirst%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="First slide">
+          </div>
+
+
+          <div class="carousel-item">
+            <img class="d-block w-100" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_167a7bbb747%20text%20%7B%20fill%3A%23444%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_167a7bbb747%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23666%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22247.3203125%22%20y%3D%22218.45%22%3ESecond%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Second slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22800%22%20height%3D%22400%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_167a7bbb73f%20text%20%7B%20fill%3A%23333%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A40pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_167a7bbb73f%22%3E%3Crect%20width%3D%22800%22%20height%3D%22400%22%20fill%3D%22%23555%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22277%22%20y%3D%22218.45%22%3EThird%20slide%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Third slide">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
       <div class="row">
         <div class="col-12">
-          <?php
-          while ( have_posts() ) :
-            the_post();
+          <?php while ( have_posts() ) : the_post(); ?>
+            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+              <?php
+                // Post thumbnail.
+                twentyfifteen_post_thumbnail();
+              ?>
 
-            get_template_part( 'template-parts/content-page', 'page' );
+              <header class="entry-header">
+                <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+              </header>
 
-            // If comments are open or we have at least one comment, load up the comment template.
-            if ( comments_open() || get_comments_number() ) :
-              comments_template();
-            endif;
+              <div class="entry-content">
+                <div class="row">
+                  <div class="col-lg-7">
+                    <h3>Sobre</h3>
+                    <hr/>
+                    <p>A <strong>Secretaria do Audiovisual do Ministério da Cultura (SAv/MinC)</strong>, então Secretaria para o Desenvolvimento Audiovisual, foi criada pela Lei nº 8.490, de 19 de novembro de 1992, como parte do ressurgimento do Ministério da Cultura, que, em 1990, havia sido transformado em Secretaria da Cultura, diretamente vinculada à Presidência da República.</p>
 
-          endwhile; // End of the loop.
-          ?>
+                    <p>A SAv/MinC tem como competências a formação, produção inclusiva, regionalização, difusão não-comercial, democratização do acesso e preservação dos conteúdos audiovisuais brasileiros, respeitadas as diretrizes da política nacional do cinema e do audiovisual e do Plano Nacional de Cultura.</p>
+                     
+                    <p>A Secretaria do Audiovisual conta com duas unidades: o Centro Técnico Audiovisual (CTAv), localizado no Rio de Janeiro, e a Cinemateca Brasileira, em São Paulo. Possui ainda como competência a fiscalização da execução das metas firmadas entre o Ministério e a Agencia Nacional do Cinema – Ancine.</p>
+                     
+                    <p><strong><a href="http://www.ctav.gov.br/" target="_blank">Centro Técnico Audiovisual (CTAv)</a></strong></p>
+                    <p>O <strong>Centro Técnico Audiovisual (CTAv)</strong> nasceu de um acordo de cooperação técnica, assinado em 1985, entre a Embrafilme e o National Film Board (NFB), do Canadá. O CTAv é vinculado à SAv desde 2003. O Centro atua no apoio ao desenvolvimento da produção audiovisual brasileira e suas ações abrangem a produção, coprodução, difusão, preservação, documentação, pesquisa, produção de conteúdo, disseminação de técnicas do ofício, inovação e empréstimo de tecnologia.</p>
+
+                    <p class="mb-0"><a href="http://cultura.gov.br/sav" targt="_blank" class="btn">Contatos da SAv</a>
+                  </div>
+
+                  <div class="col-sm bio">
+                    <div class="wrapper" style="padding: 30px; border: 1px solid #222;">
+                      <h3>Secretário</h3>
+                      <hr/>
+
+                      <img src="http://www.cultura.gov.br/documents/10883/11290/Frederico+Mascarenhas+-+Secret%C3%A1rio+de+Audiovisual.jpg/359a64ab-bba0-4775-a071-6deb1688caa9?t=1532455601985" />
+
+                      <p>
+                        <strong>Frederico Maia Mascarenhas</strong>
+                        Advogado, é formado em Direito (IBMEC) e possui especializações em Direito do Entretenimento (UERJ) e em Direito do Estado e da Regulação (FGV). Atuava há mais de cinco anos como Consultor Jurídico da Riofilme. O novo secretário tem perfil técnico, vasta experiência em direito administrativo público e amplo conhecimento do setor audiovisual, tendo trabalhado na área (gestão pública relacionada ao audiovisual) nos últimos dez anos.
+                      </p>
+
+                      <p class="mb-0 text-center"><a href="http://cultura.gov.br/sav" targt="_blank" class="btn">Saiba Mais</a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <?php // edit_post_link( __( 'Edit', 'twentyfifteen' ), '<footer class="entry-footer"><span class="edit-link">', '</span></footer><!-- .entry-footer -->' ); ?>
+
+            </article>
+
+          <?php endwhile; ?>
         </div>
       </div>
     </div>
@@ -83,22 +147,7 @@ get_header();
     <div class="container mb-5">
       <div class="col-12 pt-4 pb-4">
           <div id="search-content-wrapper">
-            <h2>O que você esta procurando?</h2>
-            <form id="search-content">
-              <div class="input-wrapper">
-                <input type="text" name="search" placeholder="Buscar" />
-                <button type="submit" class="search"><i class="icon-search"></i></button>
-                <button type="button" class="filter">Filtrar</button>
-              </div>
-
-              <div class="filter-wrapper">
-
-                <label><input type="checkbox" name="andamento" /> Artigos</label>
-                <label><input type="checkbox" name="inscricoes" /> Publicações</label>
-
-                <button type="button" class="apply">Aplicar</button>
-              </div>
-            </form>
+            <h2>Notícias da SAv</h2>
           </div>
 
         <div class="row">
