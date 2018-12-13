@@ -152,40 +152,6 @@ get_header();
 
 <?php endif; ?>
 
-<? /*
-          <?php if ( $news_query->have_posts() ) : ?>
-
-            <?php
-            while ( $news_query->have_posts() ) : $news_query->the_post(); ?>
-
-              <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <header class="entry-header">
-                  <?php the_title( '<h2><a href="'. get_the_permalink() .'">', '</a></h2>' ); ?>
-                </header>
-
-                <div class="entry-content">
-                  <?php the_excerpt(); ?>
-                </div>
-
-                <footer class="entry-footer">
-                  <?php idg_wp_entry_footer(); ?>
-                  <div class="date-box mb-4">
-                    <span>publicado: <?php the_date('d/m/Y'); ?> <?php the_time('H'); ?>h<?php the_time('i'); ?>, última modificação: <?php the_modified_date('d/m/Y'); ?> <?php the_modified_time('H'); ?>h<?php the_modified_time('i'); ?></span>
-                  </div>
-                </footer>
-              </article>
-
-            <?php
-            endwhile;
-
-            the_posts_navigation();
-
-          else :
-
-            get_template_part( 'template-parts/content', 'none' );
-
-          endif;
-          */?>
         </div>
       </div>
     </div>
