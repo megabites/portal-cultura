@@ -40,9 +40,9 @@ get_header();
       </div>
     </div>
 
-    <div id="conteudo-especifico" class="pt-5 pb-5" style="background-color: #19224d; background-image: url(data:image/svg+xml,%3Csvg width='40' height='12' viewBox='0 0 40 12' xmlns=…6z' fill='%23ffffff' fill-opacity='0.01' fill-rule='evenodd'/%3E%3C/svg%3E)">
+    <div id="conteudo-especifico" class="pt-5" style="background-color: #19224d; padding-bottom: 80px; background-image: url("data:image/svg+xml,%3Csvg width='40' height='12' viewBox='0 0 40 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6.172L6.172 0h5.656L0 11.828V6.172zm40 5.656L28.172 0h5.656L40 6.172v5.656zM6.172 12l12-12h3.656l12 12h-5.656L20 3.828 11.828 12H6.172zm12 0L20 10.172 21.828 12h-3.656z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");">
       <div class="container">
-        <h2 class="text-center mb-4">Conteúdo Específico</h2>
+        <h2 class="text-center mb-4" style="color: #FFF;">Conteúdo Específico</h2>
 
           <div class="row">
             <div class="col">
