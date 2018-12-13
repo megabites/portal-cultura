@@ -1,0 +1,28 @@
+.easy-document-box .card-header{
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.easy-document-box .card-title {
+    font-size: 18px;
+    margin: 0;
+}
+
+.easy-document-box .card-subtitle {
+    font-size: 14px;
+    text-transform: uppercase;
+    line-height: 20px;
+}
+
+.easy-document-box .card-text{
+    margin: 0;
+}
+
+.easy-document-box .btn{
+    margin: 15px 0;
+}
+
+.easy-document-box .card-body .b-top {
+    padding-top: 15px;
+    border-top: 1px solid #dfdfdf;
+}
