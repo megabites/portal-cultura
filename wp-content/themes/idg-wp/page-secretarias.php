@@ -40,42 +40,43 @@ get_header();
       </div>
     </div>
 
-    <div class="container">
-      <div id="conteudo-especifico" class="pt-5 pb-5" style="background-color: #19224d; background-image: url(data:image/svg+xml,%3Csvg width='40' height='12' viewBox='0 0 40 12' xmlns=…6z' fill='%23ffffff' fill-opacity='0.01' fill-rule='evenodd'/%3E%3C/svg%3E)">
+    <div id="conteudo-especifico" class="pt-5 pb-5" style="background-color: #19224d; background-image: url(data:image/svg+xml,%3Csvg width='40' height='12' viewBox='0 0 40 12' xmlns=…6z' fill='%23ffffff' fill-opacity='0.01' fill-rule='evenodd'/%3E%3C/svg%3E)">
+      <div class="container">
         <h2 class="text-center mb-4">Conteúdo Específico</h2>
 
-        <div class="row">
-          <div class="col">
-            <div class="feature-card text-center card-1">
-              <a href="http://hmg.cultura.gov.br/acesso-a-informacao/acoes-e-programas/">
-                <div class="align">
-                  <div class="icon icon-acoes-programadas"></div>
-                  <h3 class="card-title">Conteúdo #1</h3>
-                </div>
-              </a>
+          <div class="row">
+            <div class="col">
+              <div class="feature-card text-center card-1">
+                <a href="http://hmg.cultura.gov.br/acesso-a-informacao/acoes-e-programas/">
+                  <div class="align">
+                    <div class="icon icon-acoes-programadas"></div>
+                    <h3 class="card-title">Conteúdo #1</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="feature-card text-center card-1">
+                <a href="http://hmg.cultura.gov.br/acesso-a-informacao/acoes-e-programas/">
+                  <div class="align">
+                    <div class="icon icon-acoes-programadas"></div>
+                    <h3 class="card-title">Conteúdo #2</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="col">
+              <div class="feature-card text-center card-1">
+                <a href="http://hmg.cultura.gov.br/acesso-a-informacao/acoes-e-programas/">
+                  <div class="align">
+                    <div class="icon icon-acoes-programadas"></div>
+                    <h3 class="card-title">Conteúdo #3</h3>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
-          <div class="col">
-            <div class="feature-card text-center card-1">
-              <a href="http://hmg.cultura.gov.br/acesso-a-informacao/acoes-e-programas/">
-                <div class="align">
-                  <div class="icon icon-acoes-programadas"></div>
-                  <h3 class="card-title">Conteúdo #2</h3>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="col">
-            <div class="feature-card text-center card-1">
-              <a href="http://hmg.cultura.gov.br/acesso-a-informacao/acoes-e-programas/">
-                <div class="align">
-                  <div class="icon icon-acoes-programadas"></div>
-                  <h3 class="card-title">Conteúdo #3</h3>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
 
