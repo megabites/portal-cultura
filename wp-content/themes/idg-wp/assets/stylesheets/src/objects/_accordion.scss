@@ -1,5 +1,7 @@
 .accordion {
   .card {
+    border-bottom: 1px solid #dee2e6;
+
     p {
       &:empty {
         display: none !important;

@@ -18,16 +18,22 @@
 
 					<ul class="social-medias">
 						<li class="twitter">
-							<a href="#">Twitter</a>
+							<a href="https://twitter.com/CulturaGovBR" target="_blank">Twitter</a>
 						</li>
 						<li class="youtube">
-							<a href="#">Youtube</a>
+							<a href="http://youtube.com/user/ministeriodacultura" target="_blank">Youtube</a>
 						</li>
 						<li class="facebook">
-							<a href="#">Facebook</a>
+							<a href="http://facebook.com/ministeriodacultura" target="_blank">Facebook</a>
 						</li>
 						<li class="flickr">
-							<a href="#">Flickr</a>
+							<a href="http://flickr.com/photos/ministeriodacultura/" target="_blank">Flickr</a>
+						</li>
+						<li class="instagram">
+							<a href="http://instagram.com/culturagovbr" target="_blank">Instagram</a>
+						</li>
+						<li class="soundcloud">
+							<a href="https://soundcloud.com/culturagovbr" target="_blank">Soundcloud</a>
 						</li>
 					</ul>
 				</div>

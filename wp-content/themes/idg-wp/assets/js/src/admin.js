@@ -46,7 +46,6 @@
 				var clickedButton = $(this);
 
 				wp.media.editor.send.attachment = function(props, attachment){
-					console.log( props, attachment );
 					clickedButton.prev('input').val( attachment.id );
 					clickedButton.parent().find('img.banner-img-preview').attr( 'src', attachment.url );
 					wpWidgets.save( clickedButton.closest('.widget'), 0, 1, 0);

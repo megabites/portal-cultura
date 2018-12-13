@@ -171,6 +171,7 @@
 			};
 
 			$(document).on('change', '.event-categories-selector', getCats );
+			// $(document).on('submit', '#gs-agenda-event-cats-selector', getCats );
 		}
 	};
 })(jQuery);
