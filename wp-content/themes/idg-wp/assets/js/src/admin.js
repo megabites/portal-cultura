@@ -5,10 +5,11 @@
 
 	var admin = {
 		init: function () {
-			this.idgWidgets();
+			this.idgFeatureCardWidgets();
+			this.idgBannersWidgets();
 		},
 
-		idgWidgets: function () {
+		idgFeatureCardWidgets: function () {
 			$(document).on('keyup', '.idg-feature-card-widget .card-title', function () {
 				$(this).closest('.idg-feature-card-widget').find('.card-title').text($(this).val());
 			});
@@ -32,6 +33,37 @@
 			$(document).on('keyup', '.idg-feature-card-widget .card-desc', function () {
 				$(this).closest('.idg-feature-card-widget').find('.card-desc').text($(this).val());
 			});
+		},
+
+		idgBannersWidgets: function () {
+
+			$(document).on('click', '.number-of-banners-input', function (e) {
+				wpWidgets.save( $(this).closest('.widget'), 0, 1, 0);
+			});
+
+			$(document).on('click', '.upload_image_button', function (e) {
+				e.preventDefault();
+				var clickedButton = $(this);
+
+				wp.media.editor.send.attachment = function(props, attachment){
+					clickedButton.prev('input').val( attachment.id );
+					clickedButton.parent().find('img.banner-img-preview').attr( 'src', attachment.url );
+					wpWidgets.save( clickedButton.closest('.widget'), 0, 1, 0);
+				};
+				wp.media.editor.open( clickedButton );
+			});
+
+			$(document).on('click', '.remove-banner-item', function (e) {
+				e.preventDefault();
+				var banners = $(this).closest('.idg-banners-widget'),
+					n = banners.find('.banners-items .banner').length;
+
+				$(this).closest('.banner').addClass('deleting-banner').fadeOut();
+				banners.find('.number-of-banners-input').val( n - 1 );
+				banners.find('.banner.deleting-banner').remove();
+				wpWidgets.save( banners.closest('.widget'), 0, 1, 0);
+			});
+
 		}
 	};
 })(jQuery);

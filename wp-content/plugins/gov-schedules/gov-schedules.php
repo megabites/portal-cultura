@@ -72,6 +72,8 @@ if (!class_exists('Gov_Schedules')) :
 			add_action( 'edited_event-category', array( $this, 'event_category_save_taxonomy_meta_field' ), 10, 2 );
 			add_action( 'create_event-category', array( $this, 'event_category_save_taxonomy_meta_field' ), 10, 2 );
 			add_filter( 'wp_terms_checklist_args', array($this, 'event_categories_filter_based_on_role'), 10, 2 );
+			add_action( 'init', array($this, 'agenda_cats_rewrite'), 10, 0 );
+			add_action( 'parse_query', array($this, 'agenda_cats_rewrite_parse_query') );
 		}
 
 		/**
@@ -95,7 +97,8 @@ if (!class_exists('Gov_Schedules')) :
 					'menu_icon' => 'dashicons-calendar-alt',
 					'rewrite' => array(
 						'slug' => 'agenda'
-					)
+					),
+					'show_in_rest' => true
 				)
 			);
 
@@ -118,6 +121,7 @@ if (!class_exists('Gov_Schedules')) :
 				'show_admin_column'     => true,
 				'query_var'             => true,
 				'rewrite'               => array( 'slug' => 'event-category' ),
+				'show_in_rest'          => true
 			);
 
 			register_taxonomy( 'event-category', 'event', $args );
@@ -622,6 +626,25 @@ if (!class_exists('Gov_Schedules')) :
 				}
 			}
 			return $args;
+		}
+
+		public function agenda_cats_rewrite ()
+		{
+			add_rewrite_tag( '%event_cat%', '([^&]+)' );
+			add_rewrite_rule(
+					'^agenda/(.+)/?$',
+					'index.php?post_type=event&event_cat=$matches[1]',
+					'top'
+			);
+
+			flush_rewrite_rules();
+		}
+
+		public function agenda_cats_rewrite_parse_query ()
+		{
+			if( false !== get_query_var( 'event_cat' ) ){
+				$_GET['event_cat'] = get_query_var( 'event_cat' );
+			}
 		}
 
 	}

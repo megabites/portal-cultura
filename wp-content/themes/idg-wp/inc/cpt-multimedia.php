@@ -39,7 +39,8 @@ function multimedia_custom_type() {
 			'thumbnail',
 			'excerpt',
 			'post-formats'
-		)
+		),
+		'show_in_rest'      => true
 	);
 	register_post_type( 'multimedia', $args );
 	flush_rewrite_rules( true );
@@ -64,7 +65,8 @@ function create_multimedia_taxonomies() {
 			'assign_terms' => 'manage_options',
 		    'edit_terms'   => false,
 		    'manage_terms' => false
-		)
+		),
+		'show_in_rest'          => true
 	);
 
 	register_taxonomy( 'multimedia-type', 'multimedia', $args );
