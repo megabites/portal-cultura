@@ -48,58 +48,19 @@ get_header();
 
       <div class="row">
         <div class="col-12">
-          <?php while ( have_posts() ) : the_post(); ?>
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-              <?php
-                // Post thumbnail.
-                twentyfifteen_post_thumbnail();
-              ?>
+          <?php
+          while ( have_posts() ) :
+            the_post();
 
-              <header class="entry-header">
-                <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-              </header>
+            get_template_part( 'template-parts/content-page', 'page' );
 
-              <div class="entry-content">
-                <div class="row">
-                  <div class="col-lg-7">
-                    <h3>Sobre</h3>
-                    <hr/>
-                    <p>A <strong>Secretaria do Audiovisual do Ministério da Cultura (SAv/MinC)</strong>, então Secretaria para o Desenvolvimento Audiovisual, foi criada pela Lei nº 8.490, de 19 de novembro de 1992, como parte do ressurgimento do Ministério da Cultura, que, em 1990, havia sido transformado em Secretaria da Cultura, diretamente vinculada à Presidência da República.</p>
+            // If comments are open or we have at least one comment, load up the comment template.
+            if ( comments_open() || get_comments_number() ) :
+              comments_template();
+            endif;
 
-                    <p>A SAv/MinC tem como competências a formação, produção inclusiva, regionalização, difusão não-comercial, democratização do acesso e preservação dos conteúdos audiovisuais brasileiros, respeitadas as diretrizes da política nacional do cinema e do audiovisual e do Plano Nacional de Cultura.</p>
-                     
-                    <p>A Secretaria do Audiovisual conta com duas unidades: o Centro Técnico Audiovisual (CTAv), localizado no Rio de Janeiro, e a Cinemateca Brasileira, em São Paulo. Possui ainda como competência a fiscalização da execução das metas firmadas entre o Ministério e a Agencia Nacional do Cinema – Ancine.</p>
-                     
-                    <p><strong><a href="http://www.ctav.gov.br/" target="_blank">Centro Técnico Audiovisual (CTAv)</a></strong></p>
-                    <p>O <strong>Centro Técnico Audiovisual (CTAv)</strong> nasceu de um acordo de cooperação técnica, assinado em 1985, entre a Embrafilme e o National Film Board (NFB), do Canadá. O CTAv é vinculado à SAv desde 2003. O Centro atua no apoio ao desenvolvimento da produção audiovisual brasileira e suas ações abrangem a produção, coprodução, difusão, preservação, documentação, pesquisa, produção de conteúdo, disseminação de técnicas do ofício, inovação e empréstimo de tecnologia.</p>
-
-                    <p class="mb-0"><a href="http://cultura.gov.br/sav" targt="_blank" class="btn">Contatos da SAv</a>
-                  </div>
-
-                  <div class="col-sm bio">
-                    <div class="wrapper" style="padding: 30px; border: 1px solid #222;">
-                      <h3>Secretário</h3>
-                      <hr/>
-
-                      <img src="http://www.cultura.gov.br/documents/10883/11290/Frederico+Mascarenhas+-+Secret%C3%A1rio+de+Audiovisual.jpg/359a64ab-bba0-4775-a071-6deb1688caa9?t=1532455601985" />
-
-                      <p>
-                        <strong>Frederico Maia Mascarenhas</strong>
-                        Advogado, é formado em Direito (IBMEC) e possui especializações em Direito do Entretenimento (UERJ) e em Direito do Estado e da Regulação (FGV). Atuava há mais de cinco anos como Consultor Jurídico da Riofilme. O novo secretário tem perfil técnico, vasta experiência em direito administrativo público e amplo conhecimento do setor audiovisual, tendo trabalhado na área (gestão pública relacionada ao audiovisual) nos últimos dez anos.
-                      </p>
-
-                      <p class="mb-0 text-center"><a href="http://cultura.gov.br/sav" targt="_blank" class="btn">Saiba Mais</a>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-              <?php // edit_post_link( __( 'Edit', 'twentyfifteen' ), '<footer class="entry-footer"><span class="edit-link">', '</span></footer><!-- .entry-footer -->' ); ?>
-
-            </article>
-
-          <?php endwhile; ?>
+          endwhile; // End of the loop.
+          ?>
         </div>
       </div>
     </div>
