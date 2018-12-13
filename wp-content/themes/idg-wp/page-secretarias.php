@@ -41,7 +41,7 @@ get_header();
     </div>
 
     <div class="container">
-      <div id="conteudo-especifico">
+      <div id="conteudo-especifico" class="pt-5 pb-5" style="background-color: #19224d; background-image: url(data:image/svg+xml,%3Csvg width='40' height='12' viewBox='0 0 40 12' xmlns=…6z' fill='%23ffffff' fill-opacity='0.01' fill-rule='evenodd'/%3E%3C/svg%3E)">
         <h2 class="text-center mb-4">Conteúdo Específico</h2>
 
         <div class="row">
