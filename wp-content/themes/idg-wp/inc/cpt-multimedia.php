@@ -65,7 +65,8 @@ function create_multimedia_taxonomies() {
 			'assign_terms' => 'manage_options',
 		    'edit_terms'   => false,
 		    'manage_terms' => false
-		)
+		),
+		'show_in_rest'          => true
 	);
 
 	register_taxonomy( 'multimedia-type', 'multimedia', $args );

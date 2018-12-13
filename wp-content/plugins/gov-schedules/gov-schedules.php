@@ -121,6 +121,7 @@ if (!class_exists('Gov_Schedules')) :
 				'show_admin_column'     => true,
 				'query_var'             => true,
 				'rewrite'               => array( 'slug' => 'event-category' ),
+				'show_in_rest'          => true
 			);
 
 			register_taxonomy( 'event-category', 'event', $args );

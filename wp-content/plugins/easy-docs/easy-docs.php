@@ -115,7 +115,8 @@ if( ! class_exists('EasyDocs') ) :
                     'has_archive' => true,
                     'publicly_queryable' => true,
                     'supports' => array( 'title', 'editor', 'excerpt' ),
-                    'menu_icon' => 'dashicons-media-document'
+                    'menu_icon' => 'dashicons-media-document',
+	                'show_in_rest'      => true
                 )
             );
 
@@ -128,7 +129,8 @@ if( ! class_exists('EasyDocs') ) :
                     'labels' => array(
                         'add_new_item' => 'Adicionar novo tipo',
                         'search_items' => 'Buscar tipo de documento'
-                    )
+                    ),
+	                'show_in_rest' => true
                 )
             );
         }
