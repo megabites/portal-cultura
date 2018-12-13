@@ -185,18 +185,24 @@ get_header();
 
 					<?php endif; ?>
 
-					<div class="col-lg-4">
+					<?php
+					if ( is_active_sidebar( 'multimedia-widgets-area' ) ) :
+						dynamic_sidebar( 'multimedia-widgets-area' );
+					endif;
+					?>
+
+					<!--<div class="col-lg-4">
 						<div class="highlight-box"
-						     style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/default.png')"></div>
+						     style="background-image: url('<?php /*echo get_template_directory_uri(); */?>/assets/img/default.png')"></div>
 					</div>
 					<div class="col-lg-4">
 						<div class="highlight-box"
-						     style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/default.png')"></div>
+						     style="background-image: url('<?php /*echo get_template_directory_uri(); */?>/assets/img/default.png')"></div>
 					</div>
 					<div class="col-lg-4">
 						<div class="highlight-box"
-						     style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/default.png')"></div>
-					</div>
+						     style="background-image: url('<?php /*echo get_template_directory_uri(); */?>/assets/img/default.png')"></div>
+					</div>-->
 				</div>
 			</div>
 		</section>

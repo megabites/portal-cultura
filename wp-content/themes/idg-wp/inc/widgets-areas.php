@@ -64,5 +64,15 @@ function pp_wp_widgets_init() {
 		'before_title'  => '<h4 class="section-title">',
 		'after_title'   => '</h4>',
 	) );
+
+	register_sidebar( array(
+		'name' => esc_html__( 'Multimedia Section', 'idg-wp' ),
+		'id' => 'multimedia-widgets-area',
+		'description'   => esc_html__( 'Add widgets here.', 'idg-wp' ),
+		'before_widget' => '<div id="%1$s" class="container %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="section-title text-center">',
+		'after_title'   => '</h4>',
+	) );
 }
 add_action( 'widgets_init', 'pp_wp_widgets_init' );

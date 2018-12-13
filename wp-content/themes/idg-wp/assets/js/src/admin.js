@@ -36,45 +36,35 @@
 		},
 
 		idgBannersWidgets: function () {
-			function media_upload(button_class) {
-				var _custom_media = true,
-					_orig_send_attachment = wp.media.editor.send.attachment;
 
-				$('body').on('click', button_class, function(e) {
-					var button_id ='#'+$(this).attr('id');
-					var self = $(button_id);
-					var send_attachment_bkp = wp.media.editor.send.attachment;
-					var button = $(button_id);
-					// var id = button.attr('id').replace('_button', '');
-					_custom_media = true;
-					wp.media.editor.send.attachment = function(props, attachment){
-						if ( _custom_media  ) {
-							$('.custom_media_id').val(attachment.id);
-							$('.custom_media_url').val(attachment.url);
-							$('.custom_media_image').attr('src',attachment.url).css('display','block');
-						} else {
-							return _orig_send_attachment.apply( button_id, [props, attachment] );
-						}
-					}
-					wp.media.editor.open(button);
-					return false;
-				});
-			}
-			media_upload('.upload_image_button');
-
-			/* var image_field;
-			$(document).on('click', '.upload_image_button', function(e){
-				image_field = $(this).siblings('.img');
-				tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');
-				return false;
+			$(document).on('click', '.number-of-banners-input', function (e) {
+				wpWidgets.save( $(this).closest('.widget'), 0, 1, 0);
 			});
-			window.send_to_editor = function(html) {
-				imgurl = $('img', html).attr('src');
-				image_field.val(imgurl);
-				tb_remove();
 
-				console.log( image_field.val(imgurl) );
-			}; */
+			$(document).on('click', '.upload_image_button', function (e) {
+				e.preventDefault();
+				var clickedButton = $(this);
+
+				wp.media.editor.send.attachment = function(props, attachment){
+					console.log( props, attachment );
+					clickedButton.prev('input').val( attachment.id );
+					clickedButton.parent().find('img.banner-img-preview').attr( 'src', attachment.url );
+					wpWidgets.save( clickedButton.closest('.widget'), 0, 1, 0);
+				};
+				wp.media.editor.open( clickedButton );
+			});
+
+			$(document).on('click', '.remove-banner-item', function (e) {
+				e.preventDefault();
+				var banners = $(this).closest('.idg-banners-widget'),
+					n = banners.find('.banners-items .banner').length;
+
+				$(this).closest('.banner').addClass('deleting-banner').fadeOut();
+				banners.find('.number-of-banners-input').val( n - 1 );
+				banners.find('.banner.deleting-banner').remove();
+				wpWidgets.save( banners.closest('.widget'), 0, 1, 0);
+			});
+
 		}
 	};
 })(jQuery);

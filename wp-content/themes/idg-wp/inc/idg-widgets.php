@@ -185,27 +185,54 @@ class IDG_Banners extends WP_Widget {
 	}
 
 	public function idg_banner_scripts() {
-		// wp_enqueue_media();
-		wp_enqueue_style('thickbox');
-		wp_enqueue_script('thickbox');
-		wp_enqueue_script('media-upload');
-		// wp_enqueue_script('mfc-media-upload', plugin_dir_url(__FILE__) . 'mfc-media-upload.js', array( 'jquery' )) ;
+		wp_enqueue_style( 'thickbox' );
+		wp_enqueue_script( 'thickbox' );
+		wp_enqueue_script( 'media-upload' );
 	}
 
 	public function widget( $args, $instance ) {
 		echo $args['before_widget'];
 		if ( ! empty( $instance['title'] ) ) {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
-		}
-		echo esc_html__( 'Hello, World!', 'idg-wp' );
+		} ?>
+
+		<div class="row">
+			<?php
+
+			if ( ! empty( $instance['description'] ) ) {
+				echo '<div class="col-12"><p>'. $instance['description'] .'</p></div>';
+			}
+
+			$n = $instance['number_of_banners'] ? intval( $instance['number_of_banners'] ) : 1;
+			for ( $i = 0; $i <= $n; $i ++ ) :
+
+				$col = '';
+				switch ( $instance['columns'][$i] ) {
+					case '3':
+						$col = 'col-lg-12';
+						break;
+					case '2':
+						$col = 'col-lg-6';
+						break;
+					case '1':
+						$col = 'col-lg-4';
+						break;
+				}  ?>
+
+				<div class="<?php echo $col; ?> order-<?php echo $instance['order'][$i]; ?>">
+					<a href="<?php echo $instance['link_url'][$i] ? $instance['link_url'][$i] : '#'; ?>" <?php echo $instance['link_title'][$i] ? 'title="' . $instance['link_title'][$i] . '"' : ''; ?>>
+						<div class="highlight-box" style="background-image: url('<?php echo wp_get_attachment_url( $instance['image'][$i] ); ?>')"></div>
+					</a>
+				</div>
+
+			<?php endfor; ?>
+		</div>
+
+		<?php
 		echo $args['after_widget'];
 	}
 
 	public function form( $instance ) {
-
-		echo '<pre>';
-		var_dump($instance);
-		echo '</pre>';
 
 		$title = '';
 		if ( ! empty( $instance['title'] ) ) {
@@ -224,18 +251,27 @@ class IDG_Banners extends WP_Widget {
 
 		$link_url = '';
 		if ( ! empty( $instance['link_url'] ) ) {
-			$link_url = $instance['link_url'];
+			$link_url = array_values( $instance['link_url'] );
 		}
 
 		$link_title = '';
 		if ( ! empty( $instance['link_title'] ) ) {
-			$link_title = $instance['link_title'];
+			$link_title = array_values( $instance['link_title'] );
+		}
+
+		$columns = '';
+		if ( isset( $instance['columns'] ) ) {
+			$columns = array_values( $instance['columns'] );
+		}
+
+		$order = '';
+		if ( isset( $instance['order'] ) ) {
+			$order = array_values( $instance['order'] );
 		}
 
 		$image = '';
-		if(isset($instance['image']))
-		{
-			$image = $instance['image'];
+		if ( isset( $instance['image'] ) ) {
+			$image = array_values( $instance['image'] );
 		}
 
 		?>
@@ -247,38 +283,49 @@ class IDG_Banners extends WP_Widget {
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_name( 'description' ); ?>"><?php _e( 'Description:' ); ?></label>
+				<label for="<?php echo $this->get_field_name( 'description' ); ?>"><?php _e( 'Description:', 'idg-wp' ); ?></label>
 				<textarea class="widefat" id="<?php echo $this->get_field_id( 'description' ); ?>" name="<?php echo $this->get_field_name( 'description' ); ?>" type="text"><?php echo esc_attr( $description ); ?></textarea>
 			</p>
 
 			<p>
-				<label for="<?php echo $this->get_field_name( 'number_of_banners' ); ?>"><?php _e( 'Quantidade de itens:', 'idg-wp' ); ?></label>
-				<input class="widefat" id="<?php echo $this->get_field_id( 'number_of_banners' ); ?>" name="<?php echo $this->get_field_name( 'number_of_banners' ); ?>" type="number" min="1" value="<?php echo $number_of_banners ? esc_attr( $number_of_banners ) : '1'; ?>"/>
+				<label for="<?php echo $this->get_field_name( 'number_of_banners' ); ?>"><?php _e( 'Quantity of items:', 'idg-wp' ); ?></label>
+				<input class="widefat number-of-banners-input" id="<?php echo $this->get_field_id( 'number_of_banners' ); ?>" name="<?php echo $this->get_field_name( 'number_of_banners' ); ?>" type="number" min="1" value="<?php echo $number_of_banners ? esc_attr( $number_of_banners ) : '1'; ?>"/>
 			</p>
 
 			<div class="banners-items">
-			<?php
-			$n = $number_of_banners ? intval($number_of_banners) : 1;
-			for ($i = 1; $i <= $n; $i++) : ?>
-				<div class="banner">
-					<p><b>Banner #<?php echo $i; ?></b></p>
-					<p>
-						<label for="<?php echo $this->get_field_name( 'link_url' ) . '['. $i .']'; ?>"><?php _e( 'Link URL:' ); ?></label>
-						<input class="widefat" id="<?php echo $this->get_field_id( 'link_url' ) . '['. $i .']'; ?>" name="<?php echo $this->get_field_name( 'link_url' ) . '['. $i .']'; ?>" type="text" value="<?php echo esc_attr( $link_url[$i] ); ?>"/>
-					</p>
+				<?php
+				$n = $number_of_banners ? intval( $number_of_banners ) : 1;
+				for ( $i = 0; $i < $n; $i ++ ) : ?>
+					<div class="banner">
+						<p><b>Banner #<?php echo( $i + 1 ); ?></b> <a href="#" class="remove-banner-item">Excluir</a></p>
+						<p>
+							<label for="<?php echo $this->get_field_name( 'link_url' ) . '[' . $i . ']'; ?>"><?php _e( 'Link URL:' ); ?></label>
+							<input class="widefat" id="<?php echo $this->get_field_id( 'link_url' ) . '[' . $i . ']'; ?>" name="<?php echo $this->get_field_name( 'link_url' ) . '[' . $i . ']'; ?>" type="text" value="<?php echo esc_attr( $link_url[ $i ] ); ?>"/>
+						</p>
 
-					<p>
-						<label for="<?php echo $this->get_field_name( 'link_title' ) . '['. $i .']'; ?>"><?php _e( 'Link Title:' ); ?></label>
-						<input class="widefat" id="<?php echo $this->get_field_id( 'link_title' ) . '['. $i .']'; ?>" name="<?php echo $this->get_field_name( 'link_title' ) . '['. $i .']'; ?>" type="text" value="<?php echo esc_attr( $link_title[$i] ); ?>"/>
-					</p>
+						<p>
+							<label for="<?php echo $this->get_field_name( 'link_title' ) . '[' . $i . ']'; ?>"><?php _e( 'Link Title:' ); ?></label>
+							<input class="widefat" id="<?php echo $this->get_field_id( 'link_title' ) . '[' . $i . ']'; ?>" name="<?php echo $this->get_field_name( 'link_title' ) . '[' . $i . ']'; ?>" type="text" value="<?php echo esc_attr( $link_title[ $i ] ); ?>"/>
+						</p>
 
-					<p>
-						<label for="<?php echo $this->get_field_name( 'image' ) . '['. $i .']'; ?>"><?php _e( 'Image:' ); ?></label>
-						<input name="<?php echo $this->get_field_name( 'image' ) . '['. $i .']'; ?>" id="<?php echo $this->get_field_id( 'image' ) . '['. $i .']'; ?>" class="widefat" type="text" value="<?php echo esc_url( $image[$i] ); ?>" />
-						<input class="upload_image_button" type="button" value="Upload Image" />
-					</p>
-				</div>
-			<?php endfor; ?>
+						<p>
+							<label for="<?php echo $this->get_field_name( 'columns' ) . '[' . $i . ']'; ?>"><?php _e( 'Columns:' ); ?></label>
+							<input class="widefat" id="<?php echo $this->get_field_id( 'columns' ) . '[' . $i . ']'; ?>" name="<?php echo $this->get_field_name( 'columns' ) . '[' . $i . ']'; ?>" type="number" min="1" max="3" value="<?php echo $columns[ $i ] ? esc_attr( $columns[ $i ] ) : '1'; ?>"/>
+						</p>
+
+						<p>
+							<label for="<?php echo $this->get_field_name( 'order' ) . '[' . $i . ']'; ?>"><?php _e( 'Order:' ); ?></label>
+							<input class="widefat" id="<?php echo $this->get_field_id( 'order' ) . '[' . $i . ']'; ?>" name="<?php echo $this->get_field_name( 'order' ) . '[' . $i . ']'; ?>" type="number" min="1" value="<?php echo $order[ $i ] ? esc_attr( $order[ $i ] ) : '1'; ?>"/>
+						</p>
+
+						<p>
+							<label for="<?php echo $this->get_field_name( 'image' ) . '[' . $i . ']'; ?>"><?php _e( 'Image:' ); ?></label>
+							<img class="banner-img-preview" src="<?php echo wp_get_attachment_url( $image[ $i ] ); ?> ">
+							<input name="<?php echo $this->get_field_name( 'image' ) . '[' . $i . ']'; ?>" id="<?php echo $this->get_field_id( 'image' ) . '[' . $i . ']'; ?>" class="widefat hidden" type="text" value="<?php echo $image[ $i ]; ?>"/>
+							<input id="upload_image_button_<?php echo $i; ?>" class="upload_image_button" type="button" value="<?php _e( 'Upload image' ); ?>"/>
+						</p>
+					</div>
+				<?php endfor; ?>
 			</div>
 
 		</div>
@@ -287,17 +334,15 @@ class IDG_Banners extends WP_Widget {
 	}
 
 	public function update( $new_instance, $old_instance ) {
-		/*echo '<pre>';
-		wp_die( var_dump($new_instance) );
-		echo '</pre>';*/
-
-		$instance               = array();
-		$instance['title']      = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
-		$instance['description']      = ( ! empty( $new_instance['description'] ) ) ? sanitize_text_field( $new_instance['description'] ) : '';
-		$instance['number_of_banners']      = ( ! empty( $new_instance['number_of_banners'] ) ) ? sanitize_text_field( $new_instance['number_of_banners'] ) : '';
-		$instance['link_url']   = ( ! empty( $new_instance['title'] ) ) ? $new_instance['link_url']  : '';
-		$instance['link_title'] = ( ! empty( $new_instance['title'] ) ) ? $new_instance['link_title']  : '';
-		$instance['image'] = ( ! empty( $new_instance['image'] ) ) ? $new_instance['image'] : '';
+		$instance                      = array();
+		$instance['title']             = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
+		$instance['description']       = ( ! empty( $new_instance['description'] ) ) ? sanitize_text_field( $new_instance['description'] ) : '';
+		$instance['number_of_banners'] = ( ! empty( $new_instance['number_of_banners'] ) ) ? sanitize_text_field( $new_instance['number_of_banners'] ) : '';
+		$instance['link_url']          = ( ! empty( $new_instance['link_url'] ) ) ? $new_instance['link_url'] : '';
+		$instance['link_title']        = ( ! empty( $new_instance['link_title'] ) ) ? $new_instance['link_title'] : '';
+		$instance['columns']           = ( ! empty( $new_instance['columns'] ) ) ? $new_instance['columns'] : '';
+		$instance['order']             = ( ! empty( $new_instance['order'] ) ) ? $new_instance['order'] : '';
+		$instance['image']             = ( ! empty( $new_instance['image'] ) ) ? $new_instance['image'] : '';
 
 		return $instance;
 	}

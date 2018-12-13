@@ -101,8 +101,36 @@
 
 		.banner {
 			padding-bottom: 5px;
-			border-bottom: 1px solid #555d66;
+			border-bottom: 1px solid #fff;
 			margin-bottom: 5px;
+
+			.banner-img-preview {
+				width: 100%;
+				max-width: 100%;
+			}
+
+			.remove-banner-item {
+				color: #a00;
+				float: right;
+			}
+
+			.upload_image_button {
+				padding: 4px 8px;
+				position: relative;
+				top: -3px;
+				text-decoration: none;
+				border: 1px solid #ccc;
+				border-radius: 2px;
+				background: #f7f7f7;
+				text-shadow: none;
+				font-weight: 600;
+				font-size: 13px;
+				line-height: normal;
+				color: #0073aa;
+				cursor: pointer;
+				outline: 0;
+				margin-top: 5px;
+			}
 		}
 
 	}
