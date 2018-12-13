@@ -44,7 +44,8 @@ get_header();
       </div>
 
       <div id="conteudo-especifico">
-        <h2>Conteúdo Específico
+        <h2>Conteúdo Específico</h2>
+
         <div class="row">
           <div class="col">
             <div class="feature-card text-center card-1">
@@ -106,7 +107,7 @@ get_header();
 
           <?php
 
-          $news_query = array(
+          $args = array(
             'posts_per_page' => 3,
             'category_name'  => 'noticias'
           );
