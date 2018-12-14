@@ -3,6 +3,8 @@
 <?php
 global $post;
 
+$children = get_pages( array( 'child_of' => $post->ID ) );
+
 if ( is_page() && $post->post_parent ) : ?>
   <?php $pageId = $post->post_parent->ID ?>
 
@@ -13,8 +15,6 @@ if ( is_page() && $post->post_parent ) : ?>
   <?php $pageId = $post->post_parent->ID ?>
 
 <?php endif; ?>
-
-<?php // $children = get_pages( array( 'child_of' => $post->ID ) ); ?>
 
 <?php
   $args = array(
