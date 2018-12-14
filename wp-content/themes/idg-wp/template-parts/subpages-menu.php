@@ -5,15 +5,10 @@ global $post;
 
 $children = get_pages( array( 'child_of' => $post->ID ) );
 
-if ( is_page() && $post->post_parent ) : ?>
-  <?php $pageId = $post->post_parent->ID ?>
-
-<?php elseif ( is_page() && count( $children ) > 0 ) : ?>
+<?php if ( is_page() && count( $children ) > 0 ) : ?>
   <?php $pageId = $post->ID ?>
-
-<?php else : ?>
+<?php elseif (is_page() && count( $children ) <= 0) : ?>
   <?php $pageId = $post->post_parent->ID ?>
-
 <?php endif; ?>
 
 <?php
