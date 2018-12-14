@@ -1,8 +1,19 @@
 <?php
+global $post;
+$children = get_pages( array( 'child_of' => $post->ID ) );?>
+
+<?php if ( is_page() && count( $children ) > 0 ) : ?>
+  <?php $pageId = $post->ID; ?>
+<?php else : ?>
+  <?php $pageId = $post->post_parent; ?>
+<?php endif; ?>
+
+<?php
   $args = array(
-    'post_parent' => $post->ID,
+    'post_parent' => $pageId,
     'post_type' => 'page',
-    'orderby' => 'menu_order'
+    'orderby' => 'menu_order',
+    'post__not_in' => array($post->ID)
   );
 
   $child_query = new WP_Query( $args );
