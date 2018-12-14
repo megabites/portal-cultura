@@ -1,22 +1,8 @@
-
-
-<?php
-global $post;
-
-$children = get_pages( array( 'child_of' => $post->ID ) );
-
-<?php if ( is_page() && count( $children ) > 0 ) : ?>
-  <?php $pageId = $post->ID; ?>
-<?php elseif ( is_page() && !count( $children ) ) : ?>
-  <?php $pageId = $post->post_parent->ID; ?>
-<?php endif; ?>
-
 <?php
   $args = array(
-    'post_parent' => $pageId,
+    'post_parent' => $post->ID,
     'post_type' => 'page',
-    'orderby' => 'menu_order',
-    'exclude' => $post->ID
+    'orderby' => 'menu_order'
   );
 
   $child_query = new WP_Query( $args );
