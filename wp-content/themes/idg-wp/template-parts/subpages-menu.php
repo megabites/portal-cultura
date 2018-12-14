@@ -7,7 +7,7 @@ $children = get_pages( array( 'child_of' => $post->ID ) );
 
 <?php if ( is_page() && count( $children ) > 0 ) : ?>
   <?php $pageId = $post->ID ?>
-<?php elseif (is_page() && count( $children ) <= 0) : ?>
+<?php elseif ( is_page() && count( $children ) <= 0 ) : ?>
   <?php $pageId = $post->post_parent->ID ?>
 <?php endif; ?>
 
