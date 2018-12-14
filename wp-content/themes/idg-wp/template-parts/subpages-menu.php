@@ -1,6 +1,21 @@
+
+
+<?php
+global $post;
+
+if ( is_page() && $post->post_parent ) : ?>
+  <?php $pageId = $post->post_parent->ID ?>
+<?php elseif ( is_page() && count( $children ) > 0 ) : ?>
+  <?php $pageId = $post->ID ?>
+<?php else : ?>
+  <?php $pageId = $post->ID ?>
+<?php endif; ?>
+
+<?php // $children = get_pages( array( 'child_of' => $post->ID ) ); ?>
+
 <?php
   $args = array(
-    'post_parent' => $post->ID,
+    'post_parent' => $pageId,
     'post_type' => 'page',
     'orderby' => 'menu_order'
   );
