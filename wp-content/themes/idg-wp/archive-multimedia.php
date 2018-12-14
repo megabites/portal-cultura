@@ -17,7 +17,7 @@ get_header();
 			</div>
 		</div>
 
-		<section id="multimidia" class="mb-3">
+		<section id="multimidia">
 			<header class="page-header">
 				<?php the_archive_title( '<h1 class="page-title text-center mt-1">', '</h1>' ); ?>
 			</header>
