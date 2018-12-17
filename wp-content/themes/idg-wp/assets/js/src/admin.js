@@ -7,6 +7,7 @@
 		init: function () {
 			this.idgFeatureCardWidgets();
 			this.idgBannersWidgets();
+			this.idgBlockInit();
 		},
 
 		idgFeatureCardWidgets: function () {
@@ -64,6 +65,71 @@
 				wpWidgets.save( banners.closest('.widget'), 0, 1, 0);
 			});
 
+		},
+
+		idgBlockInit: function () {
+			var el = wp.element.createElement,
+				registerBlockType = wp.blocks.registerBlockType,
+				RichText = wp.editor.RichText;
+				// blockStyle = { backgroundColor: '#900', color: '#fff', padding: '20px' };
+
+			function checkForAElement(content) {
+				console.log( content );
+				if( content.startsWith('<a') ){
+					console.log( 'already has a' );
+					blockStyle = { backgroundColor: '#f3f4f5' };
+				} else {
+					console.log( 'MISSING a' );
+					blockStyle = { backgroundColor: '#7F0013' };
+				}
+			}
+
+			var blockStyle;
+			registerBlockType( 'gutenberg-boilerplate-es5/idgwp-gutenberg-block-card', {
+				title: 'Feature card block',
+				// icon: 'universal-access-alt',
+				icon: 'paperclip',
+				category: 'widgets',
+				attributes: {
+					content: {
+						type: 'string',
+						source: 'html',
+						selector: 'div',
+					}
+				},
+				edit: function( props ) {
+					var content = props.attributes.content;
+
+					function onChangeContent( newContent ) {
+						props.setAttributes( { content: newContent } );
+
+						checkForAElement( content );
+					}
+
+					return el(
+						RichText,
+						{
+							tagName: 'div',
+							className: props.className,
+							onChange: onChangeContent,
+							value: content,
+							// style: blockStyle
+						}
+					);
+				},
+
+				save: function( props ) {
+					var content = props.attributes.content;
+					// checkForAElement( content );
+					return el( RichText.Content, {
+						tagName: 'div',
+						className: props.className,
+						value: content
+					} );
+				},
+			} );
+
 		}
+		
 	};
 })(jQuery);
