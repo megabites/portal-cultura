@@ -45,8 +45,8 @@ if ( ! function_exists( 'idg_wp_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			// 'main-menu' => esc_html__( 'Main menu', 'idg-wp' ),
 			'featured-links' => esc_html__( 'Featured links', 'idg-wp' ),
+			// 'page-info-menu' => esc_html__( 'Page info support menu', 'idg-wp' ),
 		) );
 
 		/*
@@ -184,6 +184,11 @@ require get_template_directory() . '/inc/bootstrap-pagination.php';
  * Custom post types
  */
 require get_template_directory() . '/inc/cpt-multimedia.php';
+
+/**
+ * Add some shortcode functionalities
+ */
+require get_template_directory() . '/inc/shortcodes.php';
 
 /**
  * Custom callback for outputting comments
