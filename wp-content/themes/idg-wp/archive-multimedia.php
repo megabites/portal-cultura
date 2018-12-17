@@ -17,7 +17,7 @@ get_header();
 			</div>
 		</div>
 
-		<section id="multimidia" class="mb-3">
+		<section id="multimidia">
 			<header class="page-header">
 				<?php the_archive_title( '<h1 class="page-title text-center mt-1">', '</h1>' ); ?>
 			</header>
@@ -67,66 +67,6 @@ get_header();
 				</div>
 			</div>
 		</section>
-
-		<div class="container mb-5">
-			<div class="col-12 pt-4 pb-4">
-          <div id="search-content-wrapper">
-            <h2>O que você esta procurando?</h2>
-            <form id="search-content">
-              <div class="input-wrapper">
-                <input type="text" name="search" placeholder="Buscar" />
-                <button type="submit" class="search"><i class="icon-search"></i></button>
-                <button type="button" class="filter">Filtrar</button>
-              </div>
-
-              <div class="filter-wrapper">
-
-                <label><input type="checkbox" name="andamento" /> Imagens</label>
-                <label><input type="checkbox" name="inscricoes" /> Vídeos</label>
-                <label><input type="checkbox" name="finalizados" /> Áudios</label>
-
-                <button type="button" class="apply">Aplicar</button>
-              </div>
-            </form>
-          </div>
-				<div class="row">
-
-					<?php if ( have_posts() ) : ?>
-
-						<?php
-						while ( have_posts() ) : the_post(); ?>
-
-							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-								<header class="entry-header">
-									<?php the_title( '<h2><a href="'. get_the_permalink() .'">', '</a></h2>' ); ?>
-								</header>
-
-								<div class="entry-content">
-									<?php the_excerpt(); ?>
-								</div>
-
-								<footer class="entry-footer">
-									<?php idg_wp_entry_footer(); ?>
-									<div class="date-box mb-4">
-										<span>publicado: <?php the_date('d/m/Y'); ?> <?php the_time('H'); ?>h<?php the_time('i'); ?>, última modificação: <?php the_modified_date('d/m/Y'); ?> <?php the_modified_time('H'); ?>h<?php the_modified_time('i'); ?></span>
-									</div>
-								</footer>
-							</article>
-
-						<?php
-						endwhile;
-
-						the_posts_navigation();
-
-					else :
-
-						get_template_part( 'template-parts/content', 'none' );
-
-					endif;
-					?>
-				</div>
-			</div>
-		</div>
 
 		<section id="social-media">
 			<div class="container">
@@ -302,6 +242,67 @@ get_header();
 
 			</div>
 		</section>
+
+		<div class="container mb-5">
+			<div class="col-12 pt-4 pb-4">
+          <div id="search-content-wrapper">
+            <h2>O que você esta procurando?</h2>
+            <form id="search-content">
+              <div class="input-wrapper">
+                <input type="text" name="search" placeholder="Buscar" />
+                <button type="submit" class="search"><i class="icon-search"></i></button>
+                <button type="button" class="filter">Filtrar</button>
+              </div>
+
+              <div class="filter-wrapper">
+
+                <label><input type="checkbox" name="andamento" /> Imagens</label>
+                <label><input type="checkbox" name="inscricoes" /> Vídeos</label>
+                <label><input type="checkbox" name="finalizados" /> Áudios</label>
+
+                <button type="button" class="apply">Aplicar</button>
+              </div>
+            </form>
+          </div>
+				<div class="row">
+
+					<?php if ( have_posts() ) : ?>
+
+						<?php
+						while ( have_posts() ) : the_post(); ?>
+
+							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+								<header class="entry-header">
+									<?php the_title( '<h2><a href="'. get_the_permalink() .'">', '</a></h2>' ); ?>
+								</header>
+
+								<div class="entry-content">
+									<?php the_excerpt(); ?>
+								</div>
+
+								<footer class="entry-footer">
+									<?php idg_wp_entry_footer(); ?>
+									<div class="date-box mb-4">
+										<span>publicado: <?php the_date('d/m/Y'); ?> <?php the_time('H'); ?>h<?php the_time('i'); ?>, última modificação: <?php the_modified_date('d/m/Y'); ?> <?php the_modified_time('H'); ?>h<?php the_modified_time('i'); ?></span>
+									</div>
+								</footer>
+							</article>
+
+						<?php
+						endwhile;
+
+						the_posts_navigation();
+
+					else :
+
+						get_template_part( 'template-parts/content', 'none' );
+
+					endif;
+					?>
+				</div>
+			</div>
+		</div>
+
 	</main>
 
 <?php

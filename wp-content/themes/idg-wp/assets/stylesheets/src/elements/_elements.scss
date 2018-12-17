@@ -279,3 +279,17 @@ body.page {
 	}
 
 }
+
+.wp-block-columns {
+	margin-top: 62px;
+
+	.wp-block-column {
+		.feature-card {
+			margin-top: 62px;
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+	}
+}
