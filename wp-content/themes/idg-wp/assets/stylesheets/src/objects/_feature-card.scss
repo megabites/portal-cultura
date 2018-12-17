@@ -16,6 +16,11 @@
 		&[target="_blank"] {
 			background: url('../../img/external-link.svg') no-repeat;
 			background-position: right 10px top 10px;
+
+			&.btn {
+				background-position: right 10px center;
+				background-size: 20px;
+			}
 		}
 	}
 
