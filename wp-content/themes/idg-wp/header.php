@@ -29,7 +29,7 @@
 
 <body <?php body_class(); ?>>
 
-<a class="skip-link sr-only" href="#content">
+<a class="skip-link sr-only" href="#main">
     <?php esc_html_e( 'Skip to content', 'idg-wp' ); ?>
 </a>
 

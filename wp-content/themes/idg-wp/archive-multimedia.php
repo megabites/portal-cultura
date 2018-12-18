@@ -24,7 +24,7 @@ get_header();
 
 			<div class="container">
 				<div class="row">
-					<?php get_template_part('template-parts/multimedia-block'); ?>
+					<?php get_template_part( 'template-parts/multimedia-block' ); ?>
 				</div>
 			</div>
 		</section>
@@ -39,7 +39,7 @@ get_header();
 								<div class="align">
 									<div class="icon">
 										<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-											 viewBox="0 0 486.392 486.392" style="enable-background:new 0 0 486.392 486.392;" xml:space="preserve"><path style="fill:#010002;" d="M243.196,0C108.891,0,0,108.891,0,243.196s108.891,243.196,243.196,243.196
+										     viewBox="0 0 486.392 486.392" style="enable-background:new 0 0 486.392 486.392;" xml:space="preserve"><path style="fill:#010002;" d="M243.196,0C108.891,0,0,108.891,0,243.196s108.891,243.196,243.196,243.196
 														s243.196-108.891,243.196-243.196C486.392,108.861,377.501,0,243.196,0z M306.062,243.165l-39.854,0.03l-0.03,145.917h-54.689
 														V243.196H175.01v-50.281l36.479-0.03l-0.061-29.609c0-41.039,11.126-65.997,59.431-65.997h40.249v50.311h-25.171
 														c-18.817,0-19.729,7.022-19.729,20.124l-0.061,25.171h45.234L306.062,243.165z"/>
@@ -57,7 +57,7 @@ get_header();
 								<div class="align">
 									<div class="icon">
 										<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-											 viewBox="0 0 468.792 468.792" style="enable-background:new 0 0 468.792 468.792;" xml:space="preserve">
+										     viewBox="0 0 468.792 468.792" style="enable-background:new 0 0 468.792 468.792;" xml:space="preserve">
 												<g>
 													<path style="fill:#090509;" d="M234.396,0C104.946,0,0,104.946,0,234.396s104.946,234.396,234.396,234.396
 														s234.396-104.946,234.396-234.396C468.792,104.914,363.846,0,234.396,0z M380.881,370.329c0,5.816-4.736,10.552-10.615,10.552
@@ -82,7 +82,7 @@ get_header();
 								<div class="align">
 									<div class="icon">
 										<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-											 viewBox="0 0 486.392 486.392" style="enable-background:new 0 0 486.392 486.392;" xml:space="preserve">
+										     viewBox="0 0 486.392 486.392" style="enable-background:new 0 0 486.392 486.392;" xml:space="preserve">
 													<g>
 														<path style="fill:#010002;" d="M243.196,0C108.891,0,0,108.891,0,243.196s108.891,243.196,243.196,243.196
 															s243.196-108.891,243.196-243.196C486.392,108.861,377.501,0,243.196,0z M392.609,297.641
@@ -107,8 +107,8 @@ get_header();
 								<div class="align">
 									<div class="icon">
 										<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-											  viewBox="0 0 97.75 97.75" style="enable-background:new 0 0 97.75 97.75;" xml:space="preserve"
-											>
+										     viewBox="0 0 97.75 97.75" style="enable-background:new 0 0 97.75 97.75;" xml:space="preserve"
+										>
 											<g>
 												<path d="M48.875,0C21.883,0,0,21.882,0,48.875S21.883,97.75,48.875,97.75S97.75,75.868,97.75,48.875S75.867,0,48.875,0z
 													 M28.277,66.361c-8.895,0-16.105-7.828-16.105-17.486s7.211-17.487,16.105-17.487s16.106,7.829,16.106,17.487
@@ -129,8 +129,8 @@ get_header();
 								<div class="align">
 									<div class="icon">
 										<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-											 viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;"
-											 xml:space="preserve">
+										     viewBox="0 0 49.652 49.652" style="enable-background:new 0 0 49.652 49.652;"
+										     xml:space="preserve">
 											<g>
 												<path d="M24.826,0C11.137,0,0,11.137,0,24.826c0,13.688,11.137,24.826,24.826,24.826c13.688,0,24.826-11.138,24.826-24.826
 													C49.652,11.137,38.516,0,24.826,0z M35.901,19.144c0.011,0.246,0.017,0.494,0.017,0.742c0,7.551-5.746,16.255-16.259,16.255
@@ -159,9 +159,9 @@ get_header();
 									<div class="icon">
 
 										<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-											 width="97.75px" height="97.75px" viewBox="0 0 97.75 97.75" style="enable-background:new 0 0 97.75 97.75;" xml:space="preserve"
-											><g>
-											<path d="M48.875,0C21.883,0,0,21.882,0,48.875S21.883,97.75,48.875,97.75S97.75,75.868,97.75,48.875S75.867,0,48.875,0z
+										     width="97.75px" height="97.75px" viewBox="0 0 97.75 97.75" style="enable-background:new 0 0 97.75 97.75;" xml:space="preserve"
+										><g>
+												<path d="M48.875,0C21.883,0,0,21.882,0,48.875S21.883,97.75,48.875,97.75S97.75,75.868,97.75,48.875S75.867,0,48.875,0z
 												 M7.739,62.171C7.712,62.364,7.573,62.5,7.399,62.5c-0.175,0-0.315-0.136-0.339-0.331l-0.621-4.633l0.621-4.713
 												c0.023-0.196,0.164-0.333,0.339-0.333c0.174,0,0.313,0.136,0.34,0.33l0.736,4.717L7.739,62.171z M10.893,64.991
 												c-0.03,0.2-0.176,0.342-0.354,0.342c-0.18,0-0.328-0.144-0.353-0.343l-0.834-7.454l0.834-7.622
@@ -192,7 +192,7 @@ get_header();
 												c0,0-28.909,0.003-28.937,0c-0.625-0.062-1.121-0.559-1.127-1.198c0,0,0-33.131,0-33.132c0.006-0.609,0.215-0.922,1.004-1.227
 												c2.025-0.785,4.322-1.248,6.676-1.248c9.627,0,17.515,7.38,18.347,16.787c1.242-0.52,2.606-0.81,4.037-0.81
 												c5.767,0,10.438,4.674,10.438,10.439C91.311,62.626,86.639,67.25,80.872,67.25z"/>
-										</g></svg>
+											</g></svg>
 									</div>
 									<span>Soundcloud</span>
 								</div>
@@ -206,35 +206,65 @@ get_header();
 
 		<div class="container mb-5">
 			<div class="col-12 pt-4 pb-4">
-          <div id="search-content-wrapper">
-            <h2>O que você esta procurando?</h2>
-            <form id="search-content">
-              <div class="input-wrapper">
-                <input type="text" name="search" placeholder="Buscar" />
-                <button type="submit" class="search"><i class="icon-search"></i></button>
-                <button type="button" class="filter">Filtrar</button>
-              </div>
 
-              <div class="filter-wrapper">
+				<?php get_template_part( 'template-parts/searchform-archive-multimedia' ); ?>
 
-                <label><input type="checkbox" name="andamento" /> Imagens</label>
-                <label><input type="checkbox" name="inscricoes" /> Vídeos</label>
-                <label><input type="checkbox" name="finalizados" /> Áudios</label>
+				<?php if ( empty( $_GET['ms'] ) ) : ?>
 
-                <button type="button" class="apply">Aplicar</button>
-              </div>
-            </form>
-          </div>
-				<div class="row">
+					<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-					<?php if ( have_posts() ) : ?>
+						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+							<header class="entry-header">
+								<?php the_title( '<h2><a href="' . get_the_permalink() . '">', '</a></h2>' ); ?>
+							</header>
 
-						<?php
-						while ( have_posts() ) : the_post(); ?>
+							<div class="entry-content">
+								<?php the_excerpt(); ?>
+							</div>
 
+							<footer class="entry-footer">
+								<?php idg_wp_entry_footer(); ?>
+								<div class="date-box mb-4">
+									<span>publicado: <?php the_date( 'd/m/Y' ); ?> <?php the_time( 'H' ); ?>h<?php the_time( 'i' ); ?>, última modificação: <?php the_modified_date( 'd/m/Y' ); ?> <?php the_modified_time( 'H' ); ?>h<?php the_modified_time( 'i' ); ?></span>
+								</div>
+							</footer>
+						</article>
+
+					<?php endwhile;
+						the_posts_navigation();
+					else :
+						get_template_part( 'template-parts/content', 'none' );
+					endif; ?>
+
+				<?php else: ?>
+					<span id="multimedia-content" class="sr-only">Conteúdo principal</span>
+					<?php
+					// $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+					$paged = ( ! empty( $_GET['page'] ) ) ? $_GET['page'] : 1;
+
+					$args = array(
+						's'              => $_GET['ms'],
+						'paged'          => $paged,
+						'post_type'      => 'multimedia',
+					);
+
+					if ( ! empty( $_GET['mt'] ) ) {
+						$args['tax_query'] = array(
+							array(
+								'taxonomy' => 'multimedia-type',
+								'field'    => 'slug',
+								'terms'    => $_GET['mt'],
+							),
+						);
+					}
+
+					$search = new WP_Query( $args );
+
+					if ( $search->have_posts() ) :
+						while ( $search->have_posts() ) : $search->the_post(); ?>
 							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 								<header class="entry-header">
-									<?php the_title( '<h2><a href="'. get_the_permalink() .'">', '</a></h2>' ); ?>
+									<?php the_title( '<h2><a href="' . get_the_permalink() . '">', '</a></h2>' ); ?>
 								</header>
 
 								<div class="entry-content">
@@ -244,23 +274,43 @@ get_header();
 								<footer class="entry-footer">
 									<?php idg_wp_entry_footer(); ?>
 									<div class="date-box mb-4">
-										<span>publicado: <?php the_date('d/m/Y'); ?> <?php the_time('H'); ?>h<?php the_time('i'); ?>, última modificação: <?php the_modified_date('d/m/Y'); ?> <?php the_modified_time('H'); ?>h<?php the_modified_time('i'); ?></span>
+										<span>publicado: <?php the_date( 'd/m/Y' ); ?> <?php the_time( 'H' ); ?>h<?php the_time( 'i' ); ?>, última modificação: <?php the_modified_date( 'd/m/Y' ); ?> <?php the_modified_time( 'H' ); ?>h<?php the_modified_time( 'i' ); ?></span>
 									</div>
 								</footer>
 							</article>
+						<?php endwhile;
+						wp_reset_postdata();
 
-						<?php
-						endwhile;
+						if ( $search->max_num_pages > 1 ): ?>
+							<nav class="text-center" aria-label="navigation">
+								<ul class="pagination justify-content-center">
+									<?php
+									$search_str = '/?ms=' . $_GET['ms'];
+									$search_str = ( ! empty( $_GET['mt'] ) ) ? $search_str . '&mt=' . $_GET['mt'] : $search_str;
+									if ( $paged <= 1 ):?>
+										<li class="page-item disabled"><a href="#" class="page-link" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+									<?php else: ?>
+										<li><a href="<?php echo home_url( '/multimedia' . $search_str . '&page=' . ( $paged - 1 ) ); ?>" aria-label="Previous" class="page-link"><span aria-hidden="true">«</span></a></li>
+									<?php endif;
 
-						the_posts_navigation();
+									for ( $i = 1; $i <= $search->max_num_pages; $i ++ ): ?>
+										<li class="page-item <?php echo ( $paged == $i ) ? 'active' : ''; ?>"><a href="<?php echo home_url( '/multimedia/' . $search_str . '&page=' . $i ); ?>" class="page-link"><?php echo $i; ?></a></li>
+									<?php endfor;
 
-					else :
+									if ( $paged != $search->max_num_pages ):?>
+										<li><a href="<?php echo home_url( '/multimedia' . $search_str . '&page=' . ( $paged + 1 ) ); ?>" aria-label="Next" class="page-link"><span aria-hidden="true">»</span></a></li>
+									<?php else: ?>
+										<li class="page-item disabled"><a href="#" aria-label="Next" class="page-link"><span aria-hidden="true">»</span></a></li>
+									<?php endif; ?>
+								</ul>
+							</nav>
+						<?php endif;
 
+					else:
 						get_template_part( 'template-parts/content', 'none' );
-
 					endif;
-					?>
-				</div>
+
+				endif; ?>
 			</div>
 		</div>
 
