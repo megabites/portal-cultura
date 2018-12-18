@@ -107,12 +107,11 @@ get_header();
 
     <div class="container mt-4">
       <div class="col-12 pt-4 pb-4">
-          <div id="search-content-wrapper">
-            <h2>Notícias da SAv</h2>
-          </div>
+        <div id="search-content-wrapper">
+          <h2>Notícias da SAv</h2>
+        </div>
 
         <div class="row">
-
           <?php
 
           $args = array(
@@ -122,47 +121,45 @@ get_header();
 
           $news_query = new WP_Query( $args ); ?>
 
+          <?php if ($news_query->have_posts()) : ?>
+            <ul id="posts-list">
 
-<?php if ($news_query->have_posts()) : ?>
-  <ul id="posts-list">
+              <?php while ($news_query->have_posts()) : ?>
+                <?php $news_query->the_post(); ?>
 
-    <?php while ($news_query->have_posts()) : ?>
-      <?php $news_query->the_post(); ?>
+                <li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                  <div class="categories"><?php the_category(', '); ?></div>
 
-      <li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-        <div class="categories"><?php the_category(', '); ?></div>
+                  <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                  <p><?php echo idg_excerpt(); ?></p>
 
-        <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-        <p><?php echo idg_excerpt(); ?></p>
+                  <?php if (get_the_tags()) : ?>
+                    <div class="tags-list">
+                      <?php the_tags('<span>tags:</span>', ''); ?>
+                    </div>
+                  <?php endif; ?>
 
-        <?php if (get_the_tags()) : ?>
-          <div class="tags-list">
-            <?php the_tags('<span>tags:</span>', ''); ?>
-          </div>
-        <?php endif; ?>
+                  <span class="details">
+                    por <?php the_author_posts_link(); ?>
+                    última modificação em <?php the_modified_date('d/m/Y'); ?> <?php the_modified_time('H'); ?>
+                    h<?php the_modified_time('i'); ?>
+                  </span>
+                </li>
 
-        <span class="details">
-          por <?php the_author_posts_link(); ?>
-          última modificação em <?php the_modified_date('d/m/Y'); ?> <?php the_modified_time('H'); ?>
-          h<?php the_modified_time('i'); ?>
-        </span>
-      </li>
+              <?php endwhile; ?>
 
-    <?php endwhile; ?>
-
-    <?php if ( function_exists('wp_bootstrap_pagination') ){
-      wp_bootstrap_pagination();
-    }; ?>
+              <?php if ( function_exists('wp_bootstrap_pagination') ){
+                wp_bootstrap_pagination();
+              }; ?>
 
 
-  </ul>
+            </ul>
 
-<?php else : ?>
+          <?php else : ?>
 
-  <?php get_template_part('template-parts/content', 'none'); ?>
+            <?php get_template_part('template-parts/content', 'none'); ?>
 
-<?php endif; ?>
-
+          <?php endif; ?>
         </div>
       </div>
     </div>
