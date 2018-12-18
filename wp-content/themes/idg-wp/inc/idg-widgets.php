@@ -228,7 +228,7 @@ class IDG_Banners extends WP_Widget {
 			}
 
 			$n = $instance['number_of_banners'] ? intval( $instance['number_of_banners'] ) : 1;
-			for ( $i = 0; $i <= $n; $i ++ ) :
+			for ( $i = 0; $i < $n; $i ++ ) :
 
 				$col = '';
 				switch ( $instance['columns'][ $i ] ) {
@@ -241,7 +241,10 @@ class IDG_Banners extends WP_Widget {
 					case '1':
 						$col = 'col-lg-4';
 						break;
-				} ?>
+				}
+				// TODO
+				$col = 'col';
+				?>
 
 				<div class="<?php echo $col; ?> order-<?php echo $instance['order'][ $i ]; ?>">
 					<a href="<?php echo $instance['link_url'][ $i ] ? $instance['link_url'][ $i ] : '#'; ?>" <?php echo $instance['link_title'][ $i ] ? 'title="' . $instance['link_title'][ $i ] . '"' : ''; ?>>

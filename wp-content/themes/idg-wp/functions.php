@@ -298,3 +298,47 @@ function remove_label_from_archive_title ($title) {
 	return $title;
 }
 add_filter( 'get_the_archive_title', 'remove_label_from_archive_title' );
+
+
+function get_first_post_image() {
+	global $post, $posts;
+	$first_img = '';
+	ob_start();
+	ob_end_clean();
+	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+	$first_img = $matches[1][0];
+
+	if(empty($first_img)) {
+		$first_img = "/path/to/default.png";
+	}
+	return $first_img;
+}
+
+function embeded_youtube_video_id($url) {
+	global $posts;
+	//preg_match('|http://www.youtube.com/watch?v=([a-zA-Z0-9]+)|', $posts->post_content, $matches);
+	// preg_match('http://w?w?w?.?youtube.com/watch\?v=([A-Za-z0-9\-_]+)#s', $post_content, $matches);
+
+	if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
+		$video_id = $match[1];
+	} else {
+		$video_id = false;
+	}
+
+	return $video_id;
+
+	if (!empty($matches[1])) {
+
+		var_dump( $post_content );
+
+		$post_content = '<object width="415" height="250">';
+		$post_content .= '<param name="movie" value="http://www.youtube.com/v/' . $matches[1] . '&hl=en_US&fs=1&"></param>';
+		$post_content .= '<param name="allowFullScreen" value="true"></param>';
+		$post_content .= '<param name="allowscriptaccess" value="always"></param>';
+		$post_content .= '<embed src="http://www.youtube.com/v/' . $matches[1] . '&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="415" height="250"></embed>';
+		$post_content .= '</object>';
+		$post_content = $post_content;
+
+	}
+	return $post_content;
+}

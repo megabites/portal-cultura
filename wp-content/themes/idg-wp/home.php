@@ -158,13 +158,30 @@ get_header();
 
 						<?php while ( $multimedia_query->have_posts() ) : $multimedia_query->the_post(); ?>
 							<?php
+							$taxonomy_names = wp_get_post_terms(get_the_ID(), 'multimedia-type');
+
 							if ( has_post_thumbnail() ) {
-								$post_thumb = get_the_post_thumbnail_url();
+								$multimedia_thumb = get_the_post_thumbnail_url();
 							} else {
-								$post_thumb = get_template_directory_uri() . '/assets/img/video-thumb.png';
+								/* echo get_first_post_image();
+								$x = get_post_gallery_images();
+								print_r($x); */
+
+								if( $taxonomy_names[0]->slug == 'video' ):
+									$video_id = embeded_youtube_video_id( get_the_content() );
+
+									if( $video_id ){
+										$multimedia_thumb = 'https://img.youtube.com/vi/'. $video_id .'/maxresdefault.jpg';
+									} else {
+										$multimedia_thumb = get_template_directory_uri() . '/assets/img/media-'. $taxonomy_names[0]->slug .'-thumb.png';
+									}
+
+								else:
+									$multimedia_thumb = get_template_directory_uri() . '/assets/img/media-'. $taxonomy_names[0]->slug .'-thumb.png';
+								endif;
 							}
 							?>
-							<div class="highlight" style="background-image: url('<?php echo $post_thumb; ?>');">
+							<div class="highlight" style="background-image: url('<?php echo $multimedia_thumb; ?>');">
 								<a href="<?php the_permalink(); ?>">
 									<h3><?php the_title(); ?></h3>
 									<?php echo idg_excerpt(30); ?>
@@ -181,19 +198,6 @@ get_header();
 						dynamic_sidebar( 'multimedia-widgets-area' );
 					endif;
 					?>
-
-					<!--<div class="col-lg-4">
-						<div class="highlight-box"
-						     style="background-image: url('<?php /*echo get_template_directory_uri(); */?>/assets/img/default.png')"></div>
-					</div>
-					<div class="col-lg-4">
-						<div class="highlight-box"
-						     style="background-image: url('<?php /*echo get_template_directory_uri(); */?>/assets/img/default.png')"></div>
-					</div>
-					<div class="col-lg-4">
-						<div class="highlight-box"
-						     style="background-image: url('<?php /*echo get_template_directory_uri(); */?>/assets/img/default.png')"></div>
-					</div>-->
 				</div>
 			</div>
 		</section>
