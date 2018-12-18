@@ -43,6 +43,15 @@
 		.icon:before {
 			color: #06ACFF;
 		}
+
+		.btn {
+			border-color: #06ACFF;
+			color: #06ACFF;
+		}
+	}
+
+	.btn {
+		background: transparent;
 	}
 
 	&.static-height {
@@ -66,9 +75,9 @@
 	.card-title {
 		@include transition(all ease-in-out .2s);
 
-		font-size: 1.2rem;
+		font-size: 1.1rem;
 		font-weight: 700;
-		margin: 0;
+		margin: 0 0 5px;
 		position: relative;
 
 		a {

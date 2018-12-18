@@ -27,9 +27,9 @@ class Feature_Card extends WP_Widget {
 
 		<div class="feature-card text-center <?php echo ! empty( $instance['card-model'] ) ? $instance['card-model'] : ''; ?>">
 
-			<?php if ( $instance['card-model'] !== 'card-3' ){ ?>
+			<?php// if ( $instance['card-model'] !== 'card-3' ){ ?>
 			<a href="<?php echo ! empty( $instance['link'] ) ? $instance['link'] : ''; ?>" <?php echo ! empty( $instance['target'] ) ? 'target="_blank"' : ''; ?>>
-				<?php } ?>
+				<?php// } ?>
 
 				<div class="align">
 					<div class="icon <?php echo $instance['icon']; ?>">
@@ -46,13 +46,13 @@ class Feature_Card extends WP_Widget {
 					<?php endif; ?>
 
 					<?php if ( $instance['card-model'] === 'card-3' ): ?>
-						<a class="card-btn btn" href="<?php echo ! empty( $instance['link'] ) ? $instance['link'] : ''; ?>" <?php echo ! empty( $instance['target'] ) ? 'target="_blank"' : ''; ?>><?php echo $instance['btn-text']; ?></a>
+						<button type="button" class="card-btn btn"><?php echo $instance['btn-text']; ?></button>
 					<?php endif; ?>
 				</div>
 
-				<?php if ( $instance['card-model'] !== 'card-3' ){ ?>
+				<?php // if ( $instance['card-model'] !== 'card-3' ){ ?>
 			</a>
-		<?php } ?>
+		<?php // } ?>
 
 		</div>
 
