@@ -147,53 +147,7 @@ get_header();
 		<section class="mt-5" id="multimidia">
 			<div class="container">
 				<div class="row">
-					<?php
-					$args      = array(
-						'post_type'  => 'multimedia',
-						'posts_per_page' => 1,
-					);
-					$multimedia_query = new WP_Query( $args ); ?>
-
-					<?php if ( $multimedia_query->have_posts() ) : ?>
-
-						<?php while ( $multimedia_query->have_posts() ) : $multimedia_query->the_post(); ?>
-							<?php
-							if ( has_post_thumbnail() ) {
-								$post_thumb = get_the_post_thumbnail_url();
-							} else {
-								$post_thumb = get_template_directory_uri() . '/assets/img/video-thumb.png';
-							}
-							?>
-							<div class="highlight" style="background-image: url('<?php echo $post_thumb; ?>');">
-								<a href="<?php the_permalink(); ?>">
-									<h3><?php the_title(); ?></h3>
-									<?php echo idg_excerpt(30); ?>
-								</a>
-							</div>
-						<?php endwhile; ?>
-
-						<?php wp_reset_postdata(); ?>
-
-					<?php endif; ?>
-
-					<?php
-					if ( is_active_sidebar( 'multimedia-widgets-area' ) ) :
-						dynamic_sidebar( 'multimedia-widgets-area' );
-					endif;
-					?>
-
-					<!--<div class="col-lg-4">
-						<div class="highlight-box"
-						     style="background-image: url('<?php /*echo get_template_directory_uri(); */?>/assets/img/default.png')"></div>
-					</div>
-					<div class="col-lg-4">
-						<div class="highlight-box"
-						     style="background-image: url('<?php /*echo get_template_directory_uri(); */?>/assets/img/default.png')"></div>
-					</div>
-					<div class="col-lg-4">
-						<div class="highlight-box"
-						     style="background-image: url('<?php /*echo get_template_directory_uri(); */?>/assets/img/default.png')"></div>
-					</div>-->
+					<?php get_template_part('template-parts/multimedia-block'); ?>
 				</div>
 			</div>
 		</section>
