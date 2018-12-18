@@ -25,3 +25,19 @@
 		border-color: #fff;
 	}
 }
+
+.edit-link {
+	display: block;
+	text-align: right;
+
+	a {
+		border: none;
+		display: inline-block;
+		background: #363636;
+		padding: 5px 15px;
+		border-radius: 40px;
+		color: #fff;
+		margin-bottom: 15px;
+		font-size: 0.8rem;
+	}
+}
