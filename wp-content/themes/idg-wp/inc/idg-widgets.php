@@ -32,7 +32,11 @@ class Feature_Card extends WP_Widget {
 				<?php } ?>
 
 				<div class="align">
-					<div class="icon <?php echo $instance['icon']; ?>"></div>
+					<div class="icon <?php echo $instance['icon']; ?>">
+						<?php if( $instance['icon'] === 'upload-custom-icon' ): ?>
+							<img class="custom-icon-preview" src="<?php echo wp_get_attachment_url( $instance['custom-icon'] ); ?> ">
+						<?php endif; ?>
+					</div>
 					<h3 class="card-title">
 						<?php echo ! empty( $instance['title'] ) ? $instance['title'] : ''; ?>
 					</h3>
@@ -42,7 +46,7 @@ class Feature_Card extends WP_Widget {
 					<?php endif; ?>
 
 					<?php if ( $instance['card-model'] === 'card-3' ): ?>
-						<a class="card-btn btn" href="<?php echo ! empty( $instance['link'] ) ? $instance['link'] : ''; ?>" <?php echo ! empty( $instance['target'] ) ? 'target="_blank"' : ''; ?>>Acesse</a>
+						<a class="card-btn btn" href="<?php echo ! empty( $instance['link'] ) ? $instance['link'] : ''; ?>" <?php echo ! empty( $instance['target'] ) ? 'target="_blank"' : ''; ?>><?php echo $instance['btn-text']; ?></a>
 					<?php endif; ?>
 				</div>
 
@@ -57,12 +61,14 @@ class Feature_Card extends WP_Widget {
 	}
 
 	public function form( $instance ) {
-		$title      = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Feature Card', 'idg-wp' );
-		$link       = ! empty( $instance['link'] ) ? $instance['link'] : '';
-		$target     = ! empty( $instance['target'] ) ? $instance['target'] : '';
-		$icon       = ! empty( $instance['icon'] ) ? $instance['icon'] : '';
-		$card_model = ! empty( $instance['card-model'] ) ? $instance['card-model'] : '';
-		$desc       = ! empty( $instance['desc'] ) ? $instance['desc'] : esc_html__( 'Card description text', 'idg-wp' ); ?>
+		$title       = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Feature Card', 'idg-wp' );
+		$link        = ! empty( $instance['link'] ) ? $instance['link'] : '';
+		$target      = ! empty( $instance['target'] ) ? $instance['target'] : '';
+		$icon        = ! empty( $instance['icon'] ) ? $instance['icon'] : '';
+		$custom_icon = ! empty( $instance['custom-icon'] ) ? $instance['custom-icon'] : '';
+		$card_model  = ! empty( $instance['card-model'] ) ? $instance['card-model'] : '';
+		$desc        = ! empty( $instance['desc'] ) ? $instance['desc'] : esc_html__( 'Card description text', 'idg-wp' );
+		$btn_text    = ! empty( $instance['btn-text'] ) ? $instance['btn-text'] : esc_html__( 'Acess', 'idg-wp' ); ?>
 		<div class="idg-feature-card-widget">
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'idg-wp' ); ?></label>
@@ -119,7 +125,14 @@ class Feature_Card extends WP_Widget {
 					<option <?php echo $icon == 'icon-apoio' ? 'selected' : ''; ?> value="icon-apoio">apoio</option>
 					<option <?php echo $icon == 'icon-lei-rouanet' ? 'selected' : ''; ?> value="icon-lei-rouanet">lei-rouanet</option>
 					<option <?php echo $icon == 'icon-snc' ? 'selected' : ''; ?> value="icon-snc">snc</option>
+					<option <?php echo $icon == 'upload-custom-icon' ? 'selected' : ''; ?> value="upload-custom-icon">personalizado</option>
 				</select>
+			</p>
+
+			<p class="card-desc-wrapper custom-icon <?php echo $icon !== 'upload-custom-icon' ? 'hidden' : ''; ?>">
+				<label for="<?php echo $this->get_field_name( 'custom-icon' ); ?>"><?php _e( 'Image:', 'idg-wp' ); ?></label>
+				<input name="<?php echo $this->get_field_name( 'custom-icon' ); ?>" id="<?php echo $this->get_field_id( 'custom-icon' ); ?>" class="widefat hidden" type="text" value="<?php echo $custom_icon; ?>"/>
+				<input class="upload_image_button" type="button" value="<?php _e( 'Upload image', 'idg-wp' ); ?>"/>
 			</p>
 
 			<p>
@@ -136,9 +149,18 @@ class Feature_Card extends WP_Widget {
 				<input class="widefat card-desc" id="<?php echo esc_attr( $this->get_field_id( 'desc' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'desc' ) ); ?>" type="text" value="<?php echo esc_attr( $desc ); ?>">
 			</p>
 
+			<p class="card-desc-wrapper <?php echo $card_model !== 'card-3' ? 'hidden' : ''; ?>">
+				<label for="<?php echo esc_attr( $this->get_field_id( 'btn-text' ) ); ?>"><?php esc_attr_e( 'Button text:', 'idg-wp' ); ?></label>
+				<input class="widefat card-btn-text" id="<?php echo esc_attr( $this->get_field_id( 'btn-text' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'btn-text' ) ); ?>" type="text" value="<?php echo esc_attr( $btn_text ); ?>">
+			</p>
+
 			<div class="feature-card static-height <?php echo $card_model; ?>">
 				<div class="align">
-					<div class="icon <?php echo ! empty( $icon ) ? $icon : 'icon-plus'; ?>"></div>
+					<div class="icon <?php echo ! empty( $icon ) ? $icon : 'icon-plus'; ?>">
+						<?php if( $icon === 'upload-custom-icon' ): ?>
+							<img class="custom-icon-preview" src="<?php echo wp_get_attachment_url( $custom_icon ); ?> ">
+						<?php endif; ?>
+					</div>
 					<h3 class="card-title"><?php echo $title; ?></h3>
 					<p class="card-desc"><?php echo $card_model === 'card-3' ? $desc : ''; ?></p>
 					<a class="card-btn btn" href="#">Acesse</a>
@@ -149,13 +171,15 @@ class Feature_Card extends WP_Widget {
 	}
 
 	public function update( $new_instance, $old_instance ) {
-		$instance               = array();
-		$instance['title']      = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
-		$instance['link']       = ( ! empty( $new_instance['link'] ) ) ? sanitize_text_field( $new_instance['link'] ) : '';
-		$instance['target']     = ( ! empty( $new_instance['target'] ) ) ? sanitize_text_field( $new_instance['target'] ) : '';
-		$instance['icon']       = ( ! empty( $new_instance['icon'] ) ) ? sanitize_text_field( $new_instance['icon'] ) : '';
-		$instance['card-model'] = ( ! empty( $new_instance['card-model'] ) ) ? sanitize_text_field( $new_instance['card-model'] ) : '';
-		$instance['desc']       = ( ! empty( $new_instance['desc'] ) ) ? sanitize_text_field( $new_instance['desc'] ) : '';
+		$instance                = array();
+		$instance['title']       = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
+		$instance['link']        = ( ! empty( $new_instance['link'] ) ) ? sanitize_text_field( $new_instance['link'] ) : '';
+		$instance['target']      = ( ! empty( $new_instance['target'] ) ) ? sanitize_text_field( $new_instance['target'] ) : '';
+		$instance['icon']        = ( ! empty( $new_instance['icon'] ) ) ? sanitize_text_field( $new_instance['icon'] ) : '';
+		$instance['custom-icon'] = ( ! empty( $new_instance['custom-icon'] ) ) ? sanitize_text_field( $new_instance['custom-icon'] ) : '';
+		$instance['card-model']  = ( ! empty( $new_instance['card-model'] ) ) ? sanitize_text_field( $new_instance['card-model'] ) : '';
+		$instance['desc']        = ( ! empty( $new_instance['desc'] ) ) ? sanitize_text_field( $new_instance['desc'] ) : '';
+		$instance['btn-text']    = ( ! empty( $new_instance['btn-text'] ) ) ? sanitize_text_field( $new_instance['btn-text'] ) : '';
 
 		return $instance;
 	}
@@ -200,14 +224,14 @@ class IDG_Banners extends WP_Widget {
 			<?php
 
 			if ( ! empty( $instance['description'] ) ) {
-				echo '<div class="col-12"><p>'. $instance['description'] .'</p></div>';
+				echo '<div class="col-12"><p>' . $instance['description'] . '</p></div>';
 			}
 
 			$n = $instance['number_of_banners'] ? intval( $instance['number_of_banners'] ) : 1;
 			for ( $i = 0; $i <= $n; $i ++ ) :
 
 				$col = '';
-				switch ( $instance['columns'][$i] ) {
+				switch ( $instance['columns'][ $i ] ) {
 					case '3':
 						$col = 'col-lg-12';
 						break;
@@ -217,11 +241,11 @@ class IDG_Banners extends WP_Widget {
 					case '1':
 						$col = 'col-lg-4';
 						break;
-				}  ?>
+				} ?>
 
-				<div class="<?php echo $col; ?> order-<?php echo $instance['order'][$i]; ?>">
-					<a href="<?php echo $instance['link_url'][$i] ? $instance['link_url'][$i] : '#'; ?>" <?php echo $instance['link_title'][$i] ? 'title="' . $instance['link_title'][$i] . '"' : ''; ?>>
-						<div class="highlight-box" style="background-image: url('<?php echo wp_get_attachment_url( $instance['image'][$i] ); ?>')"></div>
+				<div class="<?php echo $col; ?> order-<?php echo $instance['order'][ $i ]; ?>">
+					<a href="<?php echo $instance['link_url'][ $i ] ? $instance['link_url'][ $i ] : '#'; ?>" <?php echo $instance['link_title'][ $i ] ? 'title="' . $instance['link_title'][ $i ] . '"' : ''; ?>>
+						<div class="highlight-box" style="background-image: url('<?php echo wp_get_attachment_url( $instance['image'][ $i ] ); ?>')"></div>
 					</a>
 				</div>
 
@@ -319,10 +343,10 @@ class IDG_Banners extends WP_Widget {
 						</p>
 
 						<p>
-							<label for="<?php echo $this->get_field_name( 'image' ) . '[' . $i . ']'; ?>"><?php _e( 'Image:' ); ?></label>
+							<label for="<?php echo $this->get_field_name( 'image' ) . '[' . $i . ']'; ?>"><?php _e( 'Image:', 'idg-wp' ); ?></label>
 							<img class="banner-img-preview" src="<?php echo wp_get_attachment_url( $image[ $i ] ); ?> ">
 							<input name="<?php echo $this->get_field_name( 'image' ) . '[' . $i . ']'; ?>" id="<?php echo $this->get_field_id( 'image' ) . '[' . $i . ']'; ?>" class="widefat hidden" type="text" value="<?php echo $image[ $i ]; ?>"/>
-							<input id="upload_image_button_<?php echo $i; ?>" class="upload_image_button" type="button" value="<?php _e( 'Upload image' ); ?>"/>
+							<input id="upload_image_button_<?php echo $i; ?>" class="upload_image_button" type="button" value="<?php _e( 'Upload image', 'idg-wp' ); ?>"/>
 						</p>
 					</div>
 				<?php endfor; ?>

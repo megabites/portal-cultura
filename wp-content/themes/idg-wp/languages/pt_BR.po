@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Identidade Digital do Governo\n"
-"POT-Creation-Date: 2018-12-13 15:45-0200\n"
-"PO-Revision-Date: 2018-12-13 15:46-0200\n"
+"POT-Creation-Date: 2018-12-18 09:54-0200\n"
+"PO-Revision-Date: 2018-12-18 09:54-0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -82,7 +82,7 @@ msgstr "O E-mail é obrigatório"
 msgid "O comentário é obrigatório"
 msgstr "O comentário é obrigatório"
 
-#: functions.php:49
+#: functions.php:48
 msgid "Featured links"
 msgstr "Links em destaque"
 
@@ -106,7 +106,7 @@ msgstr "próximo"
 msgid "Page"
 msgstr "Página"
 
-#: inc/cpt-multimedia.php:107
+#: inc/cpt-multimedia.php:109
 msgid "You cannot add terms to this taxonomy"
 msgstr "Não é possível adicionar termos a esta taxonomia"
 
@@ -147,79 +147,87 @@ msgstr "Um cartão de destaque com ícone e link personalizados"
 msgid "Card description text"
 msgstr "Texto descritivo do cartão"
 
-#: inc/idg-widgets.php:68 inc/idg-widgets.php:281
+#: inc/idg-widgets.php:66
+msgid "Acess"
+msgstr "Acess"
+
+#: inc/idg-widgets.php:69 inc/idg-widgets.php:288
 msgid "Title:"
 msgstr "Título:"
 
-#: inc/idg-widgets.php:72
+#: inc/idg-widgets.php:73
 msgid "Link:"
 msgstr "Link:"
 
-#: inc/idg-widgets.php:76
+#: inc/idg-widgets.php:77
 msgid "Open in new window:"
 msgstr "Abrir em nova janela:"
 
-#: inc/idg-widgets.php:80
+#: inc/idg-widgets.php:81
 msgid "Select the icon:"
 msgstr "Selecione o ícone:"
 
-#: inc/idg-widgets.php:126
+#: inc/idg-widgets.php:127
 msgid "Card model:"
 msgstr "Modelo de cartão:"
 
-#: inc/idg-widgets.php:128
+#: inc/idg-widgets.php:129
 msgid "Model 1"
 msgstr "Modelo 1"
 
-#: inc/idg-widgets.php:129
+#: inc/idg-widgets.php:130
 msgid "Model 2"
 msgstr "Modelo 2"
 
-#: inc/idg-widgets.php:130
+#: inc/idg-widgets.php:131
 msgid "Model 3"
 msgstr "Modelo 3"
 
-#: inc/idg-widgets.php:135
+#: inc/idg-widgets.php:136
 msgid "Description text:"
 msgstr "Texto de descrição:"
 
-#: inc/idg-widgets.php:175
+#: inc/idg-widgets.php:141
+msgid "Button text:"
+msgstr "Texto do botão:"
+
+#: inc/idg-widgets.php:182
 msgid "Banners"
 msgstr "Banners"
 
-#: inc/idg-widgets.php:176
+#: inc/idg-widgets.php:183
 msgid "Banner management widget"
 msgstr "Widget para gerenciamento de banners"
 
-#: inc/idg-widgets.php:286
+#: inc/idg-widgets.php:293
 msgid "Description:"
 msgstr "Descrição:"
 
-#: inc/idg-widgets.php:291
+#: inc/idg-widgets.php:298
 msgid "Quantity of items:"
 msgstr "Quantidade de itens:"
 
-#: inc/idg-widgets.php:302
+#: inc/idg-widgets.php:309
 msgid "Link URL:"
 msgstr "Link URL:"
 
-#: inc/idg-widgets.php:307
+#: inc/idg-widgets.php:314
 msgid "Link Title:"
 msgstr "Título do link:"
 
-#: inc/idg-widgets.php:312
+#: inc/idg-widgets.php:319
 msgid "Columns:"
 msgstr "Colunas:"
 
-#: inc/idg-widgets.php:317
+#: inc/idg-widgets.php:324
 msgid "Order:"
 msgstr "Ordem:"
 
-#: inc/idg-widgets.php:322
+#: inc/idg-widgets.php:329
 msgid "Image:"
 msgstr "Imagem"
 
-#: inc/idg-widgets.php:325
+#: inc/idg-widgets.php:332
 msgid "Upload image"
 msgstr "Carregar imagem"
 
@@ -370,6 +378,10 @@ msgstr "https://github.com/darciro"
 #. Template Name of the plugin/theme
 msgid "Informação ao Cidadão */ ?>"
 msgstr "Informação ao Cidadão */ ?>"
+
+#. Template Name of the plugin/theme
+msgid "Secretarias */ ?>"
+msgstr ""
 
 #, fuzzy
 #~ msgid "A Foo Widget"

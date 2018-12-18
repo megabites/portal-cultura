@@ -16,6 +16,16 @@
 			});
 
 			$(document).on('change', '.idg-feature-card-widget .icon-selector', function () {
+				var cardIcon = $(this).val();
+				console.log( cardIcon );
+				if( cardIcon === 'upload-custom-icon' ){
+					$(this).closest('.idg-feature-card-widget').find('.feature-card .icon > img').show();
+					$(this).closest('.idg-feature-card-widget').find('.custom-icon').removeClass('hidden');
+				} else {
+					$(this).closest('.idg-feature-card-widget').find('.custom-icon').addClass('hidden');
+					$(this).closest('.idg-feature-card-widget').find('.feature-card .icon > img').hide();
+					$(this).closest('.idg-feature-card-widget').find('.feature-card .icon').removeClass().addClass('icon ' + $(this).val());
+				}
 				$(this).closest('.idg-feature-card-widget').find('.feature-card .icon').removeClass().addClass('icon ' + $(this).val());
 			});
 
@@ -33,6 +43,10 @@
 
 			$(document).on('keyup', '.idg-feature-card-widget .card-desc', function () {
 				$(this).closest('.idg-feature-card-widget').find('.card-desc').text($(this).val());
+			});
+
+			$(document).on('keyup', '.idg-feature-card-widget .card-btn-text', function () {
+				$(this).closest('.idg-feature-card-widget').find('.card-btn.btn').text($(this).val());
 			});
 		},
 
@@ -68,68 +82,70 @@
 		},
 
 		idgBlockInit: function () {
-			var el = wp.element.createElement,
-				registerBlockType = wp.blocks.registerBlockType,
-				RichText = wp.editor.RichText;
-				// blockStyle = { backgroundColor: '#900', color: '#fff', padding: '20px' };
+			if( wp.element ){
 
-			function checkForAElement(content) {
-				console.log( content );
-				if( content.startsWith('<a') ){
-					console.log( 'already has a' );
-					blockStyle = { backgroundColor: '#f3f4f5' };
-				} else {
-					console.log( 'MISSING a' );
-					blockStyle = { backgroundColor: '#7F0013' };
+				var el = wp.element.createElement,
+					registerBlockType = wp.blocks.registerBlockType,
+					RichText = wp.editor.RichText;
+
+				function checkForAElement(content) {
+					console.log( content );
+					if( content.startsWith('<a') ){
+						console.log( 'already has a' );
+						blockStyle = { backgroundColor: '#f3f4f5' };
+					} else {
+						console.log( 'MISSING a' );
+						blockStyle = { backgroundColor: '#7F0013' };
+					}
 				}
-			}
 
-			var blockStyle;
-			registerBlockType( 'gutenberg-boilerplate-es5/idgwp-gutenberg-block-card', {
-				title: 'Feature card block',
-				// icon: 'universal-access-alt',
-				icon: 'paperclip',
-				category: 'widgets',
-				attributes: {
-					content: {
-						type: 'string',
-						source: 'html',
-						selector: 'div',
-					}
-				},
-				edit: function( props ) {
-					var content = props.attributes.content;
+				var blockStyle;
+				registerBlockType( 'gutenberg-boilerplate-es5/idgwp-gutenberg-block-card', {
+					title: 'Feature card block',
+					// icon: 'universal-access-alt',
+					icon: 'paperclip',
+					category: 'widgets',
+					attributes: {
+						content: {
+							type: 'string',
+							source: 'html',
+							selector: 'div',
+						}
+					},
+					edit: function( props ) {
+						var content = props.attributes.content;
 
-					function onChangeContent( newContent ) {
-						props.setAttributes( { content: newContent } );
+						function onChangeContent( newContent ) {
+							props.setAttributes( { content: newContent } );
 
-						checkForAElement( content );
-					}
+							checkForAElement( content );
+						}
 
-					return el(
-						RichText,
-						{
+						return el(
+							RichText,
+							{
+								tagName: 'div',
+								className: props.className,
+								onChange: onChangeContent,
+								value: content,
+								// style: blockStyle
+							}
+						);
+					},
+
+					save: function( props ) {
+						var content = props.attributes.content;
+						// checkForAElement( content );
+						return el( RichText.Content, {
 							tagName: 'div',
 							className: props.className,
-							onChange: onChangeContent,
-							value: content,
-							// style: blockStyle
-						}
-					);
-				},
+							value: content
+						} );
+					},
+				});
 
-				save: function( props ) {
-					var content = props.attributes.content;
-					// checkForAElement( content );
-					return el( RichText.Content, {
-						tagName: 'div',
-						className: props.className,
-						value: content
-					} );
-				},
-			} );
-
+			}
 		}
-		
+
 	};
 })(jQuery);
