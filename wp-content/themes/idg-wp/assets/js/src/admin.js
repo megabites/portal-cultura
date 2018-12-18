@@ -102,7 +102,6 @@
 				var blockStyle;
 				registerBlockType( 'gutenberg-boilerplate-es5/idgwp-gutenberg-block-card', {
 					title: 'Feature card block',
-					// icon: 'universal-access-alt',
 					icon: 'paperclip',
 					category: 'widgets',
 					attributes: {
@@ -117,7 +116,6 @@
 
 						function onChangeContent( newContent ) {
 							props.setAttributes( { content: newContent } );
-
 							checkForAElement( content );
 						}
 

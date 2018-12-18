@@ -12,6 +12,16 @@
 		height: 100%;
 		width: 100%;
 		padding: 30px 15px 30px;
+
+		&[target="_blank"] {
+			background: url('../../img/external-link.svg') no-repeat;
+			background-position: right 10px top 10px;
+
+			&.btn {
+				background-position: right 10px center;
+				background-size: 20px;
+			}
+		}
 	}
 
 	.align {
