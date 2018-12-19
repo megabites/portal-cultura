@@ -62,7 +62,7 @@ if( ! class_exists('EasyDocs') ) :
         public function register_easy_docs_admin_styles()
         {
             global $post_type;
-            if( $post_type !== 'documents' ){
+            if( $post_type !== 'documentos' ){
                 return;
             }
 
@@ -99,7 +99,7 @@ if( ! class_exists('EasyDocs') ) :
          */
         public function cpt_docs()
         {
-            register_post_type( 'documents',
+            register_post_type( 'documentos',
                 array(
                     'labels'              => array(
                         'name'          => 'Documentos',
@@ -122,7 +122,7 @@ if( ! class_exists('EasyDocs') ) :
 
             register_taxonomy(
                 'document-category',
-                'documents',
+                'documentos',
                 array(
                     'label' => 'Tipo de documento',
                     'hierarchical' => true,
@@ -145,7 +145,7 @@ if( ! class_exists('EasyDocs') ) :
                 'easy-docs-metabox',
                 'Documento',
                 array( $this, 'render_meta_box_content' ),
-                'documents',
+                'documentos',
                 'side',
                 'default'
             );
@@ -226,7 +226,7 @@ if( ! class_exists('EasyDocs') ) :
          */
         public function easy_docs_save_postdata( $post_id )
         {
-            if ( 'documents' == $_POST['post_type'] ) {
+            if ( 'documentos' == $_POST['post_type'] ) {
                 if ( ! current_user_can( 'edit_page', $post_id ) )
                     return;
             } else {
@@ -324,7 +324,7 @@ if( ! class_exists('EasyDocs') ) :
 
             ob_start();
             $easy_docs_query = new WP_Query( array(
-                'post_type'         => 'documents',
+                'post_type'         => 'documentos',
                 'posts_per_page'    => $atts['items'],
                 'tax_query'         => $atts['category'] ? array(
                     array(
