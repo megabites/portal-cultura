@@ -273,7 +273,7 @@ get_header();
 									else: ?>
 
 										<div class="event-item empty">
-											<span class="location">Sem compromissos oficiais nesta data.</span>
+											<span class="location">Sem eventos nesta data.</span>
 										</div>
 
 									<?php endif; ?>
