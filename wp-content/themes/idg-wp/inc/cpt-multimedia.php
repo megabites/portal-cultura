@@ -5,7 +5,7 @@
  */
 function multimedia_custom_type() {
 	$labels = array(
-		'name'               => 'Multimídias',
+		'name'               => 'Multimídia',
 		'singular_name'      => 'Multimídia',
 		'add_new'            => 'Nova multimídia',
 		'add_new_item'       => 'Nova multimídia',
