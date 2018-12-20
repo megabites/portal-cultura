@@ -273,6 +273,7 @@ function remove_menus()
 		remove_menu_page('edit.php');
 		remove_menu_page('edit.php?post_type=multimedia');
 		remove_menu_page('edit.php?post_type=documentos');
+		remove_menu_page('wpcf7');
 		//remove_submenu_page('themes.php', 'widgets.php');
 	}
 }
