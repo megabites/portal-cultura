@@ -244,6 +244,7 @@ function idg_add_custom_roles(){
 		add_role('agenda_manager', 'Agenda Manager',
 			array(
 				'read' => true,
+				'create_posts' => true,
 				'edit_posts' => true,
 				'edit_published_posts' => true,
 				'delete_posts' => true,
@@ -271,6 +272,8 @@ function remove_menus()
 		remove_menu_page('edit-comments.php');
 		remove_menu_page('edit.php');
 		remove_menu_page('edit.php?post_type=multimedia');
+		remove_menu_page('edit.php?post_type=documentos');
+		remove_menu_page('wpcf7');
 		//remove_submenu_page('themes.php', 'widgets.php');
 	}
 }
