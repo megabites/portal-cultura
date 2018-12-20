@@ -116,6 +116,9 @@ if( ! class_exists('EasyDocs') ) :
                     'publicly_queryable' => true,
                     'supports' => array( 'title', 'editor', 'excerpt' ),
                     'menu_icon' => 'dashicons-media-document',
+			'rewrite'      => array(
+						'slug' => 'documentos'
+					),
 	                'show_in_rest'      => true
                 )
             );
@@ -343,7 +346,7 @@ if( ! class_exists('EasyDocs') ) :
                 }
                 echo '</ul>';
 
-                $link_to_all_docs = $atts['category'] ? home_url('/document-category/' . $atts['category']) : home_url('/documents');
+                $link_to_all_docs = $atts['category'] ? home_url('/document-category/' . $atts['category']) : home_url('/documentos');
                 echo '<a href="'. $link_to_all_docs .'" class="easy-docs-all-btn">'. $atts['all-items-label'] .' <span class="easy-docs-all-btn-plus-ico"></span></a>';
 
                 wp_reset_postdata();
