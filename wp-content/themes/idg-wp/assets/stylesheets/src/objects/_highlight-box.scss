@@ -34,10 +34,14 @@
 		}
 
 		.box-title {
-			font-size: 1.5rem;
 			// line-height: 2.188rem;
-			margin-top: 5px;
-			font-weight: 700;
+
+			h3 {
+				font-size: 1.5rem;
+				margin-top: 5px;
+				font-weight: 700;
+				color: #FFF;
+			}
 
 			a {
 				color: #fff;
