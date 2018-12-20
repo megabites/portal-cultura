@@ -12,7 +12,6 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<header class="entry-header">
-
 		<?php the_title( '<h1 class="entry-title text-center mt-1">', '</h1>' ); ?>
 
 		<?php if ( has_excerpt( $id ) ) : ?>
@@ -31,4 +30,5 @@
 	<footer class="entry-footer">
 		<?php //idg_wp_entry_footer(); ?>
 	</footer>
+
 </article>
