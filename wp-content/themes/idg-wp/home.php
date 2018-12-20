@@ -39,11 +39,7 @@ get_header();
 						<h2 class="section-title mb-5 text-center">Notícias</h2>
 					</div>
 					<?php
-					/*$args      = array(
-						'posts_per_page' => 3,
-						'category_name'  => 'noticias'
-					);*/
-					$args = [];
+					/*$args = [];
 					if( get_option('idg-wp_theme_options_news_sections') ){
 						$args['category_name'] = get_option('idg-wp_theme_options_news_sections');
 					}
@@ -51,7 +47,11 @@ get_header();
 						$args['posts_per_page'] = get_option('idg-wp_theme_options_news_sections_items');
 					} else {
 						$args['posts_per_page'] = 3;
-					}
+					}*/
+					$args      = array(
+						'posts_per_page' => 1,
+						'category_name'  => 'destaquinho-1'
+					);
 					$news_query = new WP_Query( $args ); ?>
 
 					<?php if ( $news_query->have_posts() ) : ?>
@@ -81,8 +81,78 @@ get_header();
 
 						<?php wp_reset_postdata(); ?>
 
-					<?php else : ?>
-						<p class="text-uppercase text-center">Sem notícias</p>
+					<?php endif; ?>
+
+					<?php
+					$args      = array(
+						'posts_per_page' => 1,
+						'category_name'  => 'destaquinho-2'
+					);
+					$news_query = new WP_Query( $args ); ?>
+
+					<?php if ( $news_query->have_posts() ) : ?>
+
+						<?php while ( $news_query->have_posts() ) : $news_query->the_post(); ?>
+							<h2></h2>
+							<div class="col-lg-4 mb-5">
+								<?php
+								if ( has_post_thumbnail() ) {
+									$post_thumb = get_the_post_thumbnail_url();
+								} else {
+									$post_thumb = get_template_directory_uri() . '/assets/img/fake-img.jpg';
+								}
+								?>
+								<div class="highlight-box" style="background-image: url('<?php echo $post_thumb; ?>')">
+									<div class="box-body">
+										<?php if( $post_subtitle = get_post_meta( $post->ID, '_post_subtitle', true ) ): ?>
+											<span class="cat"><?php echo $post_subtitle?></span>
+										<?php endif; ?>
+										<h3 class="box-title">
+											<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+										</h3>
+									</div>
+								</div>
+							</div>
+						<?php endwhile; ?>
+
+						<?php wp_reset_postdata(); ?>
+
+					<?php endif; ?>
+
+					<?php
+					$args      = array(
+						'posts_per_page' => 1,
+						'category_name'  => 'destaquinho-3'
+					);
+					$news_query = new WP_Query( $args ); ?>
+
+					<?php if ( $news_query->have_posts() ) : ?>
+
+						<?php while ( $news_query->have_posts() ) : $news_query->the_post(); ?>
+							<h2></h2>
+							<div class="col-lg-4 mb-5">
+								<?php
+								if ( has_post_thumbnail() ) {
+									$post_thumb = get_the_post_thumbnail_url();
+								} else {
+									$post_thumb = get_template_directory_uri() . '/assets/img/fake-img.jpg';
+								}
+								?>
+								<div class="highlight-box" style="background-image: url('<?php echo $post_thumb; ?>')">
+									<div class="box-body">
+										<?php if( $post_subtitle = get_post_meta( $post->ID, '_post_subtitle', true ) ): ?>
+											<span class="cat"><?php echo $post_subtitle?></span>
+										<?php endif; ?>
+										<h3 class="box-title">
+											<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+										</h3>
+									</div>
+								</div>
+							</div>
+						<?php endwhile; ?>
+
+						<?php wp_reset_postdata(); ?>
+
 					<?php endif; ?>
 				</div>
 				<div class="col-lg-12 text-center">
