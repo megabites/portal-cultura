@@ -550,7 +550,7 @@ if ( ! class_exists( 'Gov_Schedules' ) ) :
 					$events .= '<h2><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h2>';
 					$events .= '<div class="additional">';
 					$events .= '<span class="location icon icon-location">' . $location . '</span>';
-					$events .= '<a href="#">Adicionar ao meu calendário</a>';
+					//$events .= '<a href="#">Adicionar ao meu calendário</a>';
 					$events .= '</div>';
 					$events .= '</div>';
 					$events .= '</div>';

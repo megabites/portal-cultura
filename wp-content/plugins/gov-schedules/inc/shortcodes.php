@@ -132,7 +132,7 @@ class Gov_Schedules_Shortcodes
 								<div class="info">
 									<span class="time icon icon-clock"><?php echo $raw_date[1]; ?></span>
 									<span class="location icon icon-location"><?php echo $locaction; ?></span>
-									<a href="#">Adicionar ao meu calendário</a>
+									<?php /* <a href="#">Adicionar ao meu calendário</a> */ ?>
 								</div>
 							</div>
 						</div>
