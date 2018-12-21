@@ -46,6 +46,6 @@ $multimedia_query = new WP_Query( $args ); ?>
 
 <?php
 if ( is_active_sidebar( 'multimedia-widgets-area' ) ) :
-	dynamic_sidebar( 'multimedia-widgets-area' );
+	//dynamic_sidebar( 'multimedia-widgets-area' );
 endif;
 ?>
