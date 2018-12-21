@@ -30,7 +30,7 @@
 				<?php endif; ?>
 
 				<span class="details">
-          por <?php the_author_posts_link(); ?>
+          por Ascom
 					última modificação em <?php the_modified_date('d/m/Y'); ?> <?php the_modified_time('H'); ?>
 					h<?php the_modified_time('i'); ?>
         </span>
