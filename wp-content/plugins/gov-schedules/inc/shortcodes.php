@@ -27,10 +27,6 @@ class Gov_Schedules_Shortcodes
 			<div class="agenda-cats row">
 				<?php for ($i = 0; $i < count($event_cats); $i++) :
 
-					if ( ($i+1) >= 3) {
-						break;
-					}
-
 					$tax = get_term_by('slug', $event_cats[$i], 'event-category'); ?>
 
 					<div class="col">
@@ -122,9 +118,15 @@ class Gov_Schedules_Shortcodes
 				);
 
 				$query = new WP_Query($args);
+				$count = 0;
 
 				if( $query->have_posts() ):
 					while ($query->have_posts()) : $query->the_post();
+						$count++;
+
+						if ( $count >= 3) {
+							break;
+						}
 
 						$locaction = get_post_meta( get_the_ID(), 'dados_do_evento_location', true );
 						$date = get_post_meta( get_the_ID(), 'dados_do_evento_data-de-incio', true );
