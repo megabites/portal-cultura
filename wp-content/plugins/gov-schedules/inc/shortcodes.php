@@ -26,6 +26,7 @@ class Gov_Schedules_Shortcodes
 		<div id="agenda" class="gs-agenda-container">
 			<div class="agenda-cats row">
 				<?php for ($i = 0; $i < count($event_cats); $i++) :
+
 					$tax = get_term_by('slug', $event_cats[$i], 'event-category'); ?>
 
 					<div class="col">
@@ -117,9 +118,15 @@ class Gov_Schedules_Shortcodes
 				);
 
 				$query = new WP_Query($args);
+				$count = 0;
 
 				if( $query->have_posts() ):
 					while ($query->have_posts()) : $query->the_post();
+						$count++;
+
+						if ( $count > 3) {
+							break;
+						}
 
 						$locaction = get_post_meta( get_the_ID(), 'dados_do_evento_location', true );
 						$date = get_post_meta( get_the_ID(), 'dados_do_evento_data-de-incio', true );
@@ -132,7 +139,7 @@ class Gov_Schedules_Shortcodes
 								<div class="info">
 									<span class="time icon icon-clock"><?php echo $raw_date[1]; ?></span>
 									<span class="location icon icon-location"><?php echo $locaction; ?></span>
-									<a href="#">Adicionar ao meu calendário</a>
+									<?php /* <a href="#">Adicionar ao meu calendário</a> */ ?>
 								</div>
 							</div>
 						</div>

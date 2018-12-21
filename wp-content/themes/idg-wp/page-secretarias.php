@@ -110,8 +110,8 @@ get_header();
 
     <div class="container mt-4">
       <div class="col-12 pt-4 pb-4">
-        <div id="search-content-wrapper text-center">
-          <h2>Notícias</h2>
+        <div id="search-content-wrapper">
+          <h2 class="text-center">Notícias</h2>
         </div>
 
         <div class="row">

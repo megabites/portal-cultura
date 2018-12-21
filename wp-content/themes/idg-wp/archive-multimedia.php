@@ -13,7 +13,7 @@ get_header();
 	<main id="main" class="site-main multimedia-archive">
 		<div class="container">
 			<div class="row">
-				<?php // the_breadcrumb(); ?>
+				<?php the_breadcrumb(); ?>
 			</div>
 		</div>
 

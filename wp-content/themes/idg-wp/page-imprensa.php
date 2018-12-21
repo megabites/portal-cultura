@@ -37,7 +37,7 @@
   <div class="container mt-4">
     <div class="col-12 pt-4 pb-4">
       <div id="search-content-wrapper">
-        <h2>Notícias</h2>
+        <h2 class="text-center">Avisos de Pauta e Releases</h2>
       </div>
 
       <div class="row">
@@ -45,7 +45,7 @@
 
         $args = array(
           'posts_per_page' => 3,
-          'category_name'  => 'noticias'
+          'category_name'  => 'imprensa'
         );
 
         $news_query = new WP_Query( $args ); ?>
