@@ -124,7 +124,7 @@ class Gov_Schedules_Shortcodes
 					while ($query->have_posts()) : $query->the_post();
 						$count++;
 
-						if ( $count >= 3) {
+						if ( $count > 3) {
 							break;
 						}
 
