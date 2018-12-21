@@ -253,7 +253,7 @@ if ( ! class_exists( 'EasyDocs' ) ) :
 		 */
 		public function get_attachment_id_by_url( $image_url ) {
 			global $wpdb;
-			$attachment = $wpdb->get_row( "SELECT ID, post_title, post_name, post_date FROM $wpdb->posts WHERE guid='$image_url';" );
+			$attachment = $wpdb->get_row( "SELECT ID, post_title, post_name, post_date FROM $wpdb->posts WHERE guid='$image_url' AND post_type = 'attachment';" );
 
 			return $attachment;
 		}
