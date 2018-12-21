@@ -191,6 +191,12 @@ require get_template_directory() . '/inc/cpt-multimedia.php';
 require get_template_directory() . '/inc/shortcodes.php';
 
 /**
+ * Disable comments
+ *
+ */
+require get_template_directory() . '/inc/disable-comments.php';
+
+/**
  * Custom callback for outputting comments
  *
  * @return void
