@@ -307,9 +307,9 @@ if ( ! class_exists( 'EasyDocs' ) ) :
 									<p class="card-text">
 										<small><?php echo strftime( '%d de %B de %Y', strtotime( $attachment->post_date ) ); ?></small>
 									</p>
-									<p class="card-text">
-										<small><?php echo size_format( filesize( get_attached_file( $attachment->ID ) ) ); ?></small>
-									</p>
+									<!--<p class="card-text">
+										<small><?php /*echo size_format( filesize( get_attached_file( $attachment->ID ) ) ); */?></small>
+									</p>-->
 									<a href="<?php echo $documents_url[ $i ]; ?>" class="btn btn-primary btn-sm" target="_blank">Download do arquivo</a>
 								</div>
 							<?php endfor; ?>
