@@ -35,9 +35,9 @@ get_header();
 			</div>
 		</div>
 
-		<?php if (comments_open() || get_comments_number()) : ?>
-			<?php comments_template( '', true ); ?>
-		<?php endif; ?>
+		<?php // if (comments_open() || get_comments_number()) : ?>
+			<?php // comments_template( '', true ); ?>
+		<?php // endif; ?>
 	</main>
 
 <?php
