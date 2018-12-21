@@ -49,8 +49,8 @@ if ( ! class_exists( 'Gov_Schedules' ) ) :
 		);
 
 		public function __construct() {
-			setlocale( LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese' );
-			date_default_timezone_set( 'America/Sao_Paulo' );
+			//setlocale( LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese' );
+			//date_default_timezone_set( 'America/Sao_Paulo' );
 
 			add_action( 'init', array( $this, 'event_cpt' ) );
 			add_filter( 'manage_event_posts_columns', array( $this, 'add_event_columns' ) );
@@ -476,7 +476,7 @@ if ( ! class_exists( 'Gov_Schedules' ) ) :
 				$daypicker .= '<li>';
 				$daypicker .= '<a href="#" data-day="' . date_format( $date, 'Y-m-d' ) . '">';
 				$daypicker .= '<span>' . date_format( $date, 'd' ) . '</span>';
-				$daypicker .= '<small>' . strftime( '%a', strtotime( date_format( $date, 'Y-m-d' ) ) ) . '</small>';
+				$daypicker .= '<small>' . date_i18n( 'D', strtotime( date_format( $date, 'Y-m-d' ) ) ) . '</small>';
 				$daypicker .= '</a>';
 				$daypicker .= '</li>';
 			}
@@ -488,7 +488,7 @@ if ( ! class_exists( 'Gov_Schedules' ) ) :
 				$daypicker .= $i === 0 ? '<li class="selected">' : '<li>';
 				$daypicker .= '<a href="#" data-day="' . date_format( $date, 'Y-m-d' ) . '">';
 				$daypicker .= '<span>' . date_format( $date, 'd' ) . '</span>';
-				$daypicker .= '<small>' . strftime( '%a', strtotime( date_format( $date, 'Y-m-d' ) ) ) . '</small>';
+				$daypicker .= '<small>' . date_i18n( 'D', strtotime( date_format( $date, 'Y-m-d' ) ) ) . '</small>';
 				$daypicker .= '</a>';
 				$daypicker .= '</li>';
 			}

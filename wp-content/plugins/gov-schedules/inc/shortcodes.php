@@ -37,8 +37,8 @@ class Gov_Schedules_Shortcodes
 			<div class="daypicker-wrapper">
 				<ul class="daypicker">
 					<?php
-					setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-					date_default_timezone_set('America/Sao_Paulo');
+					//setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+					//date_default_timezone_set('America/Sao_Paulo');
 
 					for($i = 3; $i >= 1; $i--) {
 						$date = date_create();
@@ -47,7 +47,7 @@ class Gov_Schedules_Shortcodes
 						<li>
 							<a href="#" data-day="<?php echo date_format($date, 'Y-m-d'); ?>" title="<?php echo strftime('%d/%m/%Y', strtotime( date_format($date, 'Y-m-d') ) ); ?>">
 								<span><?php echo date_format($date, 'd'); ?></span>
-								<small><?php echo strftime('%a', strtotime( date_format($date, 'Y-m-d') ) ); ?></small>
+								<small><?php echo date_i18n('D', strtotime( date_format($date, 'Y-m-d') ) ); ?></small>
 							</a>
 						</li>
 
@@ -61,7 +61,7 @@ class Gov_Schedules_Shortcodes
 						<li <?php echo $i === 0 ? 'class="selected"' : ''; ?>>
 							<a href="#" data-day="<?php echo date_format($date, 'Y-m-d'); ?>" title="<?php echo strftime('%d/%m/%Y', strtotime( date_format($date, 'Y-m-d') ) ); ?>">
 								<span><?php echo date_format($date, 'd'); ?></span>
-								<small><?php echo strftime('%a', strtotime( date_format($date, 'Y-m-d') ) ); ?></small>
+								<small><?php echo date_i18n('D', strtotime( date_format($date, 'Y-m-d') ) ); ?></small>
 							</a>
 						</li>
 

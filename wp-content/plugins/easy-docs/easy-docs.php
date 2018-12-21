@@ -24,8 +24,8 @@ if ( ! class_exists( 'EasyDocs' ) ) :
 		 *
 		 */
 		public function __construct() {
-			setlocale( LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese' );
-			date_default_timezone_set( 'America/Sao_Paulo' );
+			//setlocale( LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese' );
+			//date_default_timezone_set( 'America/Sao_Paulo' );
 
 			add_action( 'wp_enqueue_scripts', array( $this, 'register_easy_docs_styles' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'register_easy_docs_admin_styles' ) );
