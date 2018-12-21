@@ -71,8 +71,8 @@ if ( ! class_exists( 'Gov_Schedules' ) ) :
 			add_action( 'event-category_edit_form_fields', array( $this, 'event_category_edit_meta_field' ), 10, 2 );
 			add_action( 'edited_event-category', array( $this, 'event_category_save_taxonomy_meta_field' ), 10, 2 );
 			add_action( 'create_event-category', array( $this, 'event_category_save_taxonomy_meta_field' ), 10, 2 );
-			add_action( 'init', array( $this, 'agenda_cats_rewrite' ), 10, 0 );
-			add_action( 'parse_query', array( $this, 'agenda_cats_rewrite_parse_query' ) );
+			// add_action( 'init', array( $this, 'agenda_cats_rewrite' ), 10, 0 );
+			// add_action( 'parse_query', array( $this, 'agenda_cats_rewrite_parse_query' ) );
 			/*add_action( 'wp_ajax_gs_get_current_agenda_manager', array( $this, 'gs_get_current_agenda_manager' ) );
 			add_action( 'wp_ajax_nopriv_gs_get_current_agenda_manager', array( $this, 'gs_get_current_agenda_manager' ) );*/
 			add_filter( 'rest_event-category_query', array( $this, 'event_categories_filter_based_on_role' ), 10, 2 );
