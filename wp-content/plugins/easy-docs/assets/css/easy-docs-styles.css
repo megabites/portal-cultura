@@ -36,15 +36,15 @@
     margin-bottom: 0;
 }
 
-.easy-document-box .card-body .col {
+.easy-document-box .card-body .col-4 {
     position: relative;
 }
 
-.easy-document-box .card-body .col:first-child:before {
+.easy-document-box .card-body .col-4:first-child:before {
     display: none;
 }
 
-.easy-document-box .card-body .col:before {
+.easy-document-box .card-body .col-4:before {
     -webkit-transform: translateY(-50%);;
     -moz-transform:    translateY(-50%);;
     -ms-transform:     translateY(-50%);;
