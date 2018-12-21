@@ -20,7 +20,7 @@ get_header();
 				<div class="col-12">
 
 					<h1 class="page-title text-center">
-						<?php echo get_cat_name(get_query_var('cat')); ?>
+						<?php the_archive_title(); ?>
 					</h1>
 
 					<?php get_template_part('template-parts/posts-list', 'category'); ?>
