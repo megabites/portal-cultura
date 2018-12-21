@@ -27,9 +27,9 @@ class Gov_Schedules_Shortcodes
 			<div class="agenda-cats row">
 				<?php for ($i = 0; $i < count($event_cats); $i++) :
 
-					<?php if ( ($i+1) >= 3) : ?>
-						<?php break; ?>
-					<?php endif; ?>
+					if ( ($i+1) >= 3) {
+						break;
+					}
 
 					$tax = get_term_by('slug', $event_cats[$i], 'event-category'); ?>
 
