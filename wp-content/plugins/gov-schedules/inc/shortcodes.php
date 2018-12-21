@@ -150,7 +150,7 @@ class Gov_Schedules_Shortcodes
 				?>
 			</div>
 			<div class="agenda-footer text-center">
-				<a href="<?php echo home_url('/agenda'); ?>" class="btn text-uppercase mt-5">Agenda completa</a>
+				<a href="<?php echo home_url('/agenda/'); ?>" class="btn text-uppercase mt-5">Agenda completa</a>
 			</div>
 		</div>
 
