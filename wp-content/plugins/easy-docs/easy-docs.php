@@ -298,21 +298,30 @@ if ( ! class_exists( 'EasyDocs' ) ) :
 					<div class="card">
 						<h5 class="card-header"><span class="dashicons dashicons-media-document"></span> <?php echo $attach_cat; ?></h5>
 						<div class="card-body">
-							<?php
-							for ( $i = 0; $i < count( $documents_url ); $i ++ ):
-								$attachment = $this->get_attachment_id_by_url( $documents_url[ $i ] ); ?>
-								<div class="<?php echo $i === 0 ? '' : 'b-top'; ?>">
-									<h6 class="card-subtitle mb-2 text-muted">Anexos</h6>
-									<h5 class="card-title"><?php echo $attachment->post_title; ?></h5>
-									<p class="card-text">
-										<small><?php echo strftime( '%d de %B de %Y', strtotime( $attachment->post_date ) ); ?></small>
-									</p>
-									<!--<p class="card-text">
-										<small><?php /*echo size_format( filesize( get_attached_file( $attachment->ID ) ) ); */?></small>
-									</p>-->
-									<a href="<?php echo $documents_url[ $i ]; ?>" class="btn btn-primary btn-sm" target="_blank">Download do arquivo</a>
-								</div>
-							<?php endfor; ?>
+							<div class="row">
+								<?php
+								for ( $i = 0; $i < count( $documents_url ); $i ++ ):
+									$attachment = $this->get_attachment_id_by_url( $documents_url[ $i ] ); ?>
+									<div class="col">
+										<h6 class="card-subtitle mb-2 text-muted">Anexos</h6>
+										<h5 class="card-title"><?php echo $attachment->post_title; ?></h5>
+										<p class="card-text">
+											<small><?php echo strftime( '%d de %B de %Y', strtotime( $attachment->post_date ) ); ?></small>
+										</p>
+										<!--<p class="card-text">
+											<small><?php /*echo size_format( filesize( get_attached_file( $attachment->ID ) ) ); */?></small>
+										</p>-->
+										<a href="<?php echo $documents_url[ $i ]; ?>" class="btn btn-sm" target="_blank">Download do arquivo</a>
+
+									</div>
+
+									<?php if ( ($i+1) % 3 == 0) : ?>
+										</div>
+										<div class="row">
+									<?php endif; ?>
+
+								<?php endfor; ?>
+							</div>
 						</div>
 					</div>
 				</div>
