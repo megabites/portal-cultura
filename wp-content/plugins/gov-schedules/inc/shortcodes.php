@@ -32,6 +32,10 @@ class Gov_Schedules_Shortcodes
 						<h2 class="section-title mb-5 text-center"><a href="#" <?php echo $i === 0 ? 'class="active"' : ''; ?> data-event-cat="<?php echo $tax->slug; ?>"><?php echo $tax->name; ?></a></h2>
 					</div>
 
+					<?php if ( ($i+1) == 3) : ?>
+						<?php break; ?>
+					<?php endif; ?>
+
 				<?php endfor; ?>
 			</div>
 			<div class="daypicker-wrapper">
