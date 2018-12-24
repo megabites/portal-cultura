@@ -222,6 +222,13 @@
 		.events {
 			display: block;
 
+			> div {
+				width: 100%;
+				display: block;
+				flex: none;
+				max-width: none;
+			}
+
 			.event {
 				align-items: center;
 				background: #EEE;
