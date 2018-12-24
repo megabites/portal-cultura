@@ -199,6 +199,16 @@
 				}
 			}
 		}
+
+		.col-md-4 {
+			display: none;
+
+			&:nth-child(1),
+			&:nth-child(2),
+			&:nth-child(3) {
+				display: block;
+			}
+		}
 	}
 
 	.agenda-footer {
