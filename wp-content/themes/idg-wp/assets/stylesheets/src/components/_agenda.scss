@@ -222,11 +222,62 @@
 		.events {
 			display: block;
 
-			> div {
+			> .col-md-4 {
 				width: 100%;
 				display: block;
 				flex: none;
 				max-width: none;
+
+				.event-item {
+					height: auto;
+					padding: 20px;
+					overflow: hidden;
+					min-height: 142px;
+
+					h2 {
+						width: 80%;
+						float: right;
+						padding-left: 70px;
+					}
+
+					.info {
+						height: 100%;
+						position: relative;
+						text-align: center;
+						width: 20%;
+						padding-right: 20px;
+						bottom: auto;
+						left: auto;
+
+						&:after {
+							@include transform(translateY(-50%));
+							position: absolute;
+							content: '';
+							width: 1px;
+							height: 80px;
+							background: rgba(0,0,0,.2);
+							top: 50%;
+							right: -1px;
+						}
+
+						.time {
+							width: 100%;
+							text-align: center;
+							height: 102px;
+							line-height: 102px;
+							font-size: 1.8rem;
+							margin: 0;
+
+							&:before {
+								font-size: 18px;
+							}
+						}
+
+						.location {
+							display: none;
+						}
+					}
+				}
 			}
 
 			.event {
