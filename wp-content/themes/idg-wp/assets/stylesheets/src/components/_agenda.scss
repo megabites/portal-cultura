@@ -227,6 +227,7 @@
 				display: block;
 				flex: none;
 				max-width: none;
+				padding: 0;
 
 				.event-item {
 					height: auto;
@@ -275,6 +276,21 @@
 
 						.location {
 							display: none;
+						}
+					}
+
+					.location.d-none {
+						display: block !important;
+						position: absolute;
+						right: 0;
+						width: calc(80% - 11px);
+						padding-left: 70px;
+						bottom: 20px;
+						font-size: 1rem;
+
+						&:before {
+							font-size: 15px;
+							margin-right: 10px;
 						}
 					}
 				}
