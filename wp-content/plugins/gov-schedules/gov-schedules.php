@@ -542,18 +542,29 @@ if ( ! class_exists( 'Gov_Schedules' ) ) :
 					$date     = get_post_meta( get_the_ID(), 'dados_do_evento_data-de-incio', true );
 					$raw_date = explode( ' ', $date );
 
-					$events .= '<div class="event row">';
-					$events .= '<div class="time">';
-					$events .= '<span class="icon icon-clock">' . $raw_date[1] . '</span>';
-					$events .= '</div>';
-					$events .= '<div class="info">';
-					$events .= '<h2><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h2>';
-					$events .= '<div class="additional">';
-					$events .= '<span class="location icon icon-location">' . $location . '</span>';
-					//$events .= '<a href="#">Adicionar ao meu calendário</a>';
-					$events .= '</div>';
-					$events .= '</div>';
-					$events .= '</div>';
+					$events .=	'<div class="col-md-4 ml">';
+					$events .=	'	<div class="event-item">';
+					$events .=	'		<h2><a href="'. get_the_permalink() .'">' . get_the_title() . '</a></h2>';
+
+					$events .=	'		<div class="info">';
+					$events .=	'			<span class="time icon icon-clock">'. $raw_date[1] .'</span>';
+					$events .=	'			<span class="location icon icon-location">' . $location . '</span>';
+					$events .=	'		</div>';
+					$events .=	'	</div>';
+					$events .=	'</div>';
+
+					// $events .= '<div class="event row">';
+					// $events .= '<div class="time">';
+					// $events .= '<span class="icon icon-clock">' . $raw_date[1] . '</span>';
+					// $events .= '</div>';
+					// $events .= '<div class="info">';
+					// $events .= '<h2><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h2>';
+					// $events .= '<div class="additional">';
+					// $events .= '<span class="location icon icon-location">' . $location . '</span>';
+					// //$events .= '<a href="#">Adicionar ao meu calendário</a>';
+					// $events .= '</div>';
+					// $events .= '</div>';
+					// $events .= '</div>';
 
 				endwhile;
 				wp_reset_query();

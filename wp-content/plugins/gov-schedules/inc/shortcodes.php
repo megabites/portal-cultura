@@ -134,7 +134,7 @@ class Gov_Schedules_Shortcodes
 
 						<div class="col-md-4 ml">
 							<div class="event-item">
-								<?php the_title( '<h2>', '</h2>' ); ?>
+								<h2><a href="<?php echo get_the_permalink(); ?>"><?php echo get_the_title(); ?></a></h2>
 
 								<div class="info">
 									<span class="time icon icon-clock"><?php echo $raw_date[1]; ?></span>
