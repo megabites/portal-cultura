@@ -550,6 +550,7 @@ if ( ! class_exists( 'Gov_Schedules' ) ) :
 					$events .=	'			<span class="time icon icon-clock">'. $raw_date[1] .'</span>';
 					$events .=	'			<span class="location icon icon-location">' . $location . '</span>';
 					$events .=	'		</div>';
+					$events .=	'		<span class="location d-none icon icon-location">' . $location . '</span>';
 					$events .=	'	</div>';
 					$events .=	'</div>';
 
