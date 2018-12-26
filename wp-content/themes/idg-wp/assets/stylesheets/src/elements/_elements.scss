@@ -108,6 +108,30 @@ body.page {
 		// font-weight: bold;
 	}
 
+	h2 {
+		display: block;
+		margin-bottom: 30px;
+	}
+
+	hr.wp-block-separator {
+		width: 100%;
+		display: block;
+		float: left;
+		clear: both;
+		margin: 30px 0;
+		@include transform(translateY(-1rem));
+	}
+
+	.wp-caption {
+		&.alignleft {
+			margin: 0 30px 10px 0;
+		}
+
+		&.alignright {
+			margin: 0 0 10px 30px;
+		}
+	}
+
 	.table-responsive {
 		table {
 			border-left: 1px solid #dee2e6;
