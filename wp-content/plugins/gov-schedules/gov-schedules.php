@@ -199,6 +199,7 @@ if ( ! class_exists( 'Gov_Schedules' ) ) :
 		 */
 		public function add_event_columns( $columns ) {
 			return array_merge( $columns, array(
+				'author' => 'Criador do evento',
 				'start_date' => 'Data de início',
 				'end_date'   => 'Data de fim',
 				'location'   => 'Local'
