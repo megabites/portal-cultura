@@ -442,6 +442,15 @@ if ( ! class_exists( 'Gov_Schedules' ) ) :
 				}
 
 			}
+
+			// unhook this function so it doesn't loop infinitely
+			remove_action( 'save_post', array( $this, 'save_post' ) );
+
+			// update the post, which calls save_post again
+			wp_update_post( array( 'ID' => $post_id, 'post_author' => get_current_user_id() ) );
+
+			// re-hook this function
+			add_action( 'save_post', array( $this, 'save_post' ) );
 		}
 
 		/**
