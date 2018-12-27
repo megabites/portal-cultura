@@ -363,3 +363,12 @@ function hide_update_notice_to_all_but_admin_users()
 	}
 }
 add_action( 'admin_head', 'hide_update_notice_to_all_but_admin_users', 1 );
+
+/**
+ * Remove WP Canonical URL Admin
+ *
+ */
+function remove_wp_admin_canonical_url() {
+	remove_action( 'admin_head', 'wp_admin_canonical_url' );
+}
+add_action('init', 'remove_wp_admin_canonical_url', 0);
