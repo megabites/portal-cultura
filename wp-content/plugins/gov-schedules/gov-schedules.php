@@ -457,6 +457,10 @@ if ( ! class_exists( 'Gov_Schedules' ) ) :
 
 				}
 
+				global $wp_roles;
+				$wp_roles->remove_cap( 'agenda_manager', 'edit_others_posts' );
+				$wp_roles->remove_cap( 'agenda_manager', 'delete_others_posts' );
+
 				$role = get_role( 'agenda_manager' );
 				$role->remove_cap( 'edit_others_posts' );
 				$role->remove_cap( 'delete_others_posts' );

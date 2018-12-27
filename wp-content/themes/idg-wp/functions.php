@@ -264,6 +264,13 @@ function idg_add_custom_roles(){
 }
 add_action('after_setup_theme','idg_add_custom_roles');
 
+function the_dramatist_set_capabilities() {
+	$role = get_role( 'agenda_manager' );
+	$role->remove_cap( 'edit_others_posts' );
+	$role->remove_cap( 'delete_others_posts' );
+}
+add_action( 'admin_init', 'the_dramatist_set_capabilities', 0 );
+
 /**
  * Remove administrative menus for specific roles
  *                                           *
