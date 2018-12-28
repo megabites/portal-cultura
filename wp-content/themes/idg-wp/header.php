@@ -50,7 +50,7 @@
 		</div>
 
 		<div class="row">
-			<div class="col-sm-1 col-md-8 col-lg-8 menu-wrapper">
+			<div class="col-sm-1 col-md-8 col-lg-9 menu-wrapper">
 				<nav id="featured-links">
 					<button id="menu-toggle" class="hidden-sm-down" data-toggle="collapse" data-target="#menu-wrapper" aria-controls="primary-menu" aria-expanded="false">
 						<span class="sr-only"><?php esc_html_e( 'Primary Menu', 'idg-wp' ); ?></span>
@@ -66,7 +66,7 @@
 					wp_nav_menu($menu_args); ?>
 				</nav>
 			</div>
-			<div class="col-sm-11 col-md-4 col-lg-4 search-wrapper">
+			<div class="col-sm-11 col-md-4 col-lg-3 search-wrapper">
 				<?php get_search_form(); ?>
 			</div>
 		</div>

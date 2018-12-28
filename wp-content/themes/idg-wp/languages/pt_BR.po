@@ -300,7 +300,7 @@ msgstr "Seção Serviços"
 
 #: inc/widgets-areas.php:39
 msgid "Meet the Ministry Section"
-msgstr "Seção Conheça o Ministério"
+msgstr "Seção Conheça a Secretária"
 
 #: inc/widgets-areas.php:49
 msgid "Content Section"

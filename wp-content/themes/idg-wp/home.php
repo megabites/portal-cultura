@@ -176,7 +176,7 @@ get_header();
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
-						<h2 class="section-title mb-5 text-center">Conheça o Ministério</h2>
+						<h2 class="section-title mb-5 text-center">Conheça a Secretária</h2>
 					</div>
 					<?php
 					if ( is_active_sidebar( 'meet-the-ministry-widgets-area' ) ) :
