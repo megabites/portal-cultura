@@ -197,6 +197,11 @@ require get_template_directory() . '/inc/shortcodes.php';
 require get_template_directory() . '/inc/disable-comments.php';
 
 /**
+ * Add some share buttons
+ */
+require get_template_directory() . '/inc/share.php';
+
+/**
  * Custom callback for outputting comments
  *
  * @return void
