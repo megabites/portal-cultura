@@ -23,7 +23,7 @@
 		</div>
 	</header>
 
-	<div class="entry-content">
+	<div class="entry-content position-relative">
 		<?php the_content() ?>
 	</div>
 

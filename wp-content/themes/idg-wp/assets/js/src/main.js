@@ -77,6 +77,17 @@
 				$(this).parent().toggleClass('active');
 			});
 
+			$('a.share-link').on('click', function(event) {
+				event.preventDefault();
+				var url = $(this).attr('href');
+				showModal(url);
+			});
+
+			function showModal(url){
+				window.open(url, "shareWindow", "width=600, height=400");
+				return false;
+			}
+
 		},
 
 		agenda: function () {

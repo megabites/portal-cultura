@@ -60,6 +60,7 @@ if ( ! class_exists( 'Gov_Schedules' ) ) :
 			add_action( 'wp_enqueue_scripts', array( $this, 'register_gs_scripts' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'register_gs_admin_scripts' ) );
 			add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+			add_action( 'pre_post_update', array( $this, 'before_save_post' ) );
 			add_action( 'save_post', array( $this, 'save_post' ) );
 			add_action( 'init', array( $this, 'gs_shortcodes' ) );
 			add_action( 'wp_ajax_gs_get_week_events', array( $this, 'gs_get_week_events' ) );
@@ -199,6 +200,7 @@ if ( ! class_exists( 'Gov_Schedules' ) ) :
 		 */
 		public function add_event_columns( $columns ) {
 			return array_merge( $columns, array(
+				'author' => 'Criador do evento',
 				'start_date' => 'Data de início',
 				'end_date'   => 'Data de fim',
 				'location'   => 'Local'
@@ -396,6 +398,13 @@ if ( ! class_exists( 'Gov_Schedules' ) ) :
 			);
 		}
 
+		public function before_save_post ()
+		{
+			$role = get_role( 'agenda_manager' );
+			$role->add_cap( 'edit_others_posts' );
+			$role->add_cap( 'delete_others_posts' );
+		}
+
 		/**
 		 * Hooks into WordPress' save_post function
 		 */
@@ -414,33 +423,51 @@ if ( ! class_exists( 'Gov_Schedules' ) ) :
 				return $post_id;
 			}
 
-			foreach ( $this->fields as $field ) {
+			// unhook this function so it doesn't loop infinitely
+			remove_action( 'save_post', array( $this, 'save_post' ) );
 
-				if ( isset( $_POST[ $field['id'] ] ) ) {
+			// update the post, which calls save_post again
+			if( wp_update_post( array( 'ID' => $post_id, 'post_author' => get_current_user_id() ) ) ){
 
-					switch ( $field['type'] ) {
-						case 'email':
-							$_POST[ $field['id'] ] = sanitize_email( $_POST[ $field['id'] ] );
-							break;
-						case 'text':
-							if ( $field['id'] !== 'location' ) {
-								$raw_date              = explode( ' ', $_POST[ $field['id'] ] );
-								$_POST[ $field['id'] ] = implode( '-', array_reverse( explode( '/', $raw_date[0] ) ) ) . ' ' . $raw_date[1];
-							} else {
-								$_POST[ $field['id'] ] = sanitize_text_field( $_POST[ $field['id'] ] );
-							}
-							break;
+				foreach ( $this->fields as $field ) {
+
+					if ( isset( $_POST[ $field['id'] ] ) ) {
+
+						switch ( $field['type'] ) {
+							case 'email':
+								$_POST[ $field['id'] ] = sanitize_email( $_POST[ $field['id'] ] );
+								break;
+							case 'text':
+								if ( $field['id'] !== 'location' ) {
+									$raw_date              = explode( ' ', $_POST[ $field['id'] ] );
+									$_POST[ $field['id'] ] = implode( '-', array_reverse( explode( '/', $raw_date[0] ) ) ) . ' ' . $raw_date[1];
+								} else {
+									$_POST[ $field['id'] ] = sanitize_text_field( $_POST[ $field['id'] ] );
+								}
+								break;
+						}
+
+						update_post_meta( $post_id, 'dados_do_evento_' . $field['id'], $_POST[ $field['id'] ] );
+
+					} else if ( $field['type'] === 'checkbox' ) {
+
+						update_post_meta( $post_id, 'dados_do_evento_' . $field['id'], '0' );
+
 					}
-
-					update_post_meta( $post_id, 'dados_do_evento_' . $field['id'], $_POST[ $field['id'] ] );
-
-				} else if ( $field['type'] === 'checkbox' ) {
-
-					update_post_meta( $post_id, 'dados_do_evento_' . $field['id'], '0' );
 
 				}
 
+				global $wp_roles;
+				$wp_roles->remove_cap( 'agenda_manager', 'edit_others_posts' );
+				$wp_roles->remove_cap( 'agenda_manager', 'delete_others_posts' );
+
+				$role = get_role( 'agenda_manager' );
+				$role->remove_cap( 'edit_others_posts' );
+				$role->remove_cap( 'delete_others_posts' );
 			}
+
+			// re-hook this function
+			add_action( 'save_post', array( $this, 'save_post' ) );
 		}
 
 		/**
