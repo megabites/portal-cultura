@@ -197,6 +197,11 @@ require get_template_directory() . '/inc/shortcodes.php';
 require get_template_directory() . '/inc/disable-comments.php';
 
 /**
+ * Add some share buttons
+ */
+require get_template_directory() . '/inc/share.php';
+
+/**
  * Custom callback for outputting comments
  *
  * @return void
@@ -263,6 +268,13 @@ function idg_add_custom_roles(){
 	}
 }
 add_action('after_setup_theme','idg_add_custom_roles');
+
+function the_dramatist_set_capabilities() {
+	$role = get_role( 'agenda_manager' );
+	$role->remove_cap( 'edit_others_posts' );
+	$role->remove_cap( 'delete_others_posts' );
+}
+add_action( 'admin_init', 'the_dramatist_set_capabilities', 0 );
 
 /**
  * Remove administrative menus for specific roles
@@ -351,3 +363,24 @@ function embeded_youtube_video_id($url) {
 	}
 	return $post_content;
 }
+
+/**
+ * Hiding the update notification for non admin users
+ *
+ */
+function hide_update_notice_to_all_but_admin_users()
+{
+	if (!current_user_can('update_core')) {
+		remove_action( 'admin_notices', 'update_nag', 3 );
+	}
+}
+add_action( 'admin_head', 'hide_update_notice_to_all_but_admin_users', 1 );
+
+/**
+ * Remove WP Canonical URL Admin
+ *
+ */
+function remove_wp_admin_canonical_url() {
+	remove_action( 'admin_head', 'wp_admin_canonical_url' );
+}
+add_action('init', 'remove_wp_admin_canonical_url', 0);
