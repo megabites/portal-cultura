@@ -24,7 +24,7 @@
 							<a href="http://youtube.com/user/ministeriodacultura" target="_blank">Youtube</a>
 						</li>
 						<li class="facebook">
-							<a href="http://facebook.com/ministeriodacultura" target="_blank">Facebook</a>
+							<a href="https://www.facebook.com/SecretariaEspecialDaCultura/" target="_blank">Facebook</a>
 						</li>
 						<li class="flickr">
 							<a href="http://flickr.com/photos/ministeriodacultura/" target="_blank">Flickr</a>
