@@ -21,17 +21,6 @@ get_header();
 			<?php get_template_part('template-parts/jumbotron-carousel'); ?>
 		</section>
 
-		<section class="services mt-5 mb-5">
-			<div class="container">
-				<div class="row">
-					<?php
-					if ( is_active_sidebar( 'services-widgets-area' ) ) :
-						dynamic_sidebar( 'services-widgets-area' );
-					endif;
-					?>
-				</div>
-			</div>
-		</section>
 		<section id="news" class="pb-5 pt-5 bg-grey-2">
 			<div class="container">
 				<div class="row">
@@ -158,6 +147,18 @@ get_header();
 				<div class="col-lg-12 text-center">
 					<a href="<?php echo home_url( '/categoria/noticias/' ); ?>" class="btn text-uppercase mt-1">Mais
 						notícias</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="services mt-5 mb-5 pt-4">
+			<div class="container">
+				<div class="row">
+					<?php
+					if ( is_active_sidebar( 'services-widgets-area' ) ) :
+						dynamic_sidebar( 'services-widgets-area' );
+					endif;
+					?>
 				</div>
 			</div>
 		</section>
