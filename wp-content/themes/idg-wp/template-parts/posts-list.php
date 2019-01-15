@@ -18,7 +18,21 @@
 			<?php the_post(); ?>
 
 			<li id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-				<div class="categories"><?php the_category(', '); ?></div>
+				<div class="categories">
+					<?php
+						$categories = get_the_category();
+						$i = 1;
+						$exc = array('destaque', 'destaquinho-1', 'destaquinho-2', 'destaquinho-3');
+
+						foreach($categories as $cd){
+							if (!in_array($cd->slug, $exc)) {
+								echo ($i==1) ? '' : ', ';
+								echo '<a href="'. get_category_link( $cd->term_id ) .'">' . $cd->cat_name . '</a>';
+								$i++;
+							}
+						}
+					?>
+				</div>
 
 				<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 				<p><?php echo idg_excerpt(); ?></p>
