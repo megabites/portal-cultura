@@ -384,3 +384,22 @@ function remove_wp_admin_canonical_url() {
 	remove_action( 'admin_head', 'wp_admin_canonical_url' );
 }
 add_action('init', 'remove_wp_admin_canonical_url', 0);
+
+/**
+ * Add template for subcategories of 'Escritórios Regionais'
+ *
+ */
+
+function escritoriosRegionaisTemplate() {
+	if (is_category() && !is_feed()) {
+		$catId = get_category_by_slug('escritorios-regionais')->term_id;
+
+		if ( cat_is_ancestor_of($catId, get_query_var('cat'))) {
+			load_template(TEMPLATEPATH . '/subcategory-escritorios-regionais.php');
+			exit;
+		}
+	}
+}
+
+add_action('template_redirect', 'escritoriosRegionaisTemplate');
+remove_filter( 'pre_term_description', 'wp_filter_kses' );
