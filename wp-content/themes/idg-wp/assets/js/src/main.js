@@ -9,7 +9,7 @@
 			this.utils();
 			// this.agenda();
 			this.menu();
-			console.log('App here! ');
+			console.log('App here!');
 		},
 
 		/**
@@ -43,7 +43,7 @@
 			})
 
 			$('#menu-wrapper, #menu-toggle').click(function(event){
-				// event.stopPropagation();
+				event.stopPropagation();
 			});
 
 			$('#main-header').click(function(event){

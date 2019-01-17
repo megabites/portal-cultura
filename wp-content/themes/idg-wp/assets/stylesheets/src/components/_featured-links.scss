@@ -1,7 +1,7 @@
 #featured-links {
 	margin-top: 25px;
 
-	@include media-breakpoint-down(md) {
+	@include media("≥phone", "≤tablet") {
 		margin: 0;
 	}
 
@@ -34,9 +34,10 @@
 		width: 28px;
 		border: none;
 		background-color: transparent;
+		outline: none;
 
-		@include media-breakpoint-down(md) {
-			margin-top: 12px;
+		@include media("≥phone", "≤tablet") {
+			margin-top: 13px;
 		}
 	}
 

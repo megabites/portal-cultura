@@ -66,7 +66,7 @@
 		}
 	}
 
-	@include media-breakpoint-down(md) {
+	@include media("≥phone", "≤tablet") {
 		@include transition(transform ease-in-out .2s);
 		@include transform(translateX(-100%));
 

@@ -1,74 +1,87 @@
 .carousel-wrapper {
-	margin-bottom: 0;
-}
+	margin: 0;
+	background: #000;
 
-#jumbotron-carousel {
-	margin-bottom: 0;
-
-	.carousel-control-next,
-	.carousel-control-prev {
-		z-index: 2;
+	@include media("≥phone", "≤tablet") {
+		min-height: 55vh;
+		margin-top: 50px;
 	}
 
-	.carousel-indicators {
-		bottom: 10px;
+	#jumbotron-carousel {
+		margin-bottom: 0;
 
-		li {
-			width: 10px;
-			height: 10px;
-			border-radius: 50%;
-			background-color: rgba(255, 255, 255, .6);
-
-			&.active {
-				background-color: rgba(255, 255, 255, 1);
-			}
-		}
-	}
-
-	.carousel-item {
-		max-height: 680px;
-
-		.carousel-caption {
+		.carousel-control-next,
+		.carousel-control-prev {
 			z-index: 2;
-			text-align: left;
-			max-width: 1140px;
-			margin: auto;
-			padding-left: 15px;
-			padding-right: 15px;
-			left: 0;
-			right: 0;
+		}
 
-			a {
-				color: #fff;
+		.carousel-indicators {
+			bottom: 10px;
 
-				&:hover {
-					color: #0094ff;
-					text-decoration: none;
+			li {
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				background-color: rgba(255, 255, 255, .6);
+
+				&.active {
+					background-color: rgba(255, 255, 255, 1);
 				}
 			}
 		}
 
-		&:before {
-			content: " ";
-			background-color: transparent;
-			background-image: -o-radial-gradient(transparent,#000);
-			background-image: radial-gradient(transparent,#000);
-			white-space: nowrap;
-			display: block;
-			position: absolute;
-			left: 0;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			opacity: .8;
-			z-index: 1;
-			text-indent: -3000px;
+		.carousel-item {
+			max-height: 680px;
+
+			img {
+				display: block;
+				height: 55vh;
+				object-fit: cover;
+			}
+
+			.carousel-caption {
+				z-index: 2;
+				text-align: left;
+				max-width: 1140px;
+				margin: auto;
+				padding-left: 15px;
+				padding-right: 15px;
+				left: 0;
+				right: 0;
+
+				a {
+					color: #fff;
+
+					&:hover {
+						color: #0094ff;
+						text-decoration: none;
+					}
+				}
+			}
+
+			&:before {
+				content: " ";
+				background-color: transparent;
+				background-image: -o-radial-gradient(transparent,#000);
+				background-image: radial-gradient(transparent,#000);
+				white-space: nowrap;
+				display: block;
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				opacity: .8;
+				z-index: 1;
+				text-indent: -3000px;
+			}
+		}
+
+		.high-contrast & {
+			.carousel-item .carousel-caption {
+				background: #000;
+			}
 		}
 	}
 
-	.high-contrast & {
-		.carousel-item .carousel-caption {
-			background: #000;
-		}
-	}
 }
