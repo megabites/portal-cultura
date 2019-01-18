@@ -3,8 +3,34 @@
 	background-color: #19224d;
 	background-image: url("data:image/svg+xml,%3Csvg width='40' height='12' viewBox='0 0 40 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6.172L6.172 0h5.656L0 11.828V6.172zm40 5.656L28.172 0h5.656L40 6.172v5.656zM6.172 12l12-12h3.656l12 12h-5.656L20 3.828 11.828 12H6.172zm12 0L20 10.172 21.828 12h-3.656z' fill='%23ffffff' fill-opacity='0.01' fill-rule='evenodd'/%3E%3C/svg%3E");
 
+	@include media("≥phone", "≤tablet") {
+		padding: 0 !important;
+	}
+
 	.agenda-cats {
 		margin-bottom: 15px;
+		background: #19224d;
+
+		@include media("≥phone", "≤tablet") {
+			margin-bottom: 50px;
+			border-bottom: 1px solid rgba(#FFF, .2);
+		}
+
+		.col {
+			@include media("≥phone", "≤tablet") {
+				display: block;
+				padding: 0;
+				border-left: 1px solid rgba(#FFF, .2);
+
+				&:first-child {
+					border-left: none;
+				}
+
+				.section-title {
+					margin: 0 !important;
+				}
+			}
+		}
 
 		a {
 			@include transition(all ease-in-out .2s);
@@ -15,6 +41,13 @@
 			opacity: .5;
 			background: transparent;
 
+			@include media("≥phone", "≤tablet") {
+				width: 100%;
+				font-size: 18px;
+				padding: 10px 0;
+				display: block;
+			}
+
 			&:hover {
 				opacity: 1;
 				text-decoration: none;
@@ -23,12 +56,20 @@
 			&.active {
 				opacity: 1;
 				background-color: #2F884D;
+
+				@include media("≥phone", "≤tablet") {
+					background: none;
+				}
 			}
 		}
 	}
 
 	.daypicker-wrapper {
 		margin-bottom: 30px;
+
+		@include media("≥phone", "≤tablet") {
+			margin-bottom: 50px;
+		}
 
 		.daypicker {
 			margin: 0;
@@ -44,6 +85,15 @@
 				color: #dbdbdb;
 				align-items: center;
 				justify-content: center;
+
+				@include media("≥phone", "≤tablet") {
+					&:nth-child(1),
+					&:nth-child(2),
+					&:nth-child(6),
+					&:nth-child(7) {
+						display: none;
+					}
+				}
 
 				a {
 					font-size: 50px;
@@ -144,6 +194,10 @@
 			left: 0;
 			top: 50%;
 			margin-top: -1px;
+
+			@include media("≥phone", "≤tablet") {
+				width: 30%;
+			}
 		}
 
 		&:after {
@@ -164,6 +218,11 @@
 			height: 100%;
 			position: relative;
 
+			@include media("≥phone", "≤tablet") {
+				padding: 10px;
+				height: auto;
+			}
+
 			&.empty {
 				height: auto;
 				padding: 20px;
@@ -172,6 +231,10 @@
 			h2 {
 				margin-bottom: 20px;
 				font-size: 1.8em;
+
+				@include media("≥phone", "≤tablet") {
+					font-size: 1.2em;
+				}
 			}
 
 				a {
@@ -184,11 +247,25 @@
 				left: 15px;
 				height: 90px;
 
+				@include media("≥phone", "≤tablet") {
+					position: relative;
+					left: 0;
+					bottom: 0;
+					display: block;
+					height: auto;
+				}
+
 				span {
 					display: block;
 					height: 15px;
 					line-height: 15px;
 					margin-bottom: 15px;
+
+					@include media("≥phone", "≤tablet") {
+						font-size: 1em;
+						float: left;
+						width: 50%;
+					}
 
 					&.icon {
 						&:before {

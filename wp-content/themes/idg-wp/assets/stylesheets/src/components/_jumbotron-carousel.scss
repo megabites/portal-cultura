@@ -32,10 +32,18 @@
 		.carousel-item {
 			max-height: 680px;
 
+			@include media("≥phone", "≤tablet") {
+				max-height: 400px;
+			}
+
 			img {
 				display: block;
-				height: 40vh;
+				height: 100%;
 				object-fit: cover;
+
+				@include media("≥phone", "≤tablet") {
+					height: 50vh;
+				}
 			}
 
 			.carousel-caption {

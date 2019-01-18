@@ -179,8 +179,11 @@ figure {
 
 .overflow-wrapper {
 	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
 
 	@include media("≥phone", "≤tablet") {
+		display: block;
 		white-space: nowrap;
 		overflow-x: auto;
 		padding-bottom: 12px;
