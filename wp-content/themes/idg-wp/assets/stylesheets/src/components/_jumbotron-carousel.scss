@@ -3,8 +3,7 @@
 	background: #000;
 
 	@include media("≥phone", "≤tablet") {
-		min-height: 55vh;
-		margin-top: 50px;
+		min-height: 40vh;
 	}
 
 	#jumbotron-carousel {
@@ -35,7 +34,7 @@
 
 			img {
 				display: block;
-				height: 55vh;
+				height: 40vh;
 				object-fit: cover;
 			}
 

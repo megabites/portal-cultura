@@ -2,6 +2,12 @@ html {
 	box-sizing: border-box;
 }
 
+body {
+	@include media("≥phone", "≤tablet") {
+		padding-top: 50px;
+	}
+}
+
 *,
 *:before,
 *:after {
@@ -86,6 +92,114 @@ figure {
 			color: #8e8e8e;
 			font-weight: normal;
 			font-size: .85rem;
+		}
+	}
+}
+
+.home {
+	#news {
+		@include media("≥phone", "≤tablet") {
+			padding: 30px 0 !important;
+
+			.section-title {
+				margin-bottom: 20px !important;
+			}
+		}
+	}
+
+	#services {
+		@include media("≥phone", "≤tablet") {
+			padding: 20px 0 !important;
+			margin: 0 !important;
+			background: #06acff;
+
+			.overflow-wrapper {
+				margin: 0;
+				padding: 0;
+			}
+		}
+	}
+
+	#agenda {
+		@include media("≥phone", "≤tablet") {
+			margin: 0 !important;
+		}
+	}
+
+	#secretarias {
+		@include media("≥phone", "≤tablet") {
+			padding: 20px 0 23px !important;
+			margin: 0 !important;
+
+			.overflow-wrapper {
+				margin: 0;
+				padding: 0;
+			}
+
+			.section-title {
+				margin-bottom: 20px !important;
+			}
+		}
+	}
+
+	#section-content {
+		@include media("≥phone", "≤tablet") {
+			padding: 20px 0 !important;
+			margin: 0 !important;
+
+			.overflow-wrapper {
+				margin: 0;
+				padding: 0;
+			}
+		}
+	}
+
+	#participacao-social {
+		@include media("≥phone", "≤tablet") {
+			padding: 20px 0 23px !important;
+			margin: 0 !important;
+
+			.overflow-wrapper {
+				margin: 0;
+				padding: 0;
+			}
+
+			.section-title {
+				margin-bottom: 20px !important;
+			}
+		}
+	}
+
+	#multimidia {
+		@include media("≥phone", "≤tablet") {
+			margin-top: 0 !important;
+		}
+	}
+}
+
+.overflow-wrapper {
+	width: 100%;
+
+	@include media("≥phone", "≤tablet") {
+		white-space: nowrap;
+		overflow-x: auto;
+		padding-bottom: 12px;
+		margin-bottom: 10px;
+		font-size: 0;
+
+		> div {
+			width: 80%;
+			margin: 0 0 0 15px !important;
+			padding: 0;
+			display: inline-block;
+
+			&:last-child {
+				margin-right: 15px !important;
+			}
+
+			> * {
+				white-space: normal;
+			}
 		}
 	}
 }

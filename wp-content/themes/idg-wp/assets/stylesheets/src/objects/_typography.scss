@@ -13,6 +13,10 @@
 .section-title {
 	font-size: 2.3rem;
 	font-weight: 900;
+
+	@include media("≥phone", "≤tablet") {
+		font-size: 1.8rem;
+	}
 }
 
 .page-title,
