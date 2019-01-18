@@ -19,7 +19,7 @@
 		.col {
 			@include media("≥phone", "≤tablet") {
 				display: block;
-				padding: 0;
+				padding: 10px 0;
 				border-left: 1px solid rgba(#FFF, .2);
 
 				&:first-child {
@@ -144,6 +144,10 @@
 		position: relative;
 		margin-bottom: 60px;
 
+		@include media("≥phone", "≤tablet") {
+			margin-bottom: 30px;
+		}
+
 		a {
 			font-size: 12px;
 			font-family: "Lucida Grande", Arial, FreeSans;
@@ -221,6 +225,7 @@
 			@include media("≥phone", "≤tablet") {
 				padding: 10px;
 				height: auto;
+				overflow: hidden;
 			}
 
 			&.empty {
@@ -263,8 +268,6 @@
 
 					@include media("≥phone", "≤tablet") {
 						font-size: 1em;
-						float: left;
-						width: 50%;
 					}
 
 					&.icon {
@@ -292,6 +295,10 @@
 		.btn {
 			border-color: #fff;
 			color: #fff;
+
+			@include media("≥phone", "≤tablet") {
+				margin: 0 0 25px !important;
+			}
 		}
 	}
 
