@@ -22,7 +22,6 @@ get_header();
     <div class="container">
       <?php the_breadcrumb (); ?>
 
-<?php /*
       <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -46,7 +45,7 @@ get_header();
           <span class="sr-only">Next</span>
         </a>
       </div>
-*/?>
+
       <div class="row">
         <div class="col-12">
           <?php
