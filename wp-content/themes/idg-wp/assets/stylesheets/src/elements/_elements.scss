@@ -99,7 +99,7 @@ figure {
 .home {
 	#news {
 		@include media("≥phone", "≤tablet") {
-			padding: 30px 0 !important;
+			padding: 20px 0 !important;
 
 			.section-title {
 				margin-bottom: 20px !important;
@@ -374,5 +374,94 @@ body.page {
 .multimedia-archive {
 	.widget_idg_banner {
 		display: none !important;
+	}
+}
+
+.ui-datepicker {
+	@include media("≥phone", "≤tablet") {
+		width: 100%;
+		position: fixed !important;
+		top: 46px !important;
+		left: 0 !important;
+		height: calc(100% - 46px) !important;
+		border: none;
+	}
+
+	.ui-datepicker-month {
+		text-transform: capitalize;
+	}
+
+	.ui-datepicker-header {
+		height: 50px;
+		line-height: 50px;
+
+		.ui-datepicker-prev,
+		.ui-datepicker-next {
+			margin-top: 14px;
+		}
+	}
+
+	.ui-datepicker-calendar {
+		table-layout: fixed;
+		td {
+			width: 50px !important;
+			height: 50px !important;
+			position: relative;
+
+			&:before {
+				@include transform(translateX(-50%) translateY(-50%));
+				@include border-radius(50%);
+
+				content: "";
+				width: 50px;
+				height: 50px;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				background: transparent;
+				z-index: -1;
+			}
+
+			&:hover {
+				background: none;
+
+				.ui-state-default {
+					color: inherit;
+				}
+			}
+
+
+			&.ui-datepicker-current-day {
+				background: none;
+
+				&:before {
+					background: $main__color;
+				}
+
+				a,
+				.ui-state-default,
+				.ui-state-active {
+					color: #FFF;
+				}
+			}
+
+			&.ui-datepicker-today {
+				background: none;
+
+				&:before {
+					background: #2f884d;
+				}
+
+				a,
+				.ui-state-default,
+				.ui-state-active {
+					color: #FFF;
+				}
+			}
+
+			a {
+				color: #222;
+			}
+		}
 	}
 }
