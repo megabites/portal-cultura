@@ -33,20 +33,22 @@
 	}
 
 	&:hover {
-		background-color: #F8F8F8;
-		border-color: #06ACFF;
-		color: #06ACFF;
-
-		.card-title,
-		.card-desc,
-		.card-title a,
-		.icon:before {
-			color: #06ACFF;
-		}
-
-		.btn {
+		@include media("≥desktop") {
+			background-color: #F8F8F8;
 			border-color: #06ACFF;
 			color: #06ACFF;
+
+			.card-title,
+			.card-desc,
+			.card-title a,
+			.icon:before {
+				color: #06ACFF;
+			}
+
+			.btn {
+				border-color: #06ACFF;
+				color: #06ACFF;
+			}
 		}
 	}
 
@@ -120,14 +122,16 @@
 		}
 
 		&:hover {
-			border-color: #222;
-			color: #222;
-
-			.card-title,
-			.card-desc,
-			.card-title a,
-			.icon:before {
+			@include media("≥desktop") {
+				border-color: #222;
 				color: #222;
+
+				.card-title,
+				.card-desc,
+				.card-title a,
+				.icon:before {
+					color: #222;
+				}
 			}
 		}
 	}
