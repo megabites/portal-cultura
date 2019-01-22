@@ -12,7 +12,7 @@ $multimedia_query = new WP_Query( $args ); ?>
 		$taxonomy_names = wp_get_post_terms(get_the_ID(), 'multimedia-type');
 
 		if ( has_post_thumbnail() ) {
-			$multimedia_thumb = get_the_post_thumbnail_url();
+			$multimedia_thumb = get_the_post_thumbnail_url( get_the_ID(), 'multimedia-feature' );
 		} else {
 			/* echo get_first_post_image();
 			$x = get_post_gallery_images();

@@ -42,6 +42,8 @@ if ( ! function_exists( 'idg_wp_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 		add_image_size('carousel-feature', 1280, 680, true);
+		add_image_size('highlight-box', 350, 350, true);
+		add_image_size('multimedia-feature', 1080, 500, true);
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
