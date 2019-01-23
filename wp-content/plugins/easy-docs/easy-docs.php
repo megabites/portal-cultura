@@ -128,19 +128,22 @@ if ( ! class_exists( 'EasyDocs' ) ) :
 						'search_items' => 'Buscar tipo de documento'
 					),
 					'show_in_rest' => true,
+					'rewrite'      => array(
+						'slug' => 'documento'
+					),
 				)
 			);
 		}
 
-		public function easy_docs_cats_rewrite() {
+		/*public function easy_docs_cats_rewrite() {
 			add_rewrite_rule(
-				'^documentos/(.+)/?$',
+				'^documentos/(.+)/?$/',
 				'index.php??document-category=$matches[1]',
 				'top'
 			);
 
 			flush_rewrite_rules();
-		}
+		}*/
 
 		/**
 		 * Add a meta box to upload our document
