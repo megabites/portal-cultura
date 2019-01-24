@@ -317,7 +317,7 @@ if ( ! class_exists( 'EasyDocs' ) ) :
 								for ( $i = 0; $i < count( $documents_url ); $i ++ ):
 								$attachment = $this->get_attachment_id_by_url( $documents_url[ $i ] ); ?>
 								<div class="col-4">
-									<h6 class="card-subtitle mb-2 text-muted">Anexos</h6>
+									<h6 class="card-subtitle mb-2 text-muted">Anexo</h6>
 									<h5 class="card-title"><?php echo $attachment->post_title; ?></h5>
 									<p class="card-text">
 										<small><?php echo strftime( '%d de %B de %Y', strtotime( $attachment->post_date ) ); ?></small>
