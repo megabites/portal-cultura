@@ -75,7 +75,6 @@
 		</div>
 		<div id="menu-wrapper" class="clearfix">
 			<div class="menu-content container">
-				<div class="row">
 
 					<div class="menu-header hide-desktop">
 						<button type="button" class="close-menu icon-close"></button>
@@ -86,14 +85,15 @@
 					</div>
 
 					<div class="menu-body">
-						<?php
-						if ( is_active_sidebar( 'main-menu-area' ) ) :
-							dynamic_sidebar( 'main-menu-area' );
-						endif;
-						?>
+						<div class="row">
+							<?php
+							if ( is_active_sidebar( 'main-menu-area' ) ) :
+								dynamic_sidebar( 'main-menu-area' );
+							endif;
+							?>
+						</div>
 					</div>
 
-				</div>
 			</div>
 		</div>
 	</div>
