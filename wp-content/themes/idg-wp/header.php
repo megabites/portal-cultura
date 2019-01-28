@@ -52,9 +52,12 @@
 		<div class="row">
 			<div class="col-sm-1 col-md-8 col-lg-9 menu-wrapper">
 				<nav id="featured-links">
-					<button id="menu-toggle" class="hidden-sm-down" data-toggle="collapse" data-target="#menu-wrapper" aria-controls="primary-menu" aria-expanded="false">
-						<span class="sr-only"><?php esc_html_e( 'Primary Menu', 'idg-wp' ); ?></span>
+					<button id="menu-toggle">
+						<span><?php esc_html_e( 'Primary Menu', 'idg-wp' ); ?></span>
+						<span></span>
+						<span></span>
 					</button>
+
 					<?php
 					$menu_args = array(
 						'menu'              => 'featured-links',
@@ -70,7 +73,7 @@
 				<?php get_search_form(); ?>
 			</div>
 		</div>
-		<div id="menu-wrapper" class="collapse clearfix">
+		<div id="menu-wrapper" class="clearfix">
 			<div class="menu-content container">
 				<div class="row">
 

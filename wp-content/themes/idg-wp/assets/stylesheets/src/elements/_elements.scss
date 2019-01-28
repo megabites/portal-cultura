@@ -5,6 +5,10 @@ html {
 body {
 	@include media("≥phone", "≤tablet") {
 		padding-top: 50px;
+
+		&.menu-active {
+			overflow: hidden;
+		}
 	}
 }
 
@@ -392,20 +396,21 @@ body.page {
 	}
 
 	.ui-datepicker-header {
-		height: 50px;
-		line-height: 50px;
+		@include media("≥phone", "≤tablet") {
+			height: 50px;
+			line-height: 50px;
 
-		.ui-datepicker-prev,
-		.ui-datepicker-next {
-			margin-top: 14px;
+			.ui-datepicker-prev,
+			.ui-datepicker-next {
+				margin-top: 14px;
+			}
 		}
 	}
 
 	.ui-datepicker-calendar {
 		table-layout: fixed;
+
 		td {
-			width: 50px !important;
-			height: 50px !important;
 			position: relative;
 
 			&:before {
@@ -413,13 +418,18 @@ body.page {
 				@include border-radius(50%);
 
 				content: "";
-				width: 50px;
-				height: 50px;
+				width: 40px;
+				height: 40px;
 				position: absolute;
 				left: 50%;
 				top: 50%;
 				background: transparent;
 				z-index: -1;
+
+				@include media("≥phone", "≤tablet") {
+					width: 50px;
+					height: 50px;
+				}
 			}
 
 			&:hover {

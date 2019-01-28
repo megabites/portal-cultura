@@ -46,7 +46,7 @@
 				event.stopPropagation();
 			});
 
-			$('#main-header').click(function(event){
+			$('body').click(function(event){
 				$('body').removeClass('menu-active');
 			});
 

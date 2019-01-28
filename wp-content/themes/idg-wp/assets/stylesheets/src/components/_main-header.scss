@@ -3,9 +3,10 @@
 	padding: 0;
 	z-index: 100;
 	background-color: $main__color;
+	position: relative;
 
 	&:before {
-		@include transition(visibility 0s, opacity .2s);
+		@include transition(visibility 0s .2s, opacity .2s);
 
 		visibility: hidden;
 		opacity: 0;
