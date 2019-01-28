@@ -34,10 +34,11 @@
 		padding: 0;
 		z-index: 102;
 		padding: 0;
-		overflow: auto;
+		overflow: scroll;
+		-webkit-overflow-scrolling: touch;
 		display: block;
 		height: 100% !important;
-		min-height: calc(100vh - 56px);
+		min-height: 100vh;
 
 		.icon-close {
 			display: block;
