@@ -57,7 +57,7 @@
 				line-height: 25px;
 
 				@include media("≥phone", "≤tablet") {
-					color: $main__color;
+					color: $light__color;
 				}
 			}
 

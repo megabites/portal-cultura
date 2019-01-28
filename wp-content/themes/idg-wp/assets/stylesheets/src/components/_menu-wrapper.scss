@@ -37,6 +37,7 @@
 		overflow: auto;
 		display: block;
 		height: 100% !important;
+		min-height: calc(100vh - 56px);
 
 		.icon-close {
 			display: block;
@@ -77,10 +78,14 @@
 				.widget_nav_menu {
 					@include transition(max-height ease .2s);
 					padding: 0;
-					border-bottom: 1px solid rgba(0, 0, 0, .2);
+					border-top: 1px solid rgba(0, 0, 0, .2);
 					max-height: 50px;
 					overflow: hidden;
 					padding: 0 20px;
+
+					&:first-child {
+						border-top: none;
+					}
 
 					&.active {
 						&:after {
