@@ -69,7 +69,7 @@
 					wp_nav_menu($menu_args); ?>
 				</nav>
 			</div>
-			<div class="col-sm-11 col-md-4 col-lg-3 search-wrapper">
+			<div class="col-sm-11 col-md-4 col-lg-3 search-wrapper hide-mobile">
 				<?php get_search_form(); ?>
 			</div>
 		</div>
@@ -77,11 +77,21 @@
 			<div class="menu-content container">
 				<div class="row">
 
-					<?php
-					if ( is_active_sidebar( 'main-menu-area' ) ) :
-						dynamic_sidebar( 'main-menu-area' );
-					endif;
-					?>
+					<div class="menu-header hide-desktop">
+						<button type="button" class="close-menu icon-close"></button>
+						<h2 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h2>
+						<div class="search-wrapper">
+							<?php get_search_form(); ?>
+						</div>
+					</div>
+
+					<div class="menu-body">
+						<?php
+						if ( is_active_sidebar( 'main-menu-area' ) ) :
+							dynamic_sidebar( 'main-menu-area' );
+						endif;
+						?>
+					</div>
 
 				</div>
 			</div>

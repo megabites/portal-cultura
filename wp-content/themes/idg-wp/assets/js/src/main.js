@@ -46,7 +46,7 @@
 				event.stopPropagation();
 			});
 
-			$('body').click(function(event){
+			$('body, .close-menu').click(function(event){
 				$('body').removeClass('menu-active');
 			});
 
