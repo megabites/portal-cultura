@@ -57,7 +57,7 @@
 				right: 0;
 
 				@include media("≥phone", "≤desktop") {
-					padding: 20px 60px 50px;
+					padding: 0 0 60px;
 					bottom: 0;
 
 					&:before {
@@ -79,6 +79,9 @@
 						font-size: 1.3rem;
 						margin: 0;
 						// font-weight: normal;
+						display: block;
+						width: calc(100% - 120px);
+						margin: 0 auto;
 					}
 
 					p {
