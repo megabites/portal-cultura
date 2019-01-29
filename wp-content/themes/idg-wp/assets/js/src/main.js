@@ -57,31 +57,18 @@
 			$('.widget_nav_menu').click(function() {
 				$(this).toggleClass('active');
 			});
-
-			app.swipedetect(document, function(swipedir){
-					// swipedir contains either "none", "left", "right", "top", or "down"
-
-					if (swipedir === 'right') {
-						$('body').addClass('menu-active');
-					}
-
-					if (swipedir === 'left') {
-						$('body').removeClass('menu-active');
-					}
-			}, false);
-
 		},
 
 		carousel: function() {
-			var carousel = $('#jumbotron-carousel')[0];
+			var $carousel = $('#jumbotron-carousel');
 
-			app.swipedetect(carousel, function(swipedir){
+			app.swipedetect($carousel.find('.carousel-inner')[0], function(swipedir){
 					if (swipedir === 'right') {
-						$('#jumbotron-carousel').carousel('prev');
+						$carousel.carousel('prev');
 					}
 
 					if (swipedir === 'left') {
-						$('#jumbotron-carousel').carousel('next');
+						$carousel.carousel('next');
 					}
 			});
 		},
@@ -122,7 +109,7 @@
 		},
 
 		// credit: http://www.javascriptkit.com/javatutors/touchevents2.shtml
-		swipedetect: function(el, callback, preventDefault = true){
+		swipedetect: function(el, callback){
 
 				var touchsurface = Array.isArray(el) ? el : [el],
 						swipedir,
@@ -130,33 +117,30 @@
 						startY,
 						distX,
 						distY,
-						threshold = 150, //required min distance traveled to be considered swipe
+						threshold = 100, //required min distance traveled to be considered swipe
 						restraint = 100, // maximum distance allowed at the same time in perpendicular direction
 						allowedTime = 300, // maximum time allowed to travel that distance
 						elapsedTime,
 						startTime,
+						disabledInElement = 'div.overflow-wrapper',
 						handleswipe = callback || function(swipedir){};
 
 				touchsurface.forEach( (element) => {
 					element.addEventListener('touchstart', function(e){
-							var touchobj = e.changedTouches[0];
-							swipedir = 'none';
-							dist = 0;
-							startX = touchobj.pageX;
-							startY = touchobj.pageY;
-							startTime = new Date().getTime(); // record time when finger first makes contact with surface
+						var touchobj = e.changedTouches[0];
+						swipedir = 'none';
+						dist = 0;
+						startX = touchobj.pageX;
+						startY = touchobj.pageY;
+						startTime = new Date().getTime(); // record time when finger first makes contact with surface
 
-							if (preventDefault) {
-								e.stopPropagation();
-								e.preventDefault();
-							}
+						e.stopPropagation();
+						e.preventDefault();
 					}, false);
 				
 					element.addEventListener('touchmove', function(e){
-							if (preventDefault) {
-								e.stopPropagation();
-								e.preventDefault();
-							}
+						e.stopPropagation();
+						e.preventDefault();
 					}, false)
 				
 					element.addEventListener('touchend', function(e){
