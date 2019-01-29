@@ -4,7 +4,7 @@
 	list-style-type: none;
 	border-bottom: 1px solid #ccc;
 
-	@include media("≥phone", "≤tablet") {
+	@include media("≥phone", "≤desktop") {
 		text-align: center;
 	}
 
@@ -20,7 +20,7 @@
 			margin-left: 0;
 		}
 
-		@include media("≥phone", "≤tablet") {
+		@include media("≥phone", "≤desktop") {
 			margin-left: 20px;
 		}
 

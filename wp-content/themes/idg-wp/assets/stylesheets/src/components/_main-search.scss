@@ -13,7 +13,7 @@
 		font-family: "Lucida Grande", Arial, FreeSans;
 		font-size: 0.85em;
 
-		@include media("≥phone", "≤tablet") {
+		@include media("≥phone", "≤desktop") {
 			height: 40px;
 			outline: none;
 			background: #FFF;
@@ -56,12 +56,12 @@
 				height: 25px;
 				line-height: 25px;
 
-				@include media("≥phone", "≤tablet") {
+				@include media("≥phone", "≤desktop") {
 					color: $light__color;
 				}
 			}
 
-			@include media("≥phone", "≤tablet") {
+			@include media("≥phone", "≤desktop") {
 				outline: none;
 				height: 40px;
 			}

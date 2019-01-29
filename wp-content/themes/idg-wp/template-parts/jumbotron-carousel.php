@@ -24,12 +24,10 @@
 					}
 					?>
 					<img class="d-block w-100" src="<?php echo $post_thumb; ?>" alt="Second slide">
-					<div class="carousel-caption d-none d-md-block">
+					<div class="carousel-caption d-md-block">
 						<div class="container">
-							<a href="#">
-								<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-								<?php the_excerpt(); ?>
-							</a>
+							<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+							<?php the_excerpt(); ?>
 						</div>
 					</div>
 				</div>

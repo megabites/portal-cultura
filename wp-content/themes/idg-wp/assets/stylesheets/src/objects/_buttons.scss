@@ -25,7 +25,7 @@
 		border-color: #fff;
 	}
 
-	@include media("≥phone", "≤tablet") {
+	@include media("≥phone", "≤desktop") {
 		margin: 0 !important;
 		height: 50px;
 		padding: 12px 20px;

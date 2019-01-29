@@ -21,7 +21,7 @@
 		opacity: 0;
 	}
 
-	@include media("≥phone", "≤tablet") {
+	@include media("≥phone", "≤desktop") {
 		@include transition(transform ease-in-out .2s);
 		@include transform(translateX(-100%));
 
@@ -152,7 +152,7 @@
 			opacity: 1;
 		}
 
-		@include media("≥phone", "≤tablet") {
+		@include media("≥phone", "≤desktop") {
 			@include transition(transform ease-in-out .25s);
 			@include transform(translateX(0));
 
@@ -182,7 +182,7 @@
 				font-size: 1rem;
 				margin-bottom: 1.25rem;
 
-				@include media("≥phone", "≤tablet") {
+				@include media("≥phone", "≤desktop") {
 					font-size: 16px;
 				}
 			}
@@ -198,7 +198,7 @@
 					font-size: .875rem;
 					margin-bottom: 1.25rem;
 
-					@include media("≥phone", "≤tablet") {
+					@include media("≥phone", "≤desktop") {
 						margin: 0 !important;
 					}
 
@@ -206,7 +206,7 @@
 						font-weight: 500;
 						color: #222!important;
 
-						@include media("≥phone", "≤tablet") {
+						@include media("≥phone", "≤desktop") {
 							font-size: 14px;
 							padding: 12px 0;
 							display: block;

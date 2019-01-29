@@ -1,7 +1,7 @@
 #featured-links {
 	margin-top: 25px;
 
-	@include media("≥phone", "≤tablet") {
+	@include media("≥phone", "≤desktop") {
 		margin: 0;
 	}
 
@@ -40,7 +40,7 @@
 		display: block;
 		margin: 3px 0 0 3px;
 
-		@include media("≥phone", "≤tablet") {
+		@include media("≥phone", "≤desktop") {
 			margin-top: 16px;
 		}
 

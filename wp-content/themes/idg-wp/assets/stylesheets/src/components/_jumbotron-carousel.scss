@@ -2,7 +2,7 @@
 	margin: 0;
 	background: #000;
 
-	@include media("≥phone", "≤tablet") {
+	@include media("≥phone", "≤desktop") {
 		min-height: 40vh;
 	}
 
@@ -32,7 +32,7 @@
 		.carousel-item {
 			max-height: 680px;
 
-			@include media("≥phone", "≤tablet") {
+			@include media("≥phone", "≤desktop") {
 				max-height: 400px;
 			}
 
@@ -41,7 +41,7 @@
 				height: 100%;
 				object-fit: cover;
 
-				@include media("≥phone", "≤tablet") {
+				@include media("≥phone", "≤desktop") {
 					height: 50vh;
 				}
 			}
@@ -56,7 +56,33 @@
 				left: 0;
 				right: 0;
 
+				@include media("≥phone", "≤desktop") {
+					padding: 20px 20px 40px;
+					bottom: 0;
+
+					&:before {
+						content: "";
+						width: 100%;
+						height: calc(100% + 200px);
+						position: absolute;
+						left: 0;
+						bottom: 0;
+						z-index: -1;
+						background-image: linear-gradient(to bottom,rgba(0,0,0,0),#000);
+					}
+
+					h2 {
+						font-size: 1.4rem;
+						// font-weight: normal;
+					}
+
+					p {
+						display: none;
+					}
+				}
+
 				a {
+					display: block;
 					color: #fff;
 
 					&:hover {
@@ -81,6 +107,10 @@
 				opacity: .8;
 				z-index: 1;
 				text-indent: -3000px;
+
+				@include media("≥phone", "≤desktop") {
+					display: none;
+				}
 			}
 		}
 

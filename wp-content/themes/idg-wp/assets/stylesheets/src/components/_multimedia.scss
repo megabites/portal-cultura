@@ -5,7 +5,7 @@
 	padding: 60px 0;
 	color: #FFF;
 
-	@include media("≥phone", "≤tablet") {
+	@include media("≥phone", "≤desktop") {
 		padding: 20px;
 
 		.container {
@@ -35,7 +35,7 @@
 		display: table;
 		position: relative;
 
-		@include media("≥phone", "≤tablet") {
+		@include media("≥phone", "≤desktop") {
 			width: 100%;
 			padding: 0;
 			display: block;
@@ -54,7 +54,7 @@
 				text-decoration: none;
 			}
 
-			@include media("≥phone", "≤tablet") {
+			@include media("≥phone", "≤desktop") {
 				display: table;
 				padding: 0;
 				height: 100%;
@@ -104,7 +104,7 @@
 			left: 0;
 			top: 0;
 
-			@include media("≥phone", "≤tablet") {
+			@include media("≥phone", "≤desktop") {
 				display: none;
 			}
 		}
@@ -114,7 +114,7 @@
 		height: 215px;
 		background-position: center center;
 
-		@include media("≥phone", "≤tablet") {
+		@include media("≥phone", "≤desktop") {
 			height: 150px;
 			margin-top: 20px;
 		}

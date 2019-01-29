@@ -14,7 +14,7 @@
 	font-size: 2.3rem;
 	font-weight: 900;
 
-	@include media("≥phone", "≤tablet") {
+	@include media("≥phone", "≤desktop") {
 		font-size: 1.4rem;
 	}
 }

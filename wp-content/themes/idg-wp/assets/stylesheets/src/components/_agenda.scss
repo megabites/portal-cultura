@@ -3,7 +3,7 @@
 	background-color: #19224d;
 	background-image: url("data:image/svg+xml,%3Csvg width='40' height='12' viewBox='0 0 40 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6.172L6.172 0h5.656L0 11.828V6.172zm40 5.656L28.172 0h5.656L40 6.172v5.656zM6.172 12l12-12h3.656l12 12h-5.656L20 3.828 11.828 12H6.172zm12 0L20 10.172 21.828 12h-3.656z' fill='%23ffffff' fill-opacity='0.01' fill-rule='evenodd'/%3E%3C/svg%3E");
 
-	@include media("≥phone", "≤tablet") {
+	@include media("≥phone", "≤desktop") {
 		padding: 0 !important;
 	}
 
@@ -11,13 +11,13 @@
 		margin-bottom: 15px;
 		background: #19224d;
 
-		@include media("≥phone", "≤tablet") {
+		@include media("≥phone", "≤desktop") {
 			margin-bottom: 50px;
 			border-bottom: 1px solid rgba(#FFF, .2);
 		}
 
 		.col {
-			@include media("≥phone", "≤tablet") {
+			@include media("≥phone", "≤desktop") {
 				display: block;
 				padding: 10px 0;
 				border-left: 1px solid rgba(#FFF, .2);
@@ -41,7 +41,7 @@
 			opacity: .5;
 			background: transparent;
 
-			@include media("≥phone", "≤tablet") {
+			@include media("≥phone", "≤desktop") {
 				width: 100%;
 				font-size: 1rem;
 				padding: 10px 0;
@@ -57,7 +57,7 @@
 				opacity: 1;
 				background-color: #2F884D;
 
-				@include media("≥phone", "≤tablet") {
+				@include media("≥phone", "≤desktop") {
 					background: none;
 				}
 			}
@@ -67,7 +67,7 @@
 	.daypicker-wrapper {
 		margin-bottom: 30px;
 
-		@include media("≥phone", "≤tablet") {
+		@include media("≥phone", "≤desktop") {
 			margin-bottom: 50px;
 		}
 
@@ -86,7 +86,7 @@
 				align-items: center;
 				justify-content: center;
 
-				@include media("≥phone", "≤tablet") {
+				@include media("≥phone", "≤desktop") {
 					&:nth-child(1),
 					&:nth-child(2),
 					&:nth-child(6),
@@ -144,7 +144,7 @@
 		position: relative;
 		margin-bottom: 60px;
 
-		@include media("≥phone", "≤tablet") {
+		@include media("≥phone", "≤desktop") {
 			margin-bottom: 30px;
 		}
 
@@ -199,7 +199,7 @@
 			top: 50%;
 			margin-top: -1px;
 
-			@include media("≥phone", "≤tablet") {
+			@include media("≥phone", "≤desktop") {
 				width: 30%;
 			}
 		}
@@ -222,7 +222,7 @@
 			height: 100%;
 			position: relative;
 
-			@include media("≥phone", "≤tablet") {
+			@include media("≥phone", "≤desktop") {
 				padding: 10px;
 				height: auto;
 				overflow: hidden;
@@ -237,7 +237,7 @@
 				margin-bottom: 20px;
 				font-size: 1.8em;
 
-				@include media("≥phone", "≤tablet") {
+				@include media("≥phone", "≤desktop") {
 					font-size: 1.2em;
 				}
 			}
@@ -252,7 +252,7 @@
 				left: 15px;
 				height: 90px;
 
-				@include media("≥phone", "≤tablet") {
+				@include media("≥phone", "≤desktop") {
 					position: relative;
 					left: 0;
 					bottom: 0;
@@ -266,7 +266,7 @@
 					line-height: 15px;
 					margin-bottom: 15px;
 
-					@include media("≥phone", "≤tablet") {
+					@include media("≥phone", "≤desktop") {
 						font-size: 1em;
 					}
 
@@ -296,7 +296,7 @@
 			border-color: #fff;
 			color: #fff;
 
-			@include media("≥phone", "≤tablet") {
+			@include media("≥phone", "≤desktop") {
 				margin: 0 0 25px !important;
 			}
 		}

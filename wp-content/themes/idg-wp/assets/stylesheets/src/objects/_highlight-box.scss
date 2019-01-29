@@ -18,7 +18,7 @@
 		left: 0;
 		top: 0;
 
-		@include media("≥phone", "≤tablet") {
+		@include media("≥phone", "≤desktop") {
 			background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1));
 			height: 60%;
 			bottom: 0;
@@ -61,7 +61,7 @@
 				color: #fff;
 			}
 
-			@include media("≥phone", "≤tablet") {
+			@include media("≥phone", "≤desktop") {
 				font-size: 1.2rem;
 			}
 		}

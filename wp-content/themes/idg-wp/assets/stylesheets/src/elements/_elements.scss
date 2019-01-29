@@ -3,7 +3,7 @@ html {
 }
 
 body {
-	@include media("≥phone", "≤tablet") {
+	@include media("≥phone", "≤desktop") {
 		padding-top: 50px;
 
 		&.menu-active {
@@ -103,7 +103,7 @@ figure {
 
 .home {
 	#news {
-		@include media("≥phone", "≤tablet") {
+		@include media("≥phone", "≤desktop") {
 			padding: 20px 0 !important;
 
 			.section-title {
@@ -113,7 +113,7 @@ figure {
 	}
 
 	#services {
-		@include media("≥phone", "≤tablet") {
+		@include media("≥phone", "≤desktop") {
 			padding: 20px 0 !important;
 			margin: 0 !important;
 			background: #06acff;
@@ -126,13 +126,13 @@ figure {
 	}
 
 	#agenda {
-		@include media("≥phone", "≤tablet") {
+		@include media("≥phone", "≤desktop") {
 			margin: 0 !important;
 		}
 	}
 
 	#secretarias {
-		@include media("≥phone", "≤tablet") {
+		@include media("≥phone", "≤desktop") {
 			padding: 20px 0 23px !important;
 			margin: 0 !important;
 
@@ -148,7 +148,7 @@ figure {
 	}
 
 	#section-content {
-		@include media("≥phone", "≤tablet") {
+		@include media("≥phone", "≤desktop") {
 			padding: 20px 0 !important;
 			margin: 0 !important;
 
@@ -160,7 +160,7 @@ figure {
 	}
 
 	#participacao-social {
-		@include media("≥phone", "≤tablet") {
+		@include media("≥phone", "≤desktop") {
 			padding: 20px 0 23px !important;
 			margin: 0 !important;
 
@@ -176,7 +176,7 @@ figure {
 	}
 
 	#multimidia {
-		@include media("≥phone", "≤tablet") {
+		@include media("≥phone", "≤desktop") {
 			margin-top: 0 !important;
 		}
 	}
@@ -187,7 +187,7 @@ figure {
 	display: flex;
 	flex-wrap: wrap;
 
-	@include media("≥phone", "≤tablet") {
+	@include media("≥phone", "≤desktop") {
 		display: block;
 		white-space: nowrap;
 		overflow-x: auto;
@@ -383,7 +383,7 @@ body.page {
 }
 
 .ui-datepicker {
-	@include media("≥phone", "≤tablet") {
+	@include media("≥phone", "≤desktop") {
 		width: 100%;
 		position: fixed !important;
 		top: 46px !important;
@@ -397,7 +397,7 @@ body.page {
 	}
 
 	.ui-datepicker-header {
-		@include media("≥phone", "≤tablet") {
+		@include media("≥phone", "≤desktop") {
 			height: 50px;
 			line-height: 50px;
 
@@ -427,7 +427,7 @@ body.page {
 				background: transparent;
 				z-index: -1;
 
-				@include media("≥phone", "≤tablet") {
+				@include media("≥phone", "≤desktop") {
 					width: 50px;
 					height: 50px;
 				}
