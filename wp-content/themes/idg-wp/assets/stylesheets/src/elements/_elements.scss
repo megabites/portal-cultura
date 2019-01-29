@@ -16,6 +16,7 @@ body {
 *:before,
 *:after {
 	box-sizing: inherit;
+	// touch-action: manipulation !important;
 }
 
 body {
