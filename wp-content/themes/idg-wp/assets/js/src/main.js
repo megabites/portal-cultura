@@ -165,7 +165,7 @@
 			$('.monthpicker').on('click', function (e) {
 				e.preventDefault();
 				$('.monthpicker').datepicker('show');
-			})
+			});
 		}
 	};
 })(jQuery);

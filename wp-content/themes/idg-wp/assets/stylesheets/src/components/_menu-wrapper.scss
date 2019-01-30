@@ -209,7 +209,7 @@
 						@include media("≥phone", "≤desktop") {
 							font-size: 14px;
 							padding: 12px 0;
-							display: block;
+							display: inline-block;
 						}
 					}
 				}

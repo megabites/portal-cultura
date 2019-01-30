@@ -10,10 +10,10 @@
 
 	.agenda-cats {
 		margin-bottom: 15px;
-		background: color(bunting);
 
 		@include media("≥phone", "≤desktop") {
-			margin-bottom: 50px;
+			background: color(bunting);
+			margin: 0;
 			border-bottom: 1px solid rgba(color(white), .2);
 		}
 
@@ -69,7 +69,13 @@
 		margin-bottom: 30px;
 
 		@include media("≥phone", "≤desktop") {
-			margin-bottom: 50px;
+			margin: 0;
+			height: 185px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: calc(100% + 30px);
+			margin-left: -15px;
 		}
 
 		.daypicker {
