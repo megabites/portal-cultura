@@ -1,19 +1,53 @@
 #agenda {
 	@include transition(all ease-in-out .2s);
-	background-color: #19224d;
-	background-image: url("data:image/svg+xml,%3Csvg width='40' height='12' viewBox='0 0 40 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6.172L6.172 0h5.656L0 11.828V6.172zm40 5.656L28.172 0h5.656L40 6.172v5.656zM6.172 12l12-12h3.656l12 12h-5.656L20 3.828 11.828 12H6.172zm12 0L20 10.172 21.828 12h-3.656z' fill='%23ffffff' fill-opacity='0.01' fill-rule='evenodd'/%3E%3C/svg%3E");
+	background-color: color(bunting);
+	background-image: url('../../img/arrow-pattern.svg');
+
+	@include media("≥phone", "≤desktop") {
+		padding: 0 !important;
+		background-size: 30px auto;
+	}
 
 	.agenda-cats {
 		margin-bottom: 15px;
+		background: color(bunting);
+
+		@include media("≥phone", "≤desktop") {
+			margin-bottom: 50px;
+			border-bottom: 1px solid rgba(color(white), .2);
+		}
+
+		.col {
+			@include media("≥phone", "≤desktop") {
+				display: block;
+				padding: 10px 0;
+				border-left: 1px solid rgba(color(white), .2);
+
+				&:first-child {
+					border-left: none;
+				}
+
+				.section-title {
+					margin: 0 !important;
+				}
+			}
+		}
 
 		a {
 			@include transition(all ease-in-out .2s);
-			color: #fff;
+			color: color(white);
 			padding: 15px;
 			text-transform: uppercase;
 			font-size: 0.7em;
 			opacity: .5;
 			background: transparent;
+
+			@include media("≥phone", "≤desktop") {
+				width: 100%;
+				font-size: 1rem;
+				padding: 10px 0;
+				display: block;
+			}
 
 			&:hover {
 				opacity: 1;
@@ -22,13 +56,21 @@
 
 			&.active {
 				opacity: 1;
-				background-color: #2F884D;
+				background-color: color(seaGreen);
+
+				@include media("≥phone", "≤desktop") {
+					background: none;
+				}
 			}
 		}
 	}
 
 	.daypicker-wrapper {
 		margin-bottom: 30px;
+
+		@include media("≥phone", "≤desktop") {
+			margin-bottom: 50px;
+		}
 
 		.daypicker {
 			margin: 0;
@@ -41,9 +83,18 @@
 				width: 95px;
 				height: 95px;
 				cursor: pointer;
-				color: #dbdbdb;
+				color: color(alto);
 				align-items: center;
 				justify-content: center;
+
+				@include media("≥phone", "≤desktop") {
+					&:nth-child(1),
+					&:nth-child(2),
+					&:nth-child(6),
+					&:nth-child(7) {
+						display: none;
+					}
+				}
 
 				a {
 					font-size: 50px;
@@ -80,10 +131,10 @@
 				}
 
 				&.selected {
-					background-color: #2F884D;
+					background-color: color(seaGreen);
 
 					a {
-						color: #fff;
+						color: color(white);
 					}
 				}
 			}
@@ -94,10 +145,14 @@
 		position: relative;
 		margin-bottom: 60px;
 
+		@include media("≥phone", "≤desktop") {
+			margin-bottom: 30px;
+		}
+
 		a {
 			font-size: 12px;
 			font-family: "Lucida Grande", Arial, FreeSans;
-			color: #fff;
+			color: color(white);
 			font-weight: 500;
 			padding-right: 32px;
 
@@ -112,7 +167,7 @@
 
 					font-size: 16px;
 					content: map-get($icons, angle_down);
-					color: #19224d;
+					color: color(bunting);
 					font-family: 'icomoon';
 					width: 20px;
 					height: 20px;
@@ -121,7 +176,7 @@
 					text-indent: -1px;
 					text-align: center;
 					// display: inline-block;
-					background: #FFF;
+					background: color(white);
 					overflow: hidden;
 					position: absolute;
 					top: 50%;
@@ -144,6 +199,10 @@
 			left: 0;
 			top: 50%;
 			margin-top: -1px;
+
+			@include media("≥phone", "≤desktop") {
+				width: 30%;
+			}
 		}
 
 		&:after {
@@ -157,12 +216,18 @@
 		justify-content: center;
 
 		.event-item {
-			background: #EEE;
+			background: color(gray);
 			padding: 20px 20px 90px;
-			color: #222;
+			color: color(dark);
 			margin-bottom: 20px;
 			height: 100%;
 			position: relative;
+
+			@include media("≥phone", "≤desktop") {
+				padding: 10px;
+				height: auto;
+				overflow: hidden;
+			}
 
 			&.empty {
 				height: auto;
@@ -172,10 +237,14 @@
 			h2 {
 				margin-bottom: 20px;
 				font-size: 1.8em;
+
+				@include media("≥phone", "≤desktop") {
+					font-size: 1.2em;
+				}
 			}
 
 				a {
-					color: #222;
+					color: color(dark);
 				}
 
 			.info {
@@ -184,11 +253,23 @@
 				left: 15px;
 				height: 90px;
 
+				@include media("≥phone", "≤desktop") {
+					position: relative;
+					left: 0;
+					bottom: 0;
+					display: block;
+					height: auto;
+				}
+
 				span {
 					display: block;
 					height: 15px;
 					line-height: 15px;
 					margin-bottom: 15px;
+
+					@include media("≥phone", "≤desktop") {
+						font-size: 1em;
+					}
 
 					&.icon {
 						&:before {
@@ -213,8 +294,13 @@
 
 	.agenda-footer {
 		.btn {
-			border-color: #fff;
-			color: #fff;
+			border-color: color(white);
+			color: color(white);
+
+			@include media("≥phone", "≤desktop") {
+				margin: 0 0 25px !important;
+				background: color(bunting);
+			}
 		}
 	}
 
@@ -226,7 +312,7 @@
 		background: none !important;
 
 		.daypicker-wrapper .daypicker li a{
-			color: #dbdbdb;
+			color: color(alto);
 		}
 
 		.events {
@@ -308,7 +394,7 @@
 
 			.event {
 				align-items: center;
-				background: #EEE;
+				background: color(gray);
 				padding: 20px;
 				margin-bottom: 20px;
 
@@ -384,7 +470,7 @@
 
 	.event {
 		align-items: center;
-		background: #EEE;
+		background: color(gray);
 		padding: 30px 20px;
 		margin-bottom: 20px;
 
@@ -425,7 +511,7 @@
 			}
 
 			a {
-				color: #222;
+				color: color(dark);
 			}
 
 			.additional {
@@ -465,6 +551,6 @@
 	}
 
 	.high-contrast & {
-		background-color: #000 !important;
+		background-color: color(black) !important;
 	}
 }

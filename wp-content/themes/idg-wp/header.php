@@ -15,7 +15,7 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=0, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri(); ?>/assets/img/favicons/apple-touch-icon.png" />
@@ -56,9 +56,12 @@
 		<div class="row">
 			<div class="col-sm-1 col-md-8 col-lg-9 menu-wrapper">
 				<nav id="featured-links">
-					<button id="menu-toggle" class="hidden-sm-down" data-toggle="collapse" data-target="#menu-wrapper" aria-controls="primary-menu" aria-expanded="false">
-						<span class="sr-only"><?php esc_html_e( 'Primary Menu', 'idg-wp' ); ?></span>
+					<button id="menu-toggle">
+						<span><?php esc_html_e( 'Primary Menu', 'idg-wp' ); ?></span>
+						<span></span>
+						<span></span>
 					</button>
+
 					<?php
 					$menu_args = array(
 						'menu'              => 'featured-links',
@@ -70,21 +73,31 @@
 					wp_nav_menu($menu_args); ?>
 				</nav>
 			</div>
-			<div class="col-sm-11 col-md-4 col-lg-3 search-wrapper">
+			<div class="col-sm-11 col-md-4 col-lg-3 search-wrapper hide-mobile">
 				<?php get_search_form(); ?>
 			</div>
 		</div>
-		<div id="menu-wrapper" class="collapse clearfix">
+		<div id="menu-wrapper" class="clearfix">
 			<div class="menu-content container">
-				<div class="row">
 
-					<?php
-					if ( is_active_sidebar( 'main-menu-area' ) ) :
-						dynamic_sidebar( 'main-menu-area' );
-					endif;
-					?>
+					<div class="menu-header hide-desktop">
+						<button type="button" class="close-menu icon-close"></button>
+						<h2 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h2>
+						<div class="search-wrapper">
+							<?php get_search_form(); ?>
+						</div>
+					</div>
 
-				</div>
+					<div class="menu-body">
+						<div class="row">
+							<?php
+							if ( is_active_sidebar( 'main-menu-area' ) ) :
+								dynamic_sidebar( 'main-menu-area' );
+							endif;
+							?>
+						</div>
+					</div>
+
 			</div>
 		</div>
 	</div>

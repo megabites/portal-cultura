@@ -1,8 +1,30 @@
 #multimidia {
-	background-color: #222;
-	background-image: url("data:image/svg+xml,%3Csvg width='40' height='12' viewBox='0 0 40 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6.172L6.172 0h5.656L0 11.828V6.172zm40 5.656L28.172 0h5.656L40 6.172v5.656zM6.172 12l12-12h3.656l12 12h-5.656L20 3.828 11.828 12H6.172zm12 0L20 10.172 21.828 12h-3.656z' fill='%23ffffff' fill-opacity='0.01' fill-rule='evenodd'/%3E%3C/svg%3E");
+	overflow: hidden;
+	background-color: color(dark);
+	background-image: url('../../img/arrow-pattern.svg');
 	padding: 60px 0;
-	color: #FFF;
+	color: color(white);
+
+	@include media("≥phone", "≤desktop") {
+		padding: 20px;
+		background-size: 30px auto;
+
+		.container {
+			padding: 0;
+
+			.row {
+				padding: 0;
+				margin: 0;
+				display: block;
+
+				.col {
+					padding: 0;
+					margin: 0;
+					display: block;
+				}
+			}
+		}
+	}
 
 	.highlight {
 		width: calc(100% - 30px);
@@ -14,15 +36,62 @@
 		display: table;
 		position: relative;
 
+		@include media("≥phone", "≤desktop") {
+			width: 100%;
+			padding: 0;
+			display: block;
+			height: 350px;
+			margin-bottom: 0;
+		}
+
 		> a {
 			display: table-cell;
 			vertical-align: middle;
 			padding-right: 65%;
-			color: #fff;
+			color: color(white);
 			position: relative;
 
 			&:hover {
 				text-decoration: none;
+			}
+
+			@include media("≥phone", "≤desktop") {
+				display: table;
+				padding: 0;
+				height: 100%;
+
+				.align {
+					display: table-cell;
+					vertical-align: bottom;
+
+					.text {
+						padding: 15px;
+						position: relative;
+						z-index: 0;
+
+						&:before {
+							content: "";
+							width: 100%;
+							height: calc(100% + 30px);
+							background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1));
+							position: absolute;
+							bottom: 0;
+							left: 0;
+							z-index: -1;
+						}
+					}
+				}
+
+				h3 {
+					font-size: 1.2rem;
+					display: block;
+				}
+
+				span {
+					display: block;
+					font-size: 1rem;
+					line-height: normal;
+				}
 			}
 		}
 
@@ -35,20 +104,29 @@
 			position: absolute;
 			left: 0;
 			top: 0;
+
+			@include media("≥phone", "≤desktop") {
+				display: none;
+			}
 		}
 	}
 
 	.highlight-box {
 		height: 215px;
 		background-position: center center;
+
+		@include media("≥phone", "≤desktop") {
+			height: 150px;
+			margin-top: 20px;
+		}
 	}
 
 	.multimedia-archive & {
 		padding: 30px 0 60px;
-		background-color: #222;
+		background-color: color(dark);
 
 		h1 {
-			color: #FFF;
+			color: color(white);
 		}
 
 		.highlight-box {
@@ -65,15 +143,15 @@
 
 	h2 {
 		a {
-			color: #222;
+			color: color(dark);
 			text-decoration: underline;
 		}
 	}
 
 	#social-media {
 		padding: 60px 0;
-	background-color: #2969bd;
-	background-image: url("data:image/svg+xml,%3Csvg width='40' height='12' viewBox='0 0 40 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6.172L6.172 0h5.656L0 11.828V6.172zm40 5.656L28.172 0h5.656L40 6.172v5.656zM6.172 12l12-12h3.656l12 12h-5.656L20 3.828 11.828 12H6.172zm12 0L20 10.172 21.828 12h-3.656z' fill='%23ffffff' fill-opacity='0.01' fill-rule='evenodd'/%3E%3C/svg%3E");
+		background-color: color(primary);
+		background-image: url('../../img/arrow-pattern.svg');
 
 		.media-row {
 			margin-top: 30px;
@@ -83,7 +161,9 @@
 			}
 		}
 
-		.highlight-box { 
+		.highlight-box {
+			@include transform(translateY(-50%));
+
 			padding-top: 75%;
 			height: auto;
 			background: #EEEEEE;
@@ -93,22 +173,18 @@
 				position: absolute;
 				width: 100%;
 				top: 50%;
-				@include transform(translateY(-50%));
 			}
 
 			a {
+				@include transition(all ease .2s);
+
 				position: absolute;
 				top: 0;
 				width: 100%;
 				height: 100%;
 				text-align: center;
-				color: #222;
+				color: color(dark);
 				cursor: pointer;
-				@include transition(all ease .2s);
-
-				&:hover {
-					// color: $main__color;
-				}
 
 				.icon {
 					margin-bottom: 10px;

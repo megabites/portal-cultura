@@ -1,6 +1,6 @@
 .highlight-box {
 	position: relative;
-	background: #fff;
+	background: color(white);
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	height: 370px;
@@ -17,6 +17,13 @@
 		position: absolute;
 		left: 0;
 		top: 0;
+
+		@include media("≥phone", "≤desktop") {
+			background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1));
+			height: 60%;
+			bottom: 0;
+			top: auto;
+		}
 	}
 
 	.box-body {
@@ -28,7 +35,7 @@
 		padding: 15px;
 
 		.cat {
-			color: #fff;
+			color: color(white);
 			text-transform: uppercase;
 			position: relative;
 
@@ -37,7 +44,7 @@
 				display: block;
 				width: 45px;
 				height: 3px;
-				background-color: #0094ff;
+				background-color: color(secondary);
 				position: absolute;
 				top: -5px;
 				left: 0;
@@ -48,10 +55,14 @@
 			font-size: 1.5rem;
 			margin-top: 5px;
 			font-weight: 700;
-			color: #FFF;
+			color: color(white);
 
 			a {
-				color: #fff;
+				color: color(white);
+			}
+
+			@include media("≥phone", "≤desktop") {
+				font-size: 1.2rem;
 			}
 		}
 	}

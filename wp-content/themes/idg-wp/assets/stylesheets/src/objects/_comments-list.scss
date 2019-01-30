@@ -1,6 +1,6 @@
 #comments-wrapper {
   overflow: hidden;
-  background: #FFF;
+  background: color(white);
   padding: 30px 0;
 
   h3 {
@@ -20,7 +20,7 @@
       .thumbnail {
         @include border-radius(50%);
         overflow: hidden;
-        border: 1px solid #CCC;
+        border: 1px solid color(silver);
         margin-right: 20px;
         width: 80px;
         height: 80px;
@@ -30,7 +30,7 @@
       .text-wrapper {
         width: calc(100% - 100px);
         float: left;
-        border: 1px solid #ddd;
+        border: 1px solid color(alto);
         margin-bottom: 20px;
         border-radius: 4px;
 
@@ -40,9 +40,9 @@
           border-bottom: 1px solid transparent;
           border-top-left-radius: 3px;
           border-top-right-radius: 3px;
-          color: #333;
-          background-color: #f5f5f5;
-          border-color: #ddd;
+          color: color(dark);
+          background-color: color(alabaster);
+          border-color: color(alto);
           position: relative;
 
           &:after,
@@ -61,13 +61,13 @@
           }
 
           &:before {
-            border-right-color: #ddd;
+            border-right-color: color(alto);
             border-width: 8px;
           }
 
           &:after {
             border-width: 7px;
-            border-right-color: #f7f7f7;
+            border-right-color: color(alabaster);
             margin-top: 1px;
             margin-left: 2px;
           }
@@ -75,7 +75,7 @@
           strong {
             a {
               font-size: 1rem;
-              color: #232323;
+              color: color(dark);
             }
           }
 
@@ -84,7 +84,7 @@
             font-size: .85rem;
 
             a {
-              color: #666;
+              color: color(doveGray);
             }
           }
         }
@@ -105,7 +105,7 @@
   #respond {
     margin-top: 30px;
     padding-top: 30px;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid color(alto);
   }
 
 }

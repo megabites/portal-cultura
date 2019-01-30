@@ -6,10 +6,10 @@
 * @param {string} $value - Valor da propriedade a ser aplicado o prefixo
 */
 @mixin vendor-prefixes($property, $value) {
-  #{$property}: $value;
-  -webkit-#{$property}: $value;
-  -moz-#{$property}: $value;
-  -ms-#{$property}: $value;
+	#{$property}: $value;
+	-webkit-#{$property}: $value;
+	-moz-#{$property}: $value;
+	-ms-#{$property}: $value;
 }
 
 /**
@@ -19,7 +19,7 @@
 * o valor geral ou valores especificos para cada borda.
 */
 @mixin border-radius($radius) {
-    @include vendor-prefixes(border-radius, $radius);
+		@include vendor-prefixes(border-radius, $radius);
 }
 
 /**
@@ -28,27 +28,44 @@
 * @param {string} $color - Texto com o valor da cor
 */
 @mixin placeholder($color) {
-  &::-webkit-input-placeholder {
-    color: $color;    
-  }
-  &::-moz-placeholder {
-    color: $color;     
-  }
-  &:-ms-input-placeholder {  
-    color: $color;
-  }
-  &::-ms-input-placeholder {
-    color: $color;
-  }
+	&::-webkit-input-placeholder {
+		color: $color;
+	}
+
+	&::-moz-placeholder {
+		color: $color;
+	}
+
+	&:-ms-input-placeholder {
+		color: $color;
+	}
+
+	&::-ms-input-placeholder {
+		color: $color;
+	}
 }
 
 @mixin transform($values) {
-    @include vendor-prefixes('transform', $values);
+		@include vendor-prefixes('transform', $values);
+}
+
+/**
+* Aplica opacidade no elemento
+* @param {string} $opacity - Valor da opacidade (Ex: 0.5)
+*/
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	$opacity-ie: $opacity * 100;
+	filter: alpha(opacity=$opacity-ie); //IE8
 }
 
 @mixin high-contrast() {
 	.high-contrast & {
-		background: #000;
-		color: #fff;
+		background: color(black);
+		color: color(white);
 	}
+}
+
+@function color($color-name) {
+	@return map-get($colors, $color-name);
 }

@@ -9,7 +9,7 @@
 
     .categories {
       font-size: .875rem;
-      color: #069cff;
+      color: color(dodgerBlue);
       font-weight: 700;
       text-transform: uppercase;
       font-family: inherit;
@@ -20,19 +20,19 @@
       font-size: 1.4em;
 
       a {
-        color: #333;
+        color: color(dark);
       }
     }
 
     p {
       font-size: 1.15em; 
-      color: #282828;
+      color: color(dark);
       margin: 0 0 20px;
     }
 
     span {
       font-size: 0.85em;
-      color: #a6a6a6;
+      color: color(silver);
     }
   }
 }

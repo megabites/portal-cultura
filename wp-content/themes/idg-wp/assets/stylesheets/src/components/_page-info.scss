@@ -1,7 +1,7 @@
 #page-info {
 	overflow: hidden;
-	background: $main__color;
-	color: #FFF;
+	background: color(primary);
+	color: color(white);
 
 	.idg-menu {
 		margin-top: 60px;
@@ -26,14 +26,14 @@
 		}
 
 		a {
-			color: #FFF;
+			color: color(white);
 			text-decoration: underline;
 		}
 	}
 
 	#breadcrumb-wrapper #breadcrumb li a,
 	#breadcrumb-wrapper #breadcrumb li.separator {
-		color: #FFF;
+		color: color(white);
 	}
 
 	.wrapper-box {
@@ -51,7 +51,7 @@
 				width: 100%;
 				height: 100%;
 				display: block;
-				color: #222;
+				color: color(dark);
 			}
 		}
 	}
@@ -67,7 +67,7 @@
 		}
 
 		a {
-			color: #FFF;
+			color: color(white);
 			text-decoration: underline;
 		}
 	}

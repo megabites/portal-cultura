@@ -34,8 +34,12 @@ $multimedia_query = new WP_Query( $args ); ?>
 		?>
 		<div class="highlight" style="background-image: url('<?php echo $multimedia_thumb; ?>');">
 			<a href="<?php the_permalink(); ?>">
-				<h3><?php the_title(); ?></h3>
-				<?php echo idg_excerpt(30); ?>
+				<div class="align">
+					<div class="text">
+						<h3><?php the_title(); ?></h3>
+						<span><?php echo idg_excerpt(30); ?></span>
+					</div>
+				</div>
 			</a>
 		</div>
 	<?php endwhile; ?>

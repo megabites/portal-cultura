@@ -4,13 +4,25 @@
 	list-style-type: none;
 	border-bottom: 1px solid #ccc;
 
+	@include media("≥phone", "≤desktop") {
+		text-align: center;
+	}
+
 	li {
 		background-image: url(../../img/sprite.png);
 		background-position: -140px -124px;
 		width: 35px;
 		height: 35px;
 		display: inline-block;
-		margin-right: 40px;
+		margin-left: 40px;
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		@include media("≥phone", "≤desktop") {
+			margin-left: 20px;
+		}
 
 		a {
 			text-indent: -3000px;

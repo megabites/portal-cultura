@@ -2,22 +2,33 @@ html {
 	box-sizing: border-box;
 }
 
+body {
+	@include media("≥phone", "≤desktop") {
+		padding-top: 50px;
+
+		&.menu-active {
+			overflow: hidden;
+		}
+	}
+}
+
 *,
 *:before,
 *:after {
 	box-sizing: inherit;
+	// touch-action: manipulation !important;
 }
 
 body {
-	background: $background__body;
+	background: color(alabaster);
 	font-family: $font__main;
 	position: relative;
 	// -webkit-font-smoothing: antialiased;
 	// -moz-osx-font-smoothing: grayscale;
 
 	&.high-contrast {
-		background: #000;
-		color: #fff;
+		background: color(black);
+		color: color(white);
 	}
 }
 
@@ -44,7 +55,7 @@ img {
 	.entry-content {
 		> p {
 			&:first-child:first-letter {
-				color: $main__color;
+				color: color(primary);
 				font-size: 5rem;
 				display: block;
 				font-weight: 700;
@@ -61,17 +72,17 @@ img {
 	}
 }
 
-.carousel-wrapper {
-	margin-bottom: 85px;
-}
-
 #section-content {
 	padding: 73px 0 30px !important;
-	background-color: #1FC86A;
-	background-image: url("data:image/svg+xml,%3Csvg width='40' height='12' viewBox='0 0 40 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 6.172L6.172 0h5.656L0 11.828V6.172zm40 5.656L28.172 0h5.656L40 6.172v5.656zM6.172 12l12-12h3.656l12 12h-5.656L20 3.828 11.828 12H6.172zm12 0L20 10.172 21.828 12h-3.656z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+	background-color: color(lightGreen);
+	background-image: url('../../img/arrow-pattern.svg');
 
 	.section-title {
-		color: #FFF;
+		color: color(white);
+	}
+
+	@include media("≥phone", "≤desktop") {
+		background-size: 30px auto;
 	}
 }
 
@@ -87,25 +98,134 @@ figure {
 		}
 
 		.wp-caption-text {
-			color: #8e8e8e;
+			color: color(doveGray);
 			font-weight: normal;
 			font-size: .85rem;
 		}
 	}
 }
 
+.home {
+	#news {
+		@include media("≥phone", "≤desktop") {
+			padding: 15px 0 !important;
+
+			.section-title {
+				margin-bottom: 20px !important;
+			}
+		}
+	}
+
+	#services {
+		@include media("≥phone", "≤desktop") {
+			padding: 15px 0 !important;
+			margin: 0 !important;
+			background: color(dodgerBlue);
+
+			.overflow-wrapper {
+				margin: 0;
+				padding: 0;
+			}
+		}
+	}
+
+	#agenda {
+		@include media("≥phone", "≤desktop") {
+			margin: 0 !important;
+		}
+	}
+
+	#secretarias {
+		@include media("≥phone", "≤desktop") {
+			padding: 20px 0 23px !important;
+			margin: 0 !important;
+
+			.overflow-wrapper {
+				margin: 0;
+				padding: 0;
+			}
+
+			.section-title {
+				margin-bottom: 20px !important;
+			}
+		}
+	}
+
+	#section-content {
+		@include media("≥phone", "≤desktop") {
+			padding: 15px 0 !important;
+			margin: 0 !important;
+
+			.overflow-wrapper {
+				margin: 0;
+				padding: 0;
+			}
+		}
+	}
+
+	#participacao-social {
+		@include media("≥phone", "≤desktop") {
+			padding: 20px 0 23px !important;
+			margin: 0 !important;
+
+			.overflow-wrapper {
+				margin: 0;
+				padding: 0;
+			}
+
+			.section-title {
+				margin-bottom: 20px !important;
+			}
+		}
+	}
+
+	#multimidia {
+		@include media("≥phone", "≤desktop") {
+			margin-top: 0 !important;
+		}
+	}
+}
+
+.overflow-wrapper {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+
+	@include media("≥phone", "≤desktop") {
+		display: block;
+		white-space: nowrap;
+		overflow-x: auto;
+		padding-bottom: 12px;
+		margin-bottom: 10px;
+		font-size: 0;
+
+		> div {
+			width: 80%;
+			margin: 0 0 0 15px !important;
+			padding: 0;
+			display: inline-block;
+
+			&:last-child {
+				margin-right: 15px !important;
+			}
+
+			> * {
+				white-space: normal;
+			}
+		}
+	}
+}
+
 body.page {
 	#main {
-		background: #FFF;
+		background: color(white);
 	}
 }
 
 .entry-content {
 	a {
-		// color: #212529;
 		text-decoration: underline;
 		cursor: pointer;
-		// font-weight: bold;
 	}
 
 	h2 {
@@ -162,8 +282,8 @@ body.page {
 		thead {
 			th {
 				width: 25%;
-				background: #2969BD;
-				color: #FFF;
+				background: color(primary);
+				color: color(white);
 				border-bottom: 1px solid #dee2e6;
 				font-weight: normal;
 			}
@@ -174,7 +294,7 @@ body.page {
 				font-weight: normal;
 
 				&[colspan] {
-					background: #EEE;
+					background: color(gray);
 					font-size: 1rem;
 				}
 			}
@@ -216,7 +336,7 @@ body.page {
 	a {
 		@include transition(all ease-in-out .2s);
 
-		color: #222;
+		color: color(dark);
 		display: block;
 		height: 300px;
 		width: 100%;
@@ -236,30 +356,137 @@ body.page {
 	}
 
 	&:hover {
-		background-color: #F8F8F8;
-		border-color: #06ACFF;
-		color: #06ACFF;
+		background-color: color(alabaster);
+		border-color: color(dodgerBlue);
+		color: color(dodgerBlue);
 
 		a {
-			color: #06ACFF;
+			color: color(dodgerBlue);
 		}
 
 		.card-title,
 		.card-desc,
 		.card-title a,
 		.icon:before {
-			color: #06ACFF;
+			color: color(dodgerBlue);
 		}
 
 		.btn {
-			border-color: #06ACFF;
-			color: #06ACFF;
+			border-color: color(dodgerBlue);
+			color: color(dodgerBlue);
 		}
 	}
 }
 
 .multimedia-archive {
 	.widget_idg_banner {
+		display: none !important;
+	}
+}
+
+.ui-datepicker {
+	@include media("≥phone", "≤desktop") {
+		width: 100%;
+		position: fixed !important;
+		top: 46px !important;
+		left: 0 !important;
+		height: calc(100% - 46px) !important;
+		border: none;
+	}
+
+	.ui-datepicker-month {
+		text-transform: capitalize;
+	}
+
+	.ui-datepicker-header {
+		@include media("≥phone", "≤desktop") {
+			height: 50px;
+			line-height: 50px;
+
+			.ui-datepicker-prev,
+			.ui-datepicker-next {
+				margin-top: 14px;
+			}
+		}
+	}
+
+	.ui-datepicker-calendar {
+		table-layout: fixed;
+
+		td {
+			position: relative;
+
+			&:before {
+				@include transform(translateX(-50%) translateY(-50%));
+				@include border-radius(50%);
+
+				content: "";
+				width: 40px;
+				height: 40px;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				background: transparent;
+				z-index: -1;
+
+				@include media("≥phone", "≤desktop") {
+					width: 50px;
+					height: 50px;
+				}
+			}
+
+			&:hover {
+				background: none;
+
+				.ui-state-default {
+					color: inherit;
+				}
+			}
+
+
+			&.ui-datepicker-current-day {
+				background: none;
+
+				&:before {
+					background: color(primary);
+				}
+
+				a,
+				.ui-state-default,
+				.ui-state-active {
+					color: color(white);
+				}
+			}
+
+			&.ui-datepicker-today {
+				background: none;
+
+				&:before {
+					background: color(seaGreen);
+				}
+
+				a,
+				.ui-state-default,
+				.ui-state-active {
+					color: color(white);
+				}
+			}
+
+			a {
+				color: color(dark);
+			}
+		}
+	}
+}
+
+.hide-desktop {
+	@include media("≥desktop") {
+		display: none !important;
+	}
+}
+
+.hide-mobile {
+	@include media("≤desktop") {
 		display: none !important;
 	}
 }

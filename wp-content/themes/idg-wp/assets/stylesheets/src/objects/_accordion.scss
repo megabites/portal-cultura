@@ -21,7 +21,7 @@
           height: 50px;
           line-height: 50px;
           padding: 0 20px;
-          color: $text__color;
+          color: color(text);
           text-decoration: none;
           position: relative;
           padding-left: 55px;
@@ -47,7 +47,7 @@
             position: absolute;
             left: 20px;
             top: 50%;
-            color: $main__color;
+            color: color(primary);
           }
         }
       }
