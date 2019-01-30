@@ -28,15 +28,6 @@ get_header();
 						<h2 class="section-title mb-5 text-center">Notícias</h2>
 					</div>
 					<?php
-					/*$args = [];
-					if( get_option('idg-wp_theme_options_news_sections') ){
-						$args['category_name'] = get_option('idg-wp_theme_options_news_sections');
-					}
-					if( get_option('idg-wp_theme_options_news_sections_items') ){
-						$args['posts_per_page'] = get_option('idg-wp_theme_options_news_sections_items');
-					} else {
-						$args['posts_per_page'] = 3;
-					}*/
 					$args      = array(
 						'posts_per_page' => 1,
 						'category_name'  => 'destaquinho-1'
@@ -50,7 +41,7 @@ get_header();
 							<div class="col-lg-4 mb-5">
 								<?php
 								if ( has_post_thumbnail() ) {
-									$post_thumb = get_the_post_thumbnail_url();
+									$post_thumb = get_the_post_thumbnail_url(get_the_ID(), 'highlight-box');
 								} else {
 									$post_thumb = get_template_directory_uri() . '/assets/img/fake-img.jpg';
 								}
@@ -86,7 +77,7 @@ get_header();
 							<div class="col-lg-4 mb-5">
 								<?php
 								if ( has_post_thumbnail() ) {
-									$post_thumb = get_the_post_thumbnail_url();
+									$post_thumb = get_the_post_thumbnail_url(get_the_ID(), 'highlight-box');
 								} else {
 									$post_thumb = get_template_directory_uri() . '/assets/img/fake-img.jpg';
 								}
@@ -122,7 +113,7 @@ get_header();
 							<div class="col-lg-4 mb-5">
 								<?php
 								if ( has_post_thumbnail() ) {
-									$post_thumb = get_the_post_thumbnail_url();
+									$post_thumb = get_the_post_thumbnail_url(get_the_ID(), 'highlight-box');
 								} else {
 									$post_thumb = get_template_directory_uri() . '/assets/img/fake-img.jpg';
 								}

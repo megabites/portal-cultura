@@ -78,6 +78,7 @@ if ( ! class_exists( 'Gov_Schedules' ) ) :
 			add_action( 'wp_ajax_nopriv_gs_get_current_agenda_manager', array( $this, 'gs_get_current_agenda_manager' ) );*/
 			// add_filter( 'rest_event-category_query', array( $this, 'event_categories_filter_based_on_role' ), 10, 2 );
 			add_action( 'wp_loaded', array( $this, 'getCurrentUser' ) );
+			add_action( 'admin_head', array( $this, 'agenda_manager_role_custom_style' ) );
 		}
 
 		public function getWPPM() {
@@ -775,6 +776,23 @@ if ( ! class_exists( 'Gov_Schedules' ) ) :
 			}
 
 			return $prepared_args;
+		}
+
+		/**
+		 * Applies some CSS to customize admin, hiding some features, based on agenda manager role
+		 *
+		 */
+		public function agenda_manager_role_custom_style () {
+			$user = wp_get_current_user();
+			if ( $user->roles[0] === 'agenda_manager' ) { ?>
+				<style type="text/css">
+					#wp-admin-bar-new-post,
+					#wp-admin-bar-new-documentos,
+					#wp-admin-bar-new-multimedia {
+						display: none !important;
+					}
+				</style>';
+			<?php }
 		}
 
 	}

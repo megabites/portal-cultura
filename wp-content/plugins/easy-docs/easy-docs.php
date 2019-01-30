@@ -34,6 +34,7 @@ if ( ! class_exists( 'EasyDocs' ) ) :
 			add_action( 'add_meta_boxes', array( $this, 'easy_docs_add_meta_box' ) );
 			add_action( 'save_post', array( $this, 'easy_docs_save_postdata' ) );
 			add_action( 'manage_posts_custom_column', array( $this, 'documents_custom_columns' ), 10, 2 );
+			add_action( 'init', array( $this, 'easy_docs_cats_rewrite' ), 10, 0 );
 
 			add_filter( 'the_content', array( $this, 'add_document_to_content' ) );
 			add_filter( 'manage_documents_posts_columns', array( $this, 'add_documents_columns' ) );
@@ -126,10 +127,23 @@ if ( ! class_exists( 'EasyDocs' ) ) :
 						'add_new_item' => 'Adicionar novo tipo',
 						'search_items' => 'Buscar tipo de documento'
 					),
-					'show_in_rest' => true
+					'show_in_rest' => true,
+					'rewrite'      => array(
+						'slug' => 'documento'
+					),
 				)
 			);
 		}
+
+		/*public function easy_docs_cats_rewrite() {
+			add_rewrite_rule(
+				'^documentos/(.+)/?$/',
+				'index.php??document-category=$matches[1]',
+				'top'
+			);
+
+			flush_rewrite_rules();
+		}*/
 
 		/**
 		 * Add a meta box to upload our document
@@ -301,24 +315,24 @@ if ( ! class_exists( 'EasyDocs' ) ) :
 							<div class="row">
 								<?php
 								for ( $i = 0; $i < count( $documents_url ); $i ++ ):
-									$attachment = $this->get_attachment_id_by_url( $documents_url[ $i ] ); ?>
-									<div class="col-4">
-										<h6 class="card-subtitle mb-2 text-muted">Anexos</h6>
-										<h5 class="card-title"><?php echo $attachment->post_title; ?></h5>
-										<p class="card-text">
-											<small><?php echo strftime( '%d de %B de %Y', strtotime( $attachment->post_date ) ); ?></small>
-										</p>
-										<!--<p class="card-text">
+								$attachment = $this->get_attachment_id_by_url( $documents_url[ $i ] ); ?>
+								<div class="col-4">
+									<h6 class="card-subtitle mb-2 text-muted">Anexo</h6>
+									<h5 class="card-title"><?php echo $attachment->post_title; ?></h5>
+									<p class="card-text">
+										<small><?php echo strftime( '%d de %B de %Y', strtotime( $attachment->post_date ) ); ?></small>
+									</p>
+									<!--<p class="card-text">
 											<small><?php /*echo size_format( filesize( get_attached_file( $attachment->ID ) ) ); */?></small>
 										</p>-->
-										<a href="<?php echo $documents_url[ $i ]; ?>" class="btn btn-sm" target="_blank">Download</a>
+									<a href="<?php echo $documents_url[ $i ]; ?>" class="btn btn-sm" target="_blank">Download</a>
 
-									</div>
+								</div>
 
-									<?php if ( ($i+1) % 3 == 0) : ?>
-										</div>
-										<div class="row">
-									<?php endif; ?>
+								<?php if ( ($i+1) % 3 == 0) : ?>
+							</div>
+							<div class="row">
+								<?php endif; ?>
 
 								<?php endfor; ?>
 							</div>

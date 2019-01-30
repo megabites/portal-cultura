@@ -42,6 +42,8 @@ if ( ! function_exists( 'idg_wp_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 		add_image_size('carousel-feature', 1280, 680, true);
+		add_image_size('highlight-box', 350, 350, true);
+		add_image_size('multimedia-feature', 1080, 500, true);
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
@@ -86,19 +88,30 @@ endif;
 add_action( 'after_setup_theme', 'idg_wp_setup' );
 
 /**
+ * Check if is defined an app environment variables
+ *
+ * @return array|false|string
+ */
+function idg_wp_app_env() {
+	return getenv('APPLICATION_ENV');
+}
+
+/**
  * Enqueue scripts and styles.
  */
 function idg_wp_scripts() {
-	// wp_enqueue_style( 'idg-wp-style', get_stylesheet_uri() );
-    wp_enqueue_style( 'idg-wp-style', get_template_directory_uri() . '/assets/stylesheets/dist/bundle.min.css' );
+	if( idg_wp_app_env() === 'development' ){
+		wp_enqueue_style( 'idg-wp-style', get_template_directory_uri() . '/assets/stylesheets/dist/bundle.css' );
+	} else {
+		wp_enqueue_style( 'idg-wp-style', get_template_directory_uri() . '/assets/stylesheets/dist/bundle.min.css' );
+	}
 
-	// wp_enqueue_script( 'jquery-ui-datepicker' );
-	wp_enqueue_script( 'idg-wp-scripts', get_template_directory_uri() . '/assets/js/dist/bundle.min.js', array('jquery'), false, true );
+	if( idg_wp_app_env() === 'development' ){
+		wp_enqueue_script( 'idg-wp-scripts', get_template_directory_uri() . '/assets/js/dist/bundle.js', array('jquery'), false, true );
+	} else {
+		wp_enqueue_script( 'idg-wp-scripts', get_template_directory_uri() . '/assets/js/dist/bundle.min.js', array('jquery'), false, true );
+	}
 	wp_enqueue_script( 'barra-brasil-script', 'http://barra.brasil.gov.br/barra_2.0.js', false, false, true );
-
-    // wp_enqueue_script( 'idg-wp-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-
-	// wp_enqueue_script( 'idg-wp-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
