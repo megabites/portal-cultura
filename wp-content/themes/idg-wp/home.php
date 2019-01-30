@@ -24,136 +24,140 @@ get_header();
 		<section id="news" class="pb-5 pt-5 bg-grey-2">
 			<div class="container">
 				<div class="row">
+					<div class="overflow-wrapper">
 
-					<?php
-					$args      = array(
-						'posts_per_page' => 1,
-						'category_name'  => 'destaquinho-1'
-					);
+						<?php
+						$args = array(
+							'posts_per_page' => 1,
+							'category_name'  => 'destaquinho-1'
+						);
 
-					$news_query = new WP_Query( $args ); ?>
+						$news_query = new WP_Query( $args ); ?>
 
-					<?php if ( $news_query->have_posts() ) : ?>
+						<?php if ( $news_query->have_posts() ) : ?>
 
-						<?php while ( $news_query->have_posts() ) : $news_query->the_post(); ?>
-							<h2></h2>
-							<div class="col-lg-4 mb-5">
-								<?php
-								if ( has_post_thumbnail() ) {
-									$post_thumb = get_the_post_thumbnail_url(get_the_ID(), 'highlight-box');
-								} else {
-									$post_thumb = get_template_directory_uri() . '/assets/img/fake-img.jpg';
-								}
-								?>
-								<div class="highlight-box" style="background-image: url('<?php echo $post_thumb; ?>')">
-									<div class="box-body">
-										<?php if( $post_subtitle = get_post_meta( $post->ID, '_post_subtitle', true ) ): ?>
-											<span class="cat"><?php echo $post_subtitle?></span>
-										<?php endif; ?>
-										<h3 class="box-title">
-											<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-										</h3>
+							<?php while ( $news_query->have_posts() ) : $news_query->the_post(); ?>
+
+							
+								<div class="col-lg-4 mb-5">
+									<?php
+									if ( has_post_thumbnail() ) {
+										$post_thumb = get_the_post_thumbnail_url(get_the_ID(), 'highlight-box');
+									} else {
+										$post_thumb = get_template_directory_uri() . '/assets/img/fake-img.jpg';
+									}
+									?>
+									<div class="highlight-box" style="background-image: url('<?php echo $post_thumb; ?>')">
+										<div class="box-body">
+											<?php if( $post_subtitle = get_post_meta( $post->ID, '_post_subtitle', true ) ): ?>
+												<span class="cat"><?php echo $post_subtitle?></span>
+											<?php endif; ?>
+											<h3 class="box-title">
+												<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+											</h3>
+										</div>
 									</div>
 								</div>
-							</div>
-						<?php endwhile; ?>
+							<?php endwhile; ?>
 
-						<?php wp_reset_postdata(); ?>
+							<?php wp_reset_postdata(); ?>
 
-					<?php endif; ?>
+						<?php endif; ?>
 
-					<?php
-					$args      = array(
-						'posts_per_page' => 1,
-						'category_name'  => 'destaquinho-2'
-					);
-					$news_query = new WP_Query( $args ); ?>
+						<?php
+						$args = array(
+							'posts_per_page' => 1,
+							'category_name'  => 'destaquinho-2'
+						);
+						$news_query = new WP_Query( $args ); ?>
 
-					<?php if ( $news_query->have_posts() ) : ?>
+						<?php if ( $news_query->have_posts() ) : ?>
 
-						<?php while ( $news_query->have_posts() ) : $news_query->the_post(); ?>
-							<h2></h2>
-							<div class="col-lg-4 mb-5">
-								<?php
-								if ( has_post_thumbnail() ) {
-									$post_thumb = get_the_post_thumbnail_url(get_the_ID(), 'highlight-box');
-								} else {
-									$post_thumb = get_template_directory_uri() . '/assets/img/fake-img.jpg';
-								}
-								?>
-								<div class="highlight-box" style="background-image: url('<?php echo $post_thumb; ?>')">
-									<div class="box-body">
-										<?php if( $post_subtitle = get_post_meta( $post->ID, '_post_subtitle', true ) ): ?>
-											<span class="cat"><?php echo $post_subtitle?></span>
-										<?php endif; ?>
-										<h3 class="box-title">
-											<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-										</h3>
+							<?php while ( $news_query->have_posts() ) : $news_query->the_post(); ?>
+								<div class="col-lg-4 mb-5">
+									<?php
+									if ( has_post_thumbnail() ) {
+										$post_thumb = get_the_post_thumbnail_url(get_the_ID(), 'highlight-box');
+									} else {
+										$post_thumb = get_template_directory_uri() . '/assets/img/fake-img.jpg';
+									}
+									?>
+									<div class="highlight-box" style="background-image: url('<?php echo $post_thumb; ?>')">
+										<div class="box-body">
+											<?php if( $post_subtitle = get_post_meta( $post->ID, '_post_subtitle', true ) ): ?>
+												<span class="cat"><?php echo $post_subtitle?></span>
+											<?php endif; ?>
+											<h3 class="box-title">
+												<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+											</h3>
+										</div>
 									</div>
 								</div>
-							</div>
-						<?php endwhile; ?>
+							<?php endwhile; ?>
 
-						<?php wp_reset_postdata(); ?>
+							<?php wp_reset_postdata(); ?>
 
-					<?php endif; ?>
+						<?php endif; ?>
 
-					<?php
-					$args      = array(
-						'posts_per_page' => 1,
-						'category_name'  => 'destaquinho-3'
-					);
-					$news_query = new WP_Query( $args ); ?>
+						<?php
+						$args = array(
+							'posts_per_page' => 1,
+							'category_name'  => 'destaquinho-3'
+						);
+						$news_query = new WP_Query( $args ); ?>
 
-					<?php if ( $news_query->have_posts() ) : ?>
+						<?php if ( $news_query->have_posts() ) : ?>
 
-						<?php while ( $news_query->have_posts() ) : $news_query->the_post(); ?>
-							<h2></h2>
-							<div class="col-lg-4 mb-5">
-								<?php
-								if ( has_post_thumbnail() ) {
-									$post_thumb = get_the_post_thumbnail_url(get_the_ID(), 'highlight-box');
-								} else {
-									$post_thumb = get_template_directory_uri() . '/assets/img/fake-img.jpg';
-								}
-								?>
-								<div class="highlight-box" style="background-image: url('<?php echo $post_thumb; ?>')">
-									<div class="box-body">
-										<?php if( $post_subtitle = get_post_meta( $post->ID, '_post_subtitle', true ) ): ?>
-											<span class="cat"><?php echo $post_subtitle?></span>
-										<?php endif; ?>
-										<h3 class="box-title">
-											<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-										</h3>
+							<?php while ( $news_query->have_posts() ) : $news_query->the_post(); ?>
+								<div class="col-lg-4 mb-5">
+									<?php
+									if ( has_post_thumbnail() ) {
+										$post_thumb = get_the_post_thumbnail_url(get_the_ID(), 'highlight-box');
+									} else {
+										$post_thumb = get_template_directory_uri() . '/assets/img/fake-img.jpg';
+									}
+									?>
+									<div class="highlight-box" style="background-image: url('<?php echo $post_thumb; ?>')">
+										<div class="box-body">
+											<?php if( $post_subtitle = get_post_meta( $post->ID, '_post_subtitle', true ) ): ?>
+												<span class="cat"><?php echo $post_subtitle?></span>
+											<?php endif; ?>
+											<h3 class="box-title">
+												<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+											</h3>
+										</div>
 									</div>
 								</div>
-							</div>
-						<?php endwhile; ?>
+							<?php endwhile; ?>
 
-						<?php wp_reset_postdata(); ?>
+							<?php wp_reset_postdata(); ?>
 
-					<?php endif; ?>
-				</div>
-				<div class="col-lg-12 text-center">
-					<a href="<?php echo home_url( '/categoria/noticias/' ); ?>" class="btn text-uppercase mt-1">Mais
-						notícias</a>
+						<?php endif; ?>
+					</div>
+
+					<div class="col-lg-12 text-center">
+						<a href="<?php echo home_url( '/categoria/noticias/' ); ?>" class="btn text-uppercase mt-1">Mais
+							notícias</a>
+					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="services mt-5 mb-5 pt-4">
+		<section id="services" class="mt-5 mb-5 pt-4">
 			<div class="container">
 				<div class="row">
-					<?php
-					if ( is_active_sidebar( 'services-widgets-area' ) ) :
-						dynamic_sidebar( 'services-widgets-area' );
-					endif;
-					?>
+					<div class="overflow-wrapper">
+						<?php
+						if ( is_active_sidebar( 'services-widgets-area' ) ) :
+							dynamic_sidebar( 'services-widgets-area' );
+						endif;
+						?>
+					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="pt-5 pb-5 mb-5" id="agenda">
+		<section id="agenda" class="pt-5 pb-5 mb-5">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
@@ -163,49 +167,57 @@ get_header();
 			</div>
 		</section>
 
-		<section class="pt-5 pb-5 mb-5">
+		<section id="secretarias" class="pt-5 pb-5 mb-5">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
 						<h2 class="section-title mb-5 text-center">Conheça a Secretaria</h2>
 					</div>
-					<?php
-					if ( is_active_sidebar( 'meet-the-ministry-widgets-area' ) ) :
-						dynamic_sidebar( 'meet-the-ministry-widgets-area' );
-					endif;
-					?>
+
+					<div class="overflow-wrapper">
+						<?php
+						if ( is_active_sidebar( 'meet-the-ministry-widgets-area' ) ) :
+							dynamic_sidebar( 'meet-the-ministry-widgets-area' );
+						endif;
+						?>
+					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="pt-5 pb-5" id="section-content">
+		<section id="section-content" class="pt-5 pb-5">
 			<div class="container">
 				<div class="row">
-					<?php
-					if ( is_active_sidebar( 'content-widgets-area' ) ) :
-						dynamic_sidebar( 'content-widgets-area' );
-					endif;
-					?>
+					<div class="overflow-wrapper">
+						<?php
+						if ( is_active_sidebar( 'content-widgets-area' ) ) :
+							dynamic_sidebar( 'content-widgets-area' );
+						endif;
+						?>
+					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="mt-5 mb-5">
+		<section id="participacao-social" class="mt-5 mb-5">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
 						<h2 class="section-title mb-5 text-center">Participação Social</h2>
 					</div>
-					<?php
-					if ( is_active_sidebar( 'social-participation-widgets-area' ) ) :
-						dynamic_sidebar( 'social-participation-widgets-area' );
-					endif;
-					?>
+
+					<div class="overflow-wrapper">
+						<?php
+						if ( is_active_sidebar( 'social-participation-widgets-area' ) ) :
+							dynamic_sidebar( 'social-participation-widgets-area' );
+						endif;
+						?>
+					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="mt-5" id="multimidia">
+		<section id="multimidia" class="mt-5">
 			<div class="container">
 				<div class="row">
 					<?php get_template_part('template-parts/multimedia-block'); ?>
