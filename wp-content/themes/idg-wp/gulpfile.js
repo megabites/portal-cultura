@@ -122,11 +122,11 @@ gulp.task('styles', function () {
 	// }))
 		.pipe(plumber())
 		.pipe(sass())
-		.pipe(cleanCSS({
-			compatibility: 'ie8',
-			level: 2,
-			inline: ['none']
-		}))
+		// .pipe(cleanCSS({
+		// 	compatibility: 'ie8',
+		// 	level: 2,
+		// 	inline: ['none']
+		// }))
 		.pipe(concat('bundle.min.css'))
 		.pipe(gulp.dest('./assets/stylesheets/dist/'))
 		.pipe(notify('Folha de estilo recarregada'))
@@ -282,4 +282,4 @@ gulp.task('browser-sync', function () {
 gulp.task('default', ['styles', 'styles-admin', 'scripts', 'scripts-admin', 'scripts-customizer']);
 
 // Task for dev
-gulp.task('dev', ['styles-dev', 'styles-admin', 'scripts-dev', 'scripts-admin', 'scripts-customizer', 'watch', 'browser-sync']);
+gulp.task('dev', ['styles-dev', 'styles-admin', 'scripts-dev', 'scripts-admin', 'browser-sync', 'watch']);
