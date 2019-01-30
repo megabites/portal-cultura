@@ -1,6 +1,6 @@
 .carousel-wrapper {
 	margin: 0;
-	background: #000;
+	background: color(black);
 
 	@include media("≥phone", "≤desktop") {
 		min-height: 40vh;
@@ -76,7 +76,7 @@
 					}
 
 					h2 {
-						font-size: 16px;
+						font-size: 18px;
 						margin: 0;
 						display: block;
 						width: calc(100% - 120px);
@@ -91,10 +91,10 @@
 
 				a {
 					display: block;
-					color: #fff;
+					color: color(white);
 
 					&:hover {
-						color: #0094ff;
+						color: color(secondary);
 						text-decoration: none;
 					}
 				}
@@ -124,7 +124,7 @@
 
 		.high-contrast & {
 			.carousel-item .carousel-caption {
-				background: #000;
+				background: color(black);
 			}
 		}
 	}

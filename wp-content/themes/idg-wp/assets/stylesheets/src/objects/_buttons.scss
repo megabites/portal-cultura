@@ -2,7 +2,7 @@
 .wpcf7-submit{
 	@include transition(all ease .2s);
 	border-radius: 30px;
-	border: 2px solid #222;
+	border: 2px solid color(dark);
 	padding: 10px 23px;
 	margin: 5px;
 	-webkit-box-sizing: border-box;
@@ -11,18 +11,18 @@
 	font-weight: 700;
 	white-space: nowrap;
 	display: inline-block;
-	color: #222;
+	color: color(dark);
 	text-decoration: none !important;
 
 	&:hover {
-		// background-color: #222;
-		// color: #f8f8f8;
+		color: inherit;
+		@include opacity(0.5);
 	}
 
 	.high-contrast & {
-		background-color: #000;
-		color: #fff;
-		border-color: #fff;
+		background-color: color(black);
+		color: color(white);
+		border-color: color(white);
 	}
 
 	@include media("≥phone", "≤desktop") {
@@ -39,10 +39,10 @@
 	a {
 		border: none;
 		display: inline-block;
-		background: #363636;
+		background: color(text);
 		padding: 5px 15px;
 		border-radius: 40px;
-		color: #fff;
+		color: color(white);
 		margin-bottom: 15px;
 		font-size: 0.8rem;
 	}

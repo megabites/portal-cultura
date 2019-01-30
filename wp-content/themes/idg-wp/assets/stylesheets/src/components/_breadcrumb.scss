@@ -10,7 +10,7 @@
 
 		li {
 			a {
-				color: #282828;
+				color: color(dark);
 			}
 
 			&.item-home {
@@ -33,14 +33,14 @@
 
 			&.separator {
 				margin: 0 15px;
-				color: #bababa;
+				color: color(gray);
 				font-size: 0.8rem;
 			}
 		}
 
 		.high-contrast & {
 			a {
-				color: #fff !important;
+				color: color(white) !important;
 			}
 		}
 	}

@@ -15,7 +15,7 @@
 			line-height: 1.5rem;
 
 			a {
-				color: #fff;
+				color: color(white);
 				padding: 0;
 			}
 		}
@@ -58,7 +58,7 @@
 			position: absolute;
 			height: 4px;
 			width: 100%;
-			background: #FFF;
+			background: color(white);
 			border-radius: 0;
 			opacity: 1;
 			left: 0;

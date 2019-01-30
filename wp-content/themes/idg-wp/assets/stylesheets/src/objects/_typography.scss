@@ -1,13 +1,13 @@
 .alternative-headline {
 	font-size: 1.1em;
 	font-weight: 700;
-	color: $light__color;
+	color: color(secondary);
 }
 
 .subtitle-single {
 	font-size: 1.1em;
 	font-weight: normal;
-	color: $grey__color;
+	color: color(silver);
 }
 
 .section-title {
@@ -23,7 +23,7 @@
 .entry-title {
 	font-size: 3rem;
 	font-weight: 900;
-	color: $title__color;
+	color: color(dark);
 
 	&:first-letter {
 		text-transform: uppercase;
@@ -35,7 +35,7 @@
 .subtitle-single {
 	font-size: 1.1em;
 	font-weight: normal;
-	color: $grey__color;
+	color: color(silver);
 
 	&:first-letter {
 		text-transform: uppercase;
@@ -49,16 +49,16 @@
 		display: inline-block;
 		margin-right: 10px;
 		font-size: 1em !important;
-		color: #282828 !important;
+		color: color(dark) !important;
 	}
 
 	a {
 		@include border-radius(30px);
 
 		display: inline-block;
-		background: #EEE;
+		background: color(gray);
 		padding: 8px 15px;
-		color: #222;
+		color: color(dark);
 		text-transform: uppercase;
 		margin: 0 10px 0 0;
 		font-size: .75rem;

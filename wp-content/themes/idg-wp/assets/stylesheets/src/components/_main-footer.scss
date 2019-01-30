@@ -1,5 +1,5 @@
 #main-footer {
-	background: #F1F1F1;
+	background: color(seashell);
 	padding: 60px 0;
 
 	@include media("≥phone", "≤desktop") {
@@ -59,7 +59,7 @@
 
 				a {
 					font-size: 1em;
-					color: #222;
+					color: color(dark);
 					line-height: 1.5em;
 				}
 			}
@@ -83,10 +83,10 @@
 	}
 
 	.high-contrast & {
-		background-color: #000;
+		background-color: color(black);
 
 		a {
-			color: #fff !important;
+			color: color(white) !important;
 		}
 	}
 }

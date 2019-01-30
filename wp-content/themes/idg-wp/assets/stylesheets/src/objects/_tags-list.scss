@@ -6,16 +6,16 @@
     display: inline-block;
     margin-right: 10px;
     font-size: 1em !important;
-    color: #282828 !important;
+    color: color(dark) !important;
   }
 
   a {
     @include border-radius(30px);
 
     display: inline-block;
-    background: #EEE;
+    background: color(gray);
     padding: 8px 15px;
-    color: #222;
+    color: color(dark);
     text-transform: uppercase;
     margin: 10px 10px 0 0;
     font-size: .75rem;

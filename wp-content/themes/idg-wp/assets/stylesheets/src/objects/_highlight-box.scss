@@ -1,6 +1,6 @@
 .highlight-box {
 	position: relative;
-	background: #fff;
+	background: color(white);
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	height: 370px;
@@ -35,7 +35,7 @@
 		padding: 15px;
 
 		.cat {
-			color: #fff;
+			color: color(white);
 			text-transform: uppercase;
 			position: relative;
 
@@ -44,7 +44,7 @@
 				display: block;
 				width: 45px;
 				height: 3px;
-				background-color: #0094ff;
+				background-color: color(secondary);
 				position: absolute;
 				top: -5px;
 				left: 0;
@@ -55,10 +55,10 @@
 			font-size: 1.5rem;
 			margin-top: 5px;
 			font-weight: 700;
-			color: #FFF;
+			color: color(white);
 
 			a {
-				color: #fff;
+				color: color(white);
 			}
 
 			@include media("≥phone", "≤desktop") {

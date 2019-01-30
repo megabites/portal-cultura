@@ -1,6 +1,6 @@
 .texto-copyright {
   width: 100%;
-  border-color: $grey__color;
+  border-color: color(silver);
   border-top: 1px solid rgba(0, 0, 0, .1);
   border-bottom: 1px solid rgba(0, 0, 0, .1);
   float: left;
@@ -10,7 +10,7 @@
     font-size: 1em;
 
     a {
-      color: #212529;
+      color: color(dark);
       font-weight: bold;
       text-decoration: underline;
     }
@@ -21,7 +21,7 @@
     text-align: right;
 
     a {
-      color: #222;
+      color: color(dark);
       font-size: 0.8em;
       text-transform: uppercase;
       font-weight: 700;
@@ -34,13 +34,13 @@
         @include transform(translateY(-50%));
 
         content: "^";
-        background: #222;
+        background: color(dark);
         font-size: 1.4em;
         width: 40px;
         height: 40px;
         line-height: 40px;
         display: block;
-        color: #FFF;
+        color: color(white);
         text-align: center;
         font-weight: 700;
         position: absolute;

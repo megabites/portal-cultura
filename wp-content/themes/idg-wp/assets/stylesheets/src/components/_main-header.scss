@@ -1,8 +1,8 @@
 #main-header {
-	color: #fff;
+	color: color(white);
 	padding: 0;
 	z-index: 100;
-	background-color: $main__color;
+	background-color: color(primary);
 	position: relative;
 
 	&:before {
@@ -45,7 +45,7 @@
 		position: fixed !important;
 		left: 0 !important;
 		top: 0 !important;
-		background-color: $main__color !important;
+		background-color: color(primary) !important;
 
 		&:after {
 			content: "";
@@ -65,7 +65,7 @@
 
 			.menu-header {
 				padding: 60px 20px 20px;
-				background: $light__color;
+				background: color(secondary);
 				-webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
 				-moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
 				box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
@@ -73,7 +73,7 @@
 				h2 {
 					width: 200px;
 					display: block;
-					color: #FFF;
+					color: color(white);
 					margin-bottom: 15px;
 				}
 
@@ -117,7 +117,7 @@
 				}
 
 				.menu-title {
-					color: #222;
+					color: color(dark);
 				}
 
 				.title-wrapper {
@@ -163,7 +163,7 @@
 		font-weight: 900;
 
 		a {
-			color: #fff;
+			color: color(white);
 
 			@include media("≥phone", "≤desktop") {
 				text-decoration: none;
@@ -200,7 +200,7 @@
 	}
 
 	.high-contrast & {
-		background: #000;
+		background: color(black);
 	}
 
 }

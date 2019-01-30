@@ -1,5 +1,5 @@
 .bg-grey-1{
-	background: #f8f8f8;
+	background: color(alabaster);
 	@include high-contrast();
 }
 
@@ -9,7 +9,7 @@
 }
 
 .bg-grey-3{
-	background: #f1f1f1;
+	background: color(seashell);
 	@include high-contrast();
 }
 
