@@ -9,12 +9,12 @@
 	}
 
 	li {
-		background-image: url(../../img/sprite.png);
-		background-position: -140px -124px;
 		width: 35px;
 		height: 35px;
 		display: inline-block;
 		margin-left: 40px;
+		background-position: center center;
+		background-repeat: no-repeat;
 
 		&:first-child {
 			margin-left: 0;
@@ -31,30 +31,33 @@
 			display: block;
 		}
 
+		&.twitter {
+			background-image: url('../../img/twitter.svg');
+			background-size: 28px;
+		}
+
 		&.youtube {
-			background-position: -70px -124px;
+			background-image: url('../../img/youtube.svg');
+			background-size: 30px;
 		}
 
 		&.facebook {
-			background-position: -175px -124px;
+			background-image: url('../../img/facebook.svg');
+			background-size: 28px;
 		}
 
 		&.flickr {
-			background-position: -105px -124px;
+			background-image: url('../../img/flickr.svg');
+			background-size: 25px;
 		}
 
 		&.instagram {
 			background-image: url('../../img/instagram.svg');
-			background-position: center center;
-			background-repeat: no-repeat;
 			background-size: 27px;
 		}
 
 		&.soundcloud {
 			background-image: url('../../img/soundcloud.svg');
-			background-position: center center;
-			background-repeat: no-repeat;
-			// background-size: 27px;
 		}
 	}
 }
