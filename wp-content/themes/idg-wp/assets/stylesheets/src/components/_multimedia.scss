@@ -6,7 +6,7 @@
 	color: color(white);
 
 	@include media("≥phone", "≤desktop") {
-		padding: 20px;
+		padding: 0;
 		background-size: 30px auto;
 
 		.container {
@@ -15,7 +15,6 @@
 			.row {
 				padding: 0;
 				margin: 0;
-				display: block;
 
 				.col {
 					padding: 0;
@@ -23,18 +22,36 @@
 					display: block;
 				}
 			}
+
+			.widget_idg_banner {
+				padding: 15px;
+
+				.row {
+					display: grid;
+					grid-template-columns: auto auto;
+					grid-gap: 15px;
+
+					.col {
+						&:nth-child(3) {
+							grid-column-start: 1;
+							grid-column-end: 3;
+						}
+					}
+				}
+			}
 		}
 	}
 
 	.highlight {
-		width: calc(100% - 30px);
+		width: 100%;
 		margin: 0 auto;
 		height: 500px;
 		padding: 0 20px;
 		margin-bottom: 30px;
-		background-size: cover;
+		background-size: cover !important;
 		display: table;
 		position: relative;
+		background: color(gray);
 
 		@include media("≥phone", "≤desktop") {
 			width: 100%;
@@ -114,10 +131,11 @@
 	.highlight-box {
 		height: 215px;
 		background-position: center center;
+		background: color(gray);
 
 		@include media("≥phone", "≤desktop") {
 			height: 150px;
-			margin-top: 20px;
+			background-size: contain !important;
 		}
 	}
 

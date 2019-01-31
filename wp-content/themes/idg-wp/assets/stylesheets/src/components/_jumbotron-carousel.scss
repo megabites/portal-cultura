@@ -2,6 +2,10 @@
 	margin: 0;
 	background: color(black);
 
+	@include media("≥desktop") {
+		min-height: 680px;
+	}
+
 	@include media("≥phone", "≤desktop") {
 		min-height: 40vh;
 	}

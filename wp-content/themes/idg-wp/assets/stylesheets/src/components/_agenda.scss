@@ -12,6 +12,9 @@
 		margin-bottom: 15px;
 
 		@include media("≥phone", "≤desktop") {
+			@include transform(translateX(-15px));
+
+			width: calc(100% + 30px);
 			background: color(bunting);
 			margin: 0;
 			border-bottom: 1px solid rgba(color(white), .2);
