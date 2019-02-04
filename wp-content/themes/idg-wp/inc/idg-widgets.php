@@ -289,6 +289,11 @@ class IDG_Banners extends WP_Widget {
 			$link_url = array_values( $instance['link_url'] );
 		}
 
+		$target = '';
+		if ( ! empty( $instance['target'] ) ) {
+			$target = $instance['target'];
+		}
+
 		$link_title = '';
 		if ( ! empty( $instance['link_title'] ) ) {
 			$link_title = array_values( $instance['link_title'] );
@@ -339,6 +344,11 @@ class IDG_Banners extends WP_Widget {
 						</p>
 
 						<p>
+							<label for="<?php echo $this->get_field_id( 'target' ) . '[' . $i . ']'; ?>"><?php esc_attr_e( 'Open in new window:', 'idg-wp' ); ?></label>
+							<input class="card-target" id="<?php echo $this->get_field_id( 'target' ) . '[' . $i . ']'; ?>" name="<?php echo $this->get_field_name( 'target' ) . '[' . $i . ']'; ?>" type="checkbox" value="1" <?php checked( '1', $target [ $i ], true ); ?>>
+						</p>
+
+						<p>
 							<label for="<?php echo $this->get_field_name( 'link_title' ) . '[' . $i . ']'; ?>"><?php _e( 'Link Title:' ); ?></label>
 							<input class="widefat" id="<?php echo $this->get_field_id( 'link_title' ) . '[' . $i . ']'; ?>" name="<?php echo $this->get_field_name( 'link_title' ) . '[' . $i . ']'; ?>" type="text" value="<?php echo esc_attr( $link_title[ $i ] ); ?>"/>
 						</p>
@@ -374,6 +384,7 @@ class IDG_Banners extends WP_Widget {
 		$instance['description']       = ( ! empty( $new_instance['description'] ) ) ? sanitize_text_field( $new_instance['description'] ) : '';
 		$instance['number_of_banners'] = ( ! empty( $new_instance['number_of_banners'] ) ) ? sanitize_text_field( $new_instance['number_of_banners'] ) : '';
 		$instance['link_url']          = ( ! empty( $new_instance['link_url'] ) ) ? $new_instance['link_url'] : '';
+		$instance['target']          = ( ! empty( $new_instance['target'] ) ) ? $new_instance['target'] : '';
 		$instance['link_title']        = ( ! empty( $new_instance['link_title'] ) ) ? $new_instance['link_title'] : '';
 		$instance['columns']           = ( ! empty( $new_instance['columns'] ) ) ? $new_instance['columns'] : '';
 		$instance['order']             = ( ! empty( $new_instance['order'] ) ) ? $new_instance['order'] : '';
