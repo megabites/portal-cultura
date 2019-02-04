@@ -138,7 +138,7 @@ figure {
 
 	#secretarias {
 		@include media("≥phone", "≤desktop") {
-			padding: 20px 0 23px !important;
+			padding: 15px 0 !important;
 			margin: 0 !important;
 
 			.overflow-wrapper {
@@ -166,7 +166,7 @@ figure {
 
 	#participacao-social {
 		@include media("≥phone", "≤desktop") {
-			padding: 20px 0 23px !important;
+			padding: 15px 0 !important;
 			margin: 0 !important;
 
 			.overflow-wrapper {
@@ -220,6 +220,12 @@ figure {
 body.page {
 	#main {
 		background: color(white);
+	}
+}
+
+#main {
+	@include media("≥phone", "≤desktop") {
+		overflow: hidden;
 	}
 }
 

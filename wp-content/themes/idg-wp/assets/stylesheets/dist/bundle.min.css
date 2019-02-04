@@ -7547,7 +7547,7 @@ figure.wp-caption {
 
 @media (min-width: 320px) and (max-width: 1150px) {
   .home #secretarias {
-    padding: 20px 0 23px !important;
+    padding: 15px 0 !important;
     margin: 0 !important; }
     .home #secretarias .overflow-wrapper {
       margin: 0;
@@ -7565,7 +7565,7 @@ figure.wp-caption {
 
 @media (min-width: 320px) and (max-width: 1150px) {
   .home #participacao-social {
-    padding: 20px 0 23px !important;
+    padding: 15px 0 !important;
     margin: 0 !important; }
     .home #participacao-social .overflow-wrapper {
       margin: 0;
@@ -7602,6 +7602,10 @@ figure.wp-caption {
 
 body.page #main {
   background: #FFFFFF; }
+
+@media (min-width: 320px) and (max-width: 1150px) {
+  #main {
+    overflow: hidden; } }
 
 .entry-content a {
   text-decoration: underline;
@@ -8388,6 +8392,10 @@ body.page #main {
       height: 17px; }
       .subpages-menu .menu-content > a:first-child {
         margin-left: 0; }
+
+@media (min-width: 320px) and (max-width: 1150px) {
+  .subpages-menu .menu-content > a {
+    display: none; } }
     .subpages-menu .menu-content button {
       transform: translateY(-50%);
       -webkit-transform: translateY(-50%);
@@ -8963,10 +8971,43 @@ body.page #main {
   width: 100%;
   height: 50px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+
+@media (min-width: 320px) and (max-width: 1150px) {
+  #breadcrumb-wrapper {
+    height: auto;
+    border: none; } }
   #breadcrumb-wrapper #breadcrumb {
     font-size: 1rem;
     background: none;
     margin: 0; }
+
+@media (min-width: 320px) and (max-width: 1150px) {
+  #breadcrumb-wrapper #breadcrumb {
+    height: 40px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-basis: initial;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    flex-wrap: initial; }
+    #breadcrumb-wrapper #breadcrumb:before {
+      content: "";
+      width: calc(100% + 30px);
+      margin-left: -15px;
+      position: absolute;
+      height: 1px;
+      background: #E5E5E5;
+      left: 0;
+      bottom: 0; } }
+
+@media (min-width: 320px) and (max-width: 1150px) {
+  #breadcrumb-wrapper #breadcrumb li {
+    font-size: 0.85rem; }
+    #breadcrumb-wrapper #breadcrumb li:last-child {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; } }
     #breadcrumb-wrapper #breadcrumb li a {
       color: #222222; }
     #breadcrumb-wrapper #breadcrumb li.item-home a {
@@ -8978,10 +9019,18 @@ body.page #main {
         text-indent: -999px; }
       #breadcrumb-wrapper #breadcrumb li.item-home a:before {
         font-size: 16px; }
+
+@media (min-width: 320px) and (max-width: 1150px) {
+  #breadcrumb-wrapper #breadcrumb li.item-home a:before {
+    font-size: 12px; } }
     #breadcrumb-wrapper #breadcrumb li.separator {
       margin: 0 15px;
       color: #E5E5E5;
       font-size: 0.8rem; }
+
+@media (min-width: 320px) and (max-width: 1150px) {
+  #breadcrumb-wrapper #breadcrumb li.separator {
+    margin: 0 8px; } }
     .high-contrast #breadcrumb-wrapper #breadcrumb a {
       color: #FFFFFF !important; }
 
@@ -9123,7 +9172,7 @@ body.page #main {
     -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
-    width: 100%;
+    width: 100vw;
     height: 50px;
     line-height: 50px;
     padding: 0;
@@ -9186,7 +9235,7 @@ body.page #main {
         #main-header .container .row .title-wrapper {
           display: flex;
           align-items: center;
-          width: calc(100% - 85px);
+          width: calc(100% - 80px);
           height: 50px;
           padding: 0;
           margin: 0;
@@ -9504,7 +9553,7 @@ body.page #main {
     height: 0;
     border-style: solid;
     border-width: 0 8px 16px 8px;
-    border-color: transparent transparent #FFFFFF fff transparent; }
+    border-color: transparent transparent #FFFFFF transparent; }
   #menu-wrapper .menu-content .menu-col {
     border-right: 1px solid #F1F1F1; }
     #menu-wrapper .menu-content .menu-col .menu-title {
@@ -9732,7 +9781,8 @@ body.page #main {
 @media (min-width: 320px) and (max-width: 1150px) {
   #multimidia {
     padding: 0;
-    background-size: 30px auto; }
+    background-size: 30px auto;
+    font-size: 0; }
     #multimidia .container {
       padding: 0; }
       #multimidia .container .row {
@@ -9752,7 +9802,7 @@ body.page #main {
             grid-column-start: 1;
             grid-column-end: 3; } }
   #multimidia .highlight {
-    width: 100%;
+    width: calc(100% - 30px);
     margin: 0 auto;
     height: 500px;
     padding: 0 20px;
@@ -9804,7 +9854,7 @@ body.page #main {
       display: block; }
     #multimidia .highlight > a span {
       display: block;
-      font-size: 1rem;
+      font-size: 0.8rem;
       line-height: normal; } }
     #multimidia .highlight:before {
       content: "";
