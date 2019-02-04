@@ -247,7 +247,9 @@ class IDG_Banners extends WP_Widget {
 				?>
 
 				<div class="<?php echo $col; ?> order-<?php echo $instance['order'][ $i ]; ?>">
-					<a href="<?php echo $instance['link_url'][ $i ] ? $instance['link_url'][ $i ] : '#'; ?>" <?php echo $instance['link_title'][ $i ] ? 'title="' . $instance['link_title'][ $i ] . '"' : ''; ?>>
+					<a href="<?php echo $instance['link_url'][ $i ] ? $instance['link_url'][ $i ] : '#'; ?>"
+						<?php echo $instance['link_title'][ $i ] ? 'title="' . $instance['link_title'][ $i ] . '"' : ''; ?>
+						<?php echo ! empty( $instance['target'][ $i ] ) ? 'target="_blank"' : ''; ?> >
 						<div class="highlight-box" style="background-image: url('<?php echo wp_get_attachment_url( $instance['image'][ $i ] ); ?>')">
 							<?php if ( ! empty($instance['link_title'][ $i ]) ): ?>
 								<div class="box-body">
