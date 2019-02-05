@@ -9370,29 +9370,6 @@ body.page #main {
   height: max-content;
   z-index: 100; }
   @media (min-width: 1150px) {
-    body.menu-active #menu-wrapper {
-      transition: visibility 0s linear 0s, opacity 0.25s;
-      height: max-content;
-      overflow: visible;
-      transition: none;
-      visibility: visible;
-      opacity: 1; } }
-  @media screen and (min-width: 1150px) and (prefers-reduced-motion: reduce) {
-    body.menu-active #menu-wrapper {
-      transition: none; } }
-
-@media (min-width: 320px) and (max-width: 1150px) {
-  body.menu-active #menu-wrapper {
-    transition: transform ease-in-out 0.25s;
-    transform: translateX(0);
-    -webkit-transform: translateX(0);
-    -moz-transform: translateX(0);
-    -ms-transform: translateX(0);
-    left: 0; } }
-  @media screen and (min-width: 320px) and (max-width: 1150px) and (prefers-reduced-motion: reduce) {
-    body.menu-active #menu-wrapper {
-      transition: none; } }
-  @media (min-width: 1150px) {
     #menu-wrapper {
       transition: visibility 0s linear 0.25s, opacity 0.25s;
       visibility: hidden;
@@ -9418,8 +9395,7 @@ body.page #main {
     z-index: 102;
     padding: 0;
     display: block;
-    height: 100% !important;
-    min-height: 100vh; } }
+    height: 100vh; } }
   @media screen and (min-width: 320px) and (max-width: 1150px) and (prefers-reduced-motion: reduce) {
     #menu-wrapper {
       transition: none; } }
@@ -9565,6 +9541,29 @@ body.page #main {
       background-size: 70% auto !important; }
       #menu-wrapper .menu-content .menu-footer .social-medias li:first-child {
         margin-left: 0; } }
+  @media (min-width: 1150px) {
+    body.menu-active #menu-wrapper {
+      transition: visibility 0s linear 0s, opacity 0.25s;
+      height: max-content;
+      overflow: visible;
+      transition: none;
+      visibility: visible;
+      opacity: 1; } }
+  @media screen and (min-width: 1150px) and (prefers-reduced-motion: reduce) {
+    body.menu-active #menu-wrapper {
+      transition: none; } }
+
+@media (min-width: 320px) and (max-width: 1150px) {
+  body.menu-active #menu-wrapper {
+    transition: transform ease-in-out 0.25s;
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    left: 0; } }
+  @media screen and (min-width: 320px) and (max-width: 1150px) and (prefers-reduced-motion: reduce) {
+    body.menu-active #menu-wrapper {
+      transition: none; } }
   #menu-wrapper .menu-content:before {
     content: '';
     display: block;

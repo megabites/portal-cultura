@@ -14,26 +14,6 @@
 	height: max-content;
 	z-index: 100;
 
-	body.menu-active & {
-
-		@include media("≥desktop") {
-			@include transition(visibility 0s linear 0s, opacity .25s);
-
-			height: max-content;
-			overflow: visible;
-			transition: none;
-			visibility: visible;
-			opacity: 1;
-		}
-
-		@include media("≥phone", "≤desktop") {
-			@include transition(transform ease-in-out .25s);
-			@include transform(translateX(0));
-
-			left: 0;
-		}
-	}
-
 	@include media("≥desktop") {
 		@include transition(visibility 0s linear .25s, opacity .25s);
 
@@ -55,8 +35,7 @@
 		z-index: 102;
 		padding: 0;
 		display: block;
-		height: 100% !important;
-		min-height: 100vh;
+		height: 100vh;
 
 		.icon-close {
 			display: block;
@@ -226,6 +205,26 @@
 					}
 				}
 			}
+		}
+	}
+
+	body.menu-active & {
+
+		@include media("≥desktop") {
+			@include transition(visibility 0s linear 0s, opacity .25s);
+
+			height: max-content;
+			overflow: visible;
+			transition: none;
+			visibility: visible;
+			opacity: 1;
+		}
+
+		@include media("≥phone", "≤desktop") {
+			@include transition(transform ease-in-out .25s);
+			@include transform(translateX(0));
+
+			left: 0;
 		}
 	}
 
