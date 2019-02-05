@@ -95,7 +95,19 @@
 								dynamic_sidebar( 'main-menu-area' );
 							endif;
 							?>
+
+							<div class="col social-media-col hide-mobile">
+								<div class="menu-col border-0">
+									<h3 class="menu-title">Redes Sociais</h3>
+
+									<?php get_template_part( 'template-parts/social-medias' ); ?>
+								</div>
+							</div>
 						</div>
+					</div>
+
+					<div class="menu-footer hide-desktop">
+						<?php get_template_part( 'template-parts/social-medias' ); ?>
 					</div>
 
 			</div>
