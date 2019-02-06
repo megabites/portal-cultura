@@ -7463,8 +7463,11 @@ html {
   body {
     padding-top: 50px; }
     body.menu-active {
-      position: relative;
-      overflow: hidden; } }
+      overflow: hidden;
+      -webkit-overflow-scrolling: touch; }
+      @supports (-webkit-overflow-scrolling: touch) {
+        body.menu-active {
+          position: fixed; } } }
 
 *,
 *:before,
@@ -7792,6 +7795,23 @@ body.page #main {
 @media (max-width: 1150px) {
   .hide-mobile {
     display: none !important; } }
+
+@media (min-width: 320px) and (max-width: 1150px) {
+  #wpadminbar {
+    transition: z-index 0.5s step-end;
+    position: fixed;
+    z-index: 100; } }
+  @media screen and (min-width: 320px) and (max-width: 1150px) and (prefers-reduced-motion: reduce) {
+    #wpadminbar {
+      transition: none; } }
+
+@media (min-width: 320px) and (max-width: 1150px) {
+    body.menu-active #wpadminbar {
+      transition: z-index 0.5s step-start;
+      z-index: 30; } }
+    @media screen and (min-width: 320px) and (max-width: 1150px) and (prefers-reduced-motion: reduce) {
+      body.menu-active #wpadminbar {
+        transition: none; } }
 
 .btn,
 .wpcf7-submit {
@@ -9187,6 +9207,8 @@ body.page #main {
       position: absolute;
       left: 0;
       bottom: 0px; }
+    body.admin-bar #main-header {
+      top: 46px !important; }
     #main-header #barra-brasil {
       display: none; }
     #main-header .container {
@@ -9380,7 +9402,7 @@ body.page #main {
 
 @media (min-width: 320px) and (max-width: 1150px) {
   #menu-wrapper {
-    transition: transform ease-in-out 0.2s;
+    transition: all ease-in-out 0.2s;
     transform: translateX(-105%);
     -webkit-transform: translateX(-105%);
     -moz-transform: translateX(-105%);
@@ -9395,7 +9417,7 @@ body.page #main {
     z-index: 102;
     padding: 0;
     display: block;
-    height: 100vh; } }
+    min-height: 100%; } }
   @media screen and (min-width: 320px) and (max-width: 1150px) and (prefers-reduced-motion: reduce) {
     #menu-wrapper {
       transition: none; } }

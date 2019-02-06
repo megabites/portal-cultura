@@ -7,8 +7,12 @@ body {
 		padding-top: 50px;
 
 		&.menu-active {
-			position: relative;
+			@include iosDevice() {
+				position: fixed;
+			}
+
 			overflow: hidden;
+			-webkit-overflow-scrolling: touch;
 		}
 	}
 }
@@ -496,5 +500,19 @@ body.page {
 .hide-mobile {
 	@include media("≤desktop") {
 		display: none !important;
+	}
+}
+
+#wpadminbar {
+	@include media("≥phone", "≤desktop") {
+		@include transition(z-index 0.5s step-end);
+		position: fixed;
+		z-index: 100;
+
+		body.menu-active & {
+			@include transition(z-index 0.5s step-start);
+
+			z-index: 30;
+		}
 	}
 }

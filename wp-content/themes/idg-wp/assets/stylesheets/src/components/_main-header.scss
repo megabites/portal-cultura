@@ -56,6 +56,10 @@
 			bottom: 0px;
 		}
 
+		body.admin-bar & {
+			top: 46px !important;
+		}
+
 		#barra-brasil {
 			display: none;
 		}

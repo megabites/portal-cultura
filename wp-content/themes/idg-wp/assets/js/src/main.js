@@ -105,7 +105,6 @@
 				window.open(url, "shareWindow", "width=600, height=400");
 				return false;
 			}
-
 		},
 
 		// credit: http://www.javascriptkit.com/javatutors/touchevents2.shtml
