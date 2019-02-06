@@ -35,29 +35,21 @@
 		},
 
 
-
 		/**
 		 * Menu Functions
 		 *
 		 */
 		menu: function () {
-			var offsetY = '0px';
 
 			// High contrast
 			$('#menu-toggle').click(function () {
 				$('body').toggleClass('menu-active');
 
-				// offsetY = window.pageYOffset;
-
 				if ($('body').hasClass('menu-active')) {
 					bodyScrollLock.disableBodyScroll(document.querySelector('.scrollTarget'),{
-    allowTouchMove: el => (el.tagName === 'div')
-  });
+						allowTouchMove: el => (el.tagName === 'div')
+  				});
 
-				// 	$('body').css({
-				// 		'position': 'fixed',
-				// 		'top': '-' + offsetY + 'px'
-				// 	});
 				}
 			})
 
@@ -69,16 +61,6 @@
 				$('body').removeClass('menu-active');
 
 				bodyScrollLock.clearAllBodyScrollLocks();
-
-				// $('body').css({
-				// 	'position': 'static',
-				// 	'top': 'auto'
-				// });
-
-				// console.log(offsetY);
-
-				// document.body.scrollTop = offsetY;
-				// document.documentElement.scrollTop = offsetY;
 			});
 
 			$('.widget_nav_menu').click(function() {
