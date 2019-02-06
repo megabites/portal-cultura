@@ -3,14 +3,16 @@ html {
 }
 
 body {
+	max-width: 100%;
+
+	@include media("≥desktop") {
+		position: static !important;
+	}
+
 	@include media("≥phone", "≤desktop") {
 		padding-top: 50px;
 
 		&.menu-active {
-			@include iosDevice() {
-				position: fixed;
-			}
-
 			overflow: hidden;
 			-webkit-overflow-scrolling: touch;
 		}

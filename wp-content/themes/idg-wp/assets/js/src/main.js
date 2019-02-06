@@ -41,9 +41,20 @@
 		 *
 		 */
 		menu: function () {
+			var offsetY = '0px';
+
 			// High contrast
 			$('#menu-toggle').click(function () {
 				$('body').toggleClass('menu-active');
+
+				offsetY = window.pageYOffset;
+
+				if ($('body').hasClass('menu-active')) {
+					$('body').css({
+						'position': 'fixed',
+						'top': '-' + offsetY + 'px'
+					});
+				}
 			})
 
 			$('#menu-wrapper, #menu-toggle').click(function(event){
@@ -52,6 +63,16 @@
 
 			$('body, .close-menu').click(function(event){
 				$('body').removeClass('menu-active');
+
+				$('body').css({
+					'position': 'static',
+					'top': 'auto'
+				});
+
+				console.log(offsetY);
+
+				document.body.scrollTop = offsetY;
+				document.documentElement.scrollTop = offsetY;
 			});
 
 			$('.widget_nav_menu').click(function() {

@@ -7459,15 +7459,18 @@ template {
 html {
   box-sizing: border-box; }
 
+body {
+  max-width: 100%; }
+  @media (min-width: 1150px) {
+    body {
+      position: static !important; } }
+
 @media (min-width: 320px) and (max-width: 1150px) {
   body {
     padding-top: 50px; }
     body.menu-active {
       overflow: hidden;
-      -webkit-overflow-scrolling: touch; }
-      @supports (-webkit-overflow-scrolling: touch) {
-        body.menu-active {
-          position: fixed; } } }
+      -webkit-overflow-scrolling: touch; } }
 
 *,
 *:before,
@@ -9177,6 +9180,12 @@ body.page #main {
     @media screen and (prefers-reduced-motion: reduce) {
       #main-header:before {
         transition: none; } }
+    @supports (-webkit-overflow-scrolling: touch) {
+      #main-header:before {
+        transition: none; }
+        @media screen and (prefers-reduced-motion: reduce) {
+          #main-header:before {
+            transition: none; } } }
 
 @media (min-width: 320px) and (max-width: 1150px) {
   body.menu-active #main-header:before {
