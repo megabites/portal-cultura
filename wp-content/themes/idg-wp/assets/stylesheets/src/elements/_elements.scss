@@ -4,6 +4,7 @@ html {
 
 body {
 	max-width: 100%;
+	min-height: 100vh;
 
 	@include media("≥desktop") {
 		position: static !important;
