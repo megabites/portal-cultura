@@ -88,7 +88,7 @@
 						</div>
 					</div>
 
-					<div class="menu-body">
+					<div class="menu-body scrollTarget">
 						<div class="row">
 							<?php
 							if ( is_active_sidebar( 'main-menu-area' ) ) :
