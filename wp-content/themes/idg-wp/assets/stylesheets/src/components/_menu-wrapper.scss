@@ -37,6 +37,10 @@
 		display: block;
 		min-height: 100%;
 
+		@supports (-webkit-appearance:none) {
+			min-height: calc(100vh - 56px);
+		}
+
 		.icon-close {
 			display: block;
 			width: 60px;

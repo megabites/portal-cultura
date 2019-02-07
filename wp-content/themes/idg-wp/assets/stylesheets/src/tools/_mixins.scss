@@ -70,7 +70,6 @@
 	@return map-get($colors, $color-name);
 }
 
-
 @mixin iosDevice() {
 	@supports (-webkit-overflow-scrolling: touch) {
 		@content;

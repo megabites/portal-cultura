@@ -9543,6 +9543,9 @@ body.page #main {
       transition: none; } }
 
 @media (min-width: 320px) and (max-width: 1150px) {
+    @supports (-webkit-appearance: none) {
+      #menu-wrapper {
+        min-height: calc(100vh - 56px); } }
     #menu-wrapper .icon-close {
       display: block;
       width: 60px;
