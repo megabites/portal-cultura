@@ -1,5 +1,5 @@
 {
-    "name": "Secretaria Especial da Cultura - Ministério da Cidadania - LAB",
+    "name": "Secretaria Especial da Cultura - Ministério da Cidadania",
     "icons": [
         {
             "src": "/favicons/android-chrome-192x192.png",
@@ -22,7 +22,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "green",
-    "background_color": "green",
+    "theme_color": "#2969bd",
+    "background_color": "#2969bd",
     "display": "standalone"
 }
