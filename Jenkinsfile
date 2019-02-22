@@ -22,7 +22,7 @@ pipeline {
 
           // so we can retrieve the version in later steps
           sh "echo \$(jx-release-version) > VERSION"
-          
+          sh "jx step tag --version \$(cat VERSION)"
           echo "teste"
           
           sh "CI=true DISPLAY=:99"
@@ -40,9 +40,6 @@ pipeline {
         container('jx-base') {
           dir('./charts/portal-cultura') {
             
-            // generate tag helm chart
-            sh "make tag"
-
             // release the helm chart
             sh "jx step helm release"
 
