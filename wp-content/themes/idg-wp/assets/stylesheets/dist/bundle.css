@@ -8733,8 +8733,7 @@ body.page #main {
 
 #main-header {
   color: #fff;
-/*   background-color: #2969bd; */
-  background-color: green !important;
+  background-color: #2969bd;
   padding: 0;
   position: relative;
   z-index: 100; }
