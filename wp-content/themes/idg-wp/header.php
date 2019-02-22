@@ -34,6 +34,7 @@
 
 <header id="main-header">
 	<div id="barra-brasil"></div>
+	<h1>LABBS</h1>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-lg-8 title-wrapper">
