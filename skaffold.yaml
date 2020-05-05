@@ -2,12 +2,12 @@ apiVersion: skaffold/v1beta11
 kind: Config
 build:
   artifacts:
-  - image: 'culturagovbr/portal-cultura'
+  - image: 'megabites/portal-cultura'
     context: .
     docker: {}
   tagPolicy:
     envTemplate:
-      template: '{{.DOCKER_REGISTRY}}/culturagovbr/portal-cultura:{{.VERSION}}'
+      template: '{{.DOCKER_REGISTRY}}/megabites/portal-cultura:{{.VERSION}}'
   local: {}
 deploy:
   kubectl: {}
@@ -17,7 +17,7 @@ profiles:
   build:
     tagPolicy:
       envTemplate:
-        template: '{{.DOCKER_REGISTRY}}/culturagovbr/portal-cultura:{{.DIGEST_HEX}}'
+        template: '{{.DOCKER_REGISTRY}}/megabites/portal-cultura:{{.DIGEST_HEX}}'
     local: {}
   deploy:
     helm:
@@ -25,5 +25,5 @@ profiles:
       - name: 'portal-cultura'
         chartPath: 'charts/portal-cultura'
         setValueTemplates:
-          image.repository: '{{.DOCKER_REGISTRY}}/culturagovbr/portal-cultura'
+          image.repository: '{{.DOCKER_REGISTRY}}/megabites/portal-cultura'
           image.tag: '{{.DIGEST_HEX}}'
