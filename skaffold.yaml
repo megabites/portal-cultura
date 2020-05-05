@@ -11,11 +11,10 @@ build:
   local: {}
 deploy:
   kubectl: {}
+################
 profiles:
 - name: dev
   build:
-    artifacts:
-    - docker: {}
     tagPolicy:
       envTemplate:
         template: '{{.DOCKER_REGISTRY}}/culturagovbr/portal-cultura:{{.DIGEST_HEX}}'
@@ -23,8 +22,8 @@ profiles:
   deploy:
     helm:
       releases:
-      - name: portal-cultura
-        chartPath: charts/portal-cultura
+      - name: 'portal-cultura'
+        chartPath: 'charts/portal-cultura'
         setValueTemplates:
           image.repository: '{{.DOCKER_REGISTRY}}/culturagovbr/portal-cultura'
           image.tag: '{{.DIGEST_HEX}}'
