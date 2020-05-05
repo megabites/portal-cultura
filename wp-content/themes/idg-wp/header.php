@@ -36,7 +36,7 @@
 	<div id="barra-brasil"></div>
 	<div class="container">
 		<div class="row">
-			<h1>LABB MME  parte 2 </h1>
+			<h1>LAB SEC</h1>
 			<div class="col-md-6 col-lg-8 title-wrapper">
 				<p class="site-denomination mb-0"><?php bloginfo( 'description' ); ?></p>
 				<h1 class="site-title mt-0 mb-0"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
