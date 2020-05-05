@@ -2,7 +2,7 @@ apiVersion: skaffold/v1beta2
 kind: Config
 build:
   artifacts:
-  - image: culturagovbr/portal-cultura
+  - image: 'culturagovbr/portal-cultura'
     context: .
     docker: {}
   tagPolicy:
